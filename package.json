@@ -1,0 +1,28 @@
+{
+  "name": "bamboo-bites",
+  "version": "1.0.0",
+  "description": "HELLO",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beratukiqi/bamboo-bites.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beratukiqi/bamboo-bites/issues"
+  },
+  "homepage": "https://github.com/beratukiqi/bamboo-bites#readme",
+  "devDependencies": {
+    "serverless-webpack": "^5.13.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.441.0",
+    "@aws-sdk/lib-dynamodb": "^3.444.0",
+    "nanoid": "^5.0.3"
+  }
+}

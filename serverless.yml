@@ -1,0 +1,42 @@
+service: bamboo-bites
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: fabiola-aws-dev
+  region: eu-north-1
+  iam:
+    role: arn:aws:iam::818306886347:role/student-development-role
+
+plugins: 
+  - serverless-webpack
+
+package: 
+  individually: true
+
+functions:
+  getMenu:
+    handler: functions/getMenu/index.handler
+    events:
+      - httpApi:
+          path: "/api/menu"
+          method: GET
+
+resources: 
+  Resources:
+    bambooBitesMenu:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: bambooBites-menu
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: item
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: item
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
