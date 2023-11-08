@@ -38,6 +38,10 @@ functions:
 
 resources: 
   Resources:
+    bambooBitesBucket:
+      Type: AWS::S3::Bucket
+      Properties: 
+        BucketName: bamboo-bites-bucket
     bambooBitesMenu:
       Type: AWS::DynamoDB::Table
       Properties:
