@@ -22,6 +22,19 @@ functions:
       - httpApi:
           path: "/api/menu"
           method: GET
+  getOrders:
+    handler: functions/getOrders/index.handler
+    events:
+      - httpApi:
+          path: "/api/orders"
+          method: GET
+  putOrder:
+    handler: functions/putOrder/index.handler
+    events:
+      - httpApi: 
+          path: "/api/putOrder"
+          method: POST
+
 
 resources: 
   Resources:
