@@ -40,3 +40,14 @@ resources:
           - AttributeName: item
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
+    bambooBitesOrders:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: bambooBites-orders
+        AttributeDefinitions:
+          - AttributeName: orderNr
+            AttributeType: N
+        KeySchema:
+          - AttributeName: orderNr
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
