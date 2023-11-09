@@ -100,7 +100,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/bamboo-bites/dev/1699355511823-2023-11-07T11:11:51.823Z/getMenu.zip"
+                "S3Key": "serverless/bamboo-bites/dev/1699364324108-2023-11-07T13:38:44.108Z/getMenu.zip"
               },
               "Handler": "functions/getMenu/index.handler",
               "Runtime": "nodejs18.x",
@@ -455,7 +455,7 @@
       "package": {
         "individually": true,
         "artifactsS3KeyDirname": "serverless/bamboo-bites/dev/code-artifacts",
-        "artifactDirectoryName": "serverless/bamboo-bites/dev/1699355511823-2023-11-07T11:11:51.823Z"
+        "artifactDirectoryName": "serverless/bamboo-bites/dev/1699364324108-2023-11-07T13:38:44.108Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -469,7 +469,7 @@
   },
   "package": {
     "individually": true,
-    "artifactDirectoryName": "serverless/bamboo-bites/dev/1699355511823-2023-11-07T11:11:51.823Z",
+    "artifactDirectoryName": "serverless/bamboo-bites/dev/1699364324108-2023-11-07T13:38:44.108Z",
     "artifact": ""
   }
 }

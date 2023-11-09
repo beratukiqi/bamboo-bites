@@ -3,6 +3,7 @@ interface MenuItem {
   id: string;
   item: string;
   price: number;
+  desc: string;
 }
 
 const Products = () => {
@@ -28,12 +29,19 @@ const Products = () => {
   }, [data]);
 
   return (
-    <div>
-      <h1>Products</h1>
-      <ul>
-        {data && data.map((food, index) => <li key={index}>{food.item}</li>)}{" "}
-      </ul>
-    </div>
+    <main>
+      <section className="hero">
+        <h1>Products</h1>
+        <ul>
+          {data &&
+            data.map((food, index) => (
+              <li key={index}>
+                {food.item} + {food.price}$ + {food.desc}
+              </li>
+            ))}{" "}
+        </ul>
+      </section>
+    </main>
   );
 };
 
