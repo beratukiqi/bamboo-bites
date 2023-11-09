@@ -84,7 +84,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/bamboo-bites/dev/1699355511823-2023-11-07T11:11:51.823Z/getMenu.zip"
+          "S3Key": "serverless/bamboo-bites/dev/1699364324108-2023-11-07T13:38:44.108Z/getMenu.zip"
         },
         "Handler": "functions/getMenu/index.handler",
         "Runtime": "nodejs18.x",

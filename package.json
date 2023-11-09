@@ -23,6 +23,9 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.441.0",
     "@aws-sdk/lib-dynamodb": "^3.444.0",
-    "nanoid": "^5.0.3"
+    "framer-motion": "^10.16.4",
+    "nanoid": "^5.0.3",
+    "sass": "^1.69.5",
+    "scss": "^0.2.4"
   }
 }
