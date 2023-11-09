@@ -22,9 +22,26 @@ functions:
       - httpApi:
           path: "/api/menu"
           method: GET
+  getOrders:
+    handler: functions/getOrders/index.handler
+    events:
+      - httpApi:
+          path: "/api/orders"
+          method: GET
+  putOrder:
+    handler: functions/putOrder/index.handler
+    events:
+      - httpApi: 
+          path: "/api/putOrder"
+          method: POST
+
 
 resources: 
   Resources:
+    bambooBitesBucket:
+      Type: AWS::S3::Bucket
+      Properties: 
+        BucketName: bamboo-bites-bucket
     bambooBitesMenu:
       Type: AWS::DynamoDB::Table
       Properties:
@@ -39,4 +56,15 @@ resources:
             KeyType: HASH
           - AttributeName: item
             KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+    bambooBitesOrders:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: bambooBites-orders
+        AttributeDefinitions:
+          - AttributeName: orderNr
+            AttributeType: N
+        KeySchema:
+          - AttributeName: orderNr
+            KeyType: HASH
         BillingMode: PAY_PER_REQUEST
