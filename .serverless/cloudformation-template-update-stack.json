@@ -102,7 +102,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/bamboo-bites/dev/1699879075250-2023-11-13T12:37:55.250Z/getMenu.zip"
+          "S3Key": "serverless/bamboo-bites/dev/1699879670634-2023-11-13T12:47:50.634Z/getMenu.zip"
         },
         "Handler": "functions/getMenu/index.handler",
         "Runtime": "nodejs18.x",
@@ -122,7 +122,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/bamboo-bites/dev/1699879075250-2023-11-13T12:37:55.250Z/getOrders.zip"
+          "S3Key": "serverless/bamboo-bites/dev/1699879670634-2023-11-13T12:47:50.634Z/getOrders.zip"
         },
         "Handler": "functions/getOrders/index.handler",
         "Runtime": "nodejs18.x",
@@ -142,7 +142,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/bamboo-bites/dev/1699879075250-2023-11-13T12:37:55.250Z/putOrder.zip"
+          "S3Key": "serverless/bamboo-bites/dev/1699879670634-2023-11-13T12:47:50.634Z/putOrder.zip"
         },
         "Handler": "functions/putOrder/index.handler",
         "Runtime": "nodejs18.x",
@@ -162,7 +162,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/bamboo-bites/dev/1699879075250-2023-11-13T12:37:55.250Z/getSingleOrder.zip"
+          "S3Key": "serverless/bamboo-bites/dev/1699879670634-2023-11-13T12:47:50.634Z/getSingleOrder.zip"
         },
         "Handler": "functions/getSingleOrder/index.handler",
         "Runtime": "nodejs18.x",
@@ -195,14 +195,14 @@
         "CodeSha256": "oD0lVArmAcEq+mlw8/g3490C+/Va+lKNeeMrdrDt8y4="
       }
     },
-    "PutOrderLambdaVersionyC8HZ6H2txniSSoq9W9zS3omV3Br8w46y4IxgTcdbw": {
+    "PutOrderLambdaVersions8xtdWfMJ1dSt9WDBW4fEEOZomMP2P688ohPrRrNZA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "PutOrderLambdaFunction"
         },
-        "CodeSha256": "ay+DtNdxadR9BZwdyKUWhcwMGgptS9sY8+QmhI97/bA="
+        "CodeSha256": "HqIGCRZMegwGriDLKGKFOokqjHKznLz1bcVTelPzt8U="
       }
     },
     "GetSingleOrderLambdaVersionkuHuK7NetohLIZgKIVVoCNwZvxPBdfnPrfpPdU": {
@@ -618,7 +618,7 @@
     "PutOrderLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "PutOrderLambdaVersionyC8HZ6H2txniSSoq9W9zS3omV3Br8w46y4IxgTcdbw"
+        "Ref": "PutOrderLambdaVersions8xtdWfMJ1dSt9WDBW4fEEOZomMP2P688ohPrRrNZA"
       },
       "Export": {
         "Name": "sls-bamboo-bites-dev-PutOrderLambdaFunctionQualifiedArn"
