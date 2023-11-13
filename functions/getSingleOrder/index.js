@@ -10,7 +10,7 @@ exports.handler = async (event) => {
       TableName: "bambooBites-orders",
       FilterExpression: "orderNr = :orderNr",
       ExpressionAttributeValues: {
-        ":orderNr": orderNr,
+        ":orderNr": parseInt(orderNr),
       },
     });
 
