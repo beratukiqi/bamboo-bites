@@ -3,7 +3,7 @@ import { docClient } from "../../services/client";
 import { sendResponse } from "../../responses";
 
 exports.handler = async (event) => {
-  const orderNr = event.pathParameters;
+  const orderNr = event.pathParameters.orderNr;
 
   try {
     const command = new ScanCommand({
@@ -18,6 +18,7 @@ exports.handler = async (event) => {
     return sendResponse(200, {
       success: true,
       message: "Filtered order",
+      order: response,
     });
   } catch (error) {
     return sendResponse(500, {
