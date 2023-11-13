@@ -6,18 +6,20 @@ import { nanoid } from "nanoid";
 exports.handler = async (event) => {
   const order = JSON.parse(event.body); // [{},{}]
 
-  try {
-    // const orderNr = nanoid(); This will generate a string do we want string och number?
-    const orderNr = 4;
-    // let order = [
-    //   { id: 1, name: "Something good", price: 10, desc: "so so good" },
-    //   { id: 1, name: "Something good", price: 10, desc: "so so good" },
-    // ];
+  const min = 10000000; // Minimum 8-digit number
+  const max = 99999999; // Maximum 8-digit number
 
+  const generateOrderNumber = () => {
+    const orderNr = Math.floor(min + Math.random() * max);
+
+    return orderNr;
+  };
+
+  try {
     const command = new PutCommand({
       TableName: "bambooBites-orders",
       Item: {
-        orderNr: orderNr,
+        orderNr: generateOrderNumber(),
         order: order,
       },
     });
