@@ -38,7 +38,7 @@ const Order = () => {
   }, []);
 
   useEffect(() => {
-    console.log("ORDER DATA", orderData[0]);
+    console.log("ORDER DATA", orderData);
   }, [orderData]);
 
   return (

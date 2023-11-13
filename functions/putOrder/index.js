@@ -14,11 +14,13 @@ exports.handler = async (event) => {
     return orderNr;
   };
 
+  const orderNr = generateOrderNumber();
+
   try {
     const command = new PutCommand({
       TableName: "bambooBites-orders",
       Item: {
-        orderNr: generateOrderNumber(),
+        orderNr: orderNr,
         order: order,
       },
     });
