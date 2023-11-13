@@ -66,6 +66,7 @@ exports.handler = async (event) => {
       message: "Fetched order",
       order: response.Item,
       orderNr: orderNr,
+      event: event,
     });
   } catch (error) {
     console.error("Error fetching order:", error);
@@ -74,6 +75,7 @@ exports.handler = async (event) => {
       message: "Not able to get order",
       error: error.message,
       orderNr: orderNr,
+      event: event,
     });
   }
 };
