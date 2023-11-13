@@ -47,7 +47,7 @@ exports.handler = async (event) => {
     const command = new GetCommand({
       TableName: "bambooBites-orders",
       Key: {
-        orderNr: parseInt(orderNr),
+        orderNr: 4,
       },
     });
 
