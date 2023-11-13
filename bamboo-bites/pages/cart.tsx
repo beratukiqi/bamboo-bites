@@ -31,7 +31,7 @@ const Cart = () => {
     console.log("DATA/RES", data);
     console.log("SENT ORDER", cart);
 
-    router.push("/order");
+    router.push("/order/data.orderNr");
   };
 
   useEffect(() => {

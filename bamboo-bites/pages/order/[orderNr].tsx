@@ -7,6 +7,14 @@ function singleOrderPage() {
   const router = useRouter();
   const { orderNr } = router.query;
 
+  const fetchOrderData = async () => {
+    const res = await fetch(
+      "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/getorder"
+    );
+    const data = await res.json();
+
+    return data;
+  };
   return (
     <main>
       <PageWrapper column>
