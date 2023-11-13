@@ -1,7 +1,6 @@
 import { sendResponse } from "../../responses/index";
 import { docClient } from "../../services/client";
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
-import { nanoid } from "nanoid";
 
 exports.handler = async (event) => {
   const order = JSON.parse(event.body); // [{},{}]
