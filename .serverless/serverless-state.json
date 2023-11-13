@@ -105,6 +105,12 @@
               "LogGroupName": "/aws/lambda/bamboo-bites-dev-putOrder"
             }
           },
+          "GetSingleOrderLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/bamboo-bites-dev-getSingleOrder"
+            }
+          },
           "GetMenuLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
@@ -112,7 +118,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/bamboo-bites/dev/1699868717831-2023-11-13T09:45:17.831Z/getMenu.zip"
+                "S3Key": "serverless/bamboo-bites/dev/1699871957766-2023-11-13T10:39:17.766Z/getMenu.zip"
               },
               "Handler": "functions/getMenu/index.handler",
               "Runtime": "nodejs18.x",
@@ -132,7 +138,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/bamboo-bites/dev/1699868717831-2023-11-13T09:45:17.831Z/getOrders.zip"
+                "S3Key": "serverless/bamboo-bites/dev/1699871957766-2023-11-13T10:39:17.766Z/getOrders.zip"
               },
               "Handler": "functions/getOrders/index.handler",
               "Runtime": "nodejs18.x",
@@ -152,7 +158,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/bamboo-bites/dev/1699868717831-2023-11-13T09:45:17.831Z/putOrder.zip"
+                "S3Key": "serverless/bamboo-bites/dev/1699871957766-2023-11-13T10:39:17.766Z/putOrder.zip"
               },
               "Handler": "functions/putOrder/index.handler",
               "Runtime": "nodejs18.x",
@@ -165,15 +171,25 @@
               "PutOrderLogGroup"
             ]
           },
-          "GetMenuLambdaVersiongj8ym8SiP9R2dBLkaSajTf1pWqbvZeqdl2YDAS5j4": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
+          "GetSingleOrderLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
             "Properties": {
-              "FunctionName": {
-                "Ref": "GetMenuLambdaFunction"
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/bamboo-bites/dev/1699871957766-2023-11-13T10:39:17.766Z/getSingleOrder.zip"
               },
-              "CodeSha256": "rUhjswAaZkVk3ieSZ5Pfkl/gZwody4hxd97E3iH0NRQ="
-            }
+              "Handler": "functions/getSingleOrder/index.handler",
+              "Runtime": "nodejs18.x",
+              "FunctionName": "bamboo-bites-dev-getSingleOrder",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Role": "arn:aws:iam::818306886347:role/student-development-role"
+            },
+            "DependsOn": [
+              "GetSingleOrderLogGroup"
+            ]
           },
           "GetOrdersLambdaVersion62SIkO4YXgnWYL1P28Hat4opl1utwVxROvXnkCLr8": {
             "Type": "AWS::Lambda::Version",
@@ -193,6 +209,26 @@
                 "Ref": "PutOrderLambdaFunction"
               },
               "CodeSha256": "3vT5hzl3YMdLL6Lo8YIHlixOoOaAp2dda+Ge3GD3q4I="
+            }
+          },
+          "GetSingleOrderLambdaVersionYKP9rj3rghYU5Gh8rlzPqwiJziEgOUeKhNhDhlevvE": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GetSingleOrderLambdaFunction"
+              },
+              "CodeSha256": "Nnaq03s7wMSLH32HeexIjpcoNGRryweKdJzR74TRXxM="
+            }
+          },
+          "GetMenuLambdaVersiongj8ym8SiP9R2dBLkaSajTf1pWqbvZeqdl2YDAS5j4": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "GetMenuLambdaFunction"
+              },
+              "CodeSha256": "rUhjswAaZkVk3ieSZ5Pfkl/gZwody4hxd97E3iH0NRQ="
             }
           },
           "HttpApi": {
@@ -431,6 +467,78 @@
             },
             "DependsOn": "HttpApiIntegrationPutOrder"
           },
+          "GetSingleOrderLambdaPermissionHttpApi": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "GetSingleOrderLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "HttpApi"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "HttpApiIntegrationGetSingleOrder": {
+            "Type": "AWS::ApiGatewayV2::Integration",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "IntegrationType": "AWS_PROXY",
+              "IntegrationUri": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"GetSingleOrderLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+              },
+              "PayloadFormatVersion": "2.0",
+              "TimeoutInMillis": 30000
+            }
+          },
+          "HttpApiRoutePostApiGetorder": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "POST /api/getorder",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationGetSingleOrder"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationGetSingleOrder"
+          },
           "bambooBitesBucket": {
             "Type": "AWS::S3::Bucket",
             "Properties": {
@@ -493,15 +601,6 @@
               "Name": "sls-bamboo-bites-dev-ServerlessDeploymentBucketName"
             }
           },
-          "GetMenuLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "GetMenuLambdaVersiongj8ym8SiP9R2dBLkaSajTf1pWqbvZeqdl2YDAS5j4"
-            },
-            "Export": {
-              "Name": "sls-bamboo-bites-dev-GetMenuLambdaFunctionQualifiedArn"
-            }
-          },
           "GetOrdersLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
@@ -518,6 +617,24 @@
             },
             "Export": {
               "Name": "sls-bamboo-bites-dev-PutOrderLambdaFunctionQualifiedArn"
+            }
+          },
+          "GetSingleOrderLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "GetSingleOrderLambdaVersionYKP9rj3rghYU5Gh8rlzPqwiJziEgOUeKhNhDhlevvE"
+            },
+            "Export": {
+              "Name": "sls-bamboo-bites-dev-GetSingleOrderLambdaFunctionQualifiedArn"
+            }
+          },
+          "GetMenuLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "GetMenuLambdaVersiongj8ym8SiP9R2dBLkaSajTf1pWqbvZeqdl2YDAS5j4"
+            },
+            "Export": {
+              "Name": "sls-bamboo-bites-dev-GetMenuLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -710,6 +827,28 @@
         "runtime": "nodejs18.x",
         "vpc": {},
         "versionLogicalId": "PutOrderLambdaVersionPVZmL70Tdz2ND00h1sMaGB01Z9Et7Xoi6EPudwzpew"
+      },
+      "getSingleOrder": {
+        "handler": "functions/getSingleOrder/index.handler",
+        "events": [
+          {
+            "httpApi": {
+              "path": "/api/getorder",
+              "method": "POST"
+            },
+            "resolvedMethod": "POST",
+            "resolvedPath": "/api/getorder"
+          }
+        ],
+        "name": "bamboo-bites-dev-getSingleOrder",
+        "package": {
+          "artifact": ".serverless\\getSingleOrder.zip"
+        },
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "nodejs18.x",
+        "vpc": {},
+        "versionLogicalId": "GetSingleOrderLambdaVersionYKP9rj3rghYU5Gh8rlzPqwiJziEgOUeKhNhDhlevvE"
       }
     },
     "resources": {
@@ -783,7 +922,7 @@
       "package": {
         "individually": true,
         "artifactsS3KeyDirname": "serverless/bamboo-bites/dev/code-artifacts",
-        "artifactDirectoryName": "serverless/bamboo-bites/dev/1699868717831-2023-11-13T09:45:17.831Z"
+        "artifactDirectoryName": "serverless/bamboo-bites/dev/1699871957766-2023-11-13T10:39:17.766Z"
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
@@ -797,7 +936,7 @@
   },
   "package": {
     "individually": true,
-    "artifactDirectoryName": "serverless/bamboo-bites/dev/1699868717831-2023-11-13T09:45:17.831Z",
+    "artifactDirectoryName": "serverless/bamboo-bites/dev/1699871957766-2023-11-13T10:39:17.766Z",
     "artifact": ""
   }
 }
