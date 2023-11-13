@@ -1,17 +1,22 @@
 import AppContext from "@/context/AppContext";
 import { useContext } from "react";
 
-interface OrderItemProps {
-  item: {
-    id: string;
-    item: string;
-    price: number;
-    imgUrl: string;
-    desc: string;
-    quantity: number;
-  };
+interface OrderDetail {
+  id: string;
+  item: string;
+  price: number;
+  desc: string;
+  imgUrl: string;
+  quantity: number;
 }
 
+interface OrderItem {
+  order: OrderDetail;
+}
+
+interface OrderItemProps {
+  item: OrderDetail;
+}
 const OrderItem = ({ item }: OrderItemProps) => {
   const { cart, setCart } = useContext(AppContext);
 

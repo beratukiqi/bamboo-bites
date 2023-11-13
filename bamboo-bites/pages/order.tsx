@@ -4,45 +4,41 @@ import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
 import { useState, useEffect } from "react";
 
-interface OrderItem {
-  id: number;
-  title: string;
+interface OrderDetail {
+  id: string;
+  item: string;
   price: number;
-  image: string;
+  desc: string;
+  imgUrl: string;
   quantity: number;
 }
-const fakeOrderData = [
-  {
-    id: 1,
-    title: "Noodles ",
-    price: 10.99,
-    image: "https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png",
-    quantity: 1,
-  },
-  {
-    id: 2,
-    title: "Fun Bowl",
-    price: 10.99,
-    image: "https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png",
-    quantity: 1,
-  },
-  {
-    id: 3,
-    title: "Noodle dwas",
-    price: 10.99,
-    image: "https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png",
-    quantity: 1,
-  },
-];
+
+interface OrderItem {
+  order: OrderDetail;
+}
 
 const Order = () => {
   const [orderData, setOrderData] = useState<OrderItem[]>([]);
+
+  const fetchOrderData = async () => {
+    const res = await fetch(
+      "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/orders"
+    );
+    const data = await res.json();
+
+    return data;
+  };
+
   useEffect(() => {
-    setOrderData(fakeOrderData);
+    const allOrders = fetchOrderData();
+
+    allOrders.then((data) => {
+      setOrderData(data.orders);
+    });
   }, []);
 
   useEffect(() => {
-    console.log(orderData);
+    console.log("ORDER DATA", orderData[0]);
   }, [orderData]);
 
   return (
@@ -55,7 +51,9 @@ const Order = () => {
         <PageColumn title="Order no: 07483210">
           <section className="order-item__wrapper">
             {orderData &&
-              orderData.map((item) => <OrderItem key={item.id} item={item} />)}
+              orderData.map((item: any) => (
+                <OrderItem key={item.order.id} item={item.order} />
+              ))}
           </section>
         </PageColumn>
       </PageWrapper>

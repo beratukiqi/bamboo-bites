@@ -3,6 +3,7 @@ import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
 import AppContext from "@/context/AppContext";
+import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 
 interface OrderItem {
@@ -15,6 +16,7 @@ interface OrderItem {
 
 const Cart = () => {
   const { cart } = useContext(AppContext);
+  const router = useRouter();
 
   const sendOrder = async () => {
     const res = await fetch(
@@ -28,6 +30,8 @@ const Cart = () => {
     const data = await res.json();
     console.log("DATA/RES", data);
     console.log("SENT ORDER", cart);
+
+    router.push("/order/data.orderNr");
   };
 
   useEffect(() => {
