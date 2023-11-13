@@ -26,6 +26,7 @@ exports.handler = async (event) => {
     return sendResponse(200, {
       success: true,
       message: "A new order has been added",
+      orderNr: orderNr,
     });
   } catch (error) {
     return sendResponse(500, {
