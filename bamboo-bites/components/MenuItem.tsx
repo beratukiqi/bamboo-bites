@@ -2,15 +2,18 @@ import { useState } from "react";
 import Modal from "./Modal";
 
 interface MenuItemProps {
-  food: any;
-  item: string;
-  price: number;
-  desc: string;
-  img?: string;
+  food: {
+    id: string;
+    item: string;
+    price: number;
+    desc: string;
+    imgUrl: string;
+  };
 }
 
-const MenuItem = ({ food, item, price, desc, img }: MenuItemProps) => {
+const MenuItem = ({ food }: MenuItemProps) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const { id, item, price, imgUrl, desc } = food;
 
   return (
     <>

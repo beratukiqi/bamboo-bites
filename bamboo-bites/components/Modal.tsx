@@ -1,14 +1,25 @@
+import AppContext from "@/context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
+import { useContext, useEffect } from "react";
 
 interface ModalProps {
   isOpen: boolean;
   closeModal: () => void;
   food: {
-    item?: string;
-    price?: number;
-    desc?: string;
-    img?: string;
+    id: string;
+    item: string;
+    price: number;
+    desc: string;
+    imgUrl: string;
   };
+}
+
+interface MenuItemProps {
+  id: string;
+  item: string;
+  price: number;
+  desc: string;
+  imgUrl: string;
 }
 
 const containerVariants = {
@@ -37,6 +48,32 @@ const childVariants = {
 };
 
 const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
+  const { cart, setCart } = useContext(AppContext);
+  const { id, item, price, imgUrl, desc } = food;
+
+  const handleAddToCart = (foodItem: MenuItemProps) => {
+    setCart((currentCart) => {
+      // Check if the item is already in the cart
+      const existingItemIndex = currentCart.findIndex(
+        (item) => item.id === foodItem.id
+      );
+
+      // If the item exists, update its quantity
+      if (existingItemIndex > -1) {
+        const updatedCart = [...currentCart];
+        const existingItem = updatedCart[existingItemIndex];
+        updatedCart[existingItemIndex] = {
+          ...existingItem,
+          quantity: existingItem.quantity + 1,
+        };
+        return updatedCart;
+      }
+      console.log("Added to cart");
+      // If the item doesn't exist, add it to the cart
+      return [...currentCart, { ...foodItem, quantity: 1 }];
+    });
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -62,16 +99,16 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
               className="modal-header"
               variants={childVariants}
             >
-              <h3>{food.item}</h3>
+              <h3>{item}</h3>
               <button onClick={closeModal}>X</button>
             </motion.header>
             <motion.section className="modal-body" variants={childVariants}>
-              <p className="modal-body__desc">{food.desc}</p>
+              <p className="modal-body__desc">{desc}</p>
               <h6 className="modal-body__price">
-                {food.price}
+                {price}
                 <b>$</b>
               </h6>
-              <button>Add to cart</button>
+              <button onClick={() => handleAddToCart(food)}>Add to cart</button>
             </motion.section>
           </motion.article>
         </motion.section>
