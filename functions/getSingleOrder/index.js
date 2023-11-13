@@ -41,7 +41,7 @@ import { docClient } from "../../services/client";
 import { sendResponse } from "../../responses";
 
 exports.handler = async (event) => {
-  const orderNr = event.pathParameters.orderNr;
+  const { orderNr } = event.pathParameters;
 
   try {
     const command = new GetCommand({
