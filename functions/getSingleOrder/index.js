@@ -3,7 +3,7 @@ import { docClient } from "../../services/client";
 import { sendResponse } from "../../responses";
 
 exports.handler = async (event) => {
-  const orderNr = JSON.parse(event.body);
+  const orderNr = event.pathParameters;
 
   try {
     const command = new ScanCommand({

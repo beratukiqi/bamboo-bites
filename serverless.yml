@@ -38,8 +38,8 @@ functions:
     handler: functions/getSingleOrder/index.handler
     events:
       - httpApi: 
-          path: "/api/getorder"
-          method: POST
+          path: "/api/order/{orderNr}"
+          method: GET
 
 
 resources: 
