@@ -17,7 +17,7 @@ interface OrderItem {
 interface OrderItemProps {
   item: OrderDetail;
 }
-const OrderItem = ({ item }: OrderItemProps) => {
+const CartItem = ({ item }: OrderItemProps) => {
   const { cart, setCart } = useContext(AppContext);
 
   const incrementQuantity = () => {
@@ -82,4 +82,4 @@ const OrderItem = ({ item }: OrderItemProps) => {
   );
 };
 
-export default OrderItem;
+export default CartItem;

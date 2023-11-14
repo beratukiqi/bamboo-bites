@@ -1,4 +1,4 @@
-import OrderItem from "@/components/OrderItem";
+import CartItem from "@/components/CartItem";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
@@ -31,7 +31,7 @@ const Cart = () => {
     console.log("DATA/RES", data);
     console.log("SENT ORDER", cart);
 
-    router.push("/order/data.orderNr");
+    router.push(`/order/${data.orderNr}`);
   };
 
   useEffect(() => {
@@ -47,8 +47,7 @@ const Cart = () => {
         />
         <PageColumn title="Your cart">
           <section className="order-item__wrapper">
-            {cart &&
-              cart.map((item) => <OrderItem key={item.id} item={item} />)}
+            {cart && cart.map((item) => <CartItem key={item.id} item={item} />)}
           </section>
           <button onClick={sendOrder} style={{ padding: "2rem" }}>
             SEND ORDER

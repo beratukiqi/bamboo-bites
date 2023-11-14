@@ -1,4 +1,4 @@
-import OrderItem from "@/components/OrderItem";
+import CartItem from "@/components/CartItem";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
@@ -52,7 +52,7 @@ const Order = () => {
           <section className="order-item__wrapper">
             {orderData &&
               orderData.map((item: any) => (
-                <OrderItem key={item.order.id} item={item.order} />
+                <CartItem key={item.order.id} item={item.order} />
               ))}
           </section>
         </PageColumn>

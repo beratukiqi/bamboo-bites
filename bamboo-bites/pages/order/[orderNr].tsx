@@ -1,4 +1,4 @@
-import OrderItem from "@/components/OrderItem";
+import CartItem from "@/components/CartItem";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
@@ -50,7 +50,7 @@ function singleOrderPage() {
         />
         <PageColumn title={`Your order: ${orderNr}`}>
           {orderData &&
-            orderData.map((item) => <OrderItem key={item.id} item={item} />)}
+            orderData.map((item) => <CartItem key={item.id} item={item} />)}
         </PageColumn>
       </PageWrapper>
     </main>
