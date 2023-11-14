@@ -9,11 +9,13 @@ exports.handler = async (event) => {
   if (event.headers.orderNr) {
     try {
       currentOrderNr = JSON.parse(event.headers.orderNr);
+      console.log("try", currentOrderNr);
     } catch (error) {
       // Handle the error if the JSON parsing fails
       console.error("Error parsing orderNr:", error);
       // Optionally set currentOrderNr to undefined or handle it accordingly
       currentOrderNr = undefined;
+      console.log("catch", currentOrderNr);
     }
   }
   const min = 10000000; // Minimum 8-digit number
@@ -25,6 +27,7 @@ exports.handler = async (event) => {
     return orderNr;
   };
 
+  console.log("final", currentOrderNr);
   const orderNr = currentOrderNr
     ? parseInt(currentOrderNr)
     : generateOrderNumber();
