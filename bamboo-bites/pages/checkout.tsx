@@ -1,8 +1,10 @@
 import CartItem from "@/components/CartItem";
 import ContentWrapper from "@/components/ContentWrapper";
+import DeliveryMethod from "@/components/DeliveryMethod";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
+import PaymentMethod from "@/components/PaymentMethod";
 import AppContext from "@/context/AppContext";
 import router, { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
@@ -46,7 +48,7 @@ const Checkout = () => {
           img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
         />
 
-        <PageColumn title="Please review your order">
+        <PageColumn title="Please review your order and make a payment!">
           <ContentWrapper title="Order items">
             <section className="order-item__wrapper">
               {cart &&
@@ -55,10 +57,10 @@ const Checkout = () => {
           </ContentWrapper>
 
           <ContentWrapper title="Delivery method">
-            <section className="order-item__wrapper">
-              {cart &&
-                cart.map((item) => <CartItem key={item.id} item={item} />)}
-            </section>
+            <DeliveryMethod />
+          </ContentWrapper>
+          <ContentWrapper title="Payment method">
+            <PaymentMethod />
           </ContentWrapper>
           <button onClick={sendOrder} style={{ padding: "2rem" }}>
             SEND ORDER

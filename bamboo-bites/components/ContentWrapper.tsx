@@ -2,7 +2,7 @@ const ContentWrapper = ({
   children,
   title,
 }: {
-  children: any;
+  children?: any;
   title: string;
 }) => {
   return (
