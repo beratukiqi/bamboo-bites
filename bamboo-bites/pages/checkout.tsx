@@ -9,22 +9,22 @@ import { useContext, useEffect } from "react";
 const Checkout = () => {
   const { cart, setCart } = useContext(AppContext);
   const router = useRouter();
-
   const { orderNr } = router.query;
 
-  useEffect(() => {
-    console.log("ORDER NR", orderNr);
-  }, [orderNr]);
   const sendOrder = async () => {
+    console.log("ORDER NR PRE FETCH", orderNr);
+
+    const headers = {
+      "Content-Type": "application/json",
+      ...(typeof orderNr === "string" && { orderNr }),
+    };
+
     const res = await fetch(
       "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/putOrder",
       {
         method: "POST",
         body: JSON.stringify(cart),
-        headers: {
-          "Content-Type": "application/json",
-          orderNr: orderNr as string,
-        },
+        headers: headers,
       }
     );
 

@@ -4,8 +4,18 @@ import { PutCommand } from "@aws-sdk/lib-dynamodb";
 
 exports.handler = async (event) => {
   const order = JSON.parse(event.body); // [{},{}]
-  const currentOrderNr = JSON.parse(event.headers.orderNr); // 12345678
 
+  let currentOrderNr;
+  if (event.headers.orderNr) {
+    try {
+      currentOrderNr = JSON.parse(event.headers.orderNr);
+    } catch (error) {
+      // Handle the error if the JSON parsing fails
+      console.error("Error parsing orderNr:", error);
+      // Optionally set currentOrderNr to undefined or handle it accordingly
+      currentOrderNr = undefined;
+    }
+  }
   const min = 10000000; // Minimum 8-digit number
   const max = 99999999; // Maximum 8-digit number
 

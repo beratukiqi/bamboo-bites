@@ -21,7 +21,8 @@ const Cart = () => {
   const { orderNr } = router.query;
 
   const toCheckout = async () => {
-    router.push(`/checkout?orderNr=${orderNr}`);
+    // Do not add orderNr if it is undefined
+    router.push(orderNr ? `/checkout?orderNr=${orderNr}` : `/checkout`);
   };
 
   useEffect(() => {
