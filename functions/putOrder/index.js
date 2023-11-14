@@ -6,9 +6,9 @@ exports.handler = async (event) => {
   const order = JSON.parse(event.body); // [{},{}]
 
   let currentOrderNr;
-  if (event.headers.orderNr) {
+  if (event.headers.ordernr) {
     try {
-      currentOrderNr = JSON.parse(event.headers.orderNr);
+      currentOrderNr = JSON.parse(event.headers.ordernr);
       console.log("try", currentOrderNr);
     } catch (error) {
       // Handle the error if the JSON parsing fails
@@ -18,10 +18,11 @@ exports.handler = async (event) => {
       console.log("catch", currentOrderNr);
     }
   }
-  const min = 10000000; // Minimum 8-digit number
-  const max = 99999999; // Maximum 8-digit number
 
   const generateOrderNumber = () => {
+    const min = 10000000; // Minimum 8-digit number
+    const max = 99999999; // Maximum 8-digit number
+
     const orderNr = Math.floor(min + Math.random() * max);
 
     return orderNr;
