@@ -5,6 +5,7 @@ import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
 import PaymentMethod from "@/components/PaymentMethod";
+import TotalPrice from "@/components/TotalPrice";
 import AppContext from "@/context/AppContext";
 import router, { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
@@ -54,6 +55,7 @@ const Checkout = () => {
               {cart &&
                 cart.map((item) => <CartItem key={item.id} item={item} />)}
             </section>
+            <TotalPrice />
           </ContentWrapper>
 
           <ContentWrapper title="Delivery method">
