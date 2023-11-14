@@ -2,8 +2,9 @@ import CartItem from "@/components/CartItem";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
+import AppContext from "@/context/AppContext";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 interface OrderDetail {
   id: string;
@@ -15,7 +16,10 @@ interface OrderDetail {
 }
 
 function singleOrderPage() {
-  const [orderData, setOrderData] = useState<OrderDetail[]>([]); // [1
+  const { setCart } = useContext(AppContext);
+  const [orderData, setOrderData] = useState<OrderDetail[]>([]); // [1]
+  const [timeLeft, setTimeLeft] = useState(65); // [2]
+  const TIME_LIMIT = 60; // [3]
   const router = useRouter();
   const { orderNr } = router.query;
 
@@ -41,6 +45,14 @@ function singleOrderPage() {
     console.log("ORDER DATA", orderData);
   }, [orderData, orderNr]);
 
+  const editOrder = () => {
+    setCart(orderData);
+
+    // Add orderNr to the url query
+    router.push(`/cart?orderNr=${orderNr}`);
+    // router.push(`/cart`);
+  };
+
   return (
     <main>
       <PageWrapper column>
@@ -51,6 +63,16 @@ function singleOrderPage() {
         <PageColumn title={`Your order: ${orderNr}`}>
           {orderData &&
             orderData.map((item) => <CartItem key={item.id} item={item} />)}
+
+          <button
+            onClick={editOrder}
+            style={{
+              padding: "2rem",
+            }}
+            disabled={timeLeft < TIME_LIMIT}
+          >
+            EDIT ORDER
+          </button>
         </PageColumn>
       </PageWrapper>
     </main>

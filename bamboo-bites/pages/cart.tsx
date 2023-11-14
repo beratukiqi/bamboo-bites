@@ -18,8 +18,10 @@ const Cart = () => {
   const { cart } = useContext(AppContext);
   const router = useRouter();
 
+  const { orderNr } = router.query;
+
   const toCheckout = async () => {
-    router.push(`/checkout`);
+    router.push(`/checkout?orderNr=${orderNr}`);
   };
 
   useEffect(() => {

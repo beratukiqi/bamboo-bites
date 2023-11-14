@@ -3,24 +3,36 @@ import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
 import AppContext from "@/context/AppContext";
-import router from "next/router";
-import { useContext } from "react";
+import router, { useRouter } from "next/router";
+import { useContext, useEffect } from "react";
 
 const Checkout = () => {
-  const { cart } = useContext(AppContext);
+  const { cart, setCart } = useContext(AppContext);
+  const router = useRouter();
 
+  const { orderNr } = router.query;
+
+  useEffect(() => {
+    console.log("ORDER NR", orderNr);
+  }, [orderNr]);
   const sendOrder = async () => {
     const res = await fetch(
       "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/putOrder",
       {
         method: "POST",
         body: JSON.stringify(cart),
+        headers: {
+          "Content-Type": "application/json",
+          orderNr: orderNr as string,
+        },
       }
     );
 
     const data = await res.json();
     console.log("DATA/RES", data);
     console.log("SENT ORDER", cart);
+
+    setCart([]);
 
     router.push(`/order/${data.orderNr}`);
   };
