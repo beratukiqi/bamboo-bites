@@ -2,6 +2,7 @@ import CartItem from "@/components/CartItem";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
+import TotalPrice from "@/components/TotalPrice";
 import AppContext from "@/context/AppContext";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
@@ -43,6 +44,7 @@ const Cart = () => {
           <button onClick={toCheckout} style={{ padding: "2rem" }}>
             GO TO CHECKOUT
           </button>
+          <TotalPrice />
         </PageColumn>
       </PageWrapper>
     </main>
