@@ -283,3 +283,14 @@ h1 {
     }
   }
 }
+
+.content {
+  &__title {
+    border-bottom: 2px solid white;
+    padding-bottom: 1rem;
+  }
+
+  &__container {
+    padding-top: 1rem;
+  }
+}

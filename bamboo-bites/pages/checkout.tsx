@@ -1,4 +1,5 @@
 import CartItem from "@/components/CartItem";
+import ContentWrapper from "@/components/ContentWrapper";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
@@ -46,9 +47,19 @@ const Checkout = () => {
         />
 
         <PageColumn title="Please review your order">
-          <section className="order-item__wrapper">
-            {cart && cart.map((item) => <CartItem key={item.id} item={item} />)}
-          </section>
+          <ContentWrapper title="Order items">
+            <section className="order-item__wrapper">
+              {cart &&
+                cart.map((item) => <CartItem key={item.id} item={item} />)}
+            </section>
+          </ContentWrapper>
+
+          <ContentWrapper title="Delivery method">
+            <section className="order-item__wrapper">
+              {cart &&
+                cart.map((item) => <CartItem key={item.id} item={item} />)}
+            </section>
+          </ContentWrapper>
           <button onClick={sendOrder} style={{ padding: "2rem" }}>
             SEND ORDER
           </button>
