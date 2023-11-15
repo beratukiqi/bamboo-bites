@@ -1,21 +1,17 @@
-import { sendResponse } from "../../responses/index";
-import { docClient } from "../../services/client";
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
+import { docClient } from "../../services/client";
+import { sendResponse } from "../../responses/index";
 
 exports.handler = async (event) => {
-  const order = JSON.parse(event.body); // [{},{}]
+  const order = JSON.parse(event.body);
 
   let currentOrderNr;
   if (event.headers.ordernr) {
     try {
       currentOrderNr = JSON.parse(event.headers.ordernr);
-      console.log("try", currentOrderNr);
     } catch (error) {
-      // Handle the error if the JSON parsing fails
       console.error("Error parsing orderNr:", error);
-      // Optionally set currentOrderNr to undefined or handle it accordingly
       currentOrderNr = undefined;
-      console.log("catch", currentOrderNr);
     }
   }
 
@@ -28,7 +24,6 @@ exports.handler = async (event) => {
     return orderNr;
   };
 
-  console.log("final", currentOrderNr);
   const orderNr = currentOrderNr
     ? parseInt(currentOrderNr)
     : generateOrderNumber();
@@ -43,16 +38,16 @@ exports.handler = async (event) => {
     });
 
     const response = await docClient.send(command);
+
     return sendResponse(200, {
       success: true,
       message: "A new order has been added",
       orderNr: orderNr,
-      event: event,
     });
   } catch (error) {
     return sendResponse(500, {
       success: false,
-      message: "Could not add order",
+      message: "Unable to add order",
     });
   }
 };
