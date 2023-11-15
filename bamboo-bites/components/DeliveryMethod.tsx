@@ -1,12 +1,14 @@
+import { useState } from "react";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
 const DeliveryMethod = () => {
   const [deliveryMethod, setDeliveryMethod] = useState("");
   const router = useRouter();
 
   const handleDeliveryMethod = (e: any) => {
+    //Sets the delivery method based on checked in button
     setDeliveryMethod(e.target.value);
+    //Then sets the url based on delivery method
     router.push(`/checkout?deliveryMethod=${e.target.value}`);
   };
 
