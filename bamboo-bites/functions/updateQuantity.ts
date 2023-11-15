@@ -20,6 +20,7 @@ interface FunctionParams {
   setCart: SetCartFunction;
   change: QuantityChange;
 }
+
 export const updateQuantity = ({ item, setCart, change }: FunctionParams) => {
   setCart((currentCart) => {
     //A copy of the existing cart is created to avoid a direct change of the state.
