@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import CartItem from "@/components/CartItem";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
@@ -64,15 +65,7 @@ function singleOrderPage() {
           {orderData &&
             orderData.map((item) => <CartItem key={item.id} item={item} />)}
 
-          <button
-            onClick={editOrder}
-            style={{
-              padding: "2rem",
-            }}
-            disabled={timeLeft < TIME_LIMIT}
-          >
-            EDIT ORDER
-          </button>
+          <Button title="EDIT ORDER" action={editOrder} />
         </PageColumn>
       </PageWrapper>
     </main>

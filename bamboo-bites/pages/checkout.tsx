@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import CartItem from "@/components/CartItem";
 import ContentWrapper from "@/components/ContentWrapper";
 import DeliveryMethod from "@/components/DeliveryMethod";
@@ -64,9 +65,7 @@ const Checkout = () => {
           <ContentWrapper title="Payment method">
             <PaymentMethod />
           </ContentWrapper>
-          <button onClick={sendOrder} style={{ padding: "2rem" }}>
-            SEND ORDER
-          </button>
+          <Button action={sendOrder} title="SEND ORDER" />
         </PageColumn>
       </PageWrapper>
     </main>

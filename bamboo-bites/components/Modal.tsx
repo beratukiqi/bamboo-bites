@@ -1,6 +1,7 @@
 import AppContext from "@/context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useContext, useEffect } from "react";
+import Button from "./Button";
 
 interface ModalProps {
   isOpen: boolean;
@@ -100,7 +101,7 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
               variants={childVariants}
             >
               <h3>{item}</h3>
-              <button onClick={closeModal}>X</button>
+              <Button title="X" action={closeModal} />
             </motion.header>
             <motion.section className="modal-body" variants={childVariants}>
               <p className="modal-body__desc">{desc}</p>
@@ -108,7 +109,10 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
                 {price}
                 <b>$</b>
               </h6>
-              <button onClick={() => handleAddToCart(food)}>Add to cart</button>
+              <Button
+                title="Add to cart"
+                action={() => handleAddToCart(food)}
+              />
             </motion.section>
           </motion.article>
         </motion.section>

@@ -1,5 +1,6 @@
 import AppContext from "@/context/AppContext";
 import { useContext } from "react";
+import QtyButton from "./QtyButton";
 
 interface OrderDetail {
   id: string;
@@ -73,9 +74,9 @@ const CartItem = ({ item }: OrderItemProps) => {
           <b>$</b>
         </span>
         <div className="order-item__quantity">
-          <button onClick={decrementQuantity}>-</button>
+          <QtyButton title="-" action={decrementQuantity} />
           <span>{item.quantity}</span>
-          <button onClick={incrementQuantity}>+</button>
+          <QtyButton title="+" action={incrementQuantity} />
         </div>
       </div>
     </article>

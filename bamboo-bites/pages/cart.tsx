@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import CartItem from "@/components/CartItem";
+import ContentWrapper from "@/components/ContentWrapper";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
@@ -22,7 +23,8 @@ const Cart = () => {
 
   const { orderNr } = router.query;
 
-  const toCheckout = async () => { //Varför async?
+  const toCheckout = async () => {
+    //Varför async?
     // Do not add orderNr if it is undefined
     router.push(orderNr ? `/checkout?orderNr=${orderNr}` : `/checkout`);
   };
@@ -41,15 +43,21 @@ const Cart = () => {
           title="Cart"
           img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
         />
-        <PageColumn title={cart.length === 0 ? "Your cart is empty" : "Your cart"}>
+        <PageColumn
+          title={cart.length === 0 ? "Your cart is empty" : "Your cart"}
+        >
           <section className="order-item__wrapper">
             {cart && cart.map((item) => <CartItem key={item.id} item={item} />)}
           </section>
-          <button disabled={cart.length === 0} onClick={toCheckout}>
-            Go to checkout
-          </button>
-          <button onClick={toMenu}> Menu</button>
-          <TotalPrice />
+          <Button
+            title="Go to Checkout"
+            action={toCheckout}
+            disabled={cart.length === 0}
+          />
+          <Button title="Menu" action={toMenu} />
+          <ContentWrapper title="Total price">
+            <TotalPrice />
+          </ContentWrapper>
         </PageColumn>
       </PageWrapper>
     </main>
