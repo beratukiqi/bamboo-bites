@@ -18,7 +18,7 @@ interface OrderItemProps {
 }
 
 const CartItem = ({ item }: OrderItemProps) => {
-  const { cart, setCart } = useContext(AppContext);
+  const { setCart } = useContext(AppContext);
 
   const incrementQuantity = () => {
     updateQuantity({ item, setCart, change: QuantityChange.Increment });

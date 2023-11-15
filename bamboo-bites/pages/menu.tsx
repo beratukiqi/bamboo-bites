@@ -1,6 +1,4 @@
-import MenuItem from "@/components/MenuItem";
 import MenuList from "@/components/MenuList";
-import Modal from "@/components/Modal";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";

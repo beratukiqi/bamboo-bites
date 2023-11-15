@@ -1,5 +1,4 @@
 import Button from "@/components/Button";
-import CartItem from "@/components/CartItem";
 import OrderList from "@/components/OrderList";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
@@ -22,16 +21,6 @@ const SingleOrderPage = () => {
   const router = useRouter();
   const { orderNr } = router.query;
   const [orderData, setOrderData] = useState<OrderDetail[]>([]);
-
-  // Fetches order data from API
-  const fetchOrderData = async () => {
-    const res = await fetch(
-      `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/order/${orderNr}`
-    );
-    const data = await res.json();
-
-    return data;
-  };
 
   // Fetches order data on mount and sets it to state
   useEffect(() => {
