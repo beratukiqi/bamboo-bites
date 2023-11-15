@@ -2,7 +2,9 @@ import CartItem from "./CartItem";
 
 const OrderList = ({ data }: { data: any }) => {
   return (
-    data && data.map((item: any) => <CartItem key={item.id} item={item} />)
+    <section className="order-item__wrapper">
+      {data && data.map((item: any) => <CartItem key={item.id} item={item} />)}
+    </section>
   );
 };
 
