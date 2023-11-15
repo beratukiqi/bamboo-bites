@@ -1,6 +1,6 @@
+import { useContext } from "react";
 import AppContext from "@/context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { useContext, useEffect } from "react";
 import Button from "./Button";
 
 interface ModalProps {
