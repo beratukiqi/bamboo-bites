@@ -1,21 +1,24 @@
 import { useContext, useEffect, useState } from "react";
-import AppContext from "@/context/AppContext";
 import { useRouter } from "next/router";
+import AppContext from "@/context/AppContext";
 
 const TotalPrice = () => {
   const { cart } = useContext(AppContext);
+  const [totalPrice, setTotalPrice] = useState(0); 
+
   const router = useRouter();
   const { deliveryMethod } = router.query;
-  const [totalPrice, setTotalPrice] = useState(0); // [1
 
   const calcTotalPrice = () => {
     let price = 0;
     cart.forEach((item) => {
       price += item.price * item.quantity;
     });
+
     if (deliveryMethod === "delivery") {
       price += 10;
     }
+    
     return price;
   };
 
