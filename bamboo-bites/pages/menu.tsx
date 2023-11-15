@@ -29,7 +29,7 @@ const Menu = () => {
     <PageWrapper column>
       <PageHeader
         title="Menu"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png"
       />
       <PageColumn title="Main courses">
         <MenuList data={menuItems} />

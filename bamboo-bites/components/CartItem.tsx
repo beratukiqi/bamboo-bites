@@ -31,7 +31,7 @@ const CartItem = ({ item }: OrderItemProps) => {
   return (
     <article className="order-item">
       <img
-        src="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        src={item.imgUrl}
         alt="noodles bowl"
         className="order-item__image"
       />

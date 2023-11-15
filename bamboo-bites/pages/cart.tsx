@@ -26,7 +26,7 @@ const Cart = () => {
     <PageWrapper column>
       <PageHeader
         title="Cart"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/cart_desktop_720x1024.png"
       />
       <PageColumn
         title={cart.length === 0 ? "Your cart is empty" : "Your cart"}

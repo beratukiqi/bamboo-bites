@@ -22,8 +22,7 @@ const MenuItem = ({ food }: MenuItemProps) => {
         className="menu-item__container"
       >
         <img
-          // src={imgUrl}
-          src="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+          src={imgUrl}
           alt={`Top view image of the dish ${item}`}
           className="menu-item__image"
         />
