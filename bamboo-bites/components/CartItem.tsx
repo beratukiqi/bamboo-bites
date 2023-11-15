@@ -21,7 +21,7 @@ enum QuantityChange {
 }
 
 const CartItem = ({ item }: OrderItemProps) => {
-  const { cart, setCart } = useContext(AppContext);
+  const { setCart } = useContext(AppContext);
 
   //Would be nice to extract this function
   //Function for updating the quantity. 
