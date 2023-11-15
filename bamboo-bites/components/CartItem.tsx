@@ -1,8 +1,8 @@
-import AppContext from "@/context/AppContext";
 import { useContext } from "react";
+import AppContext from "@/context/AppContext";
 import QtyButton from "./QtyButton";
 
-interface OrderDetail {
+interface OrderDetails {
   id: string;
   item: string;
   price: number;
@@ -11,54 +11,65 @@ interface OrderDetail {
   quantity: number;
 }
 
-interface OrderItem {
-  order: OrderDetail;
+interface OrderItemProps {
+  item: OrderDetails;
 }
 
-interface OrderItemProps {
-  item: OrderDetail;
+enum QuantityChange {
+  Increment = 1,
+  Decrement = -1,
 }
+
 const CartItem = ({ item }: OrderItemProps) => {
   const { cart, setCart } = useContext(AppContext);
 
-  const incrementQuantity = () => {
+  //Would be nice to extract this function
+  //Function for updating the quantity. 
+  const updateQuantity = (change: QuantityChange) => {
     setCart((currentCart) => {
+      //A copy of the existing cart is created to avoid a direct change of the state.
       const updatedCart = [...currentCart];
       const existingItemIndex = updatedCart.findIndex(
         (cartItem) => cartItem.id === item.id
       );
       const existingItem = updatedCart[existingItemIndex];
-      updatedCart[existingItemIndex] = {
-        ...existingItem,
-        quantity: existingItem.quantity + 1,
-      };
+  
+      switch (change) {
+        //If the quantity should increase the quantity increases with +1
+        case QuantityChange.Increment:
+          updatedCart[existingItemIndex] = {
+            ...existingItem,
+            quantity: existingItem.quantity + 1,
+          };
+          break;
+
+        //If the quantity should decrease the quantity decreases with -1
+        case QuantityChange.Decrement:
+          const newQuantity = existingItem.quantity > 1 ? existingItem.quantity - 1 : 0;
+          updatedCart[existingItemIndex] = {
+            ...existingItem,
+            quantity: newQuantity,
+          };
+
+          //If the quantity becomes zero the item is removed from the cart
+          if (newQuantity === 0) {
+            return updatedCart.filter((cartItem) => cartItem.id !== item.id);
+          }
+          break;
+      }
+  
       return updatedCart;
     });
   };
-
-  const decrementQuantity = () => {
-    setCart((currentCart) => {
-      const updatedCart = [...currentCart];
-      const existingItemIndex = updatedCart.findIndex(
-        (cartItem) => cartItem.id === item.id
-      );
-
-      const existingItem = updatedCart[existingItemIndex];
-
-      if (existingItem.quantity <= 1) {
-        // Remove the item from the cart
-        return currentCart.filter((cartItem) => cartItem.id !== item.id);
-      } else {
-        updatedCart[existingItemIndex] = {
-          ...existingItem,
-          quantity: existingItem.quantity > 1 ? existingItem.quantity - 1 : 1,
-        };
-        return updatedCart;
-      }
-    });
+  
+  //Calls function to increment the quantity
+  const incrementQuantity = () => {
+    updateQuantity(QuantityChange.Increment);
   };
-
-  const totalPrice = item.price * item.quantity;
+  //Calls function to decrement the quantity
+  const decrementQuantity = () => {
+    updateQuantity(QuantityChange.Decrement);
+  };
 
   return (
     <article className="order-item">
@@ -70,7 +81,7 @@ const CartItem = ({ item }: OrderItemProps) => {
       <div className="order-item__text">
         <h3 className="order-item__title">{item.item}</h3>
         <span className="order-item__price">
-          {totalPrice}
+          {item.price}
           <b>$</b>
         </span>
         <div className="order-item__quantity">
