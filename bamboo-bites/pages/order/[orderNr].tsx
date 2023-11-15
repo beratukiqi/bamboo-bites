@@ -35,11 +35,14 @@ const SingleOrderPage = () => {
 
   // Fetches order data on mount and sets it to state
   useEffect(() => {
-    const orderData = fetchOrderData();
-
-    orderData.then((data) => {
+    const fetchOrderData = async () => {
+      const res = await fetch(
+        `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/order/${orderNr}`
+      );
+      const data = await res.json();
       setOrderData(data.order?.order);
-    });
+    };
+    fetchOrderData();
   }, [orderNr]);
 
   const editOrder = () => {

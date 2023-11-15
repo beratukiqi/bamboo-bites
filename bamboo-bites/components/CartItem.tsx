@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import AppContext from "@/context/AppContext";
 import QtyButton from "./QtyButton";
+import { updateQuantity } from "@/functions/updateQuantity";
+import { QuantityChange } from "@/functions/updateQuantity";
 
 interface OrderDetails {
   id: string;
@@ -15,60 +17,15 @@ interface OrderItemProps {
   item: OrderDetails;
 }
 
-enum QuantityChange {
-  Increment = 1,
-  Decrement = -1,
-}
-
 const CartItem = ({ item }: OrderItemProps) => {
-  const { setCart } = useContext(AppContext);
+  const { cart, setCart } = useContext(AppContext);
 
-  //Would be nice to extract this function
-  //Function for updating the quantity. 
-  const updateQuantity = (change: QuantityChange) => {
-    setCart((currentCart) => {
-      //A copy of the existing cart is created to avoid a direct change of the state.
-      const updatedCart = [...currentCart];
-      const existingItemIndex = updatedCart.findIndex(
-        (cartItem) => cartItem.id === item.id
-      );
-      const existingItem = updatedCart[existingItemIndex];
-  
-      switch (change) {
-        //If the quantity should increase the quantity increases with +1
-        case QuantityChange.Increment:
-          updatedCart[existingItemIndex] = {
-            ...existingItem,
-            quantity: existingItem.quantity + 1,
-          };
-          break;
-
-        //If the quantity should decrease the quantity decreases with -1
-        case QuantityChange.Decrement:
-          const newQuantity = existingItem.quantity > 1 ? existingItem.quantity - 1 : 0;
-          updatedCart[existingItemIndex] = {
-            ...existingItem,
-            quantity: newQuantity,
-          };
-
-          //If the quantity becomes zero the item is removed from the cart
-          if (newQuantity === 0) {
-            return updatedCart.filter((cartItem) => cartItem.id !== item.id);
-          }
-          break;
-      }
-  
-      return updatedCart;
-    });
-  };
-  
-  //Calls function to increment the quantity
   const incrementQuantity = () => {
-    updateQuantity(QuantityChange.Increment);
+    updateQuantity({ item, setCart, change: QuantityChange.Increment });
   };
-  //Calls function to decrement the quantity
+
   const decrementQuantity = () => {
-    updateQuantity(QuantityChange.Decrement);
+    updateQuantity({ item, setCart, change: QuantityChange.Decrement });
   };
 
   return (
