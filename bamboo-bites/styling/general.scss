@@ -41,6 +41,29 @@ h1 {
   border: 2px solid white;
 }
 
+.primary-button {
+  align-self: center;
+  margin-top: 1rem;
+  background-color: transparent;
+  color: white;
+  padding: 1rem 3rem;
+  border: 1px solid white;
+  font-size: 1rem;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  &:disabled {
+    background-color: grey;
+    color: black;
+    cursor: not-allowed;
+  }
+}
+
 .page-wrapper {
   min-height: 100vh;
 }

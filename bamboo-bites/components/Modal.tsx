@@ -100,7 +100,7 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
               variants={childVariants}
             >
               <h3>{item}</h3>
-              <Button title="X" action={closeModal} />
+              <button onClick={closeModal}>X</button>
             </motion.header>
             <motion.section className="modal-body" variants={childVariants}>
               <p className="modal-body__desc">{desc}</p>
