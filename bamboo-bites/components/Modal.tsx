@@ -93,9 +93,8 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
             onClick={(e) => e.stopPropagation()}
           >
             <motion.header
-              // style={{ background: `url(${food.img})` }}
               style={{
-                backgroundImage: `url(https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png)`,
+                backgroundImage: `url(${imgUrl})`,
               }}
               className="modal-header"
               variants={childVariants}
