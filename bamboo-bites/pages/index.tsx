@@ -4,9 +4,9 @@ import { useEffect } from "react";
 
 const Home = () => {
   const images = [
-    "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png",
     "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/02_slide_desktop_1440x1024.png",
     "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/03_slide_desktop_1440x1024.png",
+    "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png",
   ];
 
   // Change image after 5 seconds and repeat the cycle
@@ -27,7 +27,7 @@ const Home = () => {
       <PageHeader
         landingpage
         title="Bamboo Bites"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png"
       />
     </PageWrapper>
   );
