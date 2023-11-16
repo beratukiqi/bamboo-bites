@@ -12,8 +12,8 @@ interface MenuItemProps {
 }
 
 const MenuItem = ({ food }: MenuItemProps) => {
-  const [modalOpen, setModalOpen] = useState(false);
   const { id, item, price, imgUrl, desc } = food;
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
@@ -22,8 +22,7 @@ const MenuItem = ({ food }: MenuItemProps) => {
         className="menu-item__container"
       >
         <img
-          // src={img}
-          src="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+          src={imgUrl}
           alt={`Top view image of the dish ${item}`}
           className="menu-item__image"
         />

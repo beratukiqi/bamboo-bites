@@ -1,9 +1,11 @@
-import CartItem from "@/components/CartItem";
+import Button from "@/components/Button";
+import OrderList from "@/components/OrderList";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
+import AppContext from "@/context/AppContext";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 interface OrderDetail {
   id: string;
@@ -14,47 +16,44 @@ interface OrderDetail {
   quantity: number;
 }
 
-function singleOrderPage() {
-  const [orderData, setOrderData] = useState<OrderDetail[]>([]); // [1
+const SingleOrderPage = () => {
+  const { setCart } = useContext(AppContext);
   const router = useRouter();
   const { orderNr } = router.query;
+  const [orderData, setOrderData] = useState<OrderDetail[]>([]);
 
-  const fetchOrderData = async () => {
-    const res = await fetch(
-      `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/order/${orderNr}`
-    );
-    const data = await res.json();
-
-    console.log("DATA FETCHED", data);
-    return data;
-  };
-
+  // Fetches order data on mount and sets it to state
   useEffect(() => {
-    const orderData = fetchOrderData();
-
-    orderData.then((data) => {
+    const fetchOrderData = async () => {
+      const res = await fetch(
+        `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/order/${orderNr}`
+      );
+      const data = await res.json();
       setOrderData(data.order?.order);
-    });
+    };
+    fetchOrderData();
   }, [orderNr]);
 
-  useEffect(() => {
-    console.log("ORDER DATA", orderData);
-  }, [orderData, orderNr]);
+  const editOrder = () => {
+    // Populates the cart with the order data before redirecting
+    setCart(orderData);
+
+    // Redirect and add orderNr to query string
+    router.push(`/cart?orderNr=${orderNr}`);
+  };
 
   return (
-    <main>
-      <PageWrapper column>
-        <PageHeader
-          title="Order"
-          img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
-        />
-        <PageColumn title={`Your order: ${orderNr}`}>
-          {orderData &&
-            orderData.map((item) => <CartItem key={item.id} item={item} />)}
-        </PageColumn>
-      </PageWrapper>
-    </main>
+    <PageWrapper column>
+      <PageHeader
+        title="Order"
+        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+      />
+      <PageColumn title={`Your order: ${orderNr}`}>
+        <OrderList data={orderData} />
+        <Button title="EDIT ORDER" action={editOrder} />
+      </PageColumn>
+    </PageWrapper>
   );
-}
+};
 
-export default singleOrderPage;
+export default SingleOrderPage;

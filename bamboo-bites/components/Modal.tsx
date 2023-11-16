@@ -1,6 +1,7 @@
+import { useContext } from "react";
 import AppContext from "@/context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { useContext, useEffect } from "react";
+import Button from "./Button";
 
 interface ModalProps {
   isOpen: boolean;
@@ -92,9 +93,8 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
             onClick={(e) => e.stopPropagation()}
           >
             <motion.header
-              // style={{ background: `url(${food.img})` }}
               style={{
-                backgroundImage: `url(https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png)`,
+                backgroundImage: `url(${imgUrl})`,
               }}
               className="modal-header"
               variants={childVariants}
@@ -108,7 +108,10 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
                 {price}
                 <b>$</b>
               </h6>
-              <button onClick={() => handleAddToCart(food)}>Add to cart</button>
+              <Button
+                title="Add to cart"
+                action={() => handleAddToCart(food)}
+              />
             </motion.section>
           </motion.article>
         </motion.section>

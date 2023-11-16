@@ -1,7 +1,10 @@
-import AppContext from "@/context/AppContext";
 import { useContext } from "react";
+import AppContext from "@/context/AppContext";
+import QtyButton from "./QtyButton";
+import { updateQuantity } from "@/functions/updateQuantity";
+import { QuantityChange } from "@/functions/updateQuantity";
 
-interface OrderDetail {
+interface OrderDetails {
   id: string;
   item: string;
   price: number;
@@ -10,72 +13,38 @@ interface OrderDetail {
   quantity: number;
 }
 
-interface OrderItem {
-  order: OrderDetail;
+interface OrderItemProps {
+  item: OrderDetails;
 }
 
-interface OrderItemProps {
-  item: OrderDetail;
-}
 const CartItem = ({ item }: OrderItemProps) => {
-  const { cart, setCart } = useContext(AppContext);
+  const { setCart } = useContext(AppContext);
 
   const incrementQuantity = () => {
-    setCart((currentCart) => {
-      const updatedCart = [...currentCart];
-      const existingItemIndex = updatedCart.findIndex(
-        (cartItem) => cartItem.id === item.id
-      );
-      const existingItem = updatedCart[existingItemIndex];
-      updatedCart[existingItemIndex] = {
-        ...existingItem,
-        quantity: existingItem.quantity + 1,
-      };
-      return updatedCart;
-    });
+    updateQuantity({ item, setCart, change: QuantityChange.Increment });
   };
 
   const decrementQuantity = () => {
-    setCart((currentCart) => {
-      const updatedCart = [...currentCart];
-      const existingItemIndex = updatedCart.findIndex(
-        (cartItem) => cartItem.id === item.id
-      );
-
-      const existingItem = updatedCart[existingItemIndex];
-
-      if (existingItem.quantity <= 1) {
-        // Remove the item from the cart
-        return currentCart.filter((cartItem) => cartItem.id !== item.id);
-      } else {
-        updatedCart[existingItemIndex] = {
-          ...existingItem,
-          quantity: existingItem.quantity > 1 ? existingItem.quantity - 1 : 1,
-        };
-        return updatedCart;
-      }
-    });
+    updateQuantity({ item, setCart, change: QuantityChange.Decrement });
   };
-
-  const totalPrice = item.price * item.quantity;
 
   return (
     <article className="order-item">
       <img
-        src="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        src={item.imgUrl}
         alt="noodles bowl"
         className="order-item__image"
       />
       <div className="order-item__text">
         <h3 className="order-item__title">{item.item}</h3>
         <span className="order-item__price">
-          {totalPrice}
+          {item.price}
           <b>$</b>
         </span>
         <div className="order-item__quantity">
-          <button onClick={decrementQuantity}>-</button>
+          <QtyButton title="-" action={decrementQuantity} />
           <span>{item.quantity}</span>
-          <button onClick={incrementQuantity}>+</button>
+          <QtyButton title="+" action={incrementQuantity} />
         </div>
       </div>
     </article>

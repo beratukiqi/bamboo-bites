@@ -1,19 +1,35 @@
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
+import { useEffect } from "react";
 
 const Home = () => {
+  const images = [
+    "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/02_slide_desktop_1440x1024.png",
+    "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/03_slide_desktop_1440x1024.png",
+    "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png",
+  ];
+
+  // Change image after 5 seconds and repeat the cycle
+  useEffect(() => {
+    const element = document.querySelector(".hero__column") as HTMLElement; // Ensure correct class name
+
+    let i = 0;
+    const interval = setInterval(() => {
+      element.style.backgroundImage = `url(${images[i]})`;
+      i = (i + 1) % images.length;
+    }, 5000);
+
+    return () => clearInterval(interval); // Clear interval on unmount
+  }, []);
+
   return (
-    <main>
-      <PageWrapper>
-        <PageHeader
-          landingpage
-          title="Bamboo Bites"
-          img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
-        >
-          {/* <button>Order now</button> */}
-        </PageHeader>
-      </PageWrapper>
-    </main>
+    <PageWrapper>
+      <PageHeader
+        landingpage
+        title="Bamboo Bites"
+        img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png"
+      />
+    </PageWrapper>
   );
 };
 

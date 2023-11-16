@@ -6,7 +6,7 @@ const PageWrapper = ({
   column?: boolean;
 }) => {
   return (
-    <div className={`page-wrapper ${column && "hero col-2"}`}>{children}</div>
+    <main className={`page-wrapper ${column && "hero col-2"}`}>{children}</main>
   );
 };
 

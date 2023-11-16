@@ -12,11 +12,10 @@ exports.handler = async (event) => {
     const menu = response.Items;
     return sendResponse(200, { success: true, menu });
   } catch (error) {
-    console.error("error occurred:", error);
-    return sendResponse(
-      500,
-      { success: false, message: "Unable to get menu" },
-      error
-    );
+    return sendResponse(500, {
+      success: false,
+      message: "Unable to get menu",
+      error,
+    });
   }
 };
