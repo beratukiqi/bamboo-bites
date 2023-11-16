@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@300;700&display=swap");
+@import "pages/home.scss";
+@import "pages/menu.scss";
+@import "pages/checkout.scss";
+@import "components/orderItem.scss";
+@import "components/modal.scss";
+@import "components/header.scss";
 
 * {
   margin: 0;
@@ -22,28 +28,19 @@ p {
   font-family: "Roboto", sans-serif;
 }
 
-.header {
-  width: 100%;
-  position: absolute;
-  top: 3rem;
-  z-index: 1;
-
-  .header__nav__links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    justify-content: center;
-
-    p {
-      text-transform: uppercase;
-      color: white;
-      font-size: 1.3rem;
-    }
-  }
-}
 main {
   background-color: rgb(16, 16, 16);
 }
+
+h1 {
+  color: white;
+  font-size: calc(1rem + 4vw);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 4rem 6rem;
+  border: 2px solid white;
+}
+
 .page-wrapper {
   min-height: 100vh;
 }
@@ -89,201 +86,6 @@ main {
     position: sticky;
     top: 0;
   }
-
-  .menu-item {
-    &__container {
-      color: white;
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-      // max-width: 40rem;
-    }
-
-    &__image {
-      display: block;
-      width: 5rem;
-      height: 5rem;
-      background-color: white;
-      align-self: center;
-    }
-
-    &__text {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 2;
-
-      h3 {
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 0.7rem;
-      }
-    }
-
-    &__price {
-      font-size: 1.8rem;
-
-      b {
-        margin-left: 0.4rem;
-        font-weight: 300;
-      }
-    }
-  }
-}
-
-h1 {
-  color: white;
-  font-size: calc(1rem + 4vw);
-  text-align: center;
-  text-transform: uppercase;
-  padding: 4rem 6rem;
-  border: 2px solid white;
-}
-
-.modal {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(16, 16, 16, 0.8);
-  padding: 2rem;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(5px);
-
-  .modal-content {
-    background-color: rgb(16, 16, 16);
-    max-width: 70%;
-    height: 400px;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-
-    .modal-header {
-      display: flex;
-      height: 100%;
-      background-position: center center;
-      background-size: cover;
-      background-repeat: no-repeat;
-
-      h3 {
-        color: white;
-        margin: auto;
-        font-size: 2rem;
-        text-align: center;
-        text-transform: uppercase;
-        padding: 1.5rem 3rem;
-        border: 2px solid white;
-      }
-
-      button {
-        background-color: transparent;
-        color: white;
-        padding: 0.5rem 1rem;
-        border: 1px solid white;
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-      }
-    }
-
-    .modal-body {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1rem;
-      padding: 2rem;
-
-      &__price {
-        font-size: 1.8rem;
-
-        b {
-          margin-left: 0.4rem;
-          font-weight: 300;
-        }
-      }
-
-      button {
-        align-self: center;
-        margin-top: 1rem;
-        background-color: transparent;
-        color: white;
-        padding: 1rem 3rem;
-        border: 1px solid white;
-        font-size: 1rem;
-        cursor: pointer;
-      }
-    }
-  }
-}
-
-.order-item__wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
-  .order-item {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    &__image {
-      width: 5rem;
-      height: 5rem;
-      background-color: white;
-      align-self: center;
-    }
-
-    &__text {
-      display: flex;
-      gap: 2rem;
-
-      width: 100%;
-      h3 {
-        flex-grow: 2;
-        font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 0.7rem;
-      }
-    }
-
-    &__price {
-      font-size: 1.2rem;
-      margin: auto 0;
-
-      b {
-        margin-left: 0.4rem;
-        font-weight: 300;
-      }
-    }
-    &__quantity {
-      display: flex;
-
-      button {
-        background-color: transparent;
-        color: white;
-        padding: 0 1rem;
-        border: 1px solid white;
-        cursor: pointer;
-      }
-      span {
-        margin: auto 1rem;
-      }
-    }
-  }
 }
 
 .content {
@@ -294,59 +96,5 @@ h1 {
 
   &__container {
     padding-top: 1rem;
-  }
-}
-
-.delivery-method {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  div {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-
-    label {
-      margin-right: auto;
-    }
-
-    input {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-  }
-}
-
-.payment-method {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  .card-icon {
-    width: 2rem;
-  }
-
-  svg {
-    margin: auto 0;
-    fill: white;
-    width: 3rem;
-    height: 100%;
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-
-    label {
-      display: flex;
-    }
-
-    input {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
   }
 }
