@@ -19,3 +19,46 @@
     }
   }
 }
+
+.hamburger-menu__icons {
+  margin: 1.5rem;
+}
+
+.hamburger-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+}
+
+.hamburger-menu.open {
+  background-color: black;
+  position: fixed;
+  top: 0;
+  width: 70%;
+  height: 100%;
+}
+
+.hamburger-menu.open .hamburger-menu__links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 2rem;
+  padding-left: 2rem;
+
+  p {
+    text-transform: uppercase;
+    color: white;
+    font-size: 2rem;
+  }
+}
+
+/* Media query för mobilvy */
+@media screen and (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+  }
+}

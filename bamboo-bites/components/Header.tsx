@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HamburgerMenu from "./HamburgerMenu";
 
 const navItems = [
   {
@@ -26,7 +27,7 @@ const navItems = [
 const Header = () => {
   return (
     <header className="header">
-      <nav>
+      <nav className="desktop-nav">
         <ul className="header__nav__links">
           {navItems.map((item) => (
             <li key={item.name}>
@@ -37,6 +38,7 @@ const Header = () => {
           ))}
         </ul>
       </nav>
+      <HamburgerMenu />
     </header>
   );
 };
