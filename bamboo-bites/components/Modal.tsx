@@ -105,8 +105,8 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
             <motion.section className="modal-body" variants={childVariants}>
               <p className="modal-body__desc">{desc}</p>
               <h6 className="modal-body__price">
-                {price}
                 <b>$</b>
+                {price}
               </h6>
               <Button
                 title="Add to cart"

@@ -30,8 +30,8 @@ const TotalPrice = () => {
     <div className="total-price">
       <h3 className="total-price__title">Total</h3>
       <span className="total-price__price">
-        {totalPrice}
         <b>$</b>
+        {totalPrice}
       </span>
     </div>
   );

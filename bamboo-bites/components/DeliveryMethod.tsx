@@ -27,7 +27,7 @@ const DeliveryMethod = () => {
         <label id="labelDelivery" htmlFor="delivery">
           Home delivery
         </label>
-        <span>10 $</span>
+        <span>$10</span>
       </div>
       <div>
         <input

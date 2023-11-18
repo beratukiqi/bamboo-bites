@@ -1,7 +1,7 @@
 const AboutInfo = () => {
   return (
     <>
-      <h2>We are so happy that you found your way here!</h2>
+      <h3>We are so happy that you found your way here!</h3>
       <p>
         Welcome into our world, where flavors tell stories, and each dish is a
         chapter of our journey. In 2016, we planted the seeds of our culinary
@@ -23,10 +23,11 @@ const AboutInfo = () => {
         every bite. Explore our take-away, where the taste of home knows no
         borders. <br />
         <br />
-        Sincerely,Li and Kim
+        Sincerely,<br />
+        Li and Kim
       </p>
       <br />
-      <h2>Delightful Flavors Crafted with Care</h2>
+      <h3>Delightful Flavors Crafted with Care</h3>
       <p>
         As passionate culinary artisans, we extend our commitment beyond taste
         to embrace the essence of responsible dining. At Bamboo Bites we

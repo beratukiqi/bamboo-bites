@@ -38,8 +38,8 @@ const CartItem = ({ item }: OrderItemProps) => {
       <div className="order-item__text">
         <h3 className="order-item__title">{item.item}</h3>
         <span className="order-item__price">
-          {item.price}
           <b>$</b>
+          {item.price}
         </span>
         <div className="order-item__quantity">
           <QtyButton title="-" action={decrementQuantity} />
