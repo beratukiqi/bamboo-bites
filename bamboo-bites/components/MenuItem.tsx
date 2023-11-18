@@ -31,8 +31,8 @@ const MenuItem = ({ food }: MenuItemProps) => {
           <p>Dive into the world of Ambient Sushi, where...</p>
         </header>
         <span className="menu-item__price">
+          <b>$</b>
           {price}
-          <b>$ </b>
         </span>
       </article>
       <Modal

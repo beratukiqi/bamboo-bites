@@ -1,19 +1,56 @@
 const AboutInfo = () => {
   return (
     <>
+      <h2>We are so happy that you found your way here!</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        voluptates, voluptatem, quia, quibusdam quos voluptatum dicta doloribus
-        quod consequatur voluptate doloremque. Quisquam voluptates, voluptatem,
-        quia, quibusdam quos voluptatum dicta doloribus quod consequatur
-        voluptate doloremque.
+        Welcome into our world, where flavors tell stories, and each dish is a
+        chapter of our journey. In 2016, we planted the seeds of our culinary
+        adventure right here in Brooklyn, a borough our parents immigrated to in
+        the '70s. As a young Asian couple, born from the fusion of Vietnam,
+        Japan, and China, our roots run deep, woven into the fabric of every
+        recipe. We are the torchbearers of our family's legacy, embracing the
+        contrasts that define us. <br /> 
+        <br />
+        Our take-away is more than a restaurant; it's
+        a canvas where classic dishes are reborn with new textures, flavor
+        symphonies, and vibrant hues. Like a tapestry, every creation tells a
+        tale – the tale of our roots, our passion, and the vibrant essence of
+        Brooklyn. What we do isn’t just about food; it’s about sharing the
+        warmth of our heritage. <br />
+        <br />
+        Join us in savoring the essence of our immigrant
+        parents' kitchens, the love of our upbringing, and the joy we find in
+        every bite. Explore our take-away, where the taste of home knows no
+        borders. <br />
+        <br />
+        Sincerely,Li and Kim
       </p>
+      <br />
+      <h2>Delightful Flavors Crafted with Care</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        voluptates, voluptatem, quia, quibusdam quos voluptatum dicta doloribus
-        quod consequatur voluptate doloremque. Quisquam voluptates, voluptatem,
-        quia, quibusdam quos voluptatum dicta doloribus quod consequatur
-        voluptate doloremque.
+        As passionate culinary artisans, we extend our commitment beyond taste
+        to embrace the essence of responsible dining. At Bamboo Bites we
+        prioritize your well-being, ensuring that every dish is not just a
+        delight for the palate but a mindful choice for your health. <br />
+        <br />
+        We take pride in curating a menu where locally sourced ingredients take center
+        stage. From farm to plate, we support local producers, ensuring a burst
+        of freshness in every bite. We're not just crafting dishes; we're
+        cultivating relationships within our community and reducing our
+        environmental footprint. <br />
+        <br />
+        Our dedication to inclusivity is showcased in
+        the thoughtful use of Tamari. In every creation, this gluten-free soy
+        sauce ensures that those with wheat allergies or gluten intolerance
+        savor the rich depth of soy sauce without compromise. <br />
+        <br />
+        In a world where
+        choices matter, we are proud to declare our commitment to being
+        GMO-free. Our dishes are crafted with care, free from genetically
+        modified organisms, ensuring your dining experience is a celebration of
+        purity and taste. Join us in this culinary journey where every dish
+        tells a tale of tradition, love, and a dedication to providing a
+        memorable experience for every guest.
       </p>
     </>
   );
