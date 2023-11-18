@@ -6,16 +6,98 @@
   top: 3rem;
   z-index: 1;
 
-  .header__nav__links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    justify-content: center;
+  nav {
+    .header__nav__links {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 2rem;
+      justify-content: center;
+      position: relative;
 
-    p {
-      text-transform: uppercase;
-      color: white;
-      font-size: 1.3rem;
+      a {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        // remove underline
+        text-decoration: none;
+
+        // add underline when page is active
+        &.active {
+          text-decoration: underline;
+          color: $color-main--red;
+
+          p {
+            color: $color-main--red;
+          }
+        }
+
+        &:hover {
+          text-decoration: underline;
+          color: $color-main--red;
+        }
+      }
+
+      p {
+        text-transform: uppercase;
+        color: white;
+        font-size: 1.3rem;
+
+        &:active {
+          text-decoration: underline;
+          color: $color-main--red;
+        }
+      }
+
+      @media screen and (max-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
+
+    .hamburger-menu {
+      width: 2rem;
+      height: 2rem;
+      fill: white;
+      position: absolute;
+      left: 2rem;
+      display: none;
+      cursor: pointer;
+
+      @media screen and (max-width: $breakpoint-tablet) {
+        display: block;
+      }
+
+      @media screen and (max-width: $breakpoint-mobile) {
+        left: 1rem;
+      }
+    }
+
+    .cart-icon {
+      position: absolute;
+      right: 4rem;
+      top: -0.5rem;
+      width: 3rem;
+      height: 3rem;
+      background-color: $color-main--red;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      svg {
+        margin-top: 2px;
+        margin-right: 2px;
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: white;
+      }
+      @media screen and (max-width: $breakpoint-tablet) {
+        right: 2rem;
+      }
+      @media screen and (max-width: $breakpoint-mobile) {
+        right: 1rem;
+      }
     }
   }
 }

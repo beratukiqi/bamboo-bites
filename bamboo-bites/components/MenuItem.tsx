@@ -32,7 +32,7 @@ const MenuItem = ({ food }: MenuItemProps) => {
         </header>
         <span className="menu-item__price">
           {price}
-          <b>$</b>
+          <b>$ </b>
         </span>
       </article>
       <Modal

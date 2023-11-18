@@ -32,15 +32,6 @@ main {
   background-color: rgb(16, 16, 16);
 }
 
-h1 {
-  color: white;
-  font-size: calc(1rem + 4vw);
-  text-align: center;
-  text-transform: uppercase;
-  padding: 4rem 6rem;
-  border: 2px solid white;
-}
-
 .primary-button {
   align-self: center;
   margin-top: 1rem;
@@ -75,7 +66,7 @@ h1 {
   &.col-2 {
     grid-template-columns: repeat(2, 1fr);
 
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: $breakpoint-desktop) {
       grid-template-columns: 1fr;
     }
   }
@@ -92,8 +83,39 @@ h1 {
   background-size: cover;
   background-repeat: no-repeat;
 
+  h1 {
+    color: white;
+    font-size: calc(1rem + 4vw);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 4rem 6rem;
+    border: 2px solid white;
+
+    @media screen and (max-width: $breakpoint-desktop) {
+      font-size: calc(1rem + 4vw);
+      padding: 4rem;
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      font-size: calc(1rem + 4vw);
+      padding: 2rem;
+    }
+  }
+
   &:nth-child(2) {
-    padding: 10rem 4rem 2rem 4rem;
+    padding: 8rem 4rem 2rem 4rem;
+
+    @media screen and (max-width: $breakpoint-desktop) {
+      padding: 4rem;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding: 2rem;
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      padding: 1rem;
+    }
   }
 
   &.landingpage {
@@ -102,12 +124,24 @@ h1 {
   }
 
   &.sticky {
-    height: 100vh;
-    justify-content: flex-start;
-    padding: 10rem 4rem 2rem 4rem;
-    align-self: flex-start;
-    position: sticky;
-    top: 0;
+    @media screen and (min-width: $breakpoint-desktop) {
+      height: 100vh;
+      justify-content: flex-start;
+      padding: 10rem 4rem 2rem 4rem;
+      align-self: flex-start;
+      position: sticky;
+      top: 0;
+    }
+
+    @media screen and (max-width: $breakpoint-desktop) {
+      height: 100%;
+      padding: 8rem 4rem 6rem 4rem;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      height: 100%;
+      padding: 8rem 4rem 4rem 4rem;
+    }
   }
 }
 
@@ -119,5 +153,8 @@ h1 {
 
   &__container {
     padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 }

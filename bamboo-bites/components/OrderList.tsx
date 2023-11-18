@@ -8,4 +8,4 @@ const OrderList = ({ data }: { data: any }) => {
   );
 };
 
-export default OrderList;
+  export default OrderList;

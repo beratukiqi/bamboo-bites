@@ -9,6 +9,8 @@ interface MenuItemProps {
 }
 
 const MenuList = ({ data }: { data: MenuItemProps[] }) => {
+
+
   return (
     data &&
     data.map((food: MenuItemProps, index: number) => (

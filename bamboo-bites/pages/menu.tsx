@@ -1,3 +1,4 @@
+import ContentWrapper from "@/components/ContentWrapper";
 import MenuList from "@/components/MenuList";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
@@ -29,8 +30,10 @@ const Menu = () => {
         title="Menu"
         img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png"
       />
-      <PageColumn title="Main courses">
-        <MenuList data={menuItems} />
+      <PageColumn title="Explore our menu!">
+        <ContentWrapper title="Main courses">
+          <MenuList data={menuItems} />
+        </ContentWrapper>
       </PageColumn>
     </PageWrapper>
   );
