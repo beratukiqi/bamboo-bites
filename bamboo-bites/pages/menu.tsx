@@ -24,6 +24,10 @@ const Menu = () => {
     fetchEvents();
   }, []);
 
+  useEffect(() => {
+    console.log(menuItems);
+  }, [menuItems]);
+
   return (
     <PageWrapper column>
       <PageHeader

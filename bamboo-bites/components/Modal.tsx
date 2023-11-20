@@ -1,7 +1,9 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import AppContext from "@/context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "./Button";
+import ItemVariations from "./ItemVariations";
+import ContentWrapper from "./ContentWrapper";
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,6 +14,7 @@ interface ModalProps {
     price: number;
     desc: string;
     imgUrl: string;
+    Variations: [];
   };
 }
 
@@ -23,34 +26,13 @@ interface MenuItemProps {
   imgUrl: string;
 }
 
-const containerVariants = {
-  hidden: {
-    y: 100,
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const childVariants = {
-  hidden: {
-    y: 20,
-    opacity: 0,
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-  },
-};
-
 const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
   const { cart, setCart } = useContext(AppContext);
-  const { id, item, price, imgUrl, desc } = food;
+  const { id, item, price, imgUrl, desc, Variations } = food;
+
+  useEffect(() => {
+    console.log(food.Variations);
+  }, []);
 
   const handleAddToCart = (foodItem: MenuItemProps) => {
     setCart((currentCart) => {
@@ -104,6 +86,7 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
             </motion.header>
             <motion.section className="modal-body" variants={childVariants}>
               <p className="modal-body__desc">{desc}</p>
+              <ItemVariations variations={Variations} />
               <h6 className="modal-body__price">
                 <b>$</b>
                 {price}
@@ -121,3 +104,28 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
 };
 
 export default Modal;
+
+const containerVariants = {
+  hidden: {
+    y: 100,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: {
+    y: 20,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};

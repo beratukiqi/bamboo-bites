@@ -161,9 +161,20 @@ main {
   }
 
   &__container {
-    padding-top: 1rem;
+    padding-top: 2rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  &.small {
+    .content__container {
+      padding-top: 1.5rem;
+    }
+    .content__title {
+      font-size: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgb(126, 126, 126);
+    }
   }
 }
