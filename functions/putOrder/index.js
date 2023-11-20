@@ -47,7 +47,7 @@ exports.handler = async (event) => {
 
   try {
     const command = new PutCommand({
-      TableName: "bamboo-bites-orders",
+      TableName: "bamboo-bites-ordersDb",
       Item: {
         orderNr: orderNr,
         timeStamp: timeStamp,

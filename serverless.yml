@@ -40,7 +40,12 @@ functions:
       - httpApi: 
           path: "/api/order/{orderNr}"
           method: GET
-
+  getOrdersByTimeStamp:
+    handler: functions/getOrdersByTimeStamp/index.handler
+    events:
+      - httpApi: 
+          path: "/api/filteredOrders"
+          method: GET
 
 resources: 
   Resources:
@@ -66,7 +71,7 @@ resources:
     bambooBitesOrders:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: bamboo-bites-orders
+        TableName: bamboo-bites-ordersDb
         AttributeDefinitions:
           - AttributeName: orderNr
             AttributeType: N
@@ -75,6 +80,12 @@ resources:
         KeySchema:
           - AttributeName: orderNr
             KeyType: HASH
-          - AttributeName: timeStamp
-            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
+        GlobalSecondaryIndexes:
+          - IndexName: 'timestampIndex'
+            KeySchema:
+              - AttributeName: timeStamp
+                KeyType: HASH
+            Projection: 
+              ProjectionType: ALL
+              
