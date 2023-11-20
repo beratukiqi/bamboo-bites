@@ -5,7 +5,7 @@ import { sendResponse } from "../../responses";
 exports.handler = async (event) => {
   try {
     const command = new ScanCommand({
-      TableName: "bambooBites-orders",
+      TableName: "bamboo-bites-orders",
     });
 
     const response = await docClient.send(command);

@@ -9,7 +9,7 @@ import PaymentMethod from "@/components/PaymentMethod";
 import ContentWrapper from "@/components/ContentWrapper";
 import DeliveryMethod from "@/components/DeliveryMethod";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Checkout = () => {
   const { cart, setCart } = useContext(AppContext);
@@ -18,7 +18,7 @@ const Checkout = () => {
 
   const sendOrder = async () => {
     // If an orderNr exists, it will be added to the headers.
-    // orderNr in Headers will determine if the order is new or an update.
+    // orderNr in Headers will determine if the order is new or an update.    
 
     const headers = {
       "Content-Type": "application/json",

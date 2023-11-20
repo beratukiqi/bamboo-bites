@@ -34,6 +34,12 @@ const SingleOrderPage = () => {
     fetchOrderData();
   }, [orderNr]);
 
+  useEffect(() => {
+    console.log(orderData);
+    
+  }, [])
+  
+
   const editOrder = () => {
     // Populates the cart with the order data before redirecting
     setCart(orderData);

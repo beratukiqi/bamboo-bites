@@ -66,11 +66,15 @@ resources:
     bambooBitesOrders:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: bambooBites-orders
+        TableName: bamboo-bites-orders
         AttributeDefinitions:
           - AttributeName: orderNr
             AttributeType: N
+          - AttributeName: timeStamp
+            AttributeType: S
         KeySchema:
           - AttributeName: orderNr
             KeyType: HASH
+          - AttributeName: timeStamp
+            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
