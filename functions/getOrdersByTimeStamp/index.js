@@ -3,7 +3,8 @@ import { docClient } from "../../services/client";
 import { sendResponse } from "../../responses";
 
 exports.handler = async (event) => {
-  const timestamp = JSON.parse(event.body);
+  // const timestamp = JSON.parse(event.body);
+  const timestamp = "2023-11-20T18:50:24";
   try {
     const command = new QueryCommand({
       TableName: "bamboo-bites-ordersDb",
@@ -13,7 +14,7 @@ exports.handler = async (event) => {
         ":timeStamp": { S: timestamp },
       },
       ExpressionAttributeNames: {
-        "#timeStamp": "Timestamp",
+        "#timeStamp": "timeStamp",
       },
     });
 
@@ -26,11 +27,15 @@ exports.handler = async (event) => {
       success: true,
       message: "Retrieved orders by timestamp",
       filteredOrders: filteredOrders,
+      timestamp,
     });
   } catch (error) {
+    console.log("error", error);
     return sendResponse(500, {
       success: false,
       message: "Unable to retreive orders by timestamp",
+      error,
+      timestamp,
     });
   }
 };
