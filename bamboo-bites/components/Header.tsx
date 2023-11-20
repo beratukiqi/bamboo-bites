@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HamburgerMenu from "./HamburgerMenu";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -62,7 +63,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <nav>
+      <nav className="desktop-nav">
         <ul className="header__nav__links">
           {navItems.map((item) => (
             <li key={item.name}>
@@ -80,6 +81,7 @@ const Header = () => {
         </Link>
         {hamBurgerIcon}
       </nav>
+      <HamburgerMenu />
     </header>
   );
 };
