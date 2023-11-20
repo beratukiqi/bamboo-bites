@@ -55,8 +55,26 @@
         border: 1px solid white;
         cursor: pointer;
       }
+      .qty-button {
+        padding: 0;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: start;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        height: 2rem;
+        width: 2rem;
+
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
       span {
         margin: auto 1rem;
+        display: inline;
       }
     }
   }
