@@ -4,6 +4,7 @@ import { sendResponse } from "../../responses";
 
 exports.handler = async (event) => {
   // const timestamp = JSON.parse(event.body);
+  console.log("Event before", event);
   const timestamp = "2023-11-20T18:50:24";
   try {
     const command = new QueryCommand({
@@ -20,6 +21,7 @@ exports.handler = async (event) => {
 
     const response = await docClient.send(command);
     const filteredOrders = response.Items;
+    console.log("Response", response);
 
     // GET /getOrdersByTimestamp?timestamp=2023-11-20T12:00:00Z
 
@@ -27,7 +29,8 @@ exports.handler = async (event) => {
       success: true,
       message: "Retrieved orders by timestamp",
       filteredOrders: filteredOrders,
-      timestamp,
+      timestamp: timestamp,
+      event,
     });
   } catch (error) {
     console.log("error", error);
@@ -35,7 +38,8 @@ exports.handler = async (event) => {
       success: false,
       message: "Unable to retreive orders by timestamp",
       error,
-      timestamp,
+      timestamp: timestamp,
+      event,
     });
   }
 };
