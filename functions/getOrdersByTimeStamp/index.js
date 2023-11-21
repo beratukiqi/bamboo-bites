@@ -3,20 +3,22 @@ import { docClient } from "../../services/client";
 import { sendResponse } from "../../responses";
 
 exports.handler = async (event) => {
-  // const timestamp = JSON.parse(event.body);
+  // const timestamp = JSON.parse(event.body.timeStamp);
   console.log("Event before", event);
-  const timestamp = "2023-11-20T18:50:24";
+  const timestamp = "2023-11-21T08:49:44";
   try {
     const command = new QueryCommand({
       TableName: "bamboo-bites-ordersDb",
       IndexName: "timestampIndex",
-      KeyConditionExpression: "#timeStamp = :timeStamp",
+      KeyConditionExpression: "#timeStamp > :start",
       ExpressionAttributeValues: {
-        ":timeStamp": { S: timestamp },
+        ":start": "0",
       },
       ExpressionAttributeNames: {
         "#timeStamp": "timeStamp",
       },
+      ScanIndexForward: false, // Sort in descending order
+      Limit: 10, // Limit the result to 10 records
     });
 
     const response = await docClient.send(command);
