@@ -30,8 +30,8 @@ const Menu = () => {
         title="Menu"
         img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png"
       />
-      <PageColumn title="Explore our menu!">
-        <ContentWrapper title="Main courses">
+      <PageColumn title="Savor, Explore, Enjoy!">
+        <ContentWrapper title="">
           <MenuList data={menuItems} />
         </ContentWrapper>
       </PageColumn>
