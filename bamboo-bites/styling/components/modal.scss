@@ -19,13 +19,18 @@
   .modal-content {
     background-color: rgb(16, 16, 16);
     max-width: 70%;
-    height: 400px;
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
     gap: 2rem;
+
+    @media screen and (max-width: $breakpoint-desktop) {
+      max-width: 90%;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
 
     .modal-header {
       display: flex;
@@ -62,26 +67,60 @@
       flex-direction: column;
       justify-content: center;
       gap: 1rem;
-      padding: 2rem;
+      padding: 4rem 2rem;
+
+      &__desc {
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+      }
 
       &__price {
-        font-size: 1.8rem;
+        margin-top: 2rem;
+        font-size: 2.5rem;
 
         b {
           margin-left: 0.4rem;
           font-weight: 300;
         }
       }
+    }
+  }
+}
 
-      button {
-        align-self: center;
-        margin-top: 1rem;
-        background-color: transparent;
-        color: white;
-        padding: 1rem 3rem;
-        border: 1px solid white;
-        font-size: 1rem;
-        cursor: pointer;
+.variations {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+
+    & > section:only-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &-category {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    list-style: none;
+    .variationsItem {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+
+      & > div {
+        display: flex;
+        gap: 1rem;
+
+        p {
+          font-size: 1rem;
+          color: white;
+        }
+      }
+
+      svg {
+        fill: white;
+        font-size: 1.2rem;
       }
     }
   }
