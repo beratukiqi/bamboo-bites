@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 const DeliveryMethod = () => {
-  const [deliveryMethod, setDeliveryMethod] = useState("");
+  const [deliveryMethod, setDeliveryMethod] = useState("pickup");
   const router = useRouter();
 
   const handleDeliveryMethod = (e: any) => {
@@ -17,6 +17,21 @@ const DeliveryMethod = () => {
       <div>
         <input
           type="radio"
+          id="pickup"
+          name="deliveryMethod"
+          value="pickup"
+          aria-labelledby="labelPickup"
+          onChange={handleDeliveryMethod}
+          checked={deliveryMethod === "pickup"}
+        />
+        <label id="labelPickup" htmlFor="pickup">
+          Pick-up
+        </label>
+        <span>Free of charge</span>
+      </div>
+      <div>
+        <input
+          type="radio"
           id="delivery"
           name="deliveryMethod"
           value="delivery"
@@ -28,21 +43,6 @@ const DeliveryMethod = () => {
           Home delivery
         </label>
         <span>$10</span>
-      </div>
-      <div>
-        <input
-          type="radio"
-          id="pickup"
-          name="deliveryMethod"
-          value="pickup"
-          aria-labelledby="labelPickup"
-          onChange={handleDeliveryMethod}
-          checked={deliveryMethod === "pickup"}
-        />
-        <label id="labelPickup" htmlFor="pickup">
-          Pick up
-        </label>
-        <span>Free of charge</span>
       </div>
     </article>
   );
