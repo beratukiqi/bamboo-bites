@@ -16,6 +16,7 @@ interface CartItemProps {
   desc: string;
   imgUrl: string;
   quantity: number;
+  tweaks?: string[];
 }
 
 const AppProvider = ({ children }: any) => {

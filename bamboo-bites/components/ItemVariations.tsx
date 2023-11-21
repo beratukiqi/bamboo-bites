@@ -3,9 +3,10 @@ import ContentWrapper from "./ContentWrapper";
 
 interface MenuItemProps {
   variations: string[];
+  setTweaks: (tweaks: string[]) => void;
 }
 
-const ItemVariations = ({ variations }: MenuItemProps) => {
+const ItemVariations = ({ variations, setTweaks }: MenuItemProps) => {
   const [selectedProtein, setSelectedProtein] = useState("");
   const variationsData = categorizeVariations(variations);
   const [checkedItems, setCheckedItems] = useState(
@@ -15,19 +16,29 @@ const ItemVariations = ({ variations }: MenuItemProps) => {
     }, {})
   );
 
-  useEffect(() => {
-    console.log("PASSED VARIATIONS", variations);
-  }, [variations]);
-
   const handleSelectProtein = (proteinName: string) => {
     setSelectedProtein(proteinName);
+    updateTweaks(proteinName, checkedItems);
   };
 
   const handleToggleAllergen = (itemName: string) => {
-    setCheckedItems((prev: any) => ({
-      ...prev,
-      [itemName]: !prev[itemName],
-    }));
+    setCheckedItems((prev: any) => {
+      const updatedCheckedItems = {
+        ...prev,
+        [itemName]: !prev[itemName],
+      };
+      updateTweaks(selectedProtein, updatedCheckedItems);
+      return updatedCheckedItems;
+    });
+  };
+
+  const updateTweaks = (protein: string, allergens: any) => {
+    const activeAllergens = Object.keys(allergens).filter(
+      (item) => allergens[item] === true
+    );
+
+    const tweaks = protein ? [protein, ...activeAllergens] : activeAllergens;
+    setTweaks(tweaks);
   };
 
   function categorizeVariations(variations: string[]) {

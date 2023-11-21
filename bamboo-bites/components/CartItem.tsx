@@ -11,6 +11,7 @@ interface OrderDetails {
   desc: string;
   imgUrl: string;
   quantity: number;
+  tweaks?: string[];
 }
 
 interface OrderItemProps {
@@ -43,6 +44,18 @@ const CartItem = ({ item }: OrderItemProps) => {
           <QtyButton title="+" action={incrementQuantity} />
         </div>
       </div>
+      {item.tweaks && item.tweaks.length > 0 && (
+        <div className="order-item__tweaks">
+          <h4 className="order-item__tweaks-title">Tweaks</h4>
+          <ul className="order-item__tweaks-list">
+            {item.tweaks.map((tweak, index) => (
+              <li key={index} className="order-item__tweak">
+                {tweak}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </article>
   );
 };

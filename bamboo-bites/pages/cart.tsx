@@ -7,7 +7,7 @@ import AppContext from "@/context/AppContext";
 import PageWrapper from "@/components/PageWrapper";
 import ContentWrapper from "@/components/ContentWrapper";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const Cart = () => {
   const { cart } = useContext(AppContext);
@@ -21,6 +21,10 @@ const Cart = () => {
   const toMenu = () => {
     router.push(`/menu`);
   };
+
+  useEffect(() => {
+    console.log("Cart", cart);
+  }, [cart]);
 
   return (
     <PageWrapper column>
