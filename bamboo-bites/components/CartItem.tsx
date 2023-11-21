@@ -32,14 +32,14 @@ const CartItem = ({ item }: OrderItemProps) => {
     <article className="order-item">
       <img src={item.imgUrl} alt="noodles bowl" className="order-item__image" />
       <div className="order-item__text">
-        <h3 className="order-item__title">{item.item}</h3>
+        <h2 className="order-item__title">{item.item}</h2>
         <span className="order-item__price">
           <b>$</b>
           {item.price}
         </span>
         <div className="order-item__quantity">
           <QtyButton title="-" action={decrementQuantity} />
-          <span>{item.quantity + " st"}</span>
+          <span>{"QTY " + item.quantity}</span>
           <QtyButton title="+" action={incrementQuantity} />
         </div>
       </div>

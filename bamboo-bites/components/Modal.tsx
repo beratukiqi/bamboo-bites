@@ -99,10 +99,11 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
               className="modal-header"
               variants={childVariants}
             >
-              <h3>{item}</h3>
+              {/* <h3>{item}</h3> */}
               <button onClick={closeModal}>X</button>
             </motion.header>
             <motion.section className="modal-body" variants={childVariants}>
+              <h2>{item}</h2>
               <p className="modal-body__desc">{desc}</p>
               <h6 className="modal-body__price">
                 <b>$</b>

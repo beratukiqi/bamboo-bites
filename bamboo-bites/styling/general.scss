@@ -2,6 +2,8 @@
 @import "pages/home.scss";
 @import "pages/menu.scss";
 @import "pages/checkout.scss";
+@import "pages/about.scss";
+@import "pages/contact.scss";
 @import "components/orderItem.scss";
 @import "components/modal.scss";
 @import "components/header.scss";
@@ -10,6 +12,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
 h1,
@@ -26,14 +30,17 @@ button {
 
 h2 {
   font-size: 2.5rem;
+  letter-spacing: 0.1rem;
 }
 
 h3 {
   font-size: 1.5rem;
+  letter-spacing: 0.1rem;
 }
 
 p {
   font-family: "Roboto", sans-serif;
+  letter-spacing: 0.05rem;
 }
 
 main {
