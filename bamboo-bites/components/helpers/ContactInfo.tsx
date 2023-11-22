@@ -48,7 +48,6 @@ const ContactInfo = () => {
 				OPENING HOURS <br /> EVERY DAY 11 AM - 11 PM
 			</h2>
 			<section className="contact-form-container">
-				<h3 className="h3-contact">Reach Out, We're Friendly!</h3>
 				<ContactForm />
 			</section>
 			<section className="social">
