@@ -15,6 +15,19 @@ exports.handler = async (event) => {
     }
   }
 
+  const calcTotalPrice = () => {
+    let price = 0;
+    order.forEach((item) => {
+      price += item.price * item.quantity;
+    });
+
+    // if (deliveryMethod === "delivery") {
+    //   price += 10;
+    // }
+
+    return price;
+  };
+
   const generateOrderNumber = () => {
     const min = 10000000; // Minimum 8-digit number
     const max = 99999999; // Maximum 8-digit number
@@ -39,6 +52,7 @@ exports.handler = async (event) => {
     return timestamp;
   };
 
+  const totalPrice = calcTotalPrice();
   const timeStamp = generateTimestamp();
 
   const orderNr = currentOrderNr
@@ -51,6 +65,7 @@ exports.handler = async (event) => {
       Item: {
         orderNr: orderNr,
         timeStamp: timeStamp,
+        totalPrice: totalPrice,
         order: order,
       },
     });
