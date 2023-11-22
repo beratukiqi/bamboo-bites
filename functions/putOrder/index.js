@@ -14,14 +14,16 @@ exports.handler = async (event) => {
       currentOrderNr = undefined;
     }
   }
-  let orderDetails;
-  if (event.headers["X-Order-Delivery-Method"]) {
-    try {
-      orderDetails = JSON.parse(event.headers["X-Order-Delivery-Method"]);
-    } catch (error) {}
-  }
 
-  const deliveryMethod = orderDetails.deliveryMethod;
+  let deliveryMethod;
+  if (event.headers["x-order-delivery-method"]) {
+    try {
+      deliveryMethod = event.headers["x-order-delivery-method"];
+    } catch (error) {
+      console.error("Error parsing delivery method:", error);
+      deliveryMethod = undefined;
+    }
+  }
 
   const calcTotalPrice = () => {
     let price = 0;
