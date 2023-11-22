@@ -25,6 +25,16 @@ exports.handler = async (event) => {
     }
   }
 
+  let status;
+  if (event.headers["x-order-status"]) {
+    try {
+      status = event.headers["x-order-status"];
+    } catch (error) {
+      console.error("Error parsing order status:", error);
+      status = undefined;
+    }
+  }
+
   const calcTotalPrice = () => {
     let price = 0;
     order.forEach((item) => {
@@ -77,6 +87,7 @@ exports.handler = async (event) => {
         timeStamp: timeStamp,
         totalPrice: totalPrice,
         order: order,
+        status: status,
       },
     });
 

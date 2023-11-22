@@ -21,12 +21,13 @@ interface CartItemProps {
 
 interface OrderDetails {
   deliveryMethod: string;
+  status: string,
 }
 
 const AppProvider = ({ children }: any) => {
   const [menuItems, setMenuItems] = useState<MenuItemProps[]>([]);
   const [cart, setCart] = useState<CartItemProps[]>([]);
-  const [orderDetails, setOrderDetails] = useState<OrderDetails>({deliveryMethod: "pickup"});
+  const [orderDetails, setOrderDetails] = useState<OrderDetails>({deliveryMethod: "pickup", status: "pending",});
 
   return (
     <AppContext.Provider value={{ menuItems, setMenuItems, cart, setCart, orderDetails, setOrderDetails}}>

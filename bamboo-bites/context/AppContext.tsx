@@ -19,6 +19,7 @@ interface CartItemProps {
 
 interface OrderDetails {
   deliveryMethod: string;
+  status: string;
 }
 
 interface AppContextType {

@@ -23,6 +23,7 @@ const Checkout = () => {
       "Content-Type": "application/json",
       ...(typeof orderNr === "string" && { orderNr }),
       ...(orderDetails && { "X-Order-Delivery-Method": orderDetails.deliveryMethod }),
+      ...(orderDetails && { "X-Order-Status": orderDetails.status }),
     };
  
     // Sends a POST request to the API with the cart data
