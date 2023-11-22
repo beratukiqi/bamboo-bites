@@ -1,3 +1,4 @@
+import ContactForm from "@/components/ContactForm";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
@@ -12,6 +13,7 @@ const Contact = () => {
       />
       <PageColumn title="">
         <ContactInfo />
+        <ContactForm />
       </PageColumn>
     </PageWrapper>
   );

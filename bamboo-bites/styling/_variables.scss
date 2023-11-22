@@ -4,3 +4,49 @@ $breakpoint-desktop: 1024px;
 $breakpoint-large-desktop: 1200px;
 
 $color-main--red: #ff4e4e;
+
+// Colors
+$color-white: #ffffff;
+$color-blue: #15304b;
+$color-blue--light: #e8f1f7;
+$color-blue--hover: #1e466f;
+$color-orange: #ef6d0a;
+$color-orange--hover: #d95c0a;
+$color-grey--light: #e8ebed;
+$color-error: #ff8d8d;
+$color-correct: #c2e1ff;
+$color-grey--hover: #f3f4f6;
+$color-grey--dark: #d7d7d7;
+$color-grey--background: #f8f8f8;
+$color-darkgrey: #e8ebed;
+$color-darkgrey--hover: #dee1e3;
+$color-paragraph: #0a1826;
+$color-black: #0a1826;
+$color-header: #15304b;
+
+// Shadows
+$box-shadow--main: 0 0 50px 0px rgba($color-blue, 0.06);
+$box-shadow--secondary: 0 0 20px 0 rgba($color-blue, 0.06);
+$box-shadow--hover: 0px 10px 50px 0px rgba(21, 48, 75, 0.15);
+
+// Font related
+$h1-size: 3rem;
+$h2-size: 2.3rem;
+$h3-size: 1.8rem;
+$h4-size: 1.6rem;
+$h5-size: 1.4rem;
+$h6-size: 1.2rem;
+
+$p-size--tiny: 0.7rem;
+$p-size--xsmall: 0.8rem;
+$p-size--small: 0.9rem;
+$p-size--regular: 1rem;
+$p-size--large: 1.1rem;
+
+$font-weight--light: 300;
+$font-weight--regular: 400;
+$font-weight--medium: 500;
+$font-weight--bold: 700;
+
+$line-height--paragraphs: 1.5;
+$line-height--headers: 1.2;
