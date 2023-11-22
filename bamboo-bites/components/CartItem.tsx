@@ -33,29 +33,34 @@ const CartItem = ({ item }: OrderItemProps) => {
     <article className="order-item">
       <img src={item.imgUrl} alt="noodles bowl" className="order-item__image" />
       <div className="order-item__text">
-        <h2 className="order-item__title">{item.item}</h2>
-        <span className="order-item__price">
-          <b>$</b>
-          {item.price}
-        </span>
+        <div>
+          <h2 className="order-item__title">{item.item}</h2>
+          {item.tweaks && item.tweaks.length > 0 ? (
+            <ul className="order-item__tweaks">
+              {item.tweaks.map((tweak, index) => (
+                <li key={index} className="order-item__tweaks-item">
+                  {tweak}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <ul className="order-item__tweaks">
+              <li className="order-item__tweaks-item --std">Standard</li>
+            </ul>
+          )}
+        </div>
         <div className="order-item__quantity">
           <QtyButton title="-" action={decrementQuantity} />
-          <span>{"QTY " + item.quantity}</span>
+          <span>{item.quantity}</span>
           <QtyButton title="+" action={incrementQuantity} />
         </div>
-      </div>
-      {item.tweaks && item.tweaks.length > 0 && (
-        <div className="order-item__tweaks">
-          <h4 className="order-item__tweaks-title">Tweaks</h4>
-          <ul className="order-item__tweaks-list">
-            {item.tweaks.map((tweak, index) => (
-              <li key={index} className="order-item__tweak">
-                {tweak}
-              </li>
-            ))}
-          </ul>
+        <div className="order-item__details">
+          <span className="order-item__price">
+            <b>$</b>
+            {item.price}
+          </span>
         </div>
-      )}
+      </div>
     </article>
   );
 };
