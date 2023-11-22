@@ -1,8 +1,9 @@
 const AboutInfo = () => {
   return (
-    <>
-      <h3>We are so happy that you found your way here!</h3>
-      <p>
+    <section className="about-container">
+      <img className="about-img" src="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/owners_desktop_500x333.png" alt="Owners of Bamboo Bites" />
+      <h3 className="about-h3">We are so happy that you found your way here!</h3>
+      <p className="about-p">
         Welcome into our world, where flavors tell stories, and each dish is a
         chapter of our journey. In 2016, we planted the seeds of our culinary
         adventure right here in Brooklyn, a borough our parents immigrated to in
@@ -27,8 +28,8 @@ const AboutInfo = () => {
         Li and Kim
       </p>
       <br />
-      <h3>Delightful Flavors Crafted with Care</h3>
-      <p>
+      <h3 className="about-h3">Delightful Flavors Crafted with Care</h3>
+      <p className="about-p">
         As passionate culinary artisans, we extend our commitment beyond taste
         to embrace the essence of responsible dining. At Bamboo Bites we
         prioritize your well-being, ensuring that every dish is not just a
@@ -53,7 +54,7 @@ const AboutInfo = () => {
         tells a tale of tradition, love, and a dedication to providing a
         memorable experience for every guest.
       </p>
-    </>
+      </section>
   );
 };
 
