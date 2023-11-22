@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 
 const Checkout = () => {
-  const { cart, setCart } = useContext(AppContext);
+  const { cart, setCart, orderDetails } = useContext(AppContext);
   const router = useRouter();
   const { orderNr } = router.query;
 
@@ -23,6 +23,7 @@ const Checkout = () => {
     const headers = {
       "Content-Type": "application/json",
       ...(typeof orderNr === "string" && { orderNr }),
+      ...(orderDetails && { "X-Order-Delivery-Method": orderDetails.deliveryMethod }),
     };
 
     // Sends a POST request to the API with the cart data
