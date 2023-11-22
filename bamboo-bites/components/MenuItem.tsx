@@ -27,7 +27,7 @@ const MenuItem = ({ food }: MenuItemProps) => {
           className="menu-item__image"
         />
         <header className="menu-item__text">
-          <h2>{item}</h2>
+          <h2 className="h2-menu-item">{item}</h2>
           <p>Dive into the world of Ambient Sushi, where...</p>
         </header>
         <span className="menu-item__price">

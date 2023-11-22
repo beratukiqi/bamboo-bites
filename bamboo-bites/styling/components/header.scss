@@ -11,20 +11,21 @@
       display: flex;
       flex-wrap: wrap;
       list-style: none;
-      gap: 2rem;
+      gap: 3rem;
       justify-content: center;
       position: relative;
 
       a {
         display: flex;
         align-items: center;
+        justify-content: space-evenly;
         height: 100%;
+        width: 6rem;
+        letter-spacing: 0.3rem;
         // remove underline
         text-decoration: none;
 
-        // add underline when page is active
         &.active {
-          text-decoration: underline;
           color: $color-main--red;
 
           p {
@@ -33,18 +34,17 @@
         }
 
         &:hover {
-          text-decoration: underline;
-          color: $color-main--red;
+          transform: scale(1.15);
+          transition: transform 0.4s ease-in-out;
         }
       }
 
-      p {
+        p {
         text-transform: uppercase;
         color: white;
         font-size: 1.3rem;
 
         &:active {
-          text-decoration: underline;
           color: $color-main--red;
         }
       }

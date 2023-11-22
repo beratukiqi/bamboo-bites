@@ -21,6 +21,7 @@ const SingleOrderPage = () => {
   const router = useRouter();
   const { orderNr } = router.query;
   const [orderData, setOrderData] = useState<OrderDetail[]>([]);
+  const [showModal, setShowModal] = useState(false)
 
   // Fetches order data on mount and sets it to state
   useEffect(() => {
@@ -48,6 +49,29 @@ const SingleOrderPage = () => {
     router.push(`/cart?orderNr=${orderNr}`);
   };
 
+  const cancelOrder = async () => {
+    const headers = {
+      "Content-Type": "application/json",
+      ...(typeof orderNr === "string" && { orderNr }),
+    };
+    const response = await fetch(`https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/cancelOrder/${orderNr}`, 
+    {
+      method: "DELETE",
+      headers: headers,
+    })
+    const data = await response.json()
+    console.log(data);
+
+    //Show modal
+    setShowModal(true)
+    //Hide modal after 5 seconds and then redirect to home page.
+    setTimeout(() => {
+      setShowModal(false)
+      router.push(`/`); 
+    }, 5000)
+
+  }
+
   return (
     <PageWrapper column>
       <PageHeader
@@ -57,7 +81,15 @@ const SingleOrderPage = () => {
       <PageColumn title={`Your order: ${orderNr}`}>
         <OrderList data={orderData} />
         <Button title="EDIT ORDER" action={editOrder} />
+        <Button title="CANCEL ORDER" action={cancelOrder}/>
       </PageColumn>
+
+      {/*Modal*/}
+      {showModal && (
+        <div className="modal">
+          <h3 style={{ color: 'white' }}>Order <span style={{ color: '#ff4e4e' }}>{orderNr}</span> has been cancelled!</h3>
+        </div>
+      )}
     </PageWrapper>
   );
 };

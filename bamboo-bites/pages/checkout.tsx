@@ -47,7 +47,7 @@ const Checkout = () => {
         title="Checkout"
         img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
       />
-      <PageColumn title="Please review your order and make a payment!">
+      <PageColumn title="Your Order Awaits!">
         <ContentWrapper title="Order items">
           <OrderList data={cart} />
           <TotalPrice />

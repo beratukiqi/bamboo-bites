@@ -1,5 +1,16 @@
 @import "styling/variables.scss";
 
+
+.page-column-title {
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 5rem;
+}
+
+.h2-menu-item, .menu-item__price {
+  letter-spacing: 0.1rem;
+}
+
 .menu-item {
   &__container {
     color: white;
