@@ -1,57 +1,64 @@
 @import "styling/variables.scss";
 
-
 .page-column-title {
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 5rem;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 5rem;
 }
 
-.h2-menu-item, .menu-item__price {
-  letter-spacing: 0.1rem;
+.h2-menu-item,
+.menu-item__price {
+	letter-spacing: 0.1rem;
+}
+
+.menu-descr {
+	max-width: 22rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .menu-item {
-  &__container {
-    color: white;
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-    // max-width: 40rem;
-  }
+	&__container {
+		color: white;
+		display: flex;
+		flex-direction: row;
+		gap: 2rem;
+		// max-width: 40rem;
+	}
 
-  &__image {
-    display: block;
-    width: 5rem;
-    height: 5rem;
-    background-color: white;
-    align-self: center;
-  }
+	&__image {
+		display: block;
+		width: 5rem;
+		height: 5rem;
+		background-color: white;
+		align-self: center;
+	}
 
-  &__text {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 2;
+	&__text {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 2;
 
-    h3 {
-      font-size: 1.5rem;
+		h3 {
+			font-size: 1.5rem;
 
-      @media screen and (max-width: $breakpoint-tablet) {
-        font-size: 1.3rem;
-      }
-    }
+			@media screen and (max-width: $breakpoint-tablet) {
+				font-size: 1.3rem;
+			}
+		}
 
-    p {
-      font-size: 0.7rem;
-    }
-  }
+		p {
+			font-size: 0.7rem;
+		}
+	}
 
-  &__price {
-    font-size: 2.5rem;
+	&__price {
+		font-size: 2.5rem;
 
-    b {
-      margin-left: 0.4rem;
-      font-weight: 300;
-    }
-  }
+		b {
+			margin-left: 0.4rem;
+			font-weight: 300;
+		}
+	}
 }

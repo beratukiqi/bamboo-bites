@@ -9,12 +9,22 @@
 @import "components/header.scss";
 @import "components/contactForm.scss";
 
+:root {
+	--background-color: #101000;
+	--red-accent-color: #ff4e4e;
+	--white-color: #ffffff;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+	text-decoration: none;
+}
+
+main {
+	background-color: var(--background-color);
 }
 
 h1,
@@ -25,164 +35,160 @@ h5,
 h6,
 span,
 button {
-  font-family: "Abril Fatface", cursive;
-  font-weight: normal;
+	font-family: "Abril Fatface", cursive;
+	font-weight: normal;
 }
 
 h2 {
-  font-size: 2.5rem;
-  letter-spacing: 0.1rem;
+	font-size: 2.5rem;
+	letter-spacing: 0.1rem;
 }
 
 h3 {
-  font-size: 1.5rem;
-  letter-spacing: 0.1rem;
+	font-size: 1.5rem;
+	letter-spacing: 0.1rem;
 }
 
 p {
-  font-family: "Roboto", sans-serif;
-  letter-spacing: 0.05rem;
-}
-
-main {
-  background-color: rgb(16, 16, 16);
+	font-family: "Roboto", sans-serif;
+	letter-spacing: 0.05rem;
 }
 
 .primary-button {
-  align-self: center;
-  margin-top: 1rem;
-  background-color: transparent;
-  color: white;
-  padding: 1rem 3rem;
-  border: 1px solid white;
-  font-size: 1rem;
-  width: 100%;
-  cursor: pointer;
+	align-self: center;
+	margin-top: 1rem;
+	background-color: transparent;
+	color: var(--white-color);
+	padding: 1rem 3rem;
+	border: 1px solid var(--white-color);
+	font-size: 1rem;
+	width: 100%;
+	cursor: pointer;
 
-  &:hover {
-    background-color: white;
-    color: black;
-  }
+	&:hover {
+		background-color: var(--white-color);
+		color: black;
+	}
 
-  &:disabled {
-    background-color: grey;
-    color: black;
-    cursor: not-allowed;
-  }
+	&:disabled {
+		background-color: grey;
+		color: black;
+		cursor: not-allowed;
+	}
 }
 
 .page-wrapper {
-  min-height: 100vh;
+	min-height: 100vh;
 }
 
 .hero {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  &.col-2 {
-    grid-template-columns: repeat(2, 1fr);
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	&.col-2 {
+		grid-template-columns: repeat(2, 1fr);
 
-    @media screen and (max-width: $breakpoint-desktop) {
-      grid-template-columns: 1fr;
-    }
-  }
+		@media screen and (max-width: $breakpoint-desktop) {
+			grid-template-columns: 1fr;
+		}
+	}
 }
 
 .hero__column {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
-  padding: 0 4rem;
-  color: white;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 2rem;
+	padding: 0 4rem;
+	color: var(--white-color);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 
-  h1 {
-    color: white;
-    font-size: calc(1rem + 4vw);
-    letter-spacing: 0.8rem;
-    text-align: center;
-    text-transform: uppercase;
-    padding: 3rem 4rem;
-    border: 2px solid white;
+	h1 {
+		color: var(--white-color);
+		font-size: calc(1rem + 4vw);
+		letter-spacing: 0.8rem;
+		text-align: center;
+		text-transform: uppercase;
+		padding: 3rem 4rem;
+		border: 2px solid var(--white-color);
 
-    @media screen and (max-width: $breakpoint-desktop) {
-      font-size: calc(1rem + 4vw);
-      padding: 4rem;
-    }
+		@media screen and (max-width: $breakpoint-desktop) {
+			font-size: calc(1rem + 4vw);
+			padding: 4rem;
+		}
 
-    @media screen and (max-width: $breakpoint-mobile) {
-      font-size: calc(1rem + 4vw);
-      padding: 2rem;
-    }
-  }
+		@media screen and (max-width: $breakpoint-mobile) {
+			font-size: calc(1rem + 4vw);
+			padding: 2rem;
+		}
+	}
 
-  &:nth-child(2) {
-    padding: 8rem 4rem 2rem 4rem;
+	&:nth-child(2) {
+		padding: 8rem 4rem 2rem 4rem;
 
-    @media screen and (max-width: $breakpoint-desktop) {
-      padding: 4rem;
-    }
+		@media screen and (max-width: $breakpoint-desktop) {
+			padding: 4rem;
+		}
 
-    @media screen and (max-width: $breakpoint-tablet) {
-      padding: 2rem;
-    }
+		@media screen and (max-width: $breakpoint-tablet) {
+			padding: 2rem;
+		}
 
-    @media screen and (max-width: $breakpoint-mobile) {
-      padding: 1rem;
-    }
-  }
+		@media screen and (max-width: $breakpoint-mobile) {
+			padding: 1rem;
+		}
+	}
 
-  &.landingpage {
-    height: 100vh;
-    align-items: center;
-  }
+	&.landingpage {
+		height: 100vh;
+		align-items: center;
+	}
 
-  &.sticky {
-    @media screen and (min-width: $breakpoint-desktop) {
-      height: 100vh;
-      justify-content: flex-start;
-      padding: 10rem 4rem 2rem 4rem;
-      align-self: flex-start;
-      position: sticky;
-      top: 0;
-    }
+	&.sticky {
+		@media screen and (min-width: $breakpoint-desktop) {
+			height: 100vh;
+			justify-content: flex-start;
+			padding: 10rem 4rem 2rem 4rem;
+			align-self: flex-start;
+			position: sticky;
+			top: 0;
+		}
 
-    @media screen and (max-width: $breakpoint-desktop) {
-      height: 100%;
-      padding: 8rem 4rem 6rem 4rem;
-    }
+		@media screen and (max-width: $breakpoint-desktop) {
+			height: 100%;
+			padding: 8rem 4rem 6rem 4rem;
+		}
 
-    @media screen and (max-width: $breakpoint-tablet) {
-      height: 100%;
-      padding: 8rem 4rem 4rem 4rem;
-    }
-  }
+		@media screen and (max-width: $breakpoint-tablet) {
+			height: 100%;
+			padding: 8rem 4rem 4rem 4rem;
+		}
+	}
 }
 
 .content {
-  &__title {
-    border-bottom: 2px solid white;
-    padding-bottom: 1rem;
-  }
+	&__title {
+		border-bottom: 2px solid var(--white-color);
+		padding-bottom: 1rem;
+	}
 
-  &__container {
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+	&__container {
+		padding-top: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
 
-  &.small {
-    .content__container {
-      padding-top: 1.5rem;
-    }
-    .content__title {
-      font-size: 1.2rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgb(126, 126, 126);
-    }
-  }
+	&.small {
+		.content__container {
+			padding-top: 1.5rem;
+		}
+		.content__title {
+			font-size: 1.2rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 1px solid rgb(126, 126, 126);
+		}
+	}
 }
