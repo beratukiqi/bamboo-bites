@@ -14,6 +14,14 @@ exports.handler = async (event) => {
       currentOrderNr = undefined;
     }
   }
+  let orderDetails;
+  if (event.headers["X-Order-Delivery-Method"]) {
+    try {
+      orderDetails = JSON.parse(event.headers["X-Order-Delivery-Method"]);
+    } catch (error) {}
+  }
+
+  const deliveryMethod = orderDetails.deliveryMethod;
 
   const calcTotalPrice = () => {
     let price = 0;
@@ -21,9 +29,9 @@ exports.handler = async (event) => {
       price += item.price * item.quantity;
     });
 
-    // if (deliveryMethod === "delivery") {
-    //   price += 10;
-    // }
+    if (deliveryMethod === "delivery") {
+      price += 10;
+    }
 
     return price;
   };
