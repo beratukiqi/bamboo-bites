@@ -9,15 +9,11 @@ const Contact = () => {
     <PageWrapper column>
       <PageColumn title="">
         <ContactInfo />
-      </PageColumn>
+        </PageColumn>
       <PageHeader
         title="Contact"
         img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/contact_desktop_720x1024.png"
       />
-      <PageColumn title="">
-        <ContactInfo />
-        <ContactForm />
-      </PageColumn>
     </PageWrapper>
   );
 };
