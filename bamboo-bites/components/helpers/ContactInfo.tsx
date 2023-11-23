@@ -4,19 +4,19 @@ import { SvgIcons } from "../SvgIcons";
 const socials = [
 	{
 		path: "/facebook",
-		Icon: SvgIcons.Facebook,
+		Icon: SvgIcons.FacebookIcon,
 	},
 	{
 		path: "/instagram",
-		Icon: SvgIcons.Instagram,
+		Icon: SvgIcons.InstagramIcon,
 	},
 	{
 		path: "/snapchat",
-		Icon: SvgIcons.Snapchat,
+		Icon: SvgIcons.SnapchatIcon,
 	},
 	{
 		path: "/tiktok",
-		Icon: SvgIcons.TikTok,
+		Icon: SvgIcons.TikTokIcon,
 	},
 ];
 
@@ -32,7 +32,7 @@ const ContactInfo = () => {
 					<p>BROOKLYN, NY 11234 </p>
 					<br />
 					<section className="phone">
-						{SvgIcons.Phone}
+						{SvgIcons.PhoneIcon}
 						<p> (555) 123-4567</p>
 					</section>
 				</section>

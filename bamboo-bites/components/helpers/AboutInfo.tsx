@@ -35,7 +35,7 @@ const AboutInfo = () => {
 				<br />
 				Li and Kim
 			</p>
-			<section className="icon-container">{SvgIcons.BambooLeft}</section>
+			<section className="icon-container">{SvgIcons.BambooLeftIcon}</section>
 
 			<h3 className="about-h3">Delightful Flavors Crafted with Care</h3>
 			<p className="about-p">

@@ -1,4 +1,4 @@
-const BambooLeft = (
+const BambooLeftIcon = (
 	<svg
 		width="50"
 		height="50"
@@ -34,7 +34,7 @@ const BambooLeft = (
 	</svg>
 );
 
-const BambooRight = (
+const BambooRightIcon = (
 	<svg
 		width="50"
 		height="50"
@@ -63,7 +63,29 @@ const BambooRight = (
 	</svg>
 );
 
-const DairyFree = (
+const CartIcon = (
+	<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+		<path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+	</svg>
+);
+
+const CloseIcon = (
+	<svg
+		className="close-icon"
+		xmlns="http://www.w3.org/2000/svg"
+		width="40"
+		height="40"
+		viewBox="0 0 50 50"
+		fill="none"
+	>
+		<path
+			d="M25 0C11.193 0 0 11.193 0 25C0 38.8078 11.193 50 25 50C38.8078 50 50 38.8078 50 25C50 11.193 38.8078 0 25 0ZM25 46.9242C12.9383 46.9242 3.125 37.0617 3.125 24.9999C3.125 12.9382 12.9383 3.1249 25 3.1249C37.0617 3.1249 46.875 12.9382 46.875 24.9999C46.875 37.0616 37.0617 46.9242 25 46.9242ZM33.8383 16.1617C33.2281 15.5516 32.2391 15.5516 31.6289 16.1617L25 22.7906L18.3711 16.1617C17.7609 15.5516 16.7719 15.5516 16.1609 16.1617C15.5508 16.7719 15.5508 17.7609 16.1609 18.3711L22.7898 25L16.1609 31.6289C15.5508 32.2383 15.5508 33.229 16.1609 33.8383C16.7711 34.4485 17.7602 34.4485 18.3711 33.8383L25 27.2094L31.6289 33.8383C32.2391 34.4485 33.2281 34.4485 33.8383 33.8383C34.4484 33.229 34.4484 32.2383 33.8383 31.6289L27.2094 25L33.8383 18.3711C34.4492 17.7602 34.4492 16.7711 33.8383 16.1617Z"
+			fill="white"
+		/>
+	</svg>
+);
+
+const DairyFreeIcon = (
 	<svg
 		width="50"
 		height="50"
@@ -92,23 +114,7 @@ const DairyFree = (
 	</svg>
 );
 
-const Close = (
-	<svg
-		className="close-icon"
-		xmlns="http://www.w3.org/2000/svg"
-		width="40"
-		height="40"
-		viewBox="0 0 50 50"
-		fill="none"
-	>
-		<path
-			d="M25 0C11.193 0 0 11.193 0 25C0 38.8078 11.193 50 25 50C38.8078 50 50 38.8078 50 25C50 11.193 38.8078 0 25 0ZM25 46.9242C12.9383 46.9242 3.125 37.0617 3.125 24.9999C3.125 12.9382 12.9383 3.1249 25 3.1249C37.0617 3.1249 46.875 12.9382 46.875 24.9999C46.875 37.0616 37.0617 46.9242 25 46.9242ZM33.8383 16.1617C33.2281 15.5516 32.2391 15.5516 31.6289 16.1617L25 22.7906L18.3711 16.1617C17.7609 15.5516 16.7719 15.5516 16.1609 16.1617C15.5508 16.7719 15.5508 17.7609 16.1609 18.3711L22.7898 25L16.1609 31.6289C15.5508 32.2383 15.5508 33.229 16.1609 33.8383C16.7711 34.4485 17.7602 34.4485 18.3711 33.8383L25 27.2094L31.6289 33.8383C32.2391 34.4485 33.2281 34.4485 33.8383 33.8383C34.4484 33.229 34.4484 32.2383 33.8383 31.6289L27.2094 25L33.8383 18.3711C34.4492 17.7602 34.4492 16.7711 33.8383 16.1617Z"
-			fill="white"
-		/>
-	</svg>
-);
-
-const Facebook = (
+const FacebookIcon = (
 	<svg
 		className="facebook-icon"
 		xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +130,7 @@ const Facebook = (
 	</svg>
 );
 
-const GlutenFree = (
+const GlutenFreeIcon = (
 	<svg
 		width="50"
 		height="50"
@@ -153,7 +159,18 @@ const GlutenFree = (
 	</svg>
 );
 
-const Instagram = (
+const HamburgerIcon = (
+	<svg
+		className="hamburger-menu"
+		xmlns="http://www.w3.org/2000/svg"
+		height="1em"
+		viewBox="0 0 448 512"
+	>
+		<path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" />
+	</svg>
+);
+
+const InstagramIcon = (
 	<svg
 		className="instagram-icon"
 		xmlns="http://www.w3.org/2000/svg"
@@ -169,7 +186,7 @@ const Instagram = (
 	</svg>
 );
 
-const NutFree = (
+const NutFreeIcon = (
 	<svg
 		width="50"
 		height="50"
@@ -198,7 +215,7 @@ const NutFree = (
 	</svg>
 );
 
-const Phone = (
+const PhoneIcon = (
 	<svg
 		width="23"
 		height="35"
@@ -213,7 +230,7 @@ const Phone = (
 	</svg>
 );
 
-const Snapchat = (
+const SnapchatIcon = (
 	<svg
 		className="snapchat-icon"
 		xmlns="http://www.w3.org/2000/svg"
@@ -229,7 +246,7 @@ const Snapchat = (
 	</svg>
 );
 
-const TikTok = (
+const TikTokIcon = (
 	<svg
 		className="tiktok-icon"
 		xmlns="http://www.w3.org/2000/svg"
@@ -245,7 +262,7 @@ const TikTok = (
 	</svg>
 );
 
-const Vegan = (
+const VeganIcon = (
 	<svg
 		width="50"
 		height="50"
@@ -275,15 +292,18 @@ const Vegan = (
 );
 
 export const SvgIcons = {
-	BambooLeft,
-	BambooRight,
-	Close,
-	DairyFree,
-	Facebook,
-	GlutenFree,
-	Instagram,
-	NutFree,
-	Phone,
-	Snapchat,
-	TikTok,
+	BambooLeftIcon,
+	BambooRightIcon,
+	CartIcon,
+	CloseIcon,
+	DairyFreeIcon,
+	FacebookIcon,
+	GlutenFreeIcon,
+	HamburgerIcon,
+	InstagramIcon,
+	NutFreeIcon,
+	PhoneIcon,
+	SnapchatIcon,
+	TikTokIcon,
+	VeganIcon,
 };

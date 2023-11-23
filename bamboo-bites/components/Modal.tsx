@@ -137,7 +137,7 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
 						>
 							{/* <h3>{item}</h3> */}
 							<div className="close-btn" onClick={closeModal}>
-								{SvgIcons.Close}
+								{SvgIcons.CloseIcon}
 							</div>
 						</motion.header>
 						<motion.section className="modal-body" variants={childVariants}>
