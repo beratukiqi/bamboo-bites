@@ -1,73 +1,103 @@
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AppContext from "@/context/AppContext";
+import { useContext } from "react";
+import { motion } from "framer-motion";
 import { SvgIcons } from "./SvgIcons";
 
 const navItems = [
-	{
-		name: "Home",
-		path: "/",
-	},
-	{
-		name: "Menu",
-		path: "/menu",
-	},
-	{
-		name: "Contact",
-		path: "/contact",
-	},
-	{
-		name: "About",
-		path: "/about",
-	},
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Menu",
+    path: "/menu",
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+  },
+  {
+    name: "About",
+    path: "/about",
+  },
 ];
 
 const Header = () => {
-	// Add active class to the link that is currently active
-	const router = useRouter();
-	const path = router.pathname;
+  // Add active class to the link that is currently active
+  const router = useRouter();
+  const path = router.pathname;
+  const { cart, setCart } = useContext(AppContext);
+  const [cartQty, setCartQty] = useState(0);
 
-	const handleActivePath = (path: string, itemName: string) => {
-		if (path === "/" && itemName.toLowerCase() === "home") {
-			return "active";
-		}
+  useEffect(() => {
+    if (cart) {
+      let qty = 0;
 
-		let currPath = path.replace("/", "");
-		if (currPath === itemName.toLowerCase()) {
-			return "active";
-		}
+      cart.forEach((item) => {
+        qty += item.quantity;
+      });
 
-		return "";
-	};
+      setCartQty(qty);
+    }
+  }, [cart]);
 
-	useEffect(() => {
-		console.log(path);
-	}, [path]);
+  const handleActivePath = (path: string, itemName: string) => {
+    if (path === "/" && itemName.toLowerCase() === "home") {
+      return "active";
+    }
 
-	return (
-		<header className="header">
-			<nav className="desktop-nav">
-				<ul className="header__nav__links">
-					{navItems.map((item) => (
-						<li key={item.name}>
-							<Link
-								href={item.path}
-								className={handleActivePath(path, item.name)}
-							>
-								<p>{item.name}</p>
-							</Link>
-						</li>
-					))}
-				</ul>
-				<Link href={"/cart"} className="cart-icon">
-					{SvgIcons.CartIcon}
-				</Link>
-				{SvgIcons.HamburgerIcon}
-			</nav>
-			<HamburgerMenu />
-		</header>
-	);
+    let currPath = path.replace("/", "");
+    if (currPath === itemName.toLowerCase()) {
+      return "active";
+    }
+
+    return "";
+  };
+
+  useEffect(() => {
+    console.log(path);
+  }, [path]);
+
+  return (
+    <header className="header">
+      <nav className="desktop-nav">
+        <ul className="header__nav__links">
+          {navItems.map((item) => (
+            <li key={item.name}>
+              <Link
+                href={item.path}
+                className={handleActivePath(path, item.name)}
+              >
+                <p>{item.name}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <aside>
+          <Link href={"/cart"} className="cart-icon">
+            {SvgIcons.CartIcon}
+            {cartQty && (
+              <motion.span
+                key={cartQty}
+                animate={{ scale: 1 }}
+                initial={{ scale: 0.7 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="cart-qty"
+              >
+                {cartQty}
+              </motion.span>
+            )}
+          </Link>
+        </aside>
+        {SvgIcons.HamburgerIcon}
+      </nav>
+      <HamburgerMenu />
+    </header>
+  );
 };
 
 export default Header;

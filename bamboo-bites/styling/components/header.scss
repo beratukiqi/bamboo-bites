@@ -1,146 +1,167 @@
 @import "styling/variables.scss";
 
 .header {
-	width: 100%;
-	position: absolute;
-	top: 3rem;
-	z-index: 1;
+  width: 100%;
+  position: absolute;
+  top: 3rem;
+  z-index: 1001;
 
-	nav {
-		.header__nav__links {
-			display: flex;
-			flex-wrap: wrap;
-			list-style: none;
-			gap: 3rem;
-			justify-content: center;
-			position: relative;
+  nav {
+    .header__nav__links {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 3rem;
+      justify-content: center;
+      position: relative;
 
-			a {
-				display: flex;
-				align-items: center;
-				justify-content: space-evenly;
-				height: 100%;
-				width: 6rem;
-				letter-spacing: 0.3rem;
-				// remove underline
-				text-decoration: none;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+        width: 6rem;
+        letter-spacing: 0.3rem;
+        // remove underline
+        text-decoration: none;
 
-				&.active {
-					color: $color-main--red;
+        &.active {
+          color: $color-main--red;
 
-					p {
-						color: $color-main--red;
-					}
-				}
+          p {
+            color: $color-main--red;
+          }
+        }
 
-				&:hover {
-					transform: scale(1.2);
-					transition: transform 0.4s ease-in-out;
-				}
-			}
+        &:hover {
+          transform: scale(1.2);
+          transition: transform 0.4s ease-in-out;
+        }
+      }
 
-			p {
-				text-transform: uppercase;
-				color: white;
-				font-size: 1.3rem;
+      p {
+        text-transform: uppercase;
+        color: white;
+        font-size: 1.3rem;
 
-				&:active {
-					color: $color-main--red;
-				}
-			}
+        &:active {
+          color: $color-main--red;
+        }
+      }
 
-			@media screen and (max-width: $breakpoint-tablet) {
-				display: none;
-			}
-		}
+      @media screen and (max-width: $breakpoint-tablet) {
+        display: none;
+      }
+    }
 
-		.hamburger-menu {
-			width: 2rem;
-			height: 2rem;
-			fill: white;
-			position: absolute;
-			left: 2rem;
-			display: none;
-			cursor: pointer;
+    .hamburger-menu {
+      width: 2rem;
+      height: 2rem;
+      fill: white;
+      position: absolute;
+      left: 2rem;
+      display: none;
+      cursor: pointer;
 
-			@media screen and (max-width: $breakpoint-tablet) {
-				display: block;
-			}
+      @media screen and (max-width: $breakpoint-tablet) {
+        display: block;
+      }
 
-			@media screen and (max-width: $breakpoint-mobile) {
-				left: 1rem;
-			}
-		}
+      @media screen and (max-width: $breakpoint-mobile) {
+        left: 1rem;
+      }
+    }
 
-		.cart-icon {
-			position: absolute;
-			right: 4rem;
-			top: -0.5rem;
-			width: 3rem;
-			height: 3rem;
-			background-color: $color-main--red;
-			border-radius: 50%;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			cursor: pointer;
+    aside {
+      position: relative;
+      z-index: 9999999;
 
-			svg {
-				margin-top: 2px;
-				margin-right: 2px;
-				width: 1.5rem;
-				height: 1.5rem;
-				fill: white;
-			}
-			@media screen and (max-width: $breakpoint-tablet) {
-				right: 2rem;
-			}
-			@media screen and (max-width: $breakpoint-mobile) {
-				right: 1rem;
-			}
-		}
-	}
+      .cart-icon {
+        position: absolute;
+        right: 4rem;
+        top: -2.3rem;
+        width: 3rem;
+        height: 3rem;
+        background-color: $color-main--red;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        .cart-qty {
+          position: absolute;
+          width: 1.3rem;
+          height: 1.3rem;
+          background-color: white;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1rem;
+          color: $color-main--red;
+          top: 2rem;
+          right: 0rem;
+        }
+
+        svg {
+          position: absolute;
+          margin-top: 2px;
+          margin-right: 2px;
+          width: 1.5rem;
+          height: 1.5rem;
+          fill: white;
+        }
+        @media screen and (max-width: $breakpoint-tablet) {
+          right: 2rem;
+        }
+        @media screen and (max-width: $breakpoint-mobile) {
+          right: 1rem;
+        }
+      }
+    }
+  }
 }
 
 .hamburger-menu__icons {
-	margin: 1.5rem;
+  margin: 1.5rem;
 }
 
 .hamburger-menu {
-	display: none;
-	position: fixed;
-	top: 0;
+  display: none;
+  position: fixed;
+  top: 0;
 }
 
 .hamburger-menu.open {
-	background-color: black;
-	position: fixed;
-	top: 0;
-	width: 70%;
-	height: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  width: 70%;
+  height: 100%;
 }
 
 .hamburger-menu.open .hamburger-menu__links {
-	display: flex;
-	flex-direction: column;
-	list-style: none;
-	gap: 2rem;
-	padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 2rem;
+  padding-left: 2rem;
 
-	p {
-		text-transform: uppercase;
-		color: white;
-		font-size: 2rem;
-	}
+  p {
+    text-transform: uppercase;
+    color: white;
+    font-size: 2rem;
+  }
 }
 
 /* Media query för mobilvy */
 @media screen and (max-width: 768px) {
-	.desktop-nav {
-		display: none;
-	}
+  .desktop-nav {
+    display: none;
+  }
 
-	.hamburger-menu {
-		display: block;
-	}
+  .hamburger-menu {
+    display: block;
+  }
 }

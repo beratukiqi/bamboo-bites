@@ -3,6 +3,7 @@ import AppContext from "@/context/AppContext";
 import QtyButton from "./QtyButton";
 import { updateQuantity } from "@/functions/updateQuantity";
 import { QuantityChange } from "@/functions/updateQuantity";
+import { useRouter } from "next/router";
 
 interface OrderDetails {
   id: string;
@@ -19,6 +20,10 @@ interface OrderItemProps {
 }
 
 const CartItem = ({ item }: OrderItemProps) => {
+  const route = useRouter();
+  const path = route.pathname;
+  const orderpage = path === "/order/[orderNr]";
+
   const { setCart } = useContext(AppContext);
 
   const incrementQuantity = () => {
@@ -33,29 +38,45 @@ const CartItem = ({ item }: OrderItemProps) => {
     <article className="order-item">
       <img src={item.imgUrl} alt="noodles bowl" className="order-item__image" />
       <div className="order-item__text">
-        <h2 className="order-item__title">{item.item}</h2>
-        <span className="order-item__price">
-          <b>$</b>
-          {item.price}
-        </span>
-        <div className="order-item__quantity">
-          <QtyButton title="-" action={decrementQuantity} />
-          <span>{"QTY " + item.quantity}</span>
-          <QtyButton title="+" action={incrementQuantity} />
+        <div>
+          <h2 className="order-item__title">{item.item}</h2>
+          {item.tweaks && item.tweaks.length > 0 ? (
+            <ul className="order-item__tweaks">
+              {item.tweaks.map((tweak, index) => (
+                <li
+                  key={index}
+                  className={`order-item__tweaks-item ${
+                    tweak.includes("free") ? "" : "protein"
+                  }`}
+                >
+                  {tweak}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <ul className="order-item__tweaks">
+              <li className="order-item__tweaks-item --std">Standard</li>
+            </ul>
+          )}
+        </div>
+        {!orderpage ? (
+          <div className="order-item__quantity">
+            <QtyButton title="-" action={decrementQuantity} />
+            <span>{item.quantity}</span>
+            <QtyButton title="+" action={incrementQuantity} />
+          </div>
+        ) : (
+          <div className="order-item__quantity --orderpage">
+            <span>QTY: {item.quantity}</span>
+          </div>
+        )}
+        <div className="order-item__details">
+          <span className="order-item__price">
+            <b>$</b>
+            {item.price}
+          </span>
         </div>
       </div>
-      {item.tweaks && item.tweaks.length > 0 && (
-        <div className="order-item__tweaks">
-          <h4 className="order-item__tweaks-title">Tweaks</h4>
-          <ul className="order-item__tweaks-list">
-            {item.tweaks.map((tweak, index) => (
-              <li key={index} className="order-item__tweak">
-                {tweak}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
     </article>
   );
 };
