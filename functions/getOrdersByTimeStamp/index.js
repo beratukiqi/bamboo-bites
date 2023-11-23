@@ -5,21 +5,36 @@ import { sendResponse } from "../../responses";
 exports.handler = async (event) => {
   // const timestamp = JSON.parse(event.body.timeStamp);
   console.log("Event before", event);
-  const timestamp = "2023-11-21T08:49:44";
+  const timestampValue = "2023-11-21T08:49:44";
+  const statusValue = "pending";
   try {
     const command = new QueryCommand({
       TableName: "bamboo-bites-ordersDb",
-      IndexName: "timestampIndex",
-      KeyConditionExpression: "#timeStamp > :start",
+      IndexName: "filterIndex",
+      KeyConditionExpression:
+        "#status = :statusValue AND #timeStamp >= :timestampValue",
       ExpressionAttributeValues: {
-        ":start": "0",
+        ":statusValue": statusValue, // Replace with your actual status value
+        ":timestampValue": timestampValue,
       },
       ExpressionAttributeNames: {
+        "#status": "status",
         "#timeStamp": "timeStamp",
       },
-      ScanIndexForward: false, // Sort in descending order
-      Limit: 10, // Limit the result to 10 records
     });
+    // const command = new QueryCommand({
+    //   TableName: "bamboo-bites-ordersDb",
+    //   IndexName: "timestampIndex",
+    //   KeyConditionExpression: "#timeStamp > :start",
+    //   ExpressionAttributeValues: {
+    //     ":start": "0",
+    //   },
+    //   ExpressionAttributeNames: {
+    //     "#timeStamp": "timeStamp",
+    //   },
+    //   ScanIndexForward: false, // Sort in descending order
+    //   Limit: 10, // Limit the result to 10 records
+    // });
 
     const response = await docClient.send(command);
     const filteredOrders = response.Items;
@@ -31,7 +46,8 @@ exports.handler = async (event) => {
       success: true,
       message: "Retrieved orders by timestamp",
       filteredOrders: filteredOrders,
-      timestamp: timestamp,
+      timestamp: timestampValue,
+      statusValue,
       event,
     });
   } catch (error) {
@@ -40,7 +56,8 @@ exports.handler = async (event) => {
       success: false,
       message: "Unable to retreive orders by timestamp",
       error,
-      timestamp: timestamp,
+      timestamp: timestampValue,
+      statusValue,
       event,
     });
   }
