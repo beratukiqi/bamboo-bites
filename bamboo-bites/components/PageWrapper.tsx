@@ -1,15 +1,15 @@
-const PageWrapper = ({
-  children,
-  column,
-}: {
-  children: any;
-  column?: boolean;
-}) => {
-  return (
-    <main className={`page-wrapper ${column ? "hero col-2" : ""}`}>
-      {children}
-    </main>
-  );
+interface PageWrapperProps {
+	children: React.ReactNode;
+	column?: boolean;
+	id?: string;
+}
+
+const PageWrapper = ({ children, column, id }: PageWrapperProps) => {
+	return (
+		<main id={id} className={`page-wrapper ${column ? "hero col-2" : ""}`}>
+			{children}
+		</main>
+	);
 };
 
 export default PageWrapper;

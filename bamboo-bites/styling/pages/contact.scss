@@ -17,6 +17,12 @@
 // Margin-bottom verkar störa så att h2:an går upp i headern
 // vid mindre skärm. Kolla detta.
 
+#contact {
+	.hero__column:nth-child(1) {
+		padding-top: 9rem;
+	}
+}
+
 .address-map-container {
 	display: flex;
 	align-items: center;
