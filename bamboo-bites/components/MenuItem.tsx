@@ -8,6 +8,8 @@ interface MenuItemProps {
     price: number;
     desc: string;
     imgUrl: string;
+    protein: [];
+    tweaks?: string[];
   };
 }
 

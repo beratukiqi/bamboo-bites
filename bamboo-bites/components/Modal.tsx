@@ -32,12 +32,17 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
   const { cart, setCart } = useContext(AppContext);
   const { id, item, price, imgUrl, desc, protein } = food;
   const [tweaks, setTweaks] = useState<string[]>([]);
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     console.log(food.protein);
   }, []);
 
   const handleAddToCart = (foodItem: MenuItemProps) => {
+    setShowNotification(true);
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 1000);
     setCart((currentCart) => {
       // Generate a unique identifier for the food item
       const foodItemIdWithTweaks =
@@ -106,6 +111,7 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
 
       // If the item doesn't exist, add it to the cart
       console.log("Added to cart");
+
       return [...currentCart, { ...foodItem, quantity: 1 }];
     });
   };
@@ -149,6 +155,19 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
                 title="Add to cart"
                 action={() => handleAddToCart(food)}
               />
+              <AnimatePresence>
+                {showNotification && (
+                  <motion.span
+                    className="noticiation"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    Added to cart
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </motion.section>
           </motion.article>
         </motion.section>

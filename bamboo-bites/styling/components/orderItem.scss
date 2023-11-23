@@ -38,12 +38,16 @@
 
     &__tweaks {
       display: flex;
-      gap: 1rem;
+      gap: 0.6rem;
+
+      .protein {
+        background-color: rgb(10, 101, 104);
+      }
 
       &-item {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         background-color: rgb(209, 61, 61);
-        padding: 0.1rem 0.7rem;
+        padding: 0.2rem 0.5rem;
         border-radius: 0.2rem;
 
         &.--std {
@@ -75,6 +79,12 @@
       display: flex;
       margin-left: auto;
 
+      &.--orderpage {
+        span {
+          width: 4rem;
+        }
+      }
+
       button {
         background-color: transparent;
         color: white;
@@ -101,7 +111,7 @@
       }
       span {
         margin: auto 0;
-        width: 3rem;
+        width: 2rem;
         display: inline;
         text-align: center;
       }

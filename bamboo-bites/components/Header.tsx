@@ -1,7 +1,10 @@
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AppContext from "@/context/AppContext";
+import { useContext } from "react";
+import { motion } from "framer-motion";
 
 const navItems = [
   {
@@ -43,6 +46,20 @@ const Header = () => {
   // Add active class to the link that is currently active
   const router = useRouter();
   const path = router.pathname;
+  const { cart, setCart } = useContext(AppContext);
+  const [cartQty, setCartQty] = useState(0);
+
+  useEffect(() => {
+    if (cart) {
+      let qty = 0;
+
+      cart.forEach((item) => {
+        qty += item.quantity;
+      });
+
+      setCartQty(qty);
+    }
+  }, [cart]);
 
   const handleActivePath = (path: string, itemName: string) => {
     if (path === "/" && itemName.toLowerCase() === "home") {
@@ -76,9 +93,22 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        <Link href={"/cart"} className="cart-icon">
-          {cartIcon}
-        </Link>
+        <aside>
+          <Link href={"/cart"} className="cart-icon">
+            {cartIcon}
+            {cartQty && (
+              <motion.span
+                key={cartQty}
+                animate={{ scale: 1 }}
+                initial={{ scale: 0.7 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="cart-qty"
+              >
+                {cartQty}
+              </motion.span>
+            )}
+          </Link>
+        </aside>
         {hamBurgerIcon}
       </nav>
       <HamburgerMenu />

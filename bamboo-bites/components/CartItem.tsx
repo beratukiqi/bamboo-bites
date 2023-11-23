@@ -3,6 +3,7 @@ import AppContext from "@/context/AppContext";
 import QtyButton from "./QtyButton";
 import { updateQuantity } from "@/functions/updateQuantity";
 import { QuantityChange } from "@/functions/updateQuantity";
+import { useRouter } from "next/router";
 
 interface OrderDetails {
   id: string;
@@ -19,6 +20,10 @@ interface OrderItemProps {
 }
 
 const CartItem = ({ item }: OrderItemProps) => {
+  const route = useRouter();
+  const path = route.pathname;
+  const orderpage = path === "/order/[orderNr]";
+
   const { setCart } = useContext(AppContext);
 
   const incrementQuantity = () => {
@@ -38,7 +43,12 @@ const CartItem = ({ item }: OrderItemProps) => {
           {item.tweaks && item.tweaks.length > 0 ? (
             <ul className="order-item__tweaks">
               {item.tweaks.map((tweak, index) => (
-                <li key={index} className="order-item__tweaks-item">
+                <li
+                  key={index}
+                  className={`order-item__tweaks-item ${
+                    tweak.includes("free") ? "" : "protein"
+                  }`}
+                >
                   {tweak}
                 </li>
               ))}
@@ -49,11 +59,17 @@ const CartItem = ({ item }: OrderItemProps) => {
             </ul>
           )}
         </div>
-        <div className="order-item__quantity">
-          <QtyButton title="-" action={decrementQuantity} />
-          <span>{item.quantity}</span>
-          <QtyButton title="+" action={incrementQuantity} />
-        </div>
+        {!orderpage ? (
+          <div className="order-item__quantity">
+            <QtyButton title="-" action={decrementQuantity} />
+            <span>{item.quantity}</span>
+            <QtyButton title="+" action={incrementQuantity} />
+          </div>
+        ) : (
+          <div className="order-item__quantity --orderpage">
+            <span>QTY: {item.quantity}</span>
+          </div>
+        )}
         <div className="order-item__details">
           <span className="order-item__price">
             <b>$</b>
