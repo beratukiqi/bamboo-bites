@@ -13,3 +13,30 @@
 .delivery-status {
     color: #FC5FFF;
 }
+
+table {
+    width: 50%;
+    background-color: #161717;
+    border-collapse: collapse;
+    margin: 8rem;
+    border: none;
+    border-radius: 25px;
+    text-align: left;
+    color: white;
+    padding: 2rem;
+}
+
+thead {
+    color: #8A8A8A
+}
+
+th, td {
+    padding: 8px;
+    border: none;
+}
+
+tr:hover {
+    background-color: #8A8A8A;
+    border: nonen;
+    cursor: pointer;
+}
