@@ -23,9 +23,11 @@ interface Order {
 
 interface OrderModalProps {
   orderItem: Order;
+  isOpen: boolean;
+  closeModal: () => void;
 }
 
-const OrderModal = ({ orderItem }: OrderModalProps) => {
+const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   const [orderData, setOrderData] = useState<Order>(orderItem);
 
   const getNextStatus = (
@@ -86,28 +88,38 @@ const OrderModal = ({ orderItem }: OrderModalProps) => {
 
   return (
     orderData && (
-      <>
-        {orderData.status && <h2>{orderData.status}</h2>}
-        <p>
-          Order number: <span>{orderData.orderNr}</span>
-        </p>
-        <p>
-          Time stamp: <span>{orderData.timeStamp}</span>
-        </p>
-        <p>
-          Delivery method: <span>{orderData.deliveryMethod}</span>
-        </p>
+      <section className="modal" onClick={closeModal}>
+        <article className="modal-content" onClick={(e) => e.stopPropagation()}>
+          <button onClick={closeModal}>CLOSE</button>
+          {orderData.status && <h2>{orderData.status}</h2>}
+          <p>
+            Order number: <span>{orderData.orderNr}</span>
+          </p>
+          <p>
+            Time stamp: <span>{orderData.timeStamp}</span>
+          </p>
+          <p>
+            Delivery method: <span>{orderData.deliveryMethod}</span>
+          </p>
 
-        <OrderList data={orderData} admin />
+          <OrderList data={orderData} admin />
 
-        <section className="admin-modal__details">
-          <div>
-            <p>Total:</p>
-            <p>${orderData.totalPrice}</p>
-          </div>
-          <p>Qty: {getQuantity(orderData.order)}</p>
-        </section>
-        {shouldShowStatusButton(orderData.status) && (
+          <section className="admin-modal__details">
+            <div>
+              <p>Total:</p>
+              <p>${orderData.totalPrice}</p>
+            </div>
+            <p>Qty: {getQuantity(orderData.order)}</p>
+          </section>
+          {shouldShowStatusButton(orderData.status) && (
+            <Button
+              title={`CHANGE TO ${getNextStatus(
+                orderData.status,
+                orderData.deliveryMethod
+              ).toUpperCase()}`}
+              action={changeStatus}
+            />
+          )}
           <Button
             title={`CHANGE TO ${getNextStatus(
               orderData.status,
@@ -115,15 +127,8 @@ const OrderModal = ({ orderItem }: OrderModalProps) => {
             ).toUpperCase()}`}
             action={changeStatus}
           />
-        )}
-        <Button
-          title={`CHANGE TO ${getNextStatus(
-            orderData.status,
-            orderData.deliveryMethod
-          ).toUpperCase()}`}
-          action={changeStatus}
-        />
-      </>
+        </article>
+      </section>
     )
   );
 };
