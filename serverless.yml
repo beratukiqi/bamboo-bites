@@ -52,6 +52,12 @@ functions:
       - httpApi: 
           path: "/api/filteredOrders"
           method: GET
+  updateOrderStatus:
+    handler: functions/updateOrderStatus/index.handler
+    events:
+      - httpApi: 
+          path: "/api/updateOrderStatus"
+          method: POST
 
 resources: 
   Resources:
