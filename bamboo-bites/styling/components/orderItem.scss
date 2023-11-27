@@ -39,20 +39,18 @@
     &__tweaks {
       display: flex;
       gap: 0.6rem;
+      font-size: 0.7rem;
 
-      .protein {
+      &--protein {
         background-color: rgb(10, 101, 104);
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.2rem;
       }
 
-      &-item {
-        font-size: 0.7rem;
+      &--allergen {
         background-color: rgb(209, 61, 61);
         padding: 0.2rem 0.5rem;
         border-radius: 0.2rem;
-
-        &.--std {
-          background-color: rgb(10, 101, 104);
-        }
       }
     }
 

@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import ContentWrapper from "./ContentWrapper";
 
+interface Tweaks {
+  allergens: { [key: string]: boolean };
+  protein: string;
+}
+
 interface MenuItemProps {
   variations: string[];
-  setTweaks: (tweaks: string[]) => void;
+  setTweaks: (tweaks: Tweaks) => void;
 }
 
 const ItemVariations = ({ variations, setTweaks }: MenuItemProps) => {
-  const [selectedProtein, setSelectedProtein] = useState("");
+  const [selectedProtein, setSelectedProtein] = useState<string>("");
   const variationsData = categorizeVariations(variations);
-  const [checkedItems, setCheckedItems] = useState(
+
+  const [checkedItems, setCheckedItems] = useState<{ [key: string]: boolean }>(
     variationsData.allergens.reduce((acc: any, item) => {
       acc[item] = false;
       return acc;
@@ -32,14 +38,23 @@ const ItemVariations = ({ variations, setTweaks }: MenuItemProps) => {
     });
   };
 
-  const updateTweaks = (protein: string, allergens: any) => {
-    const activeAllergens = Object.keys(allergens).filter(
-      (item) => allergens[item] === true
-    );
-
-    const tweaks = protein ? [protein, ...activeAllergens] : activeAllergens;
-    setTweaks(tweaks);
+  const updateTweaks = (
+    protein: string,
+    allergens: { [key: string]: boolean }
+  ) => {
+    setTweaks({ protein, allergens });
   };
+
+  // Categorize variations on mount
+  useEffect(() => {
+    const variationsData = categorizeVariations(variations);
+    setCheckedItems(
+      variationsData.allergens.reduce((acc: any, item) => {
+        acc[item] = false;
+        return acc;
+      }, {})
+    );
+  }, [variations]);
 
   function categorizeVariations(variations: string[]) {
     const proteins: string[] = [];

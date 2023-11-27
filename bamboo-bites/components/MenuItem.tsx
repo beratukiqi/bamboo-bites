@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Modal from "./Modal";
+import Button from "./Button";
+import { SvgIcons } from "./SvgIcons";
+import AppContext from "@/context/AppContext";
 
 interface MenuItemProps {
   food: {
@@ -16,6 +19,21 @@ interface MenuItemProps {
 const MenuItem = ({ food }: MenuItemProps) => {
   const { id, item, price, imgUrl, desc } = food;
   const [modalOpen, setModalOpen] = useState(false);
+  const { cart, setCart } = useContext(AppContext);
+
+  const handleAddItem = (event: any) => {
+    event.stopPropagation();
+    const itemInCart = cart.find((item) => item.id === id);
+    if (itemInCart) {
+      setCart(
+        cart.map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...food, quantity: 1 }]);
+    }
+  };
 
   return (
     <>
@@ -36,6 +54,9 @@ const MenuItem = ({ food }: MenuItemProps) => {
           <b>$</b>
           {price}
         </span>
+        <button onClick={handleAddItem} className="menu-item__addBtn">
+          {SvgIcons.AddIcon}
+        </button>
       </article>
       <Modal
         isOpen={modalOpen}

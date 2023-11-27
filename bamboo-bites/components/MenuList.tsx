@@ -6,11 +6,10 @@ interface MenuItemProps {
   price: number;
   desc: string;
   imgUrl: string;
+  protein: [];
 }
 
 const MenuList = ({ data }: { data: MenuItemProps[] }) => {
-
-
   return (
     data &&
     data.map((food: MenuItemProps, index: number) => (

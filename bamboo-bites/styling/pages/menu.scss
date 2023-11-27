@@ -26,6 +26,15 @@
 		gap: 2rem;
 		// max-width: 40rem;
 		padding-bottom: 1rem;
+
+		&:hover {
+			cursor: pointer;
+			margin-left: 0.2rem;
+			// background-color: rgba(31, 31, 31, 0.274);
+			// color: $color-main--red;
+			border-radius: 0.5rem;
+			transition: all 0.2s ease-in-out;
+		}
 	}
 
 	&__image {
@@ -55,11 +64,39 @@
 	}
 
 	&__price {
+		margin: auto;
 		font-size: 2.5rem;
 
 		b {
 			margin-left: 0.4rem;
 			font-weight: 300;
+		}
+	}
+
+	&__addBtn {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 0.2rem;
+		border: none;
+		margin: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: transparent;
+
+		&:hover {
+			background-color: white;
+			cursor: pointer;
+
+			svg {
+				fill: black;
+			}
+		}
+
+		svg {
+			fill: white;
+			width: 1.5rem;
+			height: 1.5rem;
 		}
 	}
 }
