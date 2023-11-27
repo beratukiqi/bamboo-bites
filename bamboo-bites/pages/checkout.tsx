@@ -18,14 +18,16 @@ const Checkout = () => {
 
   const sendOrder = async () => {
     // If an orderNr exists, it will be added to the headers.
-    // orderNr in Headers will determine if the order is new or an update.    
+    // orderNr in Headers will determine if the order is new or an update.
     const headers = {
       "Content-Type": "application/json",
       ...(typeof orderNr === "string" && { orderNr }),
-      ...(orderDetails && { "X-Order-Delivery-Method": orderDetails.deliveryMethod }),
+      ...(orderDetails && {
+        "X-Order-Delivery-Method": orderDetails.deliveryMethod,
+      }),
       ...(orderDetails && { "X-Order-Status": orderDetails.status }),
     };
- 
+
     // Sends a POST request to the API with the cart data
     const res = await fetch(
       "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/putOrder",
@@ -50,7 +52,7 @@ const Checkout = () => {
       />
       <PageColumn title="Your Order Awaits!">
         <ContentWrapper title="Order items">
-          <OrderList data={cart} />
+          <OrderList data={cart} editable />
           <TotalPrice />
         </ContentWrapper>
 

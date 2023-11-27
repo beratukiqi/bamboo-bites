@@ -1,0 +1,14 @@
+.admin-modal {
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    div {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  }
+}

@@ -36,7 +36,7 @@ const Cart = () => {
         title={cart.length === 0 ? "Your cart is empty" : "Your cart"}
       >
         <ContentWrapper title="Cart items">
-          <OrderList data={cart} />
+          <OrderList data={cart} editable />
         </ContentWrapper>
         <Button
           title="Go to Checkout"
