@@ -12,7 +12,12 @@ interface OrderDetails {
   desc: string;
   imgUrl: string;
   quantity: number;
-  tweaks?: string[];
+  tweaks?: TweakProps;
+}
+
+interface TweakProps {
+  allergens: { [key: string]: boolean };
+  protein: string;
 }
 
 interface OrderItemProps {
@@ -40,24 +45,26 @@ const CartItem = ({ item }: OrderItemProps) => {
       <div className="order-item__text">
         <div>
           <h2 className="order-item__title">{item.item}</h2>
-          {item.tweaks && item.tweaks.length > 0 ? (
-            <ul className="order-item__tweaks">
-              {item.tweaks.map((tweak, index) => (
+
+          <ul className="order-item__tweaks">
+            {/* Render protein tweak */}
+            <li className="order-item__tweaks--protein">
+              {item.tweaks?.protein ? item.tweaks.protein : "Standard"}
+            </li>
+
+            {/* Render allergens tweaks */}
+            {item.tweaks?.allergens &&
+              Object.entries(item.tweaks.allergens).map(([key, value]) => (
                 <li
-                  key={index}
-                  className={`order-item__tweaks-item ${
-                    tweak.includes("free") ? "" : "protein"
+                  key={key}
+                  className={`order-item__tweaks--allergen ${
+                    value ? "--active" : ""
                   }`}
                 >
-                  {tweak}
+                  {key}
                 </li>
               ))}
-            </ul>
-          ) : (
-            <ul className="order-item__tweaks">
-              <li className="order-item__tweaks-item --std">Standard</li>
-            </ul>
-          )}
+          </ul>
         </div>
         {!orderpage ? (
           <div className="order-item__quantity">
