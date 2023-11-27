@@ -22,13 +22,10 @@ interface TweakProps {
 
 interface OrderItemProps {
   item: OrderDetails;
+  editable?: boolean;
 }
 
-const CartItem = ({ item }: OrderItemProps) => {
-  const route = useRouter();
-  const path = route.pathname;
-  const orderpage = path === "/order/[orderNr]";
-
+const CartItem = ({ item, editable }: OrderItemProps) => {
   const { setCart } = useContext(AppContext);
 
   const incrementQuantity = () => {
@@ -66,7 +63,7 @@ const CartItem = ({ item }: OrderItemProps) => {
               ))}
           </ul>
         </div>
-        {!orderpage ? (
+        {editable ? (
           <div className="order-item__quantity">
             <QtyButton title="-" action={decrementQuantity} />
             <span>{item.quantity}</span>
