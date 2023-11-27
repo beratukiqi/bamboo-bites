@@ -81,17 +81,22 @@ resources:
         AttributeDefinitions:
           - AttributeName: orderNr
             AttributeType: N
-          - AttributeName: timeStamp
+          - AttributeName: status
             AttributeType: S
+          - AttributeName: timeStamp
+            AttributeType: S           
         KeySchema:
           - AttributeName: orderNr
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
         GlobalSecondaryIndexes:
-          - IndexName: 'timestampIndex'
+          - IndexName: 'filterIndex'
             KeySchema:
-              - AttributeName: timeStamp
+              - AttributeName: status
                 KeyType: HASH
+              - AttributeName: timeStamp
+                KeyType: RANGE
             Projection: 
               ProjectionType: ALL
+
               
