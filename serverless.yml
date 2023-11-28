@@ -46,12 +46,12 @@ functions:
       - httpApi: 
           path: "/api/cancelOrder/{orderNr}"
           method: DELETE
-  getOrdersByTimeStamp:
-    handler: functions/getOrdersByTimeStamp/index.handler
+  filterOrders:
+    handler: functions/filterOrders/index.handler
     events:
-      - httpApi: 
-          path: "/api/filteredOrders"
-          method: GET
+      - httpApi:
+          path: "/api/filterOrders/{status}"
+          method: get
   updateOrderStatus:
     handler: functions/updateOrderStatus/index.handler
     events:

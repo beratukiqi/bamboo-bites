@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import OrderItemAdmin from "./OrderItemAdmin";
 
 interface OrderProps {
@@ -7,27 +8,6 @@ interface OrderProps {
 }
 
 const OrderTable = ({ orders }: { orders: OrderProps[] }) => {
-  const styleStatus = (status: string) => {
-    console.log("style", status);
-
-    switch (status) {
-      case "pending":
-        return "pending-status";
-      case "cooking":
-        return "cooking-status";
-      case "pick-up":
-        return "pickUp-status";
-      case "delivery":
-        return "delivery-status";
-      case "picked-up":
-        return "pickUp-status";
-      case "delivered":
-        return "delivery-status";
-      default:
-        return "";
-    }
-  };
-
   return (
     <table>
       <thead>
