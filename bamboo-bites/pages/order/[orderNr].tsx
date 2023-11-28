@@ -21,6 +21,7 @@ const SingleOrderPage = () => {
   const router = useRouter();
   const { orderNr } = router.query;
   const [orderData, setOrderData] = useState<OrderDetail[]>([]);
+  const [orderStatus, setOrderStatus] = useState("")
   const [showModal, setShowModal] = useState(false);
 
   // Fetches order data on mount and sets it to state
@@ -30,13 +31,18 @@ const SingleOrderPage = () => {
         `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/order/${orderNr}`
       );
       const data = await res.json();
+      console.log(data.order?.status);
+      
       setOrderData(data.order?.order);
+      setOrderStatus(data.order?.status)
     };
     fetchOrderData();
   }, [orderNr]);
 
   useEffect(() => {
     console.log(orderData);
+    console.log(orderStatus);
+    
   }, []);
 
   const editOrder = () => {
@@ -79,8 +85,12 @@ const SingleOrderPage = () => {
       />
       <PageColumn title={`Your order: ${orderNr}`}>
         <OrderList data={orderData} />
-        <Button title="EDIT ORDER" action={editOrder} />
-        <Button title="CANCEL ORDER" action={cancelOrder} />
+        {
+          orderStatus === "pending" ? ( <>
+            <Button title="EDIT ORDER" action={editOrder} />
+            <Button title="CANCEL ORDER" action={cancelOrder} />
+          </>) : (<p>You order is: {orderStatus}</p>)
+        }
       </PageColumn>
 
       {/*Modal*/}
