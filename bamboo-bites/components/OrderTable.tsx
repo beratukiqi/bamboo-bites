@@ -7,7 +7,7 @@ interface OrderProps {
   status: string;
 }
 
-const OrderTable = ({ orders }: { orders: OrderProps[] }) => {
+const OrderTable = ({ orders, status }: { orders: OrderProps[] }) => {
   const [activeOrder, setActiveOrder] = useState(null);
 
   const openModal = (order: any) => {
@@ -20,6 +20,8 @@ const OrderTable = ({ orders }: { orders: OrderProps[] }) => {
 
   return (
     <table>
+      <thead>
+      <tr><th className="table-header">{status}</th></tr></thead>
       <thead>
         <tr>
           <th>Order Number</th>

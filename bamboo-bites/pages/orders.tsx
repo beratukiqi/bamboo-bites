@@ -1,5 +1,4 @@
 import OrderTable from "@/components/OrderTable";
-import PageColumn from "@/components/PageColumn";
 import PageWrapper from "@/components/PageWrapper";
 import { useEffect, useState } from "react";
 
@@ -61,7 +60,7 @@ const Orders = () => {
     <PageWrapper id="admin">
       <section className="table-wrapper">
         {statusList.map((status) => (
-          <OrderTable key={status} orders={ordersByStatus[status] || []} />
+          <OrderTable key={status} status={status} orders={ordersByStatus[status] || []} />
         ))}
       </section>
       <section className="berattest"></section>

@@ -29,14 +29,19 @@ thead {
   color: #8a8a8a;
 }
 
+.table-header {
+  text-transform:capitalize;
+  color: white;
+  font-size: 20px;
+  margin: 2rem;
+}
+
 th,
 td {
   padding: 8px;
-  border: none;
 }
 
-tr:hover {
+tbody tr:hover {
   background-color: #8a8a8a;
-  border: nonen;
   cursor: pointer;
 }
