@@ -22,11 +22,11 @@ const OrderItemAdmin = ({
         return "pending-status";
       case "cooking":
         return "cooking-status";
-      case "pick-up":
+      case "ready for pickup":
         return "pickUp-status";
-      case "delivery":
+      case "ready for delivery":
         return "delivery-status";
-      case "picked-up":
+      case "picked up":
         return "pickUp-status";
       case "delivered":
         return "delivery-status";

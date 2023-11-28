@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useState } from "react";
 import OrderItemAdmin from "./OrderItemAdmin";
 
 interface OrderProps {
