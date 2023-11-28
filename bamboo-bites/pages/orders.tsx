@@ -1,4 +1,6 @@
 import OrderTable from "@/components/OrderTable";
+import PageColumn from "@/components/PageColumn";
+import PageWrapper from "@/components/PageWrapper";
 import { useEffect, useState } from "react";
 
 interface Order {
@@ -8,51 +10,60 @@ interface Order {
 }
 
 const Orders = () => {
-    const today = new Date();
-    const todaysDate = today.toISOString().split("T")[0] + "T00:00:00";
-    // const todaysDate = "2023-11-23T00:00:00"
-    const statusList = ["pending", "cooking", "ready for pickup", "ready for delivery", "picked up", "delivered"];
+  const today = new Date();
+  const todaysDate = today.toISOString().split("T")[0] + "T00:00:00";
+  // const todaysDate = "2023-11-23T00:00:00"
+  const statusList = [
+    "pending",
+    "cooking",
+    "ready for pickup",
+    "ready for delivery",
+    "picked up",
+    "delivered",
+  ];
 
-    const [ordersByStatus, setOrdersByStatus] = useState<{ [status: string]: Order[] }>({});
+  const [ordersByStatus, setOrdersByStatus] = useState<{
+    [status: string]: Order[];
+  }>({});
 
-    const fetchOrdersByStatus = async (status: string) => {
+  const fetchOrdersByStatus = async (status: string) => {
     try {
-        const response = await fetch(
+      const response = await fetch(
         `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/filterOrders/${status}?timeStamp=${todaysDate}`,
         {
-            method: "GET",
-            headers: {
+          method: "GET",
+          headers: {
             "Content-Type": "application/json",
-            },
+          },
         }
-        );
-        const data = await response.json();
-        console.log(status, data.filteredOrders);
+      );
+      const data = await response.json();
+      console.log(status, data.filteredOrders);
 
-        setOrdersByStatus((prevOrders) => ({
+      setOrdersByStatus((prevOrders) => ({
         ...prevOrders,
         [status]: data.filteredOrders,
-        }));
+      }));
     } catch (error) {
-        console.error(error, `Failed to fetch ${status} orders`);
+      console.error(error, `Failed to fetch ${status} orders`);
     }
-    };
+  };
 
-    useEffect(() => {
+  useEffect(() => {
     statusList.forEach((status) => fetchOrdersByStatus(status));
-    }, []);
+  }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     console.log(ordersByStatus);
-    }, [ordersByStatus]);
+  }, [ordersByStatus]);
 
-    return (
+  return (
     <>
-        {statusList.map((status) => (
+      {statusList.map((status) => (
         <OrderTable key={status} orders={ordersByStatus[status] || []} />
-        ))}
+      ))}
     </>
-    );
+  );
 };
 
 export default Orders;

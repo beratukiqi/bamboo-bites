@@ -1,42 +1,42 @@
 .pending-status {
-    color: #5FA5FF;
+  color: #5fa5ff;
 }
 
 .cooking-status {
-    color: #FF4E4E;
+  color: #ff4e4e;
 }
 
 .pickUp-status {
-    color: #A6FF5F;
+  color: #a6ff5f;
 }
 
 .delivery-status {
-    color: #FC5FFF;
+  color: #fc5fff;
 }
 
 table {
-    width: 50%;
-    background-color: #161717;
-    border-collapse: collapse;
-    margin: 8rem;
-    border: none;
-    border-radius: 25px;
-    text-align: left;
-    color: white;
-    padding: 2rem;
+  width: 50%;
+  background-color: #161717;
+  border-collapse: collapse;
+  border: none;
+  border-radius: 25px;
+  text-align: left;
+  color: white;
+  padding: 2rem;
 }
 
 thead {
-    color: #8A8A8A
+  color: #8a8a8a;
 }
 
-th, td {
-    padding: 8px;
-    border: none;
+th,
+td {
+  padding: 8px;
+  border: none;
 }
 
 tr:hover {
-    background-color: #8A8A8A;
-    border: nonen;
-    cursor: pointer;
+  background-color: #8a8a8a;
+  border: nonen;
+  cursor: pointer;
 }

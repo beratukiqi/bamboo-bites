@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useState } from "react";
 import OrderItemAdmin from "./OrderItemAdmin";
 
 interface OrderProps {
@@ -8,6 +9,16 @@ interface OrderProps {
 }
 
 const OrderTable = ({ orders }: { orders: OrderProps[] }) => {
+  const [activeOrder, setActiveOrder] = useState(null);
+
+  const openModal = (order: any) => {
+    setActiveOrder(order);
+  };
+
+  const closeModal = () => {
+    setActiveOrder(null);
+  };
+
   return (
     <table>
       <thead>
@@ -20,7 +31,13 @@ const OrderTable = ({ orders }: { orders: OrderProps[] }) => {
       <tbody>
         {orders &&
           orders.map((order) => (
-            <OrderItemAdmin order={order} key={order.orderNr} />
+            <OrderItemAdmin
+              key={order.orderNr}
+              order={order}
+              isOpen={activeOrder === order}
+              openModal={() => openModal(order)}
+              closeModal={closeModal}
+            />
           ))}
       </tbody>
     </table>
