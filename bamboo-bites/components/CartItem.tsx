@@ -40,7 +40,7 @@ const CartItem = ({ item, editable }: OrderItemProps) => {
     <article className="order-item">
       <img src={item.imgUrl} alt="noodles bowl" className="order-item__image" />
       <div className="order-item__text">
-        <div>
+        <div className="order-item__header">
           <h2 className="order-item__title">{item.item}</h2>
 
           <ul className="order-item__tweaks">

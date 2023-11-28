@@ -1,3 +1,4 @@
+import { useState } from "react";
 import OrderItemAdmin from "./OrderItemAdmin";
 
 interface OrderProps {
@@ -7,25 +8,14 @@ interface OrderProps {
 }
 
 const OrderTable = ({ orders }: { orders: OrderProps[] }) => {
-  const styleStatus = (status: string) => {
-    console.log("style", status);
+  const [activeOrder, setActiveOrder] = useState(null);
 
-    switch (status) {
-      case "pending":
-        return "pending-status";
-      case "cooking":
-        return "cooking-status";
-      case "pick-up":
-        return "pickUp-status";
-      case "delivery":
-        return "delivery-status";
-      case "picked-up":
-        return "pickUp-status";
-      case "delivered":
-        return "delivery-status";
-      default:
-        return "";
-    }
+  const openModal = (order: any) => {
+    setActiveOrder(order);
+  };
+
+  const closeModal = () => {
+    setActiveOrder(null);
   };
 
   return (
@@ -40,7 +30,13 @@ const OrderTable = ({ orders }: { orders: OrderProps[] }) => {
       <tbody>
         {orders &&
           orders.map((order) => (
-            <OrderItemAdmin order={order} key={order.orderNr} />
+            <OrderItemAdmin
+              key={order.orderNr}
+              order={order}
+              isOpen={activeOrder === order}
+              openModal={() => openModal(order)}
+              closeModal={closeModal}
+            />
           ))}
       </tbody>
     </table>

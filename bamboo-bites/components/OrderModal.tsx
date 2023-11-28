@@ -1,6 +1,8 @@
 import Button from "@/components/Button";
 import { useEffect, useState } from "react";
 import OrderList from "./OrderList";
+import ReactDOM from "react-dom";
+import ContentWrapper from "./ContentWrapper";
 
 interface OrderDetail {
   id: string;
@@ -86,31 +88,40 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
     return order.reduce((acc, curr) => acc + curr.quantity, 0);
   };
 
-  return (
-    orderData && (
-      <section className="modal" onClick={closeModal}>
-        <article className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <button onClick={closeModal}>CLOSE</button>
-          {orderData.status && <h2>{orderData.status}</h2>}
+  if (!isOpen) return null;
+
+  const modalContent = (
+    <section className="admin-modal">
+      <article>
+        <button onClick={closeModal}>CLOSE</button>
+        {orderData.status && <h2>{orderData.status}</h2>}
+        <section className="admin-modal__orderInfo">
           <p>
             Order number: <span>{orderData.orderNr}</span>
           </p>
           <p>
-            Time stamp: <span>{orderData.timeStamp}</span>
+            Delivery method:{" "}
+            <span>
+              {orderData.deliveryMethod ? orderData.deliveryMethod : "Unknown"}
+            </span>
           </p>
           <p>
-            Delivery method: <span>{orderData.deliveryMethod}</span>
+            {/* : <span>{orderData.timeStamp}</span> */}
+            Order time: <span>{orderData.timeStamp}</span>
           </p>
+        </section>
 
-          <OrderList data={orderData} admin />
+        <OrderList data={orderData} admin />
 
-          <section className="admin-modal__details">
-            <div>
-              <p>Total:</p>
-              <p>${orderData.totalPrice}</p>
-            </div>
-            <p>Qty: {getQuantity(orderData.order)}</p>
-          </section>
+        <section className="admin-modal__details">
+          <div>
+            <p>Total:</p>
+            <p>${orderData.totalPrice}</p>
+          </div>
+          <p>Qty: {getQuantity(orderData.order)}</p>
+        </section>
+        <section className="admin-modal__buttons">
+          <Button title={"BACK"} action={changeStatus} />
           {shouldShowStatusButton(orderData.status) && (
             <Button
               title={`CHANGE TO ${getNextStatus(
@@ -120,17 +131,17 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
               action={changeStatus}
             />
           )}
-          <Button
-            title={`CHANGE TO ${getNextStatus(
-              orderData.status,
-              orderData.deliveryMethod
-            ).toUpperCase()}`}
-            action={changeStatus}
-          />
-        </article>
-      </section>
-    )
+        </section>
+      </article>
+    </section>
   );
+
+  const targetElement = document.querySelector(".berattest");
+
+  // Render the modal content inside the target element using a Portal
+  return targetElement
+    ? ReactDOM.createPortal(modalContent, targetElement)
+    : null;
 };
 
 export default OrderModal;

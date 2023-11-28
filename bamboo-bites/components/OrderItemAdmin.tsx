@@ -1,9 +1,19 @@
 import { useState } from "react";
 import OrderModal from "./OrderModal";
 
-const OrderItemAdmin = ({ order }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => setIsOpen(false);
+interface OrderItemAdminProps {
+  order: any;
+  isOpen: boolean;
+  openModal: () => void;
+  closeModal: () => void;
+}
+
+const OrderItemAdmin = ({
+  order,
+  isOpen,
+  openModal,
+  closeModal,
+}: OrderItemAdminProps) => {
   const styleStatus = (status: string) => {
     console.log("style", status);
 
@@ -26,13 +36,13 @@ const OrderItemAdmin = ({ order }) => {
   };
   return (
     <>
-      <tr onClick={() => setIsOpen(true)} key={order.orderNr}>
+      <tr onClick={openModal} key={order.orderNr}>
         <td>{order.orderNr}</td>
         <td>{order.timeStamp}</td>
         <td className={styleStatus(order.status)}>{order.status}</td>
       </tr>
       {isOpen && (
-        <OrderModal isOpen={isOpen} closeModal={closeModal} orderItem={order} />
+        <OrderModal isOpen={isOpen} orderItem={order} closeModal={closeModal} />
       )}
     </>
   );
