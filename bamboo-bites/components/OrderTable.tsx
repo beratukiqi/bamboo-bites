@@ -25,6 +25,7 @@ const OrderTable = ({ orders, status }: { orders: OrderProps[] }) => {
       <thead>
         <tr>
           <th>Order Number</th>
+          <th>Date</th>
           <th>Time</th>
           <th>Status</th>
         </tr>

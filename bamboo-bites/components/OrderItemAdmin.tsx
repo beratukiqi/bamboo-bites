@@ -15,7 +15,6 @@ const OrderItemAdmin = ({
   closeModal,
 }: OrderItemAdminProps) => {
   const styleStatus = (status: string) => {
-    console.log("style", status);
 
     switch (status) {
       case "pending":
@@ -34,11 +33,17 @@ const OrderItemAdmin = ({
         return "";
     }
   };
+
+  const timeStamp = order.timeStamp.split("T");
+  const date = timeStamp[0];
+  const time = timeStamp[1]
+
   return (
     <>
       <tr onClick={openModal} key={order.orderNr}>
         <td>{order.orderNr}</td>
-        <td>{order.timeStamp}</td>
+        <td>{date}</td>
+        <td>{time}</td>
         <td className={styleStatus(order.status)}>{order.status}</td>
       </tr>
       {isOpen && (
