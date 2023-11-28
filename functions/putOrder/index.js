@@ -72,6 +72,7 @@ exports.handler = async (event) => {
         totalPrice: totalPrice,
         order: order,
         status: status,
+        deliveryMethod: deliveryMethod,
       },
     });
 

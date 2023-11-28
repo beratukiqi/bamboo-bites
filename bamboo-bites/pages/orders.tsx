@@ -10,7 +10,8 @@ interface Order {
 const Orders = () => {
     const today = new Date();
     const todaysDate = today.toISOString().split("T")[0] + "T00:00:00";
-    const statusList = ["pending", "cooking", "pick-up", "delivery", "picked-up", "delivered"];
+    // const todaysDate = "2023-11-23T00:00:00"
+    const statusList = ["pending", "cooking", "ready for pickup", "ready for delivery", "picked up", "delivered"];
 
     const [ordersByStatus, setOrdersByStatus] = useState<{ [status: string]: Order[] }>({});
 
