@@ -11,6 +11,12 @@
     width: 100%;
   }
 
+  .table-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
   .berattest {
     .order-item {
       width: 100%;

@@ -58,11 +58,14 @@ const Orders = () => {
   }, [ordersByStatus]);
 
   return (
-    <>
-      {statusList.map((status) => (
-        <OrderTable key={status} orders={ordersByStatus[status] || []} />
-      ))}
-    </>
+    <PageWrapper id="admin">
+      <section className="table-wrapper">
+        {statusList.map((status) => (
+          <OrderTable key={status} orders={ordersByStatus[status] || []} />
+        ))}
+      </section>
+      <section className="berattest"></section>
+    </PageWrapper>
   );
 };
 
