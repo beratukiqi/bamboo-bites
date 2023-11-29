@@ -16,7 +16,7 @@ interface MenuItemProps {
 	};
 }
 
-const MenuItem = ({ food }: MenuItemProps) => {
+const MenuItemMobile = ({ food }: MenuItemProps) => {
 	const { id, item, price, imgUrl, desc } = food;
 	const [modalOpen, setModalOpen] = useState(false);
 	const { cart, setCart } = useContext(AppContext);
@@ -39,7 +39,7 @@ const MenuItem = ({ food }: MenuItemProps) => {
 		<>
 			<article
 				onClick={() => setModalOpen(true)}
-				className="menu-item__container"
+				className="menu-item-mobile__container"
 			>
 				<img
 					src={imgUrl}
@@ -48,7 +48,6 @@ const MenuItem = ({ food }: MenuItemProps) => {
 				/>
 				<header className="menu-item__text">
 					<h2 className="h2-menu-item">{item}</h2>
-					<p className="menu-descr">{desc}</p>
 				</header>
 				<span className="menu-item__price">
 					<b>$</b>
@@ -67,4 +66,4 @@ const MenuItem = ({ food }: MenuItemProps) => {
 	);
 };
 
-export default MenuItem;
+export default MenuItemMobile;

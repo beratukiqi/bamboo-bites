@@ -1,0 +1,10 @@
+@import "styling/variables.scss";
+
+.menu-item-mobile__container {
+	display: flex;
+	align-items: baseline;
+	width: 20rem;
+	height: 20rem;
+	// Hur lägger jag in url från S3?
+	// background-image: ;
+}
