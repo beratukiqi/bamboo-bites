@@ -3,6 +3,7 @@ import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
 import ContactInfo from "@/components/helpers/ContactInfo";
+import Footer from "@/components/Footer";
 
 const Contact = () => {
 	return (

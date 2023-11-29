@@ -10,7 +10,7 @@ const Home = () => {
 		"https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png",
 	];
 
-	// Change image after 5 seconds and repeat the cycle
+	// Change image after 3.5 seconds and repeat the cycle
 	useEffect(() => {
 		const element = document.querySelector(".hero__column") as HTMLElement; // Ensure correct class name
 

@@ -1,8 +1,8 @@
 @import "styling/variables.scss";
 
 .contact-container {
-	margin: 0;
-	padding: 0;
+	width: 80vw;
+	padding: 7rem 0 0 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -13,9 +13,6 @@
 	text-align: center;
 	margin-bottom: 3rem;
 }
-
-// Margin-bottom verkar störa så att h2:an går upp i headern
-// vid mindre skärm. Kolla detta.
 
 #contact {
 	.hero__column:nth-child(1) {
