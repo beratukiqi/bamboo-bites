@@ -56,11 +56,28 @@ const Orders = () => {
     console.log(ordersByStatus);
   }, [ordersByStatus]);
 
+  const [activeOrder, setActiveOrder] = useState(null);
+
+  const openModal = (order: any) => {
+    setActiveOrder(order);
+  };
+
+  const closeModal = () => {
+    setActiveOrder(null);
+  };
+
   return (
     <PageWrapper id="admin">
       <section className="table-wrapper">
         {statusList.map((status) => (
-          <OrderTable key={status} status={status} orders={ordersByStatus[status] || []} />
+          <OrderTable
+            activeOrder={activeOrder}
+            closeModal={closeModal}
+            openModal={openModal}
+            key={status}
+            status={status}
+            orders={ordersByStatus[status] || []}
+          />
         ))}
       </section>
       <section className="berattest"></section>

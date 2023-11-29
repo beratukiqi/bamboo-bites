@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import OrderList from "./OrderList";
 import ReactDOM from "react-dom";
 import ContentWrapper from "./ContentWrapper";
+import { SvgIcons } from "./SvgIcons";
 
 interface OrderDetail {
   id: string;
@@ -53,19 +54,39 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
     }
   };
 
+  const getPreviousStatus = (currentStatus: string): string => {
+    switch (currentStatus) {
+      case "delivered":
+        return "ready for delivery";
+      case "picked up":
+        return "ready for pickup";
+      case "ready for pickup":
+        return "cooking";
+      case "ready for delivery":
+        return "cooking";
+      default:
+        return ""; // Or handle the default case as needed
+    }
+  };
+
   const shouldShowStatusButton = (currentStatus: string): boolean => {
     return !["delivered", "picked up"].includes(currentStatus);
+  };
+
+  const shouldShowBackButton = (currentStatus: string): boolean => {
+    return !["pending", "cooking"].includes(currentStatus);
   };
 
   useEffect(() => {
     setOrderData(orderItem);
   }, [orderItem]);
 
-  const changeStatus = async () => {
-    const nextStatus = getNextStatus(
-      orderData.status,
-      orderData.deliveryMethod
-    );
+  const changeStatus = async (step: string) => {
+    const newStatus =
+      step === "BACK"
+        ? getPreviousStatus(orderData.status)
+        : getNextStatus(orderData.status, orderData.deliveryMethod);
+
     const response = await fetch(
       `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/updateOrderStatus`,
       {
@@ -75,13 +96,12 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
         },
         body: JSON.stringify({
           orderNr: orderData.orderNr,
-          status: nextStatus,
+          status: newStatus,
         }),
       }
     );
     const data = await response.json();
-    console.log("RESPONSE HERE", data);
-    setOrderData({ ...orderData, status: nextStatus }); // Update the status in state
+    setOrderData({ ...orderData, status: newStatus }); // Update the status in state
   };
 
   const getQuantity = (order: OrderDetail[]): number => {
@@ -93,7 +113,9 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   const modalContent = (
     <section className="admin-modal">
       <article>
-        <button onClick={closeModal}>CLOSE</button>
+        <span className="admin-modal__close" onClick={closeModal}>
+          {SvgIcons.CloseIcon}
+        </span>
         {orderData.status && <h2>{orderData.status}</h2>}
         <section className="admin-modal__orderInfo">
           <p>
@@ -102,11 +124,12 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
           <p>
             Delivery method:{" "}
             <span>
-              {orderData.deliveryMethod ? orderData.deliveryMethod : "Unknown"}
+              {orderData.deliveryMethod
+                ? orderData.deliveryMethod.toUpperCase()
+                : "Unknown"}
             </span>
           </p>
           <p>
-            {/* : <span>{orderData.timeStamp}</span> */}
             Order time: <span>{orderData.timeStamp}</span>
           </p>
         </section>
@@ -121,14 +144,21 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
           <p>Qty: {getQuantity(orderData.order)}</p>
         </section>
         <section className="admin-modal__buttons">
-          <Button title={"BACK"} action={changeStatus} />
+          {shouldShowBackButton(orderData.status) && (
+            <Button
+              title={`UNDO TO ${getPreviousStatus(
+                orderData.status
+              ).toUpperCase()}`}
+              action={() => changeStatus("BACK")}
+            />
+          )}
           {shouldShowStatusButton(orderData.status) && (
             <Button
-              title={`CHANGE TO ${getNextStatus(
+              title={`${getNextStatus(
                 orderData.status,
                 orderData.deliveryMethod
               ).toUpperCase()}`}
-              action={changeStatus}
+              action={() => changeStatus("NEXT")}
             />
           )}
         </section>

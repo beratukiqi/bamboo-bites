@@ -1,27 +1,33 @@
-import { useState, useEffect } from "react";
 import OrderItemAdmin from "./OrderItemAdmin";
 
-interface OrderProps {
+interface OrderTableProps {
+  orders: OrderItem[];
+  status: string;
+  activeOrder: OrderItem | null;
+  openModal: (order: OrderItem) => void;
+  closeModal: () => void;
+}
+
+interface OrderItem {
   orderNr: number;
   timeStamp: string;
   status: string;
 }
 
-const OrderTable = ({ orders, status }: { orders: OrderProps[] }) => {
-  const [activeOrder, setActiveOrder] = useState(null);
-
-  const openModal = (order: any) => {
-    setActiveOrder(order);
-  };
-
-  const closeModal = () => {
-    setActiveOrder(null);
-  };
-
+const OrderTable = ({
+  orders,
+  status,
+  activeOrder,
+  openModal,
+  closeModal,
+}: OrderTableProps) => {
   return (
     <table>
       <thead>
-      <tr><th className="table-header">{status}</th></tr></thead>
+        <tr>
+          <th className="table-header">{status}</th>
+        </tr>
+      </thead>
       <thead>
         <tr>
           <th>Order Number</th>

@@ -67,6 +67,25 @@
   padding: 3rem;
   border: 2px solid white;
   border-radius: 2rem;
+  position: relative;
+
+  &__close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    margin: auto;
+    display: flex;
+    cursor: pointer;
+    border-radius: 50%;
+
+    path {
+      fill: white;
+    }
+
+    &:hover {
+      background-color: rgb(53, 53, 53);
+    }
+  }
 
   > article {
     display: flex;
