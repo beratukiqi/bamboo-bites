@@ -41,7 +41,7 @@ const Payment = () => {
     setCart([]); // Clears the cart
 
     // Redirects to the order page with the new/existing orderNr
-    // router.push(`/order/${data.orderNr}`);
+    router.push(`/order/${data.orderNr}`);
   };
 
   return (
