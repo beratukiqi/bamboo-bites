@@ -17,7 +17,7 @@ interface OrderDetail {
 }
 
 const SingleOrderPage = () => {
-  const { setCart } = useContext(AppContext);
+  // const { setCart } = useContext(AppContext);
   const router = useRouter();
   const { orderNr } = router.query;
   const [orderData, setOrderData] = useState<OrderDetail[]>([]);
@@ -45,13 +45,13 @@ const SingleOrderPage = () => {
     
   }, []);
 
-  const editOrder = () => {
-    // Populates the cart with the order data before redirecting
-    setCart(orderData);
+  // const editOrder = () => {
+  //   // Populates the cart with the order data before redirecting
+  //   setCart(orderData);
 
-    // Redirect and add orderNr to query string
-    router.push(`/cart?orderNr=${orderNr}`);
-  };
+  //   // Redirect and add orderNr to query string
+  //   router.push(`/cart?orderNr=${orderNr}`);
+  // };
 
   const cancelOrder = async () => {
     const headers = {
@@ -83,16 +83,33 @@ const SingleOrderPage = () => {
         title="Order"
         img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
       />
-      <PageColumn title={`Your order: ${orderNr}`}>
+      <PageColumn title="Thank you for ordering!">
+        <img src="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/ramen_white+1.png" alt="" />
+        <section className="status">
+          <article>
+            <div style={{height: "2rem", width: "2rem", borderRadius: "50%", border: "1px solid white", backgroundColor: "#4DED71"}} className={`statusCheck ${orderStatus === 'pending' ? 'checked' : ''}`}></div>
+            <p>paid</p>
+          </article>
+          - - -
+          <article>
+            <div style={{height: "2rem", width: "2rem", borderRadius: "50%", border: "1px solid white"}} className={`statusCheck ${orderStatus === 'cooking' ? 'checked' : ''}`}></div>
+            <p>cooking</p>
+          </article>
+          - - -
+          <article>
+            <div style={{height: "2rem", width: "2rem", borderRadius: "50%", border: "1px solid white"}} className={`statusCheck ${orderStatus === 'done' ? 'checked' : ''}`}></div>
+            <p>done</p>
+          </article>
+        </section>
         <OrderList data={orderData} />
         {
-          orderStatus === "pending" ? ( <>
-            <Button title="EDIT ORDER" action={editOrder} />
-            <Button title="CANCEL ORDER" action={cancelOrder} />
-          </>) : (<p>You order is: {orderStatus}</p>)
+          orderStatus === "pending" ? (<>
+            <h3>Your order with order number <b>{orderNr}</b> is being processed</h3>
+            <Button title="CANCEL ORDER" action={cancelOrder}></Button>
+          </>) : (<h3>Your order with order number <b>{orderNr}</b> is {orderStatus}</h3>)
         }
       </PageColumn>
-
+  
       {/*Modal*/}
       {showModal && (
         <div className="modal">
