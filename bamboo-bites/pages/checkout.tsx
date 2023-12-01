@@ -9,12 +9,34 @@ import PaymentMethod from "@/components/PaymentMethod";
 import ContentWrapper from "@/components/ContentWrapper";
 import DeliveryMethod from "@/components/DeliveryMethod";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
+import Addons from "@/components/Addons";
 
 const Checkout = () => {
   const { cart, setCart, orderDetails } = useContext(AppContext);
   const router = useRouter();
   const { orderNr } = router.query;
+
+  const [extras, setExtras] = useState([]);
+
+  useEffect(() => {
+    async function fetchExtras() {
+      try {
+        const response = await fetch(
+          "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/extras"
+        );
+        const data = await response.json();
+        setExtras(data.extras);
+      } catch (error) {
+        console.error(error, "Failed to fetch menu items");
+      }
+    }
+    fetchExtras();
+  }, []);
+
+  useEffect(() => {
+    console.log(extras);
+  }, [extras]);
 
   const sendOrder = async () => {
     // If an orderNr exists, it will be added to the headers.
@@ -52,9 +74,14 @@ const Checkout = () => {
         img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
       />
       <PageColumn title="Your Order Awaits!">
+        <h1>Review your order and make final changes!</h1>
         <ContentWrapper title="Order items">
           <OrderList data={cart} editable />
           <TotalPrice />
+        </ContentWrapper>
+
+        <ContentWrapper title="Add a side dish">
+          <Addons data={extras} />
         </ContentWrapper>
 
         <ContentWrapper title="Delivery method">

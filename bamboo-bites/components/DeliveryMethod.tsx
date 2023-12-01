@@ -1,6 +1,6 @@
 // import { useState } from "react";
 // import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import AppContext from "@/context/AppContext";
 
 const DeliveryMethod = () => {
@@ -29,32 +29,32 @@ const DeliveryMethod = () => {
       <div>
         <input
           type="radio"
-          id="pickup"
+          id="eatIn"
           name="deliveryMethod"
-          value="pickup"
-          aria-labelledby="labelPickup"
+          value="eatIn"
+          aria-labelledby="labelEatIn"
           onChange={handleDeliveryMethod}
-          checked={orderDetails.deliveryMethod === "pickup"}
+          checked={orderDetails.deliveryMethod === "eatIn"}
         />
-        <label id="labelPickup" htmlFor="pickup">
-          Pick-up
+        <label id="labelEatIn" htmlFor="eatIn">
+          Eat In
         </label>
-        <span>Free of charge</span>
+        {/* <span>Free of charge</span> */}
       </div>
       <div>
         <input
           type="radio"
-          id="delivery"
+          id="takeAway"
           name="deliveryMethod"
-          value="delivery"
-          aria-labelledby="labelDelivery"
+          value="takeAway"
+          aria-labelledby="labelTakeAway"
           onChange={handleDeliveryMethod}
-          checked={orderDetails.deliveryMethod === "delivery"}
+          checked={orderDetails.deliveryMethod === "takeAway"}
         />
-        <label id="labelDelivery" htmlFor="delivery">
-          Home delivery
+        <label id="labelTakeAway" htmlFor="takeAway">
+          Take Away
         </label>
-        <span>$10</span>
+        {/* <span>$10</span> */}
       </div>
     </article>
   );

@@ -22,6 +22,12 @@ functions:
       - httpApi:
           path: "/api/menu"
           method: GET
+  getExtras:
+    handler: functions/getExtras/index.handler
+    events:
+      - httpApi:
+          path: "/api/extras"
+          method: GET
   getOrders:
     handler: functions/getOrders/index.handler
     events:
@@ -69,6 +75,21 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: bambooBites-menu
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: item
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: item
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+    bambooBitesExtras:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: bambooBites-extras
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
