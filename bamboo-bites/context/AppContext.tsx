@@ -14,6 +14,12 @@ interface CartItemProps {
   desc: string;
   imgUrl: string;
   quantity: number;
+  tweaks?: string[] | undefined;
+}
+
+interface OrderDetails {
+  deliveryMethod: string;
+  status: string;
 }
 
 interface AppContextType {
@@ -21,6 +27,8 @@ interface AppContextType {
   setMenuItems: Dispatch<SetStateAction<MenuItemProps[]>>;
   cart: CartItemProps[];
   setCart: Dispatch<SetStateAction<CartItemProps[]>>;
+  orderDetails: OrderDetails;
+  setOrderDetails: Dispatch<SetStateAction<OrderDetails>>
 }
 
 const AppContext = createContext({} as AppContextType);

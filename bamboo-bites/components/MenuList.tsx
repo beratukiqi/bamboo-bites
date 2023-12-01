@@ -6,6 +6,7 @@ interface MenuItemProps {
   price: number;
   desc: string;
   imgUrl: string;
+  protein: [];
 }
 
 const MenuList = ({ data }: { data: MenuItemProps[] }) => {

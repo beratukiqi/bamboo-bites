@@ -7,7 +7,7 @@ exports.handler = async (event) => {
 
   try {
     const command = new GetCommand({
-      TableName: "bambooBites-orders",
+      TableName: "bamboo-bites-ordersDb",
       Key: {
         orderNr: parseInt(orderNr),
       },

@@ -1,1 +1,8 @@
 @import "styling/variables.scss";
+
+#home {
+	h1 {
+		font-size: calc(1rem + 5vw);
+		padding: 3rem 7rem;
+	}
+}

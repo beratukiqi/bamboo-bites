@@ -24,7 +24,11 @@
       width: 100%;
       h3 {
         flex-grow: 2;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+
+        @media screen and (max-width: $breakpoint-tablet) {
+          font-size: 1.3rem;
+        }
       }
 
       p {
@@ -32,8 +36,35 @@
       }
     }
 
+    &__tweaks {
+      display: flex;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+
+      &--protein {
+        background-color: rgb(10, 101, 104);
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.2rem;
+      }
+
+      &--allergen {
+        background-color: rgb(209, 61, 61);
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.2rem;
+      }
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+
     &__price {
-      font-size: 1.2rem;
+      font-size: 2.5rem;
       margin: auto 0;
 
       b {
@@ -41,18 +72,46 @@
         font-weight: 300;
       }
     }
+
     &__quantity {
       display: flex;
+      margin-left: auto;
+
+      &.--orderpage {
+        span {
+          width: 4rem;
+        }
+      }
 
       button {
         background-color: transparent;
         color: white;
         padding: 0 1rem;
-        border: 1px solid white;
+        border: none;
         cursor: pointer;
       }
+      .qty-button {
+        padding: 0;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-self: start;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        height: 1.5rem;
+        width: 1.5rem;
+
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      }
       span {
-        margin: auto 1rem;
+        margin: auto 0;
+        width: 2rem;
+        display: inline;
+        text-align: center;
       }
     }
   }

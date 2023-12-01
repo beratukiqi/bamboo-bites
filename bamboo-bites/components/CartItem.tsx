@@ -3,6 +3,7 @@ import AppContext from "@/context/AppContext";
 import QtyButton from "./QtyButton";
 import { updateQuantity } from "@/functions/updateQuantity";
 import { QuantityChange } from "@/functions/updateQuantity";
+import { useRouter } from "next/router";
 
 interface OrderDetails {
   id: string;
@@ -11,13 +12,20 @@ interface OrderDetails {
   desc: string;
   imgUrl: string;
   quantity: number;
+  tweaks?: TweakProps;
+}
+
+interface TweakProps {
+  allergens: { [key: string]: boolean };
+  protein: string;
 }
 
 interface OrderItemProps {
   item: OrderDetails;
+  editable?: boolean;
 }
 
-const CartItem = ({ item }: OrderItemProps) => {
+const CartItem = ({ item, editable }: OrderItemProps) => {
   const { setCart } = useContext(AppContext);
 
   const incrementQuantity = () => {
@@ -30,21 +38,47 @@ const CartItem = ({ item }: OrderItemProps) => {
 
   return (
     <article className="order-item">
-      <img
-        src={item.imgUrl}
-        alt="noodles bowl"
-        className="order-item__image"
-      />
+      <img src={item.imgUrl} alt="noodles bowl" className="order-item__image" />
       <div className="order-item__text">
-        <h3 className="order-item__title">{item.item}</h3>
-        <span className="order-item__price">
-          {item.price}
-          <b>$</b>
-        </span>
-        <div className="order-item__quantity">
-          <QtyButton title="-" action={decrementQuantity} />
-          <span>{item.quantity}</span>
-          <QtyButton title="+" action={incrementQuantity} />
+        <div className="order-item__header">
+          <h2 className="order-item__title">{item.item}</h2>
+
+          <ul className="order-item__tweaks">
+            {/* Render protein tweak */}
+            <li className="order-item__tweaks--protein">
+              {item.tweaks?.protein ? item.tweaks.protein : "Standard"}
+            </li>
+
+            {/* Render allergens tweaks */}
+            {item.tweaks?.allergens &&
+              Object.entries(item.tweaks.allergens).map(([key, value]) => (
+                <li
+                  key={key}
+                  className={`order-item__tweaks--allergen ${
+                    value ? "--active" : ""
+                  }`}
+                >
+                  {key}
+                </li>
+              ))}
+          </ul>
+        </div>
+        {editable ? (
+          <div className="order-item__quantity">
+            <QtyButton title="-" action={decrementQuantity} />
+            <span>{item.quantity}</span>
+            <QtyButton title="+" action={incrementQuantity} />
+          </div>
+        ) : (
+          <div className="order-item__quantity --orderpage">
+            <span>QTY: {item.quantity}</span>
+          </div>
+        )}
+        <div className="order-item__details">
+          <span className="order-item__price">
+            <b>$</b>
+            {item.price}
+          </span>
         </div>
       </div>
     </article>

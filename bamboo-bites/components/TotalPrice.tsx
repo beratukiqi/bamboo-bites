@@ -3,11 +3,9 @@ import { useRouter } from "next/router";
 import AppContext from "@/context/AppContext";
 
 const TotalPrice = () => {
-  const { cart } = useContext(AppContext);
+  const { cart, orderDetails } = useContext(AppContext);
   const [totalPrice, setTotalPrice] = useState(0); 
-
-  const router = useRouter();
-  const { deliveryMethod } = router.query;
+  const deliveryMethod = orderDetails.deliveryMethod;
 
   const calcTotalPrice = () => {
     let price = 0;
@@ -30,8 +28,8 @@ const TotalPrice = () => {
     <div className="total-price">
       <h3 className="total-price__title">Total</h3>
       <span className="total-price__price">
-        {totalPrice}
         <b>$</b>
+        {totalPrice}
       </span>
     </div>
   );

@@ -7,7 +7,7 @@ import AppContext from "@/context/AppContext";
 import PageWrapper from "@/components/PageWrapper";
 import ContentWrapper from "@/components/ContentWrapper";
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const Cart = () => {
   const { cart } = useContext(AppContext);
@@ -22,6 +22,10 @@ const Cart = () => {
     router.push(`/menu`);
   };
 
+  useEffect(() => {
+    console.log("Cart", cart);
+  }, [cart]);
+
   return (
     <PageWrapper column>
       <PageHeader
@@ -32,7 +36,7 @@ const Cart = () => {
         title={cart.length === 0 ? "Your cart is empty" : "Your cart"}
       >
         <ContentWrapper title="Cart items">
-          <OrderList data={cart} />
+          <OrderList data={cart} editable />
         </ContentWrapper>
         <Button
           title="Go to Checkout"

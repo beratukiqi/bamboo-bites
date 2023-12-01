@@ -22,6 +22,12 @@ functions:
       - httpApi:
           path: "/api/menu"
           method: GET
+  getExtras:
+    handler: functions/getExtras/index.handler
+    events:
+      - httpApi:
+          path: "/api/extras"
+          method: GET
   getOrders:
     handler: functions/getOrders/index.handler
     events:
@@ -40,7 +46,24 @@ functions:
       - httpApi: 
           path: "/api/order/{orderNr}"
           method: GET
-
+  cancelOrder:
+    handler: functions/cancelOrder/index.handler
+    events:
+      - httpApi: 
+          path: "/api/cancelOrder/{orderNr}"
+          method: DELETE
+  filterOrders:
+    handler: functions/filterOrders/index.handler
+    events:
+      - httpApi:
+          path: "/api/filterOrders/{status}"
+          method: get
+  updateOrderStatus:
+    handler: functions/updateOrderStatus/index.handler
+    events:
+      - httpApi: 
+          path: "/api/updateOrderStatus"
+          method: POST
 
 resources: 
   Resources:
@@ -63,14 +86,44 @@ resources:
           - AttributeName: item
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
+    bambooBitesExtras:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: bambooBites-extras
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: item
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: item
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
     bambooBitesOrders:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: bambooBites-orders
+        TableName: bamboo-bites-ordersDb
         AttributeDefinitions:
           - AttributeName: orderNr
             AttributeType: N
+          - AttributeName: status
+            AttributeType: S
+          - AttributeName: timeStamp
+            AttributeType: S           
         KeySchema:
           - AttributeName: orderNr
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
+        GlobalSecondaryIndexes:
+          - IndexName: 'filterIndex'
+            KeySchema:
+              - AttributeName: status
+                KeyType: HASH
+              - AttributeName: timeStamp
+                KeyType: RANGE
+            Projection: 
+              ProjectionType: ALL
+
+              
