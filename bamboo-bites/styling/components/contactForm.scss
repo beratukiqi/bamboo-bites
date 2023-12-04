@@ -58,7 +58,7 @@
 				}
 
 				input {
-					width: 100%;
+					min-width: 31.25rem;
 					background: $color-grey--hover;
 					height: 3rem;
 					padding: 0 6.5rem;
@@ -76,6 +76,7 @@
 
 							&.invalid {
 								background-color: $color-error;
+								transition: all 0.2s ease-in-out;
 							}
 						}
 					}

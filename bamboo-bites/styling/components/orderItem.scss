@@ -42,13 +42,19 @@
 			font-size: 0.7rem;
 
 			&--protein {
-				background-color: $color-protein-pink;
+				background-color: $color-protein-green;
 				padding: 0.2rem 0.5rem;
 				border-radius: 0.2rem;
 			}
 
 			&--allergen {
 				background-color: $color-allergen-red;
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.2rem;
+			}
+
+			&--standard {
+				background-color: $color-standard-blue;
 				padding: 0.2rem 0.5rem;
 				border-radius: 0.2rem;
 			}

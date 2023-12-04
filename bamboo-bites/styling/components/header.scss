@@ -22,7 +22,6 @@
 				height: 100%;
 				width: 6rem;
 				letter-spacing: 0.3rem;
-				// remove underline
 				text-decoration: none;
 
 				&.active {
@@ -42,7 +41,7 @@
 			p {
 				text-transform: uppercase;
 				color: white;
-				font-size: 1.3rem;
+				font-size: 1.5rem;
 
 				&:active {
 					color: $color-main--red;
