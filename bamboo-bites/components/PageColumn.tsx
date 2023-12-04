@@ -2,13 +2,18 @@ const PageColumn = ({
   children,
   title,
   className,
+  id,
 }: {
   children: any;
   title?: string;
   className?: string;
+  id?: string;
 }) => {
   return (
-    <div className={`hero column ${className ? className : ""}`}>
+    <div
+      id={id ? id : ""}
+      className={`hero column ${className ? className : ""}`}
+    >
       {title && <h2 className="page-column-title">{title}</h2>}
       {children}
     </div>
