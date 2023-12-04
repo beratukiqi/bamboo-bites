@@ -33,36 +33,50 @@ interface OrderModalProps {
 const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   const [orderData, setOrderData] = useState<Order>(orderItem);
 
-  const getNextStatus = (
-    currentStatus: string,
-    deliveryMethod: string
-  ): string => {
+  // const getNextStatus = (
+  //   currentStatus: string,
+  //   deliveryMethod: string
+  // ): string => {
+  //   switch (currentStatus) {
+  //     case "pending":
+  //       return "cooking";
+  //     case "cooking":
+  //       // Determine next status based on delivery method
+  //       return deliveryMethod === "delivery"
+  //         ? "ready for delivery"
+  //         : "ready for pickup";
+  //     case "ready for pickup":
+  //       return "picked up";
+  //     case "ready for delivery":
+  //       return "delivered";
+  //     default:
+  //       return "pending";
+  //   }
+  // };
+  const getNextStatus = (currentStatus: string, deliveryMethod: string): string => {
     switch (currentStatus) {
       case "pending":
         return "cooking";
       case "cooking":
         // Determine next status based on delivery method
-        return deliveryMethod === "delivery"
-          ? "ready for delivery"
-          : "ready for pickup";
-      case "ready for pickup":
-        return "picked up";
-      case "ready for delivery":
-        return "delivered";
+        return deliveryMethod === "eatIn" ? "eat in" : "take away";
+      case "eat in":
+      case "take away":
+        return "done";
       default:
-        return "pending";
+        return "pending"; // Or handle the default case as needed
     }
   };
 
   const getPreviousStatus = (currentStatus: string): string => {
     switch (currentStatus) {
-      case "delivered":
+      case "done":
         return "ready for delivery";
       case "picked up":
         return "ready for pickup";
-      case "ready for pickup":
+      case "eat in":
         return "cooking";
-      case "ready for delivery":
+      case "take away":
         return "cooking";
       default:
         return ""; // Or handle the default case as needed
@@ -70,7 +84,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   };
 
   const shouldShowStatusButton = (currentStatus: string): boolean => {
-    return !["delivered", "picked up"].includes(currentStatus);
+    return !["done"].includes(currentStatus);
   };
 
   const shouldShowBackButton = (currentStatus: string): boolean => {
