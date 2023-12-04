@@ -1,17 +1,16 @@
-import ContentWrapper from "@/components/ContentWrapper";
-import MenuList from "@/components/MenuList";
+import { useContext, useEffect } from "react";
+import PageWrapper from "@/components/PageWrapper";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
-import PageWrapper from "@/components/PageWrapper";
+import MenuList from "@/components/MenuList";
 import AppContext from "@/context/AppContext";
-import Footer from "@/components/Footer";
-import { useContext, useEffect } from "react";
 
 const Menu = () => {
   const { menuItems, setMenuItems } = useContext(AppContext);
+  const imgURL = "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png"
 
   useEffect(() => {
-    async function fetchEvents() {
+    async function fetchMenu() {
       try {
         const response = await fetch(
           "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/menu"
@@ -22,7 +21,7 @@ const Menu = () => {
         console.error(error, "Failed to fetch menu items");
       }
     }
-    fetchEvents();
+    fetchMenu();
   }, []);
 
   useEffect(() => {
@@ -33,7 +32,7 @@ const Menu = () => {
     <PageWrapper column>
       <PageHeader
         title="Menu"
-        img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png"
+        img={imgURL}
       />
       <PageColumn title="Savor, Explore, Enjoy!">
         <MenuList data={menuItems} />
