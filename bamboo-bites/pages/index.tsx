@@ -1,6 +1,5 @@
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
-import Footer from "@/components/Footer";
 import { useEffect } from "react";
 
 const Home = () => {
@@ -30,7 +29,6 @@ const Home = () => {
 				title="Bamboo Bites"
 				img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png"
 			/>
-			<Footer />
 		</PageWrapper>
 	);
 };

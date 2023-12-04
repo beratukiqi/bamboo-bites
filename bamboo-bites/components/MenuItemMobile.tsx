@@ -40,22 +40,24 @@ const MenuItemMobile = ({ food }: MenuItemProps) => {
 			<article
 				onClick={() => setModalOpen(true)}
 				className="menu-item-mobile__container"
+				style={{
+					backgroundImage: `url(${imgUrl})`,
+					backgroundRepeat: "no-repeat",
+					backgroundSize: "cover",
+				}}
 			>
-				<img
-					src={imgUrl}
-					alt={`Top view image of the dish ${item}`}
-					className="menu-item__image"
-				/>
-				<header className="menu-item__text">
-					<h2 className="h2-menu-item">{item}</h2>
-				</header>
-				<span className="menu-item__price">
-					<b>$</b>
-					{price}
-				</span>
-				<button onClick={handleAddItem} className="menu-item__addBtn">
-					{SvgIcons.AddIcon}
-				</button>
+				<section className="menu-item-mobile__info">
+					<header className="menu-item-mobile__text">
+						<h2 className="h2-menu-item-mobile">{item}</h2>
+					</header>
+					<span className="menu-item-mobile__price">
+						<b>$</b>
+						{price}
+					</span>
+					<button onClick={handleAddItem} className="menu-item-mobile__addBtn">
+						{SvgIcons.AddIcon}
+					</button>
+				</section>
 			</article>
 			<Modal
 				isOpen={modalOpen}
