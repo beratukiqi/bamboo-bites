@@ -27,7 +27,7 @@ const Cart = () => {
   }, [cart]);
 
   return (
-    <PageWrapper column>
+    <PageWrapper id="cart" column>
       <PageHeader
         title="Cart"
         img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/cart_desktop_720x1024.png"
@@ -38,15 +38,13 @@ const Cart = () => {
         <ContentWrapper title="Cart items">
           <OrderList data={cart} editable />
         </ContentWrapper>
+        <TotalPrice />
         <Button
           title="Go to Checkout"
           action={toCheckout}
           disabled={cart.length === 0}
         />
-        <Button title="Menu" action={toMenu} />
-        <ContentWrapper title="Total price">
-          <TotalPrice />
-        </ContentWrapper>
+        <Button title="Add more items" action={toMenu} />
       </PageColumn>
     </PageWrapper>
   );

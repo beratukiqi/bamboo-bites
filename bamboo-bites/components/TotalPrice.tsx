@@ -4,7 +4,7 @@ import AppContext from "@/context/AppContext";
 
 const TotalPrice = () => {
   const { cart, orderDetails } = useContext(AppContext);
-  const [totalPrice, setTotalPrice] = useState(0); 
+  const [totalPrice, setTotalPrice] = useState(0);
   const deliveryMethod = orderDetails.deliveryMethod;
 
   const calcTotalPrice = () => {
@@ -16,7 +16,7 @@ const TotalPrice = () => {
     if (deliveryMethod === "delivery") {
       price += 10;
     }
-    
+
     return price;
   };
 
@@ -27,10 +27,7 @@ const TotalPrice = () => {
   return (
     <div className="total-price">
       <h3 className="total-price__title">Total</h3>
-      <span className="total-price__price">
-        <b>$</b>
-        {totalPrice}
-      </span>
+      <span className="total-price__price">${totalPrice}</span>
     </div>
   );
 };

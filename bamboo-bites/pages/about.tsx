@@ -2,7 +2,6 @@ import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
 import AboutInfo from "@/components/helpers/AboutInfo";
-import Footer from "@/components/Footer";
 
 const About = () => {
 	return (

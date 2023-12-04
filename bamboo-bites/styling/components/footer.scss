@@ -1,19 +1,15 @@
 @import "styling/variables.scss";
 
 .footer {
+	position: absolute;
+	bottom: 0;
 	background-color: transparent;
-
-	&.closed {
-		background-color: red;
-		padding: 0;
-		transform: translateY(100%);
-	}
 
 	.footer-toggle {
 		position: absolute;
 		bottom: 0;
-		left: 50%;
-		transform: translateX(-50%);
+		left: 50vw;
+
 		background-color: none;
 		border: none;
 		cursor: pointer;
