@@ -1,23 +1,22 @@
-import Button from "@/components/Button";
-import OrderList from "@/components/OrderList";
-import PageColumn from "@/components/PageColumn";
-import PageHeader from "@/components/PageHeader";
-import TotalPrice from "@/components/TotalPrice";
-import AppContext from "@/context/AppContext";
-import PageWrapper from "@/components/PageWrapper";
-import PaymentMethod from "@/components/PaymentMethod";
-import ContentWrapper from "@/components/ContentWrapper";
-import DeliveryMethod from "@/components/DeliveryMethod";
 import { useRouter } from "next/router";
 import { useContext, useState, useEffect } from "react";
+import PageWrapper from "@/components/PageWrapper";
+import PageColumn from "@/components/PageColumn";
+import PageHeader from "@/components/PageHeader";
+import ContentWrapper from "@/components/ContentWrapper";
+import OrderList from "@/components/OrderList";
 import Addons from "@/components/Addons";
+import DeliveryMethod from "@/components/DeliveryMethod";
+import TotalPrice from "@/components/TotalPrice";
+import Button from "@/components/Button";
+import AppContext from "@/context/AppContext";
 
 const Checkout = () => {
-  const { cart, setCart, orderDetails } = useContext(AppContext);
   const router = useRouter();
-  const { orderNr } = router.query;
-
+  const { cart} = useContext(AppContext);
   const [extras, setExtras] = useState([]);
+ 
+  const imgURL = "https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
 
   useEffect(() => {
     async function fetchExtras() {
@@ -38,32 +37,7 @@ const Checkout = () => {
     console.log(extras);
   }, [extras]);
 
-  const sendOrder = async () => {
-    // If an orderNr exists, it will be added to the headers.
-    // orderNr in Headers will determine if the order is new or an update.
-    // const headers = {
-    //   "Content-Type": "application/json",
-    //   ...(typeof orderNr === "string" && { orderNr }),
-    //   ...(orderDetails && {
-    //     "X-Order-Delivery-Method": orderDetails.deliveryMethod,
-    //   }),
-    //   ...(orderDetails && { "X-Order-Status": orderDetails.status }),
-    // };
-
-    // // Sends a POST request to the API with the cart data
-    // const res = await fetch(
-    //   "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/putOrder",
-    //   {
-    //     method: "POST",
-    //     body: JSON.stringify(cart),
-    //     headers: headers,
-    //   }
-    // );
-    // const data = await res.json(); // We get the orderNr back from the API
-    // setCart([]); // Clears the cart
-
-    // Redirects to the order page with the new/existing orderNr
-    // router.push(`/order/${data.orderNr}`);
+  const toPayment = async () => {
     router.push(`/payment`);
   };
 
@@ -71,7 +45,7 @@ const Checkout = () => {
     <PageWrapper column>
       <PageHeader
         title="Checkout"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        img={imgURL}
       />
       <PageColumn title="Your Order Awaits!">
         <h1>Review your order and make final changes!</h1>
@@ -88,7 +62,7 @@ const Checkout = () => {
           <DeliveryMethod />
         </ContentWrapper>
 
-        <Button action={sendOrder} title="READY TO PAY" />
+        <Button action={toPayment} title="READY TO PAY" />
       </PageColumn>
     </PageWrapper>
   );
