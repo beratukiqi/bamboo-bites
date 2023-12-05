@@ -1,12 +1,12 @@
+import { useEffect } from "react";
 import PageHeader from "@/components/PageHeader";
 import PageWrapper from "@/components/PageWrapper";
-import { useEffect } from "react";
 
 const Home = () => {
 	const images = [
+		"https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png",
 		"https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/02_slide_desktop_1440x1024.png",
 		"https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/03_slide_desktop_1440x1024.png",
-		"https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png",
 	];
 
 	// Change image after 3.5 seconds and repeat the cycle
@@ -27,7 +27,7 @@ const Home = () => {
 			<PageHeader
 				landingpage
 				title="Bamboo Bites"
-				img="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/01_slide_desktop_1440x1024.png"
+				img={images[0]}
 			/>
 		</PageWrapper>
 	);

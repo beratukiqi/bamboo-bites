@@ -1,21 +1,19 @@
-import Button from "@/components/Button";
-import ContentWrapper from "@/components/ContentWrapper";
-import OrderList from "@/components/OrderList";
-import PageColumn from "@/components/PageColumn";
-import PageHeader from "@/components/PageHeader";
-import PageWrapper from "@/components/PageWrapper";
-import PaymentInput from "@/components/PaymentInput";
-import PaymentMethod from "@/components/PaymentMethod";
-import TotalPrice from "@/components/TotalPrice";
-import AppContext from "@/context/AppContext";
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import ContentWrapper from "@/components/ContentWrapper";
+import PageWrapper from "@/components/PageWrapper";
+import PageColumn from "@/components/PageColumn";
+import PageHeader from "@/components/PageHeader";
+import OrderList from "@/components/OrderList";
+import TotalPrice from "@/components/TotalPrice";
+import PaymentMethod from "@/components/PaymentMethod";
+import Button from "@/components/Button";
+import AppContext from "@/context/AppContext";
 
 const Payment = () => {
-  const { cart, setCart, orderDetails } = useContext(AppContext);
   const router = useRouter();
-
   const { orderNr } = router.query;
+  const { cart, setCart, orderDetails } = useContext(AppContext);
 
   const sendOrder = async () => {
     // If an orderNr exists, it will be added to the headers.
@@ -49,7 +47,7 @@ const Payment = () => {
     <PageWrapper column>
       <PageHeader
         title="Payment"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png" //!!Change img url!!
       />
       <PageColumn title="Payment options">
         <ContentWrapper title="Your order">

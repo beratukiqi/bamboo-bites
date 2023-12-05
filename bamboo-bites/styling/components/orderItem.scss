@@ -13,7 +13,7 @@
 		&__image {
 			width: 5rem;
 			height: 5rem;
-			background-color: white;
+			background-color: $color-white;
 			align-self: center;
 		}
 
@@ -42,13 +42,19 @@
 			font-size: 0.7rem;
 
 			&--protein {
-				background-color: $color-protein-pink;
+				background-color: $color-protein-green;
 				padding: 0.2rem 0.5rem;
 				border-radius: 0.2rem;
 			}
 
 			&--allergen {
 				background-color: $color-allergen-red;
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.2rem;
+			}
+
+			&--standard {
+				background-color: $color-standard-blue;
 				padding: 0.2rem 0.5rem;
 				border-radius: 0.2rem;
 			}
@@ -85,7 +91,7 @@
 
 			button {
 				background-color: transparent;
-				color: white;
+				color: $color-white;
 				padding: 0 1rem;
 				border: none;
 				cursor: pointer;
@@ -103,7 +109,7 @@
 				width: 1.5rem;
 
 				&:hover {
-					background-color: white;
+					background-color: $color-white;
 					color: black;
 				}
 			}

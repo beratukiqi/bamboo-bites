@@ -4,5 +4,20 @@
 	h1 {
 		font-size: calc(1rem + 5vw);
 		padding: 3rem 7rem;
+		width: calc(15rem + 57vw);
+
+		@media screen and (max-width: $breakpoint-desktop) {
+			width: calc(1rem + 35vw);
+			padding: 4rem;
+			font-size: calc(1rem + 4vw);
+			letter-spacing: calc(0.3rem + 0.1vw);
+		}
+
+		@media screen and (max-width: $breakpoint-mobile) {
+			width: calc(1rem + 35vw);
+			padding: 2rem;
+			font-size: calc(1rem + 4vw);
+			letter-spacing: calc(0.3rem + 0.1vw);
+		}
 	}
 }

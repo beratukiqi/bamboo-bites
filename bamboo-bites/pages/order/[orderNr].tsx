@@ -1,12 +1,11 @@
-import Button from "@/components/Button";
-import OrderList from "@/components/OrderList";
-import PageColumn from "@/components/PageColumn";
-import PageHeader from "@/components/PageHeader";
-import PageWrapper from "@/components/PageWrapper";
-import TotalPrice from "@/components/TotalPrice";
-import AppContext from "@/context/AppContext";
 import { useRouter } from "next/router";
 import {useEffect, useState } from "react";
+import PageWrapper from "@/components/PageWrapper";
+import PageColumn from "@/components/PageColumn";
+import PageHeader from "@/components/PageHeader";
+import ContentWrapper from "@/components/ContentWrapper";
+import OrderList from "@/components/OrderList";
+import Button from "@/components/Button";
 
 interface OrderDetail {
   id: string;
@@ -73,7 +72,7 @@ const SingleOrderPage = () => {
     <PageWrapper column>
       <PageHeader
         title="Order"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png" //!!Change url !!!
       />
       <PageColumn title={`Your order ${orderNr}`}>
         <section className="status">
@@ -90,8 +89,9 @@ const SingleOrderPage = () => {
             <h3>Your order is done!</h3><p>Enjoy your food!</p></>)
           }
         </section>
-
-          <OrderList data={orderData} />
+          <ContentWrapper title="">
+            <OrderList data={orderData} />
+          </ContentWrapper>
 
         {
           orderStatus === "pending" ? (<Button title="CANCEL ORDER" action={cancelOrder}></Button>) : (<></>)

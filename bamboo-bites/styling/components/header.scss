@@ -22,7 +22,6 @@
 				height: 100%;
 				width: 6rem;
 				letter-spacing: 0.3rem;
-				// remove underline
 				text-decoration: none;
 
 				&.active {
@@ -41,8 +40,8 @@
 
 			p {
 				text-transform: uppercase;
-				color: white;
-				font-size: 1.3rem;
+				color: $color-white;
+				font-size: 1.5rem;
 
 				&:active {
 					color: $color-main--red;
@@ -75,7 +74,7 @@
 					position: absolute;
 					width: 1.3rem;
 					height: 1.3rem;
-					background-color: white;
+					background-color: $color-white;
 					border-radius: 50%;
 					display: flex;
 					justify-content: center;
@@ -92,7 +91,7 @@
 					margin-right: 2px;
 					width: 1.5rem;
 					height: 1.5rem;
-					fill: white;
+					fill: $color-white;
 				}
 				@media screen and (max-width: $breakpoint-tablet) {
 					right: 2rem;
@@ -108,7 +107,7 @@
 .hamburger-menu__icons {
 	margin: 1.5rem;
 	svg {
-		fill: white;
+		fill: $color-white;
 		width: 2rem;
 		height: 2rem;
 	}
@@ -137,7 +136,7 @@
 
 	p {
 		text-transform: uppercase;
-		color: white;
+		color: $color-white;
 		font-size: 2rem;
 	}
 }
