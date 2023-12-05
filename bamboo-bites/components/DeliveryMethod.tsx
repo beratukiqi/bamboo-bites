@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import AppContext from "@/context/AppContext";
 
 const DeliveryMethod = () => {
-  // const [deliveryMethod, setDeliveryMethod] = useState("eatIn");
+  const [currentDeliveryMethod, setCurrentDeliveryMethod] = useState("takeAway");
   const { orderDetails, setOrderDetails } = useContext(AppContext);
+
+  useEffect(() => {
+    setOrderDetails({
+      ...orderDetails,
+      deliveryMethod: "takeAway"
+    });
+  },[])
 
 // Change the delivery method to "takeAway"
   const handleDeliveryMethod = (e: any) => {
+    setCurrentDeliveryMethod(e.target.value)
     setOrderDetails({
       ...orderDetails,
       deliveryMethod: e.target.value
@@ -19,32 +27,34 @@ const DeliveryMethod = () => {
       <div>
         <input
           type="radio"
-          id="eatIn"
+          id="takeAway"
           name="deliveryMethod"
-          value="eatIn"
-          aria-labelledby="labelEatIn"
+          value="takeAway"
+          aria-labelledby="labelTakeAway"
           onChange={handleDeliveryMethod}
-          checked={orderDetails.deliveryMethod === "eatIn"}
+          checked={currentDeliveryMethod === "takeAway"}
         />
-        <label id="labelEatIn" htmlFor="eatIn">
-          Eat In
+        <label id="labelTakeAway" htmlFor="takeAway">
+          Take Away
         </label>
       </div>
       
       <div>
         <input
           type="radio"
-          id="takeAway"
+          id="eatIn"
           name="deliveryMethod"
-          value="takeAway"
-          aria-labelledby="labelTakeAway"
+          value="eatIn"
+          aria-labelledby="labelEatIn"
           onChange={handleDeliveryMethod}
-          checked={orderDetails.deliveryMethod === "takeAway"}
+          checked={currentDeliveryMethod === "eatIn"}
         />
-        <label id="labelTakeAway" htmlFor="takeAway">
-          Take Away
+        <label id="labelEatIn" htmlFor="eatIn">
+          Eat In
         </label>
       </div>
+      
+
     </article>
   );
 };

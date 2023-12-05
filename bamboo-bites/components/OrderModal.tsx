@@ -4,6 +4,7 @@ import OrderList from "./OrderList";
 import ReactDOM from "react-dom";
 import ContentWrapper from "./ContentWrapper";
 import { SvgIcons } from "./SvgIcons";
+import DeliveryMethod from "./DeliveryMethod";
 
 interface OrderDetail {
   id: string;
@@ -68,12 +69,10 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
     }
   };
 
-  const getPreviousStatus = (currentStatus: string): string => {
+  const getPreviousStatus = (currentStatus: string, deliveryMethod: string): string => {
     switch (currentStatus) {
       case "done":
-        return "ready for delivery";
-      case "picked up":
-        return "ready for pickup";
+        return deliveryMethod === "eatIn" ? "eat in" : "take away";
       case "eat in":
         return "cooking";
       case "take away":
@@ -98,7 +97,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   const changeStatus = async (step: string) => {
     const newStatus =
       step === "BACK"
-        ? getPreviousStatus(orderData.status)
+        ? getPreviousStatus(orderData.status, orderData.deliveryMethod)
         : getNextStatus(orderData.status, orderData.deliveryMethod);
 
     const response = await fetch(
@@ -161,7 +160,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
           {shouldShowBackButton(orderData.status) && (
             <Button
               title={`UNDO TO ${getPreviousStatus(
-                orderData.status
+                orderData.status, orderData.deliveryMethod
               ).toUpperCase()}`}
               action={() => changeStatus("BACK")}
             />
