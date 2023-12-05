@@ -34,26 +34,7 @@ interface OrderModalProps {
 const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   const [orderData, setOrderData] = useState<Order>(orderItem);
 
-  // const getNextStatus = (
-  //   currentStatus: string,
-  //   deliveryMethod: string
-  // ): string => {
-  //   switch (currentStatus) {
-  //     case "pending":
-  //       return "cooking";
-  //     case "cooking":
-  //       // Determine next status based on delivery method
-  //       return deliveryMethod === "delivery"
-  //         ? "ready for delivery"
-  //         : "ready for pickup";
-  //     case "ready for pickup":
-  //       return "picked up";
-  //     case "ready for delivery":
-  //       return "delivered";
-  //     default:
-  //       return "pending";
-  //   }
-  // };
+
   const getNextStatus = (currentStatus: string, deliveryMethod: string): string => {
     switch (currentStatus) {
       case "pending":
@@ -131,30 +112,32 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
         </span>
         {orderData.status && <h2>{orderData.status}</h2>}
         <section className="admin-modal__orderInfo">
-          <p>
-            Order number: <span>{orderData.orderNr}</span>
+          <p className="admin-modal__orderInfo--orderNr">
+            Order <span>{orderData.orderNr}</span>
           </p>
-          <p>
+          <p className="admin-modal__orderInfo--timeStamp">
+            <span>{orderData.timeStamp}</span>
+          </p>
+
+          <p className="admin-modal__orderInfo--deliveryMethod">
             Delivery method:{" "}
             <span>
               {orderData.deliveryMethod
-                ? orderData.deliveryMethod.toUpperCase()
+                ? orderData.deliveryMethod
                 : "Unknown"}
             </span>
           </p>
-          <p>
-            Order time: <span>{orderData.timeStamp}</span>
-          </p>
+
         </section>
 
         <OrderList data={orderData} admin />
 
         <section className="admin-modal__details">
           <div>
-            <p>Total:</p>
+            <p><b>Total:</b></p>
+            <p>Qty: {getQuantity(orderData.order)}</p>
             <p>${orderData.totalPrice}</p>
           </div>
-          <p>Qty: {getQuantity(orderData.order)}</p>
         </section>
         <section className="admin-modal__buttons">
           {shouldShowBackButton(orderData.status) && (

@@ -1,61 +1,61 @@
-@import "styling/variables.scss";
+// @import "styling/variables.scss";
 
-.pending-status {
-	color: $color-admin-pending;
-}
+// .pending-status {
+// 	color: $color-admin-pending;
+// }
 
-.cooking-status {
-	color: $color-main--red;
-}
+// .cooking-status {
+// 	color: $color-main--red;
+// }
 
-.eatIn-status {
-	color: $color-admin-pickup;
-}
+// .eatIn-status {
+// 	color: $color-admin-pickup;
+// }
 
-.takeAway-status {
-	color: $color-admin-eat-in;
-}
+// .takeAway-status {
+// 	color: $color-admin-eat-in;
+// }
 
-.takeAway-status {
-	color: $color-admin-pickup;
-}
+// .takeAway-status {
+// 	color: $color-admin-pickup;
+// }
 
-.eatIn-status {
-	color: $color-admin-eat-in;
-}
+// .eatIn-status {
+// 	color: $color-admin-eat-in;
+// }
 
-.done-status {
-  color: green;
-}
+// .done-status {
+//   color: green;
+// }
 
-table {
-	width: 50%;
-	background-color: $color-admin-table-background;
-	border-collapse: collapse;
-	border: none;
-	border-radius: 1rem;
-	text-align: left;
-	color: $color-white;
-}
+// table {
+// 	width: 50%;
+// 	background-color: $color-admin-table-background;
+// 	border-collapse: collapse;
+// 	border: none;
+// 	border-radius: 1rem;
+// 	text-align: left;
+// 	color: $color-white;
+// }
 
-thead {
-	color: $color-admin-table-headers;
-}
+// thead {
+// 	color: $color-admin-table-headers;
+// }
 
-.table-header {
-	text-transform: capitalize;
-	color: $color-white;
-	font-size: 20px;
-	// margin: 2rem;
-	padding: 2rem;
-}
+// .table-header {
+// 	text-transform: capitalize;
+// 	color: $color-white;
+// 	font-size: 20px;
+// 	// margin: 2rem;
+// 	padding: 2rem;
+// }
 
-th,
-td {
-	padding: 0.5rem 2rem;
-}
+// th,
+// td {
+// 	padding: 0.5rem 2rem;
+// }
 
-tbody tr:hover {
-	background-color: $color-admin-background;
-	cursor: pointer;
-}
+// tbody tr:hover {
+// 	background-color: $color-admin-background;
+// 	cursor: pointer;
+// }

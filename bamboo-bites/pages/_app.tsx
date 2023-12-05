@@ -11,9 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
 	console.log("PATHNAME", pathname);
 	return (
 		<AppProvider>
-			{pathname !== "/orders" && <Header />}
+			{pathname !== "/admin" && <Header />}
 			<Component {...pageProps} />
-			{pathname !== "/orders" && <Footer />}
+			{pathname !== "/admin" && <Footer />}
 		</AppProvider>
 	);
 }
