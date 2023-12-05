@@ -21,7 +21,7 @@
 
 .menu-item {
 	&__container {
-		color: white;
+		color: $color-white;
 		display: flex;
 		flex-direction: row;
 		gap: 2rem;
@@ -42,7 +42,7 @@
 		display: block;
 		width: 5rem;
 		height: 5rem;
-		background-color: white;
+		background-color: $color-white;
 		align-self: center;
 	}
 
@@ -86,7 +86,7 @@
 		background-color: transparent;
 
 		&:hover {
-			background-color: white;
+			background-color: $color-white;
 			cursor: pointer;
 
 			svg {
@@ -95,7 +95,7 @@
 		}
 
 		svg {
-			fill: white;
+			fill: $color-white;
 			width: 1.5rem;
 			height: 1.5rem;
 		}

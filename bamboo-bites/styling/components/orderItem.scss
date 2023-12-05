@@ -13,7 +13,7 @@
 		&__image {
 			width: 5rem;
 			height: 5rem;
-			background-color: white;
+			background-color: $color-white;
 			align-self: center;
 		}
 
@@ -91,7 +91,7 @@
 
 			button {
 				background-color: transparent;
-				color: white;
+				color: $color-white;
 				padding: 0 1rem;
 				border: none;
 				cursor: pointer;
@@ -109,7 +109,7 @@
 				width: 1.5rem;
 
 				&:hover {
-					background-color: white;
+					background-color: $color-white;
 					color: black;
 				}
 			}
