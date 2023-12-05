@@ -1,0 +1,93 @@
+@import "styling/variables.scss";
+
+.order-status {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 5rem;
+  margin-bottom: 3rem;
+  border-radius: 2rem;
+  text-align: center;
+
+  img {
+    width: 10rem;
+    aspect-ratio: 1/1;
+    margin-bottom: 2rem;
+    fill: white;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+
+  &__progress-bar {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    position: relative;
+
+    .circle {
+      position: relative; /* Ensure z-index works as expected */
+      z-index: 2; /* Ensure circles are above the line */
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+
+      &.active {
+        background-color: green;
+      }
+
+      p {
+        margin-top: -3rem;
+        font-size: 0.9rem;
+
+        &.active {
+          font-weight: bold;
+          color: green;
+        }
+      }
+    }
+  }
+}
+
+.line {
+  position: absolute;
+  align-self: start;
+  height: 3px; /* Adjust the thickness of the line */
+  top: 42%;
+  z-index: 2;
+
+  &.--completed {
+    background-image: linear-gradient(
+      to right,
+      rgb(80, 217, 80) 50%,
+      transparent 50%
+    );
+    background-size: 10px; /* Adjust the size of the dots */
+    background-repeat: repeat-x; /* Repeat along the x-axis */
+    z-index: 1;
+  }
+
+  &.--waiting {
+    right: 0;
+    background-image: linear-gradient(
+      to right,
+      rgb(119, 119, 119) 50%,
+      transparent 50%
+    );
+    background-size: 10px; /* Adjust the size of the dots */
+    background-repeat: repeat-x;
+    z-index: 0;
+  }
+}
