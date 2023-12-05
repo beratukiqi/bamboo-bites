@@ -1,3 +1,5 @@
+@import "styling/variables.scss";
+
 .contact-form {
 	max-width: 40rem;
 	padding: 4rem;
@@ -45,7 +47,7 @@
 				position: relative;
 
 				svg {
-					fill: $color-blue;
+					fill: $color-admin-background;
 					position: absolute;
 					right: 1rem;
 					font-size: 1.2rem;
@@ -118,6 +120,6 @@
 }
 
 .sent-message {
-	border: 1px solid white;
+	border: 1px solid $color-white;
 	padding: 4rem 3rem;
 }

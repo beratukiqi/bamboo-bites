@@ -1,47 +1,49 @@
+@import "styling/variables.scss";
+
 .pending-status {
-  color: #5fa5ff;
+	color: $color-admin-pending;
 }
 
 .cooking-status {
-  color: #ff4e4e;
+	color: $color-main--red;
 }
 
 .pickUp-status {
-  color: #a6ff5f;
+	color: $color-admin-pickup;
 }
 
 .delivery-status {
-  color: #fc5fff;
+	color: $color-admin-eat-in;
 }
 
 table {
-  width: 50%;
-  background-color: #161717;
-  border-collapse: collapse;
-  border: none;
-  border-radius: 25px;
-  text-align: left;
-  color: white;
-  padding: 2rem;
+	width: 50%;
+	background-color: $color-admin-table-background;
+	border-collapse: collapse;
+	border: none;
+	border-radius: 1rem;
+	text-align: left;
+	color: $color-white;
 }
 
 thead {
-  color: #8a8a8a;
+	color: $color-admin-table-headers;
 }
 
 .table-header {
-  text-transform:capitalize;
-  color: white;
-  font-size: 20px;
-  margin: 2rem;
+	text-transform: capitalize;
+	color: $color-white;
+	font-size: 20px;
+	// margin: 2rem;
+	padding: 2rem;
 }
 
 th,
 td {
-  padding: 8px;
+	padding: 0.5rem 2rem;
 }
 
 tbody tr:hover {
-  background-color: #8a8a8a;
-  cursor: pointer;
+	background-color: $color-admin-background;
+	cursor: pointer;
 }
