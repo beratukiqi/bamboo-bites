@@ -1,103 +1,103 @@
 @import "styling/variables.scss";
 
 .page-column-title {
-	padding: 7rem 0 0 0;
-	text-align: center;
-	text-transform: uppercase;
-	margin-bottom: 5rem;
+  padding-top: 4rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 5rem;
 }
 
 .h2-menu-item,
 .menu-item__price {
-	letter-spacing: 0.1rem;
+  letter-spacing: 0.1rem;
 }
 
 .menu-descr {
-	max-width: 22rem;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+  max-width: 22rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .menu-item {
-	&__container {
-		color: white;
-		display: flex;
-		flex-direction: row;
-		gap: 2rem;
-		// max-width: 40rem;
-		padding-bottom: 1rem;
+  &__container {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    // max-width: 40rem;
+    padding-bottom: 1rem;
 
-		&:hover {
-			cursor: pointer;
-			margin-left: 0.2rem;
-			// background-color: rgba(31, 31, 31, 0.274);
-			// color: $color-main--red;
-			border-radius: 0.5rem;
-			transition: all 0.2s ease-in-out;
-		}
-	}
+    &:hover {
+      cursor: pointer;
+      margin-left: 0.2rem;
+      // background-color: rgba(31, 31, 31, 0.274);
+      // color: $color-main--red;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease-in-out;
+    }
+  }
 
-	&__image {
-		display: block;
-		width: 5rem;
-		height: 5rem;
-		background-color: white;
-		align-self: center;
-	}
+  &__image {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    background-color: white;
+    align-self: center;
+  }
 
-	&__text {
-		display: flex;
-		flex-direction: column;
-		flex-grow: 2;
+  &__text {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
 
-		h3 {
-			font-size: 1.5rem;
+    h3 {
+      font-size: 1.5rem;
 
-			@media screen and (max-width: $breakpoint-tablet) {
-				font-size: 1.3rem;
-			}
-		}
+      @media screen and (max-width: $breakpoint-tablet) {
+        font-size: 1.3rem;
+      }
+    }
 
-		p {
-			font-size: 0.7rem;
-		}
-	}
+    p {
+      font-size: 0.7rem;
+    }
+  }
 
-	&__price {
-		margin: auto;
-		font-size: 2.5rem;
+  &__price {
+    margin: auto;
+    font-size: 2.5rem;
 
-		b {
-			margin-left: 0.4rem;
-			font-weight: 300;
-		}
-	}
+    b {
+      margin-left: 0.4rem;
+      font-weight: 300;
+    }
+  }
 
-	&__addBtn {
-		width: 2rem;
-		height: 2rem;
-		border-radius: 0.2rem;
-		border: none;
-		margin: auto;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: transparent;
+  &__addBtn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.2rem;
+    border: none;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
 
-		&:hover {
-			background-color: white;
-			cursor: pointer;
+    &:hover {
+      background-color: white;
+      cursor: pointer;
 
-			svg {
-				fill: black;
-			}
-		}
+      svg {
+        fill: black;
+      }
+    }
 
-		svg {
-			fill: white;
-			width: 1.5rem;
-			height: 1.5rem;
-		}
-	}
+    svg {
+      fill: white;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
 }
