@@ -1,7 +1,9 @@
+@import "styling/variables.scss";
+
 #cart {
-  .primary-button {
-    &:first-of-type {
-      margin-top: 3rem;
-    }
-  }
+	.primary-button {
+		&:first-of-type {
+			margin-top: 3rem;
+		}
+	}
 }
