@@ -19,10 +19,6 @@ const navItems = [
 		name: "About",
 		path: "/about",
 	},
-	{
-		name: "Cart",
-		path: "/cart",
-	},
 ];
 
 const HamburgerMenu = () => {
