@@ -6,35 +6,32 @@ $breakpoint-large-desktop: 1200px;
 // Colors - Primary
 $background-color: #101000;
 $color-main--red: #ff4e4e;
-$white-color: #ffffff;
+$color-white: #ffffff;
 
+// Colors - Variations
 $color-allergen-red: #f24a4a;
 $color-protein-green: #37b337;
 $color-standard-blue: #4e4eff;
 
-$color-correct: #91d591;
-$color-error: #ff9e9e;
+// Colors - Contact
+$color-correct: #c3e8c3;
+$color-error: #ffcaca;
 
-// Colors
-$color-white: #ffffff;
-$color-blue: #15304b;
-$color-blue--light: #e8f1f7;
-$color-blue--hover: #1e466f;
-$color-orange: #ef6d0a;
-$color-orange--hover: #d95c0a;
-$color-grey--light: #e8ebed;
+// Colors - Admin
+$color-admin-background: #242424;
+$color-admin-eat-in: #fc5fff;
+$color-admin-pending: #5fa5ff;
+$color-admin-pickup: #a6ff5f;
+$color-admin-table-background: #161717;
+$color-admin-table-headers: #8a8a8a;
+
+// Colors - Berat
 $color-grey--hover: #f3f4f6;
 $color-grey--dark: #d7d7d7;
-$color-grey--background: #f8f8f8;
-$color-darkgrey: #e8ebed;
-$color-darkgrey--hover: #dee1e3;
-$color-paragraph: #0a1826;
-$color-black: #0a1826;
-$color-header: #15304b;
 
 // Shadows
-$box-shadow--main: 0 0 50px 0px rgba($color-blue, 0.06);
-$box-shadow--secondary: 0 0 20px 0 rgba($color-blue, 0.06);
+$box-shadow--main: 0 0 50px 0px rgba($color-admin-background, 0.06);
+$box-shadow--secondary: 0 0 20px 0 rgba($color-admin-background, 0.06);
 $box-shadow--hover: 0px 10px 50px 0px rgba(21, 48, 75, 0.15);
 
 // Font related

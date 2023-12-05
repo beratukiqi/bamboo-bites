@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useContext } from "react";
+import ContentWrapper from "@/components/ContentWrapper";
 import PageWrapper from "@/components/PageWrapper";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
@@ -48,11 +49,16 @@ const Payment = () => {
         title="Payment"
         img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png" //!!Change img url!!
       />
-      <PageColumn>
-        <OrderList data={cart} />
+      <PageColumn title="Payment options">
+        <ContentWrapper title="Your order">
+          <OrderList data={cart} />
+        </ContentWrapper>
+        <ContentWrapper title="Available payment methods">
+          <PaymentMethod />
+        </ContentWrapper>
+
         <TotalPrice />
 
-        <PaymentMethod />
         <Button action={sendOrder} title="PAY FOR ORDER" />
       </PageColumn>
     </PageWrapper>
