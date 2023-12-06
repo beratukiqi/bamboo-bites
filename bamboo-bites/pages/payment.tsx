@@ -51,13 +51,12 @@ const Payment = () => {
       />
       <PageColumn title="Payment options">
         <ContentWrapper title="Your order">
-          <OrderList data={cart} />
+          <OrderList data={cart} stripped={true} />
+          <TotalPrice />
         </ContentWrapper>
         <ContentWrapper title="Available payment methods">
           <PaymentMethod />
         </ContentWrapper>
-
-        <TotalPrice />
 
         <Button action={sendOrder} title="PAY FOR ORDER" />
       </PageColumn>
