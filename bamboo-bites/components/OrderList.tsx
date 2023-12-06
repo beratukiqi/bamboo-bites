@@ -13,12 +13,10 @@ const OrderList = ({
   stripped?: boolean;
 }) => {
   return !admin ? (
-    <section className={`order-item__wrapper${stripped && "--stripped"}`}>
+    <section className={`order-item__wrapper${stripped ? "--stripped" : ""}`}>
       {data &&
         data.map((item: any, i: number) => {
           const key = item.id + i;
-          console.log("STRIPPED IN LOOP", stripped);
-
           return stripped ? (
             <CartItemStripped key={key} item={item} />
           ) : (
