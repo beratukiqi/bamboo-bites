@@ -20,7 +20,7 @@ const OrderList = ({
           return stripped ? (
             <CartItemStripped key={key} item={item} />
           ) : (
-            <CartItem key={key} item={item} editable />
+            <CartItem key={key} item={item} editable={editable} />
           );
         })}
     </section>
