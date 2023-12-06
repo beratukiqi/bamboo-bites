@@ -26,6 +26,23 @@
 				color: $color-admin-table-headers;
 				display: flex;
 				gap: 2rem;
+				list-style: none;
+				text-decoration: none;
+			}
+
+			&__path {
+				a {
+					color: $color-admin-table-headers;
+					font-weight: bold;
+
+					&.active {
+						color: $color-white;
+					}
+	
+					&:hover {
+						color: $color-white;
+					}
+				}
 			}
 		}
 	}
