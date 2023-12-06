@@ -6,19 +6,23 @@ import {SvgIcons} from "../components/SvgIcons"
 const navItems = [
 	{
 		name: "Orders",
-    icon: SvgIcons.OrdersIcon
+    icon: SvgIcons.OrdersIcon,
+    path: "/admin"
 	},
 	{
 		name: "Statistics",
-    icon: SvgIcons.StatIcon
+    icon: SvgIcons.StatIcon,
+    path: "admin/statistics"
 	},
 	{
 		name: "Time reports",
-    icon: SvgIcons.TimeReportIcon
+    icon: SvgIcons.TimeReportIcon,
+    path: "admin/timeReports"
 	},
 	{
 		name: "Settings",
-    icon: SvgIcons.SettingsIcon
+    icon: SvgIcons.SettingsIcon,
+    path: "admin/settings"
 	},
 ];
 
