@@ -35,9 +35,8 @@ const Admin = () => {
   const statusList = [
     "pending",
     "cooking",
-    "eat in",
-    "take away",
-    "done",
+    "ready",
+    "completed",
   ];
 
   const [ordersByStatus, setOrdersByStatus] = useState<{

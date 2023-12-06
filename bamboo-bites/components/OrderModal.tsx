@@ -41,10 +41,9 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
         return "cooking";
       case "cooking":
         // Determine next status based on delivery method
-        return deliveryMethod === "eatIn" ? "eat in" : "take away";
-      case "eat in":
-      case "take away":
-        return "done";
+        return "ready"
+      case "ready":
+        return "completed";
       default:
         return "pending"; // Or handle the default case as needed
     }
@@ -52,11 +51,9 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
 
   const getPreviousStatus = (currentStatus: string, deliveryMethod: string): string => {
     switch (currentStatus) {
-      case "done":
-        return deliveryMethod === "eatIn" ? "eat in" : "take away";
-      case "eat in":
-        return "cooking";
-      case "take away":
+      case "completed":
+        return "ready"
+      case "ready":
         return "cooking";
       default:
         return ""; // Or handle the default case as needed
@@ -64,7 +61,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   };
 
   const shouldShowStatusButton = (currentStatus: string): boolean => {
-    return !["done"].includes(currentStatus);
+    return !["completed"].includes(currentStatus);
   };
 
   const shouldShowBackButton = (currentStatus: string): boolean => {

@@ -21,12 +21,10 @@ const OrderItemAdmin = ({
         return "pending-status";
       case "cooking":
         return "cooking-status";
-      case "eat in":
-        return "eatIn-status";
-      case "take away":
-        return "takeAway-status";
-      case "done":
-        return "done-status";
+      case "ready":
+        return "ready-status";
+      case "completed":
+        return "completed-status";
       default:
         return "";
     }
@@ -42,6 +40,7 @@ const OrderItemAdmin = ({
         <td>{order.orderNr}</td>
         <td>{date}</td>
         <td>{time}</td>
+        <td>{order.deliveryMethod}</td>
         <td className={styleStatus(order.status)}>{order.status}</td>
       </tr>
       {isOpen && (

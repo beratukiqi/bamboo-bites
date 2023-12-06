@@ -70,24 +70,12 @@
 					color: $color-main--red;
 				}
 				
-				.eatIn-status {
+				.ready-status {
 					color: $color-admin-pickup;
 				}
 				
-				.takeAway-status {
-					color: $color-admin-eat-in;
-				}
-				
-				.takeAway-status {
+				.completed-status {
 					color: $color-admin-pickup;
-				}
-				
-				.eatIn-status {
-					color: $color-admin-eat-in;
-				}
-				
-				.done-status {
-				  color: green;
 				}
 			}
 
