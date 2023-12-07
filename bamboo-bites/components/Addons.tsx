@@ -30,6 +30,8 @@ const Addons = ({ data }: ExtrasProps) => {
         data.map((item: any, i: number) => (
           <article className="extras-item__container">
             <Image
+              width={200}
+              height={200}
               src={item.imgUrl}
               alt={`Top view image of the dish ${item.item}`}
               className="extras-item__image"

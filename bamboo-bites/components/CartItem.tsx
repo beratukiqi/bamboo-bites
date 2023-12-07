@@ -41,6 +41,8 @@ const CartItem = ({ item, editable, stripped }: OrderItemProps) => {
   return (
     <article className="order-item">
       <Image
+        width={200}
+        height={200}
         src={item.imgUrl}
         alt="noodles bowl"
         className="order-item__image"

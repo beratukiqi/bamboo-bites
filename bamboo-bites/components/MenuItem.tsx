@@ -43,6 +43,8 @@ const MenuItem = ({ food }: MenuItemProps) => {
         className="menu-item__container"
       >
         <Image
+          width={200}
+          height={200}
           src={imgUrl}
           alt={`Top view image of the dish ${item}`}
           className="menu-item__image"

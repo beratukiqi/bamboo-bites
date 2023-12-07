@@ -56,7 +56,7 @@ const OrderStatus = ({ orderStatus }: { orderStatus: string }) => {
     <section className="order-status">
       <h3>{title}</h3>
       <p>{description}</p>
-      <Image src={icon} alt="" />
+      <Image width={200} height={200} src={icon} alt="" />
       <section className="order-status__progress-bar">
         <div className={`circle ${pendingActive ? "active" : ""}`}>
           <p className={`${pendingActive ? "active" : ""}`}>Pending</p>

@@ -39,6 +39,8 @@ const ContactInfo = () => {
         </section>
         <section className="map">
           <Image
+            width={200}
+            height={200}
             className="about-img"
             src="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/mobile/map.png"
             alt="Bamboo Bites Street Map"
