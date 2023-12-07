@@ -4,6 +4,7 @@ import QtyButton from "./QtyButton";
 import { updateQuantity } from "@/functions/updateQuantity";
 import { QuantityChange } from "@/functions/updateQuantity";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface OrderDetails {
   id: string;
@@ -39,7 +40,11 @@ const CartItem = ({ item, editable, stripped }: OrderItemProps) => {
 
   return (
     <article className="order-item">
-      <img src={item.imgUrl} alt="noodles bowl" className="order-item__image" />
+      <Image
+        src={item.imgUrl}
+        alt="noodles bowl"
+        className="order-item__image"
+      />
       <div className="order-item__text">
         <div className="order-item__header">
           <h2 className="order-item__title">{item.item}</h2>

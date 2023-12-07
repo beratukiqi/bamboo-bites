@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const OrderStatus = ({ orderStatus }: { orderStatus: string }) => {
@@ -55,7 +56,7 @@ const OrderStatus = ({ orderStatus }: { orderStatus: string }) => {
     <section className="order-status">
       <h3>{title}</h3>
       <p>{description}</p>
-      <img src={icon} alt="" />
+      <Image src={icon} alt="" />
       <section className="order-status__progress-bar">
         <div className={`circle ${pendingActive ? "active" : ""}`}>
           <p className={`${pendingActive ? "active" : ""}`}>Pending</p>

@@ -9,38 +9,22 @@ const navItems = [
   {
     name: "Orders",
     icon: SvgIcons.OrdersIcon,
-  },
-  {
-    name: "Statistics",
-    icon: SvgIcons.StatIcon,
-  },
-  {
-    name: "Time reports",
-    icon: SvgIcons.TimeReportIcon,
-  },
-  {
-    name: "Settings",
-    icon: SvgIcons.SettingsIcon,
-  },
-  {
-    name: "Orders",
-    icon: SvgIcons.OrdersIcon,
     path: "/admin",
   },
   {
     name: "Statistics",
     icon: SvgIcons.StatIcon,
-    path: "admin/statistics",
+    path: "#",
   },
   {
     name: "Time reports",
     icon: SvgIcons.TimeReportIcon,
-    path: "admin/timeReports",
+    path: "#",
   },
   {
     name: "Settings",
     icon: SvgIcons.SettingsIcon,
-    path: "admin/settings",
+    path: "#",
   },
 ];
 
