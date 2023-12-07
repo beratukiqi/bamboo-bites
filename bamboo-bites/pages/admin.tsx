@@ -1,25 +1,25 @@
 import OrderTable from "@/components/OrderTable";
 import PageWrapper from "@/components/PageWrapper";
 import { useEffect, useState } from "react";
-import {SvgIcons} from "../components/SvgIcons"
+import { SvgIcons } from "../components/SvgIcons";
 
 const navItems = [
-	{
-		name: "Orders",
-    icon: SvgIcons.OrdersIcon
-	},
-	{
-		name: "Statistics",
-    icon: SvgIcons.StatIcon
-	},
-	{
-		name: "Time reports",
-    icon: SvgIcons.TimeReportIcon
-	},
-	{
-		name: "Settings",
-    icon: SvgIcons.SettingsIcon
-	},
+  {
+    name: "Orders",
+    icon: SvgIcons.OrdersIcon,
+  },
+  {
+    name: "Statistics",
+    icon: SvgIcons.StatIcon,
+  },
+  {
+    name: "Time reports",
+    icon: SvgIcons.TimeReportIcon,
+  },
+  {
+    name: "Settings",
+    icon: SvgIcons.SettingsIcon,
+  },
 ];
 
 interface Order {
@@ -32,12 +32,7 @@ const Admin = () => {
   const today = new Date();
   const todaysDate = today.toISOString().split("T")[0] + "T00:00:00";
 
-  const statusList = [
-    "pending",
-    "cooking",
-    "ready",
-    "completed",
-  ];
+  const statusList = ["pending", "cooking", "ready", "completed"];
 
   const [ordersByStatus, setOrdersByStatus] = useState<{
     [status: string]: Order[];
@@ -89,7 +84,7 @@ const Admin = () => {
       <aside>
         <nav className="admin-nav">
           {SvgIcons.LogoIcon}
-          <ul className = "admin-nav__links">
+          <ul className="admin-nav__links">
             {navItems.map((item) => (
               <article key={item.name} className="admin-nav__items">
                 {item.icon}
@@ -111,7 +106,7 @@ const Admin = () => {
           />
         ))}
       </section>
-      <section className="berattest"></section>
+      <section className="modal-target-container"></section>
     </PageWrapper>
   );
 };
