@@ -3,28 +3,29 @@ import { useContext } from "react";
 import AppContext from "@/context/AppContext";
 
 const DeliveryMethod = () => {
-  const [currentDeliveryMethod, setCurrentDeliveryMethod] = useState("takeAway");
+  const [currentDeliveryMethod, setCurrentDeliveryMethod] =
+    useState("takeAway");
   const { orderDetails, setOrderDetails } = useContext(AppContext);
 
   useEffect(() => {
     setOrderDetails({
       ...orderDetails,
-      deliveryMethod: "takeAway"
+      deliveryMethod: "takeAway",
     });
-  },[])
+  }, []);
 
-// Change the delivery method to "takeAway"
+  // Change the delivery method to "takeAway"
   const handleDeliveryMethod = (e: any) => {
-    setCurrentDeliveryMethod(e.target.value)
+    setCurrentDeliveryMethod(e.target.value);
     setOrderDetails({
       ...orderDetails,
-      deliveryMethod: e.target.value
+      deliveryMethod: e.target.value,
     });
   };
 
   return (
     <article className="delivery-method">
-      <div>
+      <div className="delivery-method__choice">
         <input
           type="radio"
           id="takeAway"
@@ -38,8 +39,8 @@ const DeliveryMethod = () => {
           Take Away
         </label>
       </div>
-      
-      <div>
+
+      <div className="delivery-method__choice">
         <input
           type="radio"
           id="eatIn"
@@ -53,8 +54,6 @@ const DeliveryMethod = () => {
           Eat In
         </label>
       </div>
-      
-
     </article>
   );
 };
