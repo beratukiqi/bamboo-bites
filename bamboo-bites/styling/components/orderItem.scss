@@ -11,57 +11,37 @@
     gap: 1.5rem;
 
     ul {
-      // padding-left: 1.5rem;
       display: flex;
       gap: 0.8rem;
       margin-top: -1rem;
       .order-item__tweaks {
         &--protein {
           background-color: $color-protein-green;
-          font-size: 0.9rem;
-          padding: 5px 10px;
-          border-radius: 8px;
+          font-size: 0.8rem;
+          padding: 3px 10px;
+          border-radius: 5px;
         }
 
         &--allergen {
           background-color: $color-allergen-red;
-          font-size: 0.9rem;
-          padding: 5px 10px;
-          border-radius: 8px;
+          font-size: 0.8rem;
+          padding: 3px 10px;
+          border-radius: 5px;
         }
       }
     }
   }
 
   .order-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 
     &__image {
       width: 5rem;
       height: 5rem;
       background-color: $color-white;
-      align-self: center;
-    }
-
-    &__text {
-      display: flex;
-      gap: 2rem;
-
-      width: 100%;
-      h3 {
-        flex-grow: 2;
-        font-size: 1.6rem;
-
-        @media screen and (max-width: $breakpoint-tablet) {
-          font-size: 1.3rem;
-        }
-      }
-
-      p {
-        font-size: 0.7rem;
-      }
     }
 
     &__tweaks {
@@ -99,19 +79,15 @@
 
     &__price {
       font-size: 2.5rem;
-      margin: auto 0;
-
       b {
-        margin-left: 0.4rem;
         font-weight: 300;
       }
     }
 
     &__quantity {
       display: flex;
-      margin-left: auto;
-
       &.--orderpage {
+        justify-content: flex-end;
         span {
           width: 4rem;
         }
@@ -126,11 +102,7 @@
       }
       .qty-button {
         padding: 0;
-        margin: auto;
-        display: flex;
         justify-content: center;
-        align-items: center;
-        align-self: start;
         font-size: 1.5rem;
         line-height: 1.5rem;
         height: 1.5rem;
@@ -144,7 +116,6 @@
       span {
         margin: auto 0;
         width: 2rem;
-        display: inline;
         text-align: center;
       }
     }
@@ -157,8 +128,6 @@
   border-radius: 0.5rem;
   display: grid;
   grid-template-columns: 2fr 0.5fr 0.5fr;
-  // background-color: rgb(27, 27, 27);
-  // padding: 10px 20px;
 
   .order-item {
     &__title {

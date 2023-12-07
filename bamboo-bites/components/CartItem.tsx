@@ -47,51 +47,49 @@ const CartItem = ({ item, editable, stripped }: OrderItemProps) => {
         alt="noodles bowl"
         className="order-item__image"
       />
-      <div className="order-item__text">
-        <div className="order-item__header">
-          <h2 className="order-item__title">{item.item}</h2>
+      <div className="order-item__header">
+        <h2 className="order-item__title">{item.item}</h2>
 
-          <ul className="order-item__tweaks">
-            {/* Render protein tweak */}
-            {item.tweaks?.protein ? (
-              <li className="order-item__tweaks--protein">
-                {item.tweaks?.protein}
+        <ul className="order-item__tweaks">
+          {/* Render protein tweak */}
+          {item.tweaks?.protein ? (
+            <li className="order-item__tweaks--protein">
+              {item.tweaks?.protein}
+            </li>
+          ) : (
+            <li className="order-item__tweaks--standard">Standard</li>
+          )}
+
+          {/* Render allergens tweaks */}
+          {item.tweaks?.allergens &&
+            Object.entries(item.tweaks.allergens).map(([key, value]) => (
+              <li
+                key={key}
+                className={`order-item__tweaks--allergen ${
+                  value ? "--active" : ""
+                }`}
+              >
+                {key}
               </li>
-            ) : (
-              <li className="order-item__tweaks--standard">Standard</li>
-            )}
-
-            {/* Render allergens tweaks */}
-            {item.tweaks?.allergens &&
-              Object.entries(item.tweaks.allergens).map(([key, value]) => (
-                <li
-                  key={key}
-                  className={`order-item__tweaks--allergen ${
-                    value ? "--active" : ""
-                  }`}
-                >
-                  {key}
-                </li>
-              ))}
-          </ul>
+            ))}
+        </ul>
+      </div>
+      {editable ? (
+        <div className="order-item__quantity">
+          <QtyButton title="-" action={decrementQuantity} />
+          <span>{item.quantity}</span>
+          <QtyButton title="+" action={incrementQuantity} />
         </div>
-        {editable ? (
-          <div className="order-item__quantity">
-            <QtyButton title="-" action={decrementQuantity} />
-            <span>{item.quantity}</span>
-            <QtyButton title="+" action={incrementQuantity} />
-          </div>
-        ) : (
-          <div className="order-item__quantity --orderpage">
-            <span>QTY: {item.quantity}</span>
-          </div>
-        )}
-        <div className="order-item__details">
-          <span className="order-item__price">
-            <b>$</b>
-            {item.price}
-          </span>
+      ) : (
+        <div className="order-item__quantity --orderpage">
+          <span>QTY: {item.quantity}</span>
         </div>
+      )}
+      <div className="order-item__details">
+        <span className="order-item__price">
+          <b>$</b>
+          {item.price}
+        </span>
       </div>
     </article>
   );
