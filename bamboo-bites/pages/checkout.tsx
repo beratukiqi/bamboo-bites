@@ -12,60 +12,57 @@ import Button from "@/components/Button";
 import AppContext from "@/context/AppContext";
 
 const Checkout = () => {
-  const router = useRouter();
-  const { cart} = useContext(AppContext);
-  const [extras, setExtras] = useState([]);
- 
-  const imgURL = "https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+	const router = useRouter();
+	const { cart } = useContext(AppContext);
+	const [extras, setExtras] = useState([]);
 
-  useEffect(() => {
-    async function fetchExtras() {
-      try {
-        const response = await fetch(
-          "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/extras"
-        );
-        const data = await response.json();
-        setExtras(data.extras);
-      } catch (error) {
-        console.error(error, "Failed to fetch menu items");
-      }
-    }
-    fetchExtras();
-  }, []);
+	const imgURL = "https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png";
 
-  useEffect(() => {
-    console.log(extras);
-  }, [extras]);
+	useEffect(() => {
+		async function fetchExtras() {
+			try {
+				const response = await fetch(
+					"https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/extras"
+				);
+				const data = await response.json();
+				setExtras(data.extras);
+			} catch (error) {
+				console.error(error, "Failed to fetch menu items");
+			}
+		}
+		fetchExtras();
+	}, []);
 
-  const toPayment = async () => {
-    router.push(`/payment`);
-  };
+	useEffect(() => {
+		console.log(extras);
+	}, [extras]);
 
-  return (
-    <PageWrapper column>
-      <PageHeader
-        title="Checkout"
-        img={imgURL}
-      />
-      <PageColumn title="Your Order Awaits!">
-        <h1>Review your order and make final changes!</h1>
-        <ContentWrapper title="Order items">
-          <OrderList data={cart} editable />
-          <TotalPrice />
-        </ContentWrapper>
+	const toPayment = async () => {
+		router.push(`/payment`);
+	};
 
-        <ContentWrapper title="Add a side dish">
-          <Addons data={extras} />
-        </ContentWrapper>
+	return (
+		<PageWrapper column>
+			<PageHeader title="Checkout" img={imgURL} />
+			<PageColumn title="Your Order Awaits!">
+				<h1>Review your order and make final changes</h1>
+				<ContentWrapper title="Order items">
+					<OrderList data={cart} editable />
+					<TotalPrice />
+				</ContentWrapper>
 
-        <ContentWrapper title="Delivery method">
-          <DeliveryMethod />
-        </ContentWrapper>
+				<ContentWrapper title="Add a side dish">
+					<Addons data={extras} />
+				</ContentWrapper>
 
-        <Button action={toPayment} title="READY TO PAY" />
-      </PageColumn>
-    </PageWrapper>
-  );
+				<ContentWrapper title="Delivery method">
+					<DeliveryMethod />
+				</ContentWrapper>
+
+				<Button action={toPayment} title="READY TO PAY" />
+			</PageColumn>
+		</PageWrapper>
+	);
 };
 
 export default Checkout;
