@@ -1,11 +1,12 @@
-import Button from "@/components/Button";
-import OrderList from "@/components/OrderList";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import PageWrapper from "@/components/PageWrapper";
 import PageColumn from "@/components/PageColumn";
 import PageHeader from "@/components/PageHeader";
-import PageWrapper from "@/components/PageWrapper";
-import AppContext from "@/context/AppContext";
-import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import ContentWrapper from "@/components/ContentWrapper";
+import OrderList from "@/components/OrderList";
+import Button from "@/components/Button";
+import OrderStatus from "@/components/OrderStatus";
 
 interface OrderDetail {
   id: string;
@@ -17,11 +18,10 @@ interface OrderDetail {
 }
 
 const SingleOrderPage = () => {
-  // const { setCart } = useContext(AppContext);
   const router = useRouter();
   const { orderNr } = router.query;
   const [orderData, setOrderData] = useState<OrderDetail[]>([]);
-  const [orderStatus, setOrderStatus] = useState("")
+  const [orderStatus, setOrderStatus] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   // Fetches order data on mount and sets it to state
@@ -32,9 +32,9 @@ const SingleOrderPage = () => {
       );
       const data = await res.json();
       console.log(data.order?.status);
-      
+
       setOrderData(data.order?.order);
-      setOrderStatus(data.order?.status)
+      setOrderStatus(data.order?.status);
     };
     fetchOrderData();
   }, [orderNr]);
@@ -42,16 +42,7 @@ const SingleOrderPage = () => {
   useEffect(() => {
     console.log(orderData);
     console.log(orderStatus);
-    
   }, []);
-
-  // const editOrder = () => {
-  //   // Populates the cart with the order data before redirecting
-  //   setCart(orderData);
-
-  //   // Redirect and add orderNr to query string
-  //   router.push(`/cart?orderNr=${orderNr}`);
-  // };
 
   const cancelOrder = async () => {
     const headers = {
@@ -81,35 +72,21 @@ const SingleOrderPage = () => {
     <PageWrapper column>
       <PageHeader
         title="Order"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png"
+        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png" //!!Change url !!!
       />
-      <PageColumn title="Thank you for ordering!">
-        <img src="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/ramen_white+1.png" alt="" />
-        <section className="status">
-          <article>
-            <div style={{height: "2rem", width: "2rem", borderRadius: "50%", border: "1px solid white", backgroundColor: "#4DED71"}} className={`statusCheck ${orderStatus === 'pending' ? 'checked' : ''}`}></div>
-            <p>paid</p>
-          </article>
-          - - -
-          <article>
-            <div style={{height: "2rem", width: "2rem", borderRadius: "50%", border: "1px solid white"}} className={`statusCheck ${orderStatus === 'cooking' ? 'checked' : ''}`}></div>
-            <p>cooking</p>
-          </article>
-          - - -
-          <article>
-            <div style={{height: "2rem", width: "2rem", borderRadius: "50%", border: "1px solid white"}} className={`statusCheck ${orderStatus === 'done' ? 'checked' : ''}`}></div>
-            <p>done</p>
-          </article>
-        </section>
-        <OrderList data={orderData} />
-        {
-          orderStatus === "pending" ? (<>
-            <h3>Your order with order number <b>{orderNr}</b> is being processed</h3>
-            <Button title="CANCEL ORDER" action={cancelOrder}></Button>
-          </>) : (<h3>Your order with order number <b>{orderNr}</b> is {orderStatus}</h3>)
-        }
+      <PageColumn title={`Order ${orderNr}`}>
+        {orderStatus && <OrderStatus orderStatus={orderStatus} />}
+        <ContentWrapper title="Your items">
+          <OrderList data={orderData} />
+        </ContentWrapper>
+
+        {orderStatus === "pending" ? (
+          <Button title="CANCEL ORDER" action={cancelOrder}></Button>
+        ) : (
+          <></>
+        )}
       </PageColumn>
-  
+
       {/*Modal*/}
       {showModal && (
         <div className="modal">

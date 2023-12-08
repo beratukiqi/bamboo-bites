@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import "pages/cart.scss";
 @import "pages/home.scss";
 @import "pages/menu.scss";
 @import "pages/checkout.scss";
@@ -8,17 +9,15 @@
 @import "pages/admin.scss";
 @import "pages/payment.scss";
 @import "components/orderItem.scss";
+@import "components/orderStatus.scss";
+@import "components/totalPrice.scss";
 @import "components/modal.scss";
 @import "components/header.scss";
 @import "components/contactForm.scss";
 @import "components/adminModal.scss";
 @import "components/footer.scss";
-
-:root {
-  --background-color: #101000;
-  --red-accent-color: #ff4e4e;
-  --white-color: #ffffff;
-}
+@import "components/menuItemMobile.scss";
+@import "components/addons.scss";
 
 * {
   margin: 0;
@@ -29,8 +28,8 @@
 }
 
 main {
-  background-color: var(--background-color);
-  color: var(--white-color);
+  background-color: $background-color;
+  color: $color-white;
 }
 
 h1,
@@ -69,15 +68,16 @@ li {
   align-self: center;
   margin-top: 1rem;
   background-color: transparent;
-  color: var(--white-color);
+  color: $color-white;
   padding: 1rem 3rem;
-  border: 1px solid var(--white-color);
-  font-size: 1rem;
+  border: 1px solid $color-white;
+  font-size: 1.3rem;
   width: 100%;
+  text-transform: uppercase;
   cursor: pointer;
 
   &:hover {
-    background-color: var(--white-color);
+    background-color: $color-white;
     color: black;
   }
 
@@ -94,8 +94,7 @@ li {
 
 .hero {
   display: grid;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   &.col-2 {
     grid-template-columns: repeat(2, 1fr);
 
@@ -103,36 +102,48 @@ li {
       grid-template-columns: 1fr;
     }
   }
+
+  .column {
+    width: 100%;
+    padding: 4rem 6rem;
+    margin: 0 auto;
+  }
 }
 
 .hero__column {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   padding: 0 4rem;
-  color: var(--white-color);
+  color: $color-white;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 
   h1 {
-    color: var(--white-color);
+    color: $color-white;
     font-size: calc(1rem + 3.5vw);
-    letter-spacing: 0.8rem;
+    letter-spacing: calc(0.7rem + 0.1vw);
     text-align: center;
     text-transform: uppercase;
     padding: 3rem 0;
-    border: 2px solid var(--white-color);
+    border: 2px solid $color-white;
+    width: calc(1rem + 30vw);
 
     @media screen and (max-width: $breakpoint-desktop) {
-      font-size: calc(1rem + 4vw);
+      width: calc(1rem + 35vw);
       padding: 4rem;
+      font-size: calc(1rem + 4vw);
+      letter-spacing: calc(0.3rem + 0.1vw);
     }
 
     @media screen and (max-width: $breakpoint-mobile) {
-      font-size: calc(1rem + 4vw);
+      width: calc(1rem + 35vw);
       padding: 2rem;
+      font-size: calc(1rem + 4vw);
+      letter-spacing: calc(0.3rem + 0.1vw);
     }
   }
 
@@ -160,7 +171,7 @@ li {
   &.sticky {
     @media screen and (min-width: $breakpoint-desktop) {
       height: 100vh;
-      justify-content: flex-start;
+      justify-content: center;
       padding: 25rem 4rem 2rem 4rem;
       align-self: flex-start;
       position: sticky;
@@ -181,12 +192,12 @@ li {
 
 .content {
   &__title {
-    border-bottom: 2px solid var(--white-color);
+    border-bottom: 2px solid $color-white;
     padding-bottom: 1rem;
   }
 
   &__container {
-    padding-top: 2rem;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -194,7 +205,7 @@ li {
 
   &.small {
     .content__container {
-      padding-top: 1.5rem;
+      padding: 1.5rem 0;
     }
     .content__title {
       font-size: 1.2rem;

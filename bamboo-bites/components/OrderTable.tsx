@@ -33,6 +33,7 @@ const OrderTable = ({
           <th>Order Number</th>
           <th>Date</th>
           <th>Time</th>
+          <th>Delivery</th>
           <th>Status</th>
         </tr>
       </thead>

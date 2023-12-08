@@ -4,6 +4,7 @@ import OrderList from "./OrderList";
 import ReactDOM from "react-dom";
 import ContentWrapper from "./ContentWrapper";
 import { SvgIcons } from "./SvgIcons";
+import DeliveryMethod from "./DeliveryMethod";
 
 interface OrderDetail {
   id: string;
@@ -42,27 +43,22 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
         return "cooking";
       case "cooking":
         // Determine next status based on delivery method
-        return deliveryMethod === "delivery"
-          ? "ready for delivery"
-          : "ready for pickup";
-      case "ready for pickup":
-        return "picked up";
-      case "ready for delivery":
-        return "delivered";
+        return "ready";
+      case "ready":
+        return "completed";
       default:
-        return "pending";
+        return "pending"; // Or handle the default case as needed
     }
   };
 
-  const getPreviousStatus = (currentStatus: string): string => {
+  const getPreviousStatus = (
+    currentStatus: string,
+    deliveryMethod: string
+  ): string => {
     switch (currentStatus) {
-      case "delivered":
-        return "ready for delivery";
-      case "picked up":
-        return "ready for pickup";
-      case "ready for pickup":
-        return "cooking";
-      case "ready for delivery":
+      case "completed":
+        return "ready";
+      case "ready":
         return "cooking";
       default:
         return ""; // Or handle the default case as needed
@@ -70,7 +66,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   };
 
   const shouldShowStatusButton = (currentStatus: string): boolean => {
-    return !["delivered", "picked up"].includes(currentStatus);
+    return !["completed"].includes(currentStatus);
   };
 
   const shouldShowBackButton = (currentStatus: string): boolean => {
@@ -84,7 +80,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   const changeStatus = async (step: string) => {
     const newStatus =
       step === "BACK"
-        ? getPreviousStatus(orderData.status)
+        ? getPreviousStatus(orderData.status, orderData.deliveryMethod)
         : getNextStatus(orderData.status, orderData.deliveryMethod);
 
     const response = await fetch(
@@ -118,19 +114,18 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
         </span>
         {orderData.status && <h2>{orderData.status}</h2>}
         <section className="admin-modal__orderInfo">
-          <p>
-            Order number: <span>{orderData.orderNr}</span>
+          <p className="admin-modal__orderInfo--orderNr">
+            Order <span>{orderData.orderNr}</span>
           </p>
-          <p>
+          <p className="admin-modal__orderInfo--timeStamp">
+            <span>{orderData.timeStamp}</span>
+          </p>
+
+          <p className="admin-modal__orderInfo--deliveryMethod">
             Delivery method:{" "}
             <span>
-              {orderData.deliveryMethod
-                ? orderData.deliveryMethod.toUpperCase()
-                : "Unknown"}
+              {orderData.deliveryMethod ? orderData.deliveryMethod : "Unknown"}
             </span>
-          </p>
-          <p>
-            Order time: <span>{orderData.timeStamp}</span>
           </p>
         </section>
 
@@ -138,16 +133,19 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
 
         <section className="admin-modal__details">
           <div>
-            <p>Total:</p>
+            <p>
+              <b>Total:</b>
+            </p>
+            <p>Qty: {getQuantity(orderData.order)}</p>
             <p>${orderData.totalPrice}</p>
           </div>
-          <p>Qty: {getQuantity(orderData.order)}</p>
         </section>
         <section className="admin-modal__buttons">
           {shouldShowBackButton(orderData.status) && (
             <Button
               title={`UNDO TO ${getPreviousStatus(
-                orderData.status
+                orderData.status,
+                orderData.deliveryMethod
               ).toUpperCase()}`}
               action={() => changeStatus("BACK")}
             />
@@ -166,7 +164,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
     </section>
   );
 
-  const targetElement = document.querySelector(".berattest");
+  const targetElement = document.querySelector(".modal-target-container");
 
   // Render the modal content inside the target element using a Portal
   return targetElement

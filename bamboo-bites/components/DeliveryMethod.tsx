@@ -1,47 +1,31 @@
-// import { useState } from "react";
-// import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import { useContext } from "react";
 import AppContext from "@/context/AppContext";
 
 const DeliveryMethod = () => {
-  // const [deliveryMethod, setDeliveryMethod] = useState("pickup");
+  const [currentDeliveryMethod, setCurrentDeliveryMethod] =
+    useState("takeAway");
   const { orderDetails, setOrderDetails } = useContext(AppContext);
 
-// Change the delivery method to "delivery"
-  const handleDeliveryMethod = (e: any) => {
+  useEffect(() => {
     setOrderDetails({
       ...orderDetails,
-      deliveryMethod: e.target.value
+      deliveryMethod: "takeAway",
+    });
+  }, []);
+
+  // Change the delivery method to "takeAway"
+  const handleDeliveryMethod = (e: any) => {
+    setCurrentDeliveryMethod(e.target.value);
+    setOrderDetails({
+      ...orderDetails,
+      deliveryMethod: e.target.value,
     });
   };
-  
-  // const router = useRouter();
-
-  // const handleDeliveryMethod = (e: any) => {
-  //   //Sets the delivery method based on checked in button
-  //   setDeliveryMethod(e.target.value);
-  //   //Then sets the url based on delivery method
-  //   router.push(`/checkout?deliveryMethod=${e.target.value}`);
-  // };
 
   return (
     <article className="delivery-method">
-      <div>
-        <input
-          type="radio"
-          id="eatIn"
-          name="deliveryMethod"
-          value="eatIn"
-          aria-labelledby="labelEatIn"
-          onChange={handleDeliveryMethod}
-          checked={orderDetails.deliveryMethod === "eatIn"}
-        />
-        <label id="labelEatIn" htmlFor="eatIn">
-          Eat In
-        </label>
-        {/* <span>Free of charge</span> */}
-      </div>
-      <div>
+      <div className="delivery-method__choice">
         <input
           type="radio"
           id="takeAway"
@@ -49,12 +33,26 @@ const DeliveryMethod = () => {
           value="takeAway"
           aria-labelledby="labelTakeAway"
           onChange={handleDeliveryMethod}
-          checked={orderDetails.deliveryMethod === "takeAway"}
+          checked={currentDeliveryMethod === "takeAway"}
         />
         <label id="labelTakeAway" htmlFor="takeAway">
           Take Away
         </label>
-        {/* <span>$10</span> */}
+      </div>
+
+      <div className="delivery-method__choice">
+        <input
+          type="radio"
+          id="eatIn"
+          name="deliveryMethod"
+          value="eatIn"
+          aria-labelledby="labelEatIn"
+          onChange={handleDeliveryMethod}
+          checked={currentDeliveryMethod === "eatIn"}
+        />
+        <label id="labelEatIn" htmlFor="eatIn">
+          Eat In
+        </label>
       </div>
     </article>
   );

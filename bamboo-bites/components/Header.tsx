@@ -77,23 +77,23 @@ const Header = () => {
 						</li>
 					))}
 				</ul>
-				<aside>
-					<Link href={"/cart"} className="cart-icon">
-						{SvgIcons.CartIcon}
-						{cartQty && (
-							<motion.span
-								key={cartQty}
-								animate={{ scale: 1 }}
-								initial={{ scale: 0.7 }}
-								transition={{ duration: 0.2, ease: "easeInOut" }}
-								className="cart-qty"
-							>
-								{cartQty}
-							</motion.span>
-						)}
-					</Link>
-				</aside>
 			</nav>
+			<aside>
+				<Link href={"/cart"} className="cart-icon">
+					{SvgIcons.CartIcon}
+					{cartQty && (
+						<motion.span
+							key={cartQty}
+							animate={{ scale: 1 }}
+							initial={{ scale: 0.7 }}
+							transition={{ duration: 0.2, ease: "easeInOut" }}
+							className="cart-qty"
+						>
+							{cartQty}
+						</motion.span>
+					)}
+				</Link>
+			</aside>
 			<HamburgerMenu />
 		</header>
 	);

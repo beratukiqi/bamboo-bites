@@ -1,0 +1,17 @@
+@import "styling/variables.scss";
+
+.total-price {
+	border-top: 2px solid $color-white;
+	padding: 1rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__title {
+		font-size: 1.5rem;
+	}
+
+	&__price {
+		font-size: 1.5rem;
+	}
+}

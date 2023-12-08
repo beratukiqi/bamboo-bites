@@ -1,18 +1,18 @@
 import { useContext } from "react";
 import { SvgIcons } from "./SvgIcons";
 import AppContext from "@/context/AppContext";
+import Image from "next/image";
 
 interface ExtrasProps {
-	id: string,
-	item: string,
-	price: number,
+	id: string;
+	item: string;
+	price: number;
 }
 
+const Addons = ({ data }: ExtrasProps) => {
+	const { cart, setCart } = useContext(AppContext);
 
-const Addons = ({data} : ExtrasProps) => {
-    const {cart, setCart} = useContext(AppContext);
-
-	const addToCart = (extra:any) => {
+	const addToCart = (extra: any) => {
 		const itemInCart = cart.find((item) => item.id === extra.id);
 		if (itemInCart) {
 			setCart(
@@ -24,32 +24,30 @@ const Addons = ({data} : ExtrasProps) => {
 			setCart([...cart, { ...extra, quantity: 1 }]);
 		}
 	};
-    return (
-        <>
-			{data && data.map((item:any, i: number) => (
-				<article
-					className="extras-item__container"
-				>
-					<img
-						src={item.imgUrl}
-						alt={`Top view image of the dish ${item.item}`}
-						className="extras-item__image"
-					/>
-					<header className="extras-item__text">
-						<h3 className="h4-extras-item">{item.item}</h3>
-						{/* <p className="menu-descr">{desc}</p> */}
-					</header>
-					<span className="extras-item__price">
-						<b>$</b>
-						{item.price}
-					</span>
-					<button onClick={() => addToCart(item)} className="extras-item__addBtn">
-						{SvgIcons.AddIcon}
-					</button>
-				</article>
-			))}
-        </>
-    )
-}
+	return (
+		<div className="extras-container__wrapper">
+			{data &&
+				data.map((item: any, i: number) => (
+					<article className="extras-container">
+						<img
+							src={item.imgUrl}
+							alt={`Top view image of the dish ${item.item}`}
+							className="extras-container__image"
+						/>
+						<section className="extras-container__info">
+							<h3>{item.item}</h3>
+							<span>
+								<b>$</b>
+								{item.price}
+							</span>
+							<button onClick={() => addToCart(item)}>
+								{SvgIcons.AddIcon}
+							</button>
+						</section>
+					</article>
+				))}
+		</div>
+	);
+};
 
 export default Addons;

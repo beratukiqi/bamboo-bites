@@ -2,9 +2,36 @@
 
 .menu-item-mobile__container {
 	display: flex;
-	align-items: baseline;
-	width: 20rem;
-	height: 20rem;
-	// Hur lägger jag in url från S3?
-	// background-image: ;
+	padding: 1rem;
+	margin: 2rem;
+	aspect-ratio: 1/1;
+}
+
+.menu-item-mobile__info {
+	display: flex;
+	width: 100%;
+	margin-top: auto;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.h2-menu-item-mobile,
+.menu-item-mobile__price {
+	font-size: 2rem;
+}
+
+.menu-item-mobile__addBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: $color-main--red;
+	width: 2rem;
+	height: 2rem;
+	border: none;
+	border-radius: 50%;
+
+	svg {
+		width: 1.3rem;
+		height: 1.3rem;
+	}
 }
