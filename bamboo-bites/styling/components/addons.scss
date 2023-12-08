@@ -1,0 +1,63 @@
+@import "styling/variables.scss";
+
+* {
+	box-sizing: border-box;
+}
+
+.extras-container__wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 2rem;
+}
+
+.extras-container {
+	position: relative;
+	display: flex;
+	flex: 1;
+	margin: 2rem 0;
+
+	&__image {
+		max-width: 100%;
+		height: auto;
+	}
+
+	&__info {
+		position: absolute;
+		display: grid;
+		grid-template-columns: 3fr 1fr 1fr;
+		justify-items: end;
+		align-items: flex-end;
+		width: 100%;
+		height: 100%;
+		padding: calc(0.1rem + 0.5vw);
+
+		h3 {
+			justify-self: flex-start;
+			font-size: 1.3rem;
+		}
+
+		span {
+			font-size: 1.3rem;
+
+			b {
+				font-size: 1.2rem;
+			}
+		}
+
+		button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: $color-main--red;
+			width: 2rem;
+			height: 2rem;
+			border: none;
+			border-radius: 50%;
+
+			svg {
+				width: 0.6rem;
+				height: 0.6rem;
+			}
+		}
+	}
+}
