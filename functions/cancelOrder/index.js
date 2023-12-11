@@ -1,6 +1,6 @@
-import { sendResponse } from "../../responses";
-import { docClient } from "../../services/client";
 import { DeleteCommand } from "@aws-sdk/lib-dynamodb";
+import { docClient } from "../../services/client";
+import { sendResponse } from "../../responses";
 
 exports.handler = async (event) => {
   const { orderNr } = event.pathParameters;

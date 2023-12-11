@@ -1,6 +1,6 @@
+import { UpdateCommand } from "@aws-sdk/lib-dynamodb";
 import { sendResponse } from "../../responses";
 import { docClient } from "../../services/client";
-import { UpdateCommand } from "@aws-sdk/lib-dynamodb";
 
 exports.handler = async (event) => {
   console.log(event);

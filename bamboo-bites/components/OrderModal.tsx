@@ -61,7 +61,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
       case "ready":
         return "cooking";
       default:
-        return ""; // Or handle the default case as needed
+        return "";
     }
   };
 

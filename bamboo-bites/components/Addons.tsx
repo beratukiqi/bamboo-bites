@@ -1,7 +1,6 @@
 import { useContext, useEffect } from "react";
-import { SvgIcons } from "./SvgIcons";
 import AppContext from "@/context/AppContext";
-import Image from "next/image";
+import { SvgIcons } from "./SvgIcons";
 
 interface AddonItem {
   id: number;

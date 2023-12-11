@@ -5,7 +5,6 @@ const AboutInfo = () => {
   return (
     <section className="about-container">
       <Image
-        // quality={100}
         width={200}
         height={200}
         className="about-img"

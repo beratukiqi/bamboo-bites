@@ -1,9 +1,8 @@
 import { useContext } from "react";
-import AppContext from "@/context/AppContext";
-import QtyButton from "./QtyButton";
 import { updateQuantity } from "@/functions/updateQuantity";
 import { QuantityChange } from "@/functions/updateQuantity";
-import { useRouter } from "next/router";
+import AppContext from "@/context/AppContext";
+import QtyButton from "./QtyButton";
 import Image from "next/image";
 
 interface OrderDetails {
@@ -27,7 +26,7 @@ interface OrderItemProps {
   stripped?: boolean;
 }
 
-const CartItem = ({ item, editable, stripped }: OrderItemProps) => {
+const CartItem = ({ item, editable }: OrderItemProps) => {
   const { setCart } = useContext(AppContext);
 
   const incrementQuantity = () => {

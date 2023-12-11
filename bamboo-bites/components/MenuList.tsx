@@ -1,6 +1,6 @@
-import MenuItem from "./MenuItem";
-import MenuItemMobile from "./MenuItemMobile";
 import { useMediaQuery } from "react-responsive";
+import MenuItemMobile from "./MenuItemMobile";
+import MenuItem from "./MenuItem";
 
 interface MenuItemProps {
   id: string;

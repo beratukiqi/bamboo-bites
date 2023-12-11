@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ConfirmedSvg = ({ key }: { key: string }) => {
 	return (
@@ -104,9 +104,6 @@ const ContactForm = () => {
 						layout
 					>
 						<motion.h3 layout>Reach Out, We're Friendly!</motion.h3>
-						{/* <motion.p layout>
-              Kontakta oss med dina frågor, vi återkommer inom 24 timmar.
-            </motion.p> */}
 						<div className="form-field">
 							<label htmlFor="namn">Your name:</label>
 							<div className="input-container">

@@ -1,6 +1,6 @@
+import { useState } from "react";
 import Link from "next/link";
 import { SvgIcons } from "./SvgIcons";
-import { useState } from "react";
 
 const navItems = [
 	{
