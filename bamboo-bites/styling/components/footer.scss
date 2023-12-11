@@ -90,7 +90,7 @@
 		}
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: $breakpoint-tablet) {
 		.footer-toggle,
 		.footer-container,
 		.social-icons svg {
