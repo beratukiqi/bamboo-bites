@@ -1,10 +1,27 @@
 @import "styling/variables.scss";
 
 #about {
+  .about-container {
+    padding-top: 8rem;
+    @media screen and (max-width: $breakpoint-large-desktop) {
+      padding: 4rem 2rem;
+    }
+
+    @media screen and (max-width: $breakpoint-desktop) {
+      padding: 3rem 2rem;
+    }
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding: 0 2rem 4rem 2rem;
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+      padding: 0 0 4rem 0rem;
+    }
+  }
 }
 
 .about-container {
-  padding: 8rem 5rem 5rem 5rem;
+  // padding: 8rem 5rem 5rem 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +30,8 @@
 .about-img {
   margin-bottom: 5rem;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .about-h3 {
