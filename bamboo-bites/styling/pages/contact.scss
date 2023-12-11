@@ -1,60 +1,66 @@
 @import "styling/variables.scss";
 
 .contact-container {
-  padding: 8rem 0 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+	padding: 8rem 0 0 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-.h2-contact,
-.h3-contact {
-  text-align: center;
-  margin-bottom: 3rem;
+	.h2-contact,
+	.h3-contact {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
 }
 
 #contact {
-  .sticky {
-    @media screen and (max-width: $breakpoint-desktop) {
-      order: -1;
-    }
-  }
+	.sticky {
+		@media screen and (max-width: $breakpoint-large-desktop) {
+			order: -1;
+		}
+	}
 }
 
-.address-map-container {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
+.adress-map-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 3rem;
 
-.address {
-  margin-bottom: 4rem;
-  line-height: 2rem;
-}
+	&__address {
+		margin-bottom: 4rem;
+		line-height: 2rem;
+	}
 
-.phone {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+	&__phone {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	&__map {
+		display: flex;
+		align-items: center;
+	}
 }
 
 .contact-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.social {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .social-container {
-  max-width: 20rem;
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  margin: 3rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__icons {
+		max-width: 20rem;
+		display: flex;
+		align-items: center;
+		gap: 2.5rem;
+		margin: 3rem 0;
+	}
 }
