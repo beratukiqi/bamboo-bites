@@ -16,7 +16,7 @@ const Checkout = () => {
   const { cart } = useContext(AppContext);
   const [extras, setExtras] = useState([]);
 
-  const API_URL = "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/updateOrderStatus"
+  const API_URL = "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/extras"
   const imgURL = "https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png";
 
   useEffect(() => {

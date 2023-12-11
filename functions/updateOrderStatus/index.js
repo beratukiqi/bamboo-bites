@@ -3,7 +3,6 @@ import { sendResponse } from "../../responses";
 import { docClient } from "../../services/client";
 
 exports.handler = async (event) => {
-  console.log(event);
   const { orderNr, status } = JSON.parse(event.body);
 
   try {
@@ -20,6 +19,7 @@ exports.handler = async (event) => {
 
     const response = await docClient.send(command);
     const updatedOrder = response.Attributes;
+
     return sendResponse(200, {
       success: true,
       message: "Order status has been updated",
