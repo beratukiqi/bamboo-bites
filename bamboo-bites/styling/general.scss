@@ -98,7 +98,7 @@ li {
   &.col-2 {
     grid-template-columns: repeat(2, 1fr);
 
-    @media screen and (max-width: $breakpoint-desktop) {
+    @media screen and (max-width: 1200px) {
       grid-template-columns: 1fr;
     }
   }
@@ -106,7 +106,42 @@ li {
   .column {
     width: 100%;
     padding: 4rem 6rem;
-    margin: 0 auto;
+    // margin: 0 auto;
+
+    @media screen and (max-width: 1400px) {
+      padding: 4rem 2rem;
+    }
+
+    @media screen and (max-width: $breakpoint-large-desktop) {
+      padding: 4rem 8rem;
+    }
+
+    @media screen and (max-width: $breakpoint-desktop) {
+      padding: 4rem 4rem;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding: 4rem 2rem;
+    }
+
+    .column__title {
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+      padding: 0;
+
+      @media screen and (max-width: $breakpoint-large-desktop) {
+        margin-top: 1rem;
+      }
+      @media screen and (max-width: $breakpoint-tablet) {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+      @media screen and (max-width: $breakpoint-mobile) {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 
@@ -171,12 +206,11 @@ li {
     justify-content: flex-start;
     padding: 4rem;
     padding-top: 14rem;
-    // margin-top: 14rem;
     align-self: flex-start;
     position: sticky;
     top: 0;
 
-    @media screen and (max-width: $breakpoint-desktop) {
+    @media screen and (max-width: 1200px) {
       height: 100%;
       padding: 8rem 1rem 4rem 1rem;
       position: static;
