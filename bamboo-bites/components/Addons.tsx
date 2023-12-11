@@ -3,16 +3,18 @@ import { SvgIcons } from "./SvgIcons";
 import AppContext from "@/context/AppContext";
 import Image from "next/image";
 
-interface ExtrasProps {
-  data: {
-    id: string;
-    item: string;
-    price: number;
-    imgUrl: string;
-  };
+interface AddonItem {
+  id: number;
+  item: string;
+  price: number;
+  imgUrl: string;
 }
 
-const Addons = ({ data }: ExtrasProps) => {
+interface AddonsProps {
+  data: AddonItem[];
+}
+
+const Addons = ({ data }: AddonsProps) => {
   const { cart, setCart } = useContext(AppContext);
 
   const addToCart = (extra: any) => {
