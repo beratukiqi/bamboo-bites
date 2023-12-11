@@ -7,7 +7,8 @@ import AppContext from "@/context/AppContext";
 
 const Menu = () => {
   const { menuItems, setMenuItems } = useContext(AppContext);
-  const imgURL = "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png"
+  const imgURL =
+    "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png";
 
   useEffect(() => {
     async function fetchMenu() {
@@ -30,10 +31,7 @@ const Menu = () => {
 
   return (
     <PageWrapper column>
-      <PageHeader
-        title="Menu"
-        img={imgURL}
-      />
+      <PageHeader title="Menu" img={imgURL} />
       <PageColumn title="Savor, Explore, Enjoy!">
         <MenuList data={menuItems} />
       </PageColumn>
