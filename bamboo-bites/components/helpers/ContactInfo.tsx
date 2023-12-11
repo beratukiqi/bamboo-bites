@@ -24,20 +24,20 @@ const socials = [
 const ContactInfo = () => {
 	return (
 		<section className="contact-container">
-			<h2 className="h2-contact">WHERE TO FIND US</h2>
-			<section className="adress-map-container">
-				<section className="adress-map-container__address">
+			<h2 className="contact-container__h2">WHERE TO FIND US</h2>
+			<section className="address-map-container">
+				<section className="address-map-container__address">
 					<h3>BAMBOO BITES</h3>
 					<br />
 					<p>123 SUSHI STREET</p>
 					<p>BROOKLYN, NY 11234 </p>
 					<br />
-					<section className="adress-map-container__phone">
+					<section className="address-map-container__phone">
 						{SvgIcons.PhoneIcon}
 						<p> (555) 123-4567</p>
 					</section>
 				</section>
-				<section className="adress-map-container__map">
+				<section className="address-map-container__map">
 					<Image
 						width={200}
 						height={200}
@@ -47,7 +47,7 @@ const ContactInfo = () => {
 					/>
 				</section>
 			</section>
-			<h2 className="h2-contact">
+			<h2 className="contact-container__h2 open-h2">
 				OPENING HOURS <br /> EVERY DAY 11 AM - 11 PM
 			</h2>
 			<section className="contact-form-container">
