@@ -1,10 +1,8 @@
-import Button from "@/components/Button";
+import ReactDOM from "react-dom";
 import { useEffect, useState } from "react";
 import OrderList from "./OrderList";
-import ReactDOM from "react-dom";
-import ContentWrapper from "./ContentWrapper";
+import Button from "@/components/Button";
 import { SvgIcons } from "./SvgIcons";
-import DeliveryMethod from "./DeliveryMethod";
 
 interface OrderDetail {
   id: string;
@@ -33,6 +31,7 @@ interface OrderModalProps {
 
 const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   const [orderData, setOrderData] = useState<Order>(orderItem);
+  const API_URL = "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/updateOrderStatus"
 
   const getNextStatus = (
     currentStatus: string,
@@ -84,7 +83,7 @@ const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
         : getNextStatus(orderData.status, orderData.deliveryMethod);
 
     const response = await fetch(
-      `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/updateOrderStatus`,
+      API_URL,
       {
         method: "POST",
         headers: {

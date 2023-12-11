@@ -15,6 +15,8 @@ const Payment = () => {
   const { orderNr } = router.query;
   const { cart, setCart, orderDetails } = useContext(AppContext);
 
+  const API_URL = "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/putOrder"
+
   const sendOrder = async () => {
     // If an orderNr exists, it will be added to the headers.
     // orderNr in Headers will determine if the order is new or an update.
@@ -29,7 +31,7 @@ const Payment = () => {
 
     // Sends a POST request to the API with the cart data
     const res = await fetch(
-      "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/putOrder",
+      API_URL,
       {
         method: "POST",
         body: JSON.stringify(cart),
