@@ -1,11 +1,11 @@
-import Link from "next/link";
-import HamburgerMenu from "./HamburgerMenu";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import AppContext from "@/context/AppContext";
 import { useContext } from "react";
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
+import AppContext from "@/context/AppContext";
+import Link from "next/link";
 import { SvgIcons } from "./SvgIcons";
+import HamburgerMenu from "./HamburgerMenu";
 
 const navItems = [
 	{

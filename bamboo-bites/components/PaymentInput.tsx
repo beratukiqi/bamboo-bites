@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const PaymentInput = () => {
   const [cardNumber, setCardNumber] = useState("");
@@ -25,13 +25,13 @@ const PaymentInput = () => {
     return formatted;
   };
 
-  const handleCardNumberChange = (event) => {
+  const handleCardNumberChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     let inputValue = event.target.value;
     let formattedValue = formatCardNumber(inputValue);
     setCardNumber(formattedValue);
   };
 
-  const formatExpiryDate = (value) => {
+  const formatExpiryDate = (value: string) => {
     // Remove non-digits and limit to 4 characters (MMYY)
     const cleaned = value.replace(/\D/g, "").substring(0, 4);
 
@@ -43,12 +43,12 @@ const PaymentInput = () => {
     return cleaned;
   };
 
-  const handleExpiryChange = (event) => {
+  const handleExpiryChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     const formattedValue = formatExpiryDate(event.target.value);
     setCardExpiry(formattedValue);
   };
 
-  const handleCVCChange = (event) => {
+  const handleCVCChange = (event:React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
     // Remove non-digits and limit to 3 characters

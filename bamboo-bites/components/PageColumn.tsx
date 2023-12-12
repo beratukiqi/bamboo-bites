@@ -14,7 +14,7 @@ const PageColumn = ({
       id={id ? id : ""}
       className={`hero column ${className ? className : ""}`}
     >
-      {title && <h2 className="page-column-title">{title}</h2>}
+      {title && <h2 className="column__title">{title}</h2>}
       {children}
     </div>
   );

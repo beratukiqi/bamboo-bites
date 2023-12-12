@@ -31,7 +31,6 @@ exports.handler = async (event) => {
       orderNr: orderNr,
     });
   } catch (error) {
-    console.error("Error fetching order:", error);
     return sendResponse(500, {
       success: false,
       message: "Unable to get order",

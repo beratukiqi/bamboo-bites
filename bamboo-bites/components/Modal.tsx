@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import AppContext from "@/context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
+import AppContext from "@/context/AppContext";
 import Button from "./Button";
 import ItemVariations from "./ItemVariations";
-import ContentWrapper from "./ContentWrapper";
 import { SvgIcons } from "./SvgIcons";
 
 interface ModalProps {
@@ -34,8 +33,8 @@ interface TweakProps {
 }
 
 const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
-  const { cart, setCart } = useContext(AppContext);
-  const { id, item, price, imgUrl, desc, protein } = food;
+  const { setCart } = useContext(AppContext);
+  const { item, price, imgUrl, desc, protein } = food;
   const [tweaks, setTweaks] = useState<TweakProps>({
     allergens: {},
     protein: "",
@@ -126,17 +125,16 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
           >
+            <div className="close-btn" onClick={closeModal}>
+              {SvgIcons.CloseIcon}
+            </div>
             <motion.header
               style={{
                 backgroundImage: `url(${imgUrl})`,
               }}
               className="modal-header"
               variants={childVariants}
-            >
-              <div className="close-btn" onClick={closeModal}>
-                {SvgIcons.CloseIcon}
-              </div>
-            </motion.header>
+            ></motion.header>
             <motion.section className="modal-body" variants={childVariants}>
               <h2>{item}</h2>
               <p className="modal-body__desc">{desc}</p>

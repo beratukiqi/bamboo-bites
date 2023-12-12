@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
-import Modal from "./Modal";
-import Button from "./Button";
-import { SvgIcons } from "./SvgIcons";
 import AppContext from "@/context/AppContext";
+import Modal from "./Modal";
+import { SvgIcons } from "./SvgIcons";
 
 interface MenuItemProps {
 	food: {

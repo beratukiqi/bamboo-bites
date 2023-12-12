@@ -98,7 +98,7 @@ li {
   &.col-2 {
     grid-template-columns: repeat(2, 1fr);
 
-    @media screen and (max-width: $breakpoint-desktop) {
+    @media screen and (max-width: 1200px) {
       grid-template-columns: 1fr;
     }
   }
@@ -106,7 +106,42 @@ li {
   .column {
     width: 100%;
     padding: 4rem 6rem;
-    margin: 0 auto;
+    // margin: 0 auto;
+
+    @media screen and (max-width: 1400px) {
+      padding: 4rem 2rem;
+    }
+
+    @media screen and (max-width: $breakpoint-large-desktop) {
+      padding: 4rem 8rem;
+    }
+
+    @media screen and (max-width: $breakpoint-desktop) {
+      padding: 4rem 4rem;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+      padding: 4rem 2rem;
+    }
+
+    .column__title {
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+      padding: 0;
+
+      @media screen and (max-width: $breakpoint-large-desktop) {
+        margin-top: 1rem;
+      }
+      @media screen and (max-width: $breakpoint-tablet) {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+      @media screen and (max-width: $breakpoint-mobile) {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 
@@ -124,43 +159,41 @@ li {
 
   h1 {
     color: $color-white;
-    font-size: calc(1rem + 3.5vw);
-    letter-spacing: calc(0.7rem + 0.1vw);
+    display: inline;
+    font-size: 4rem;
+    letter-spacing: 0.7rem;
     text-align: center;
     text-transform: uppercase;
-    padding: 3rem 0;
+    padding: 2.5rem 5rem;
     border: 2px solid $color-white;
-    width: calc(1rem + 30vw);
 
-    @media screen and (max-width: $breakpoint-desktop) {
-      width: calc(1rem + 35vw);
-      padding: 4rem;
-      font-size: calc(1rem + 4vw);
-      letter-spacing: calc(0.3rem + 0.1vw);
+    @media screen and (max-width: $breakpoint-tablet) {
+      font-size: 4rem;
+      padding: 1.5rem 3rem;
+      letter-spacing: 0.5rem;
     }
 
     @media screen and (max-width: $breakpoint-mobile) {
-      width: calc(1rem + 35vw);
-      padding: 2rem;
-      font-size: calc(1rem + 4vw);
-      letter-spacing: calc(0.3rem + 0.1vw);
+      font-size: 2.5rem;
+      padding: 1rem 2rem;
+      letter-spacing: 0.5rem;
     }
   }
 
   h1 .landing &:nth-child(2) {
     padding: 8rem 4rem 2rem 4rem;
 
-    @media screen and (max-width: $breakpoint-desktop) {
-      padding: 4rem;
-    }
+    // @media screen and (max-width: $breakpoint-desktop) {
+    //   padding: 4rem;
+    // }
 
-    @media screen and (max-width: $breakpoint-tablet) {
-      padding: 2rem;
-    }
+    // @media screen and (max-width: $breakpoint-tablet) {
+    //   padding: 2rem;
+    // }
 
-    @media screen and (max-width: $breakpoint-mobile) {
-      padding: 1rem;
-    }
+    // @media screen and (max-width: $breakpoint-mobile) {
+    //   padding: 1rem;
+    // }
   }
 
   &.landingpage {
@@ -169,24 +202,29 @@ li {
   }
 
   &.sticky {
-    @media screen and (min-width: $breakpoint-desktop) {
-      height: 100vh;
-      justify-content: center;
-      padding: 25rem 4rem 2rem 4rem;
-      align-self: flex-start;
-      position: sticky;
-      top: 0;
-    }
+    height: 100vh;
+    justify-content: flex-start;
+    padding: 4rem;
+    padding-top: 14rem;
+    align-self: flex-start;
+    position: sticky;
+    top: 0;
 
-    @media screen and (max-width: $breakpoint-desktop) {
+    @media screen and (max-width: 1200px) {
       height: 100%;
-      padding: 8rem 4rem 6rem 4rem;
+      padding: 8rem 1rem 4rem 1rem;
+      position: static;
     }
 
     @media screen and (max-width: $breakpoint-tablet) {
       height: 100%;
-      padding: 8rem 4rem 4rem 4rem;
+      // padding-top: 8rem;
     }
+
+    // @media screen and (max-width: $breakpoint-tablet) {
+    //   height: 100%;
+    //   padding: 8rem 4rem 4rem 4rem;
+    // }
   }
 }
 

@@ -24,7 +24,7 @@ const SingleOrderPage = () => {
   const [orderStatus, setOrderStatus] = useState("");
   const [showModal, setShowModal] = useState(false);
 
-  // Fetches order data on mount and sets it to state
+   // Fetches order data on mount and sets it to state
   useEffect(() => {
     const fetchOrderData = async () => {
       const res = await fetch(

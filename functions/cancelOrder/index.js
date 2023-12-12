@@ -1,6 +1,6 @@
-import { sendResponse } from "../../responses";
-import { docClient } from "../../services/client";
 import { DeleteCommand } from "@aws-sdk/lib-dynamodb";
+import { docClient } from "../../services/client";
+import { sendResponse } from "../../responses";
 
 exports.handler = async (event) => {
   const { orderNr } = event.pathParameters;
@@ -14,7 +14,8 @@ exports.handler = async (event) => {
     });
 
     const response = await docClient.send(command);
-    return sendResponse(200, {
+
+    return sendResponse(204, {
       success: true,
       message: "Your order has been removed",
       orderNr: orderNr,
@@ -22,8 +23,8 @@ exports.handler = async (event) => {
   } catch (error) {
     return sendResponse(500, {
       success: false,
-      message: "Unable to remove order",
-      error: error,
+      message: "Unable to remove order. Internal server error",
+      error: error.message,
       orderNr: orderNr,
     });
   }

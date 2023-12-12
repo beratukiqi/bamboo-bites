@@ -10,9 +10,9 @@ exports.handler = async (event) => {
 
     const response = await docClient.send(command);
     const orders = response.Items;
+
     return sendResponse(200, { success: true, orders });
   } catch (error) {
-    console.error("error occurred:", error);
     return sendResponse(
       500,
       { success: false, message: "Unable to get orders" },

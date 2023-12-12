@@ -1,9 +1,9 @@
-import OrderTable from "@/components/OrderTable";
-import PageWrapper from "@/components/PageWrapper";
 import { useEffect, useState } from "react";
-import { SvgIcons } from "../components/SvgIcons";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import PageWrapper from "@/components/PageWrapper";
+import OrderTable from "@/components/OrderTable";
+import { SvgIcons } from "../components/SvgIcons";
 
 const navItems = [
   {

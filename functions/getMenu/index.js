@@ -10,6 +10,7 @@ exports.handler = async (event) => {
 
     const response = await docClient.send(command);
     const menu = response.Items;
+
     return sendResponse(200, { success: true, menu });
   } catch (error) {
     return sendResponse(500, {

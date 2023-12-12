@@ -1,6 +1,9 @@
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
 import { docClient } from "../../services/client";
 import { sendResponse } from "../../responses/index";
+import { generateTimestamp } from "./generateTimeStamp";
+import { generateOrderNumber } from "./generateOrderNumber";
+import { calculateTotalPrice } from "./calculateTotalPrice";
 
 const parseHeaderValue = (header, defaultValue) => {
   try {
@@ -9,39 +12,6 @@ const parseHeaderValue = (header, defaultValue) => {
     console.error(`Error parsing ${defaultValue}:`, error);
     return undefined;
   }
-};
-
-const calculateTotalPrice = (order, deliveryMethod) => {
-  let price = 0;
-  order.forEach((item) => {
-    price += item.price * item.quantity;
-  });
-
-  if (deliveryMethod === "delivery") {
-    price += 10;
-  }
-
-  return price;
-};
-
-const generateOrderNumber = () => {
-  const min = 10000000; // Minimum 8-digit number
-  const max = 99999999; // Maximum 8-digit number
-
-  return Math.floor(min + Math.random() * max);
-};
-
-const generateTimestamp = () => {
-  const now = new Date();
-
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  const seconds = String(now.getSeconds()).padStart(2, "0");
-
-  return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
 };
 
 exports.handler = async (event) => {
@@ -58,7 +28,7 @@ exports.handler = async (event) => {
   const deliveryMethod = event.headers["x-order-delivery-method"] || undefined;
   const status = event.headers["x-order-status"] || undefined;
 
-  const totalPrice = calculateTotalPrice(order, deliveryMethod);
+  const totalPrice = calculateTotalPrice(order);
   const timeStamp = generateTimestamp();
 
   const orderNr = currentOrderNr || generateOrderNumber();
