@@ -1,8 +1,4 @@
-interface ButtonProps {
-  title: string;
-  action: () => void;
-  disabled?: boolean;
-}
+import { ButtonProps } from "@/interfaces";
 
 const Button = ({ title, action, disabled }: ButtonProps) => {
   return (

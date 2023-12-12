@@ -3,35 +3,36 @@ import { motion, AnimatePresence } from "framer-motion";
 import AppContext from "@/context/AppContext";
 import Button from "./Button";
 import ItemVariations from "./ItemVariations";
+import { MenuItemProps, ModalProps, TweakProps } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
 
-interface ModalProps {
-  isOpen: boolean;
-  closeModal: () => void;
-  food: {
-    id: string;
-    item: string;
-    price: number;
-    desc: string;
-    imgUrl: string;
-    protein: [];
-    allergen: string[];
-  };
-}
+// interface ModalProps {
+//   isOpen: boolean;
+//   closeModal: () => void;
+//   food: {
+//     id: string;
+//     item: string;
+//     price: number;
+//     desc: string;
+//     imgUrl: string;
+//     protein: [];
+//     allergen: string[];
+//   };
+// }
 
-interface MenuItemProps {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-  protein: [];
-  tweaks?: string[];
-}
-interface TweakProps {
-  allergens: { [key: string]: boolean };
-  protein: string;
-}
+// interface MenuItemProps {
+//   id: string;
+//   item: string;
+//   price: number;
+//   desc: string;
+//   imgUrl: string;
+//   protein: [];
+//   tweaks?: string[];
+// }
+// interface TweakProps {
+//   allergens: { [key: string]: boolean };
+//   protein: string;
+// }
 
 const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
   const { setCart } = useContext(AppContext);

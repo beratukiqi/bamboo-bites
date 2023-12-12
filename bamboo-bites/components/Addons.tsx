@@ -1,13 +1,8 @@
 import { useContext, useEffect } from "react";
 import AppContext from "@/context/AppContext";
+import { AddonItem } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
 
-interface AddonItem {
-  id: number;
-  item: string;
-  price: number;
-  imgUrl: string;
-}
 
 interface AddonsProps {
   data: AddonItem[];

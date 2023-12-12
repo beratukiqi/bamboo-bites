@@ -2,32 +2,8 @@ import ReactDOM from "react-dom";
 import { useEffect, useState } from "react";
 import OrderList from "./OrderList";
 import Button from "@/components/Button";
+import { Order, OrderDetail, OrderModalProps } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
-
-interface OrderDetail {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-  quantity: number;
-  orderNr: number;
-}
-
-interface Order {
-  order: OrderDetail[];
-  orderNr: string;
-  status: string;
-  timeStamp: string;
-  totalPrice: number;
-  deliveryMethod: string;
-}
-
-interface OrderModalProps {
-  orderItem: Order;
-  isOpen: boolean;
-  closeModal: () => void;
-}
 
 const OrderModal = ({ orderItem, isOpen, closeModal }: OrderModalProps) => {
   const [orderData, setOrderData] = useState<Order>(orderItem);

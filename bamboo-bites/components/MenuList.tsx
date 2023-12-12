@@ -1,18 +1,7 @@
 import { useMediaQuery } from "react-responsive";
 import MenuItemMobile from "./MenuItemMobile";
 import MenuItem from "./MenuItem";
-
-interface MenuItemProps {
-  food: {
-    id: string;
-    item: string;
-    price: number;
-    desc: string;
-    imgUrl: string;
-    protein: [];
-    tweaks?: string[];
-  };
-}
+import { MenuItemProps } from "@/interfaces";
 
 interface DataProps {
   data: MenuItemProps[];

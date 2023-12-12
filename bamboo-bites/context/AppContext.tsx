@@ -1,38 +1,5 @@
 import React, { createContext, Dispatch, SetStateAction } from "react";
-// interface MenuItemProps {
-//   id: string;
-//   item: string;
-//   price: number;
-//   desc: string;
-//   imgUrl: string;
-// }
-
-interface MenuItemProps {
-  food: {
-    id: string;
-    item: string;
-    price: number;
-    desc: string;
-    imgUrl: string;
-    protein: [];
-    tweaks?: string[];
-  };
-}
-
-interface CartItemProps {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-  quantity: number;
-  tweaks?: string[] | undefined;
-}
-
-interface OrderDetails {
-  deliveryMethod: string;
-  status: string;
-}
+import { MenuItemProps, CartItemProps, OrderDetails } from "@/interfaces";
 
 interface AppContextType {
   menuItems: MenuItemProps[];

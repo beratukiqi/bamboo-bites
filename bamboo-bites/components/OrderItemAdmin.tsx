@@ -1,11 +1,5 @@
 import OrderModal from "./OrderModal";
-
-interface OrderItemAdminProps {
-  order: any;
-  isOpen: boolean;
-  openModal: () => void;
-  closeModal: () => void;
-}
+import { OrderItemAdminProps } from "@/interfaces";
 
 const OrderItemAdmin = ({
   order,

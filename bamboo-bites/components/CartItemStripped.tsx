@@ -1,3 +1,5 @@
+import { TweakProps } from "@/interfaces";
+
 interface OrderDetails {
   id: string;
   item: string;
@@ -5,11 +7,6 @@ interface OrderDetails {
   desc: string;
   quantity: number;
   tweaks?: TweakProps;
-}
-
-interface TweakProps {
-  allergens: { [key: string]: boolean };
-  protein: string;
 }
 
 interface OrderItemProps {
