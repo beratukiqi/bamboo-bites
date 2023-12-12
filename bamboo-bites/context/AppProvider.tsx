@@ -1,6 +1,11 @@
 import { useState } from "react";
 import AppContext from "./AppContext";
-import { MenuItemProps, CartItemProps, OrderDetails } from "@/interfaces";
+import { MenuItemProps, CartItemProps} from "@/interfaces";
+
+interface OrderDetails {
+  deliveryMethod: string;
+  status: string;
+}
 
 const AppProvider = ({ children }: any) => {
   const [menuItems, setMenuItems] = useState<MenuItemProps[]>([]);

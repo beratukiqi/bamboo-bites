@@ -1,5 +1,10 @@
 import React, { createContext, Dispatch, SetStateAction } from "react";
-import { MenuItemProps, CartItemProps, OrderDetails } from "@/interfaces";
+import { MenuItemProps, CartItemProps } from "@/interfaces";
+
+interface OrderDetails {
+  deliveryMethod: string;
+  status: string;
+}
 
 interface AppContextType {
   menuItems: MenuItemProps[];

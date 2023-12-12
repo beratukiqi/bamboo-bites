@@ -58,8 +58,13 @@ export interface Order {
 }
 
 export interface OrderDetails {
-    deliveryMethod: string;
-    status: string;
+    id: string;
+    item: string;
+    price: number;
+    desc: string;
+    imgUrl: string;
+    quantity: number;
+    tweaks?: TweakProps;
 }
 
 export interface OrderDetail {
@@ -76,6 +81,12 @@ export interface OrderItem {
     orderNr: number;
     timeStamp: string;
     status: string;
+}
+
+export interface OrderItemProps {
+    item: OrderDetails;
+    editable?: boolean;
+    stripped?: boolean;
 }
 
 export interface OrderItemAdminProps {
