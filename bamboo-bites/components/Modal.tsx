@@ -125,17 +125,16 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
           >
+            <div className="close-btn" onClick={closeModal}>
+              {SvgIcons.CloseIcon}
+            </div>
             <motion.header
               style={{
                 backgroundImage: `url(${imgUrl})`,
               }}
               className="modal-header"
               variants={childVariants}
-            >
-              <div className="close-btn" onClick={closeModal}>
-                {SvgIcons.CloseIcon}
-              </div>
-            </motion.header>
+            ></motion.header>
             <motion.section className="modal-body" variants={childVariants}>
               <h2>{item}</h2>
               <p className="modal-body__desc">{desc}</p>
