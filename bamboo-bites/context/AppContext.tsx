@@ -1,12 +1,22 @@
 import React, { createContext, Dispatch, SetStateAction } from "react";
+// interface MenuItemProps {
+//   id: string;
+//   item: string;
+//   price: number;
+//   desc: string;
+//   imgUrl: string;
+// }
+
 interface MenuItemProps {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-  protein: [];
-  tweaks?: string[];
+  food: {
+    id: string;
+    item: string;
+    price: number;
+    desc: string;
+    imgUrl: string;
+    protein: [];
+    tweaks?: string[];
+  };
 }
 
 interface CartItemProps {
