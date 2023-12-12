@@ -16,6 +16,7 @@ const Payment = () => {
   const { cart, setCart, orderDetails } = useContext(AppContext);
 
   const API_URL = "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/putOrder"
+  const imgURL = "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/checkout_desktop_720x1024.png"
 
   const sendOrder = async () => {
     // If an orderNr exists, it will be added to the headers.
@@ -49,7 +50,7 @@ const Payment = () => {
     <PageWrapper column>
       <PageHeader
         title="Payment"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png" //!!Change img url!!
+        img={imgURL}
       />
       <PageColumn title="Payment options">
         <ContentWrapper title="Your order">
