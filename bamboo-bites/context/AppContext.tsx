@@ -5,6 +5,8 @@ interface MenuItemProps {
   price: number;
   desc: string;
   imgUrl: string;
+  protein: [];
+  tweaks?: string[];
 }
 
 interface CartItemProps {
@@ -28,7 +30,7 @@ interface AppContextType {
   cart: CartItemProps[];
   setCart: Dispatch<SetStateAction<CartItemProps[]>>;
   orderDetails: OrderDetails;
-  setOrderDetails: Dispatch<SetStateAction<OrderDetails>>
+  setOrderDetails: Dispatch<SetStateAction<OrderDetails>>;
 }
 
 const AppContext = createContext({} as AppContextType);

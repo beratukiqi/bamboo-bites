@@ -19,6 +19,16 @@
 @import "components/menuItemMobile.scss";
 @import "components/addons.scss";
 
+::-webkit-scrollbar-thumb {
+  background-color: #ff4e4e;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #292626;
+}
+
 * {
   margin: 0;
   padding: 0;

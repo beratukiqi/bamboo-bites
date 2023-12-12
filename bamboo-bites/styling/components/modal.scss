@@ -47,7 +47,7 @@
     .modal-header {
       display: flex;
       height: 100%;
-      min-height: 20rem;
+      min-height: 15rem;
       background-position: center center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -95,6 +95,19 @@
 
       @media screen and (max-width: $breakpoint-mobile) {
         padding: 6rem 2rem 4rem 2rem;
+      }
+
+      &__props {
+        display: flex;
+        gap: 1rem;
+        svg {
+          fill: $color-white;
+          width: 3rem;
+
+          @media screen and (max-width: $breakpoint-tablet) {
+            width: 2.5rem;
+          }
+        }
       }
 
       &__desc {

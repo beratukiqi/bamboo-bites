@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppContext from "@/context/AppContext";
 import Image from "next/image";
 import Modal from "./Modal";
@@ -13,6 +13,7 @@ interface MenuItemProps {
     imgUrl: string;
     protein: [];
     tweaks?: string[];
+    allergen: string[];
   };
 }
 
@@ -20,6 +21,10 @@ const MenuItem = ({ food }: MenuItemProps) => {
   const { id, item, price, imgUrl, desc } = food;
   const [modalOpen, setModalOpen] = useState(false);
   const { cart, setCart } = useContext(AppContext);
+
+  useEffect(() => {
+    console.log("EACH MENU ITEM", food);
+  }, []);
 
   const handleAddItem = (event: any) => {
     event.stopPropagation();

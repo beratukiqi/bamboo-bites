@@ -2,19 +2,20 @@ import { useMediaQuery } from "react-responsive";
 import MenuItemMobile from "./MenuItemMobile";
 import MenuItem from "./MenuItem";
 
+// interface Food {
+//   food: MenuItemProps;
+// }
 // interface MenuItemProps {
-//   food: {
-//     id: string;
-//     item: string;
-//     price: number;
-//     desc: string;
-//     imgUrl: string;
-//     protein: [];
-//     tweaks?: string[];
-//   };
+//   id: string;
+//   item: string;
+//   price: number;
+//   desc: string;
+//   imgUrl: string;
+//   protein: [];
+//   tweaks?: string[];
 // }
 // interface dataProps {
-//   data: MenuItemProps[];
+//   data: Food[];
 // }
 
 const MenuList = ({ data }: any) => {

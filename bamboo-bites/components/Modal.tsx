@@ -15,6 +15,7 @@ interface ModalProps {
     desc: string;
     imgUrl: string;
     protein: [];
+    allergen: string[];
   };
 }
 
@@ -34,11 +35,12 @@ interface TweakProps {
 
 const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
   const { setCart } = useContext(AppContext);
-  const { item, price, imgUrl, desc, protein } = food;
+  const { item, price, imgUrl, desc, protein, allergen } = food;
   const [tweaks, setTweaks] = useState<TweakProps>({
     allergens: {},
     protein: "",
   });
+
   const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
@@ -50,6 +52,21 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
       tweaks.protein !== "" ||
       Object.values(tweaks.allergens).some((value) => value)
     );
+  };
+
+  const renderFoodAllergenIcon = (allergen: string) => {
+    switch (allergen) {
+      case "Dairy free":
+        return SvgIcons.DairyFree;
+      case "Gluten free":
+        return SvgIcons.GlutenFree;
+      case "Nut free":
+        return SvgIcons.NutFree;
+      case "Vegan":
+        return SvgIcons.VeganFood;
+      default:
+        return null;
+    }
   };
 
   const handleAddToCart = (foodItem: MenuItemProps) => {
@@ -136,6 +153,11 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
               variants={childVariants}
             ></motion.header>
             <motion.section className="modal-body" variants={childVariants}>
+              <div className="modal-body__props">
+                {allergen.map((allergen, i) => (
+                  <div key={i}>{renderFoodAllergenIcon(allergen)}</div>
+                ))}
+              </div>
               <h2>{item}</h2>
               <p className="modal-body__desc">{desc}</p>
               <ItemVariations variations={protein} setTweaks={setTweaks} />
