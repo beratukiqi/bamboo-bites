@@ -3,7 +3,7 @@ import PaymentInput from "./PaymentInput";
 import { SvgIcons } from "./SvgIcons";
 
 const PaymentMethod = () => {
-  const [paymentMethod, setPaymentMethod] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("applePay");
   return (
     <>
       <article className="payment-method">
@@ -15,6 +15,7 @@ const PaymentMethod = () => {
             value="card"
             aria-labelledby="labelPayment"
             onChange={() => setPaymentMethod("card")}
+            checked={paymentMethod === "card"}
           />
           <label id="labelPayment" htmlFor="card">
             {SvgIcons.CardIcon}
@@ -29,6 +30,7 @@ const PaymentMethod = () => {
             value="applePay"
             aria-labelledby="labelPayment"
             onChange={() => setPaymentMethod("applePay")}
+            checked={paymentMethod === "applePay"}
           />
           <label id="labelPayment" htmlFor="applePay">
             {SvgIcons.ApplePayIcon}
@@ -42,6 +44,7 @@ const PaymentMethod = () => {
             value="googlePay"
             aria-labelledby="labelPayment"
             onChange={() => setPaymentMethod("googlePay")}
+            checked={paymentMethod === "googlePay"}
           />
           <label id="labelPayment" htmlFor="googlePay">
             {SvgIcons.GooglePayIcon}
