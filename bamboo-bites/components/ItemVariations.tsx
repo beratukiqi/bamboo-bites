@@ -75,62 +75,38 @@ const ItemVariations = ({ variations, setTweaks }: MenuItemProps) => {
   const handleSvg = (item: string) => {
     switch (item.toLowerCase()) {
       case "vegan":
-        return (
-          SvgIcons.VeganIcon
-        );  
+        return SvgIcons.VeganIcon;
       case "vegetarian":
-        return (
-          SvgIcons.VegetarianIcon
-        );
+        return SvgIcons.VegetarianIcon;
 
       case "beef":
-        return (
-          SvgIcons.BeefIcon
-        );
+        return SvgIcons.BeefIcon;
 
       case "pork":
-        return (
-          SvgIcons.PorkIcon
-        );
+        return SvgIcons.PorkIcon;
 
       case "salmon":
-        return (
-          SvgIcons.SalmonIcon
-        );
+        return SvgIcons.SalmonIcon;
       case "chicken":
-        return (
-          SvgIcons.ChickenIcon
-        );
+        return SvgIcons.ChickenIcon;
 
       case "tofu":
-        return (
-          SvgIcons.TofuIcon
-        );
+        return SvgIcons.TofuIcon;
 
       case "shrimp":
-        return (
-          SvgIcons.ShrimpIcon
-        );
+        return SvgIcons.ShrimpIcon;
 
       case "gluten free":
-        return (
-          SvgIcons.GlutenFreeIcon
-        );
+        return SvgIcons.GlutenFreeIcon;
 
       case "sesame free":
-        return (
-          SvgIcons.SesameFreeIcon
-        );
+        return SvgIcons.SesameFreeIcon;
 
       case "soy free":
-        return (
-          SvgIcons.SoyFreeIcon
-        );
+        return SvgIcons.SoyFreeIcon;
 
       case "egg free":
-        return (
-          SvgIcons.EggFreeIcon
-        );
+        return SvgIcons.EggFreeIcon;
 
       default:
         return null;
@@ -140,7 +116,7 @@ const ItemVariations = ({ variations, setTweaks }: MenuItemProps) => {
   return (
     <section className="variations-wrapper">
       {variationsData.proteins.length > 0 && (
-        <ContentWrapper title="Available variants" small>
+        <ContentWrapper title="Variations" small>
           <ul className="variations-category">
             {variationsData.proteins.map((item) => (
               <li

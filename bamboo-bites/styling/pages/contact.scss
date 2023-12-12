@@ -1,60 +1,146 @@
 @import "styling/variables.scss";
 
 .contact-container {
-  padding: 8rem 0 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+	padding: 8rem 0 0 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 
-.h2-contact,
-.h3-contact {
-  text-align: center;
-  margin-bottom: 3rem;
+	@media screen and (max-width: 580px) {
+		padding: 0;
+	}
+
+	&__h2 {
+		text-align: center;
+		margin-bottom: 3rem;
+
+		@media screen and (max-width: 580px) {
+			font-size: 2rem;
+			max-width: 25rem;
+		}
+
+		@media screen and (max-width: $breakpoint-mobile) {
+			font-size: 1.6rem;
+		}
+	}
+
+	h3 {
+		@media screen and (max-width: $breakpoint-mobile) {
+			font-size: 1.3rem;
+		}
+	}
+
+	.address-map-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 3rem;
+
+		@media screen and (max-width: 580px) {
+			text-align: center;
+			margin-bottom: 0;
+		}
+
+		&__address {
+			margin-bottom: 4rem;
+			line-height: 2rem;
+
+			@media screen and (max-width: $breakpoint-tablet) {
+				font-size: 0.9rem;
+			}
+
+			@media screen and (max-width: 580px) {
+				font-size: 1rem;
+			}
+		}
+
+		&__phone {
+			display: flex;
+			gap: 1rem;
+			align-items: center;
+
+			@media screen and (max-width: $breakpoint-tablet) {
+				font-size: 0.9rem; // Adjust font size for tablet view
+			}
+
+			@media screen and (max-width: 580px) {
+				font-size: 1rem;
+				justify-content: center;
+			}
+		}
+
+		&__map {
+			display: flex;
+			align-items: center;
+
+			@media screen and (max-width: $breakpoint-tablet) {
+				scale: 0.8;
+			}
+
+			@media screen and (max-width: 580px) {
+				scale: 1;
+			}
+		}
+
+		@media screen and (max-width: 580px) {
+			grid-template-columns: 1fr;
+			&__address,
+			&__phone,
+			&__map {
+				margin-bottom: 2rem;
+			}
+		}
+	}
+
+	.open-h2 {
+		@media screen and (max-width: $breakpoint-mobile) {
+			max-width: 15rem;
+		}
+	}
+
+	.contact-form-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.social-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		h3 {
+			@media screen and (max-width: $breakpoint-mobile) {
+				text-align: center;
+				line-height: 2rem;
+			}
+		}
+
+		&__icons {
+			max-width: 20rem;
+			display: flex;
+			align-items: center;
+			gap: 2.5rem;
+			margin: 3rem 0;
+
+			@media screen and (max-width: 580px) {
+				margin: 2rem 0;
+				gap: 2rem;
+			}
+
+			@media screen and (max-width: $breakpoint-mobile) {
+				gap: 1rem;
+				margin: 1rem 0;
+			}
+		}
+	}
 }
 
 #contact {
-  .sticky {
-    @media screen and (max-width: $breakpoint-desktop) {
-      order: -1;
-    }
-  }
-}
-
-.address-map-container {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  margin-bottom: 3rem;
-}
-
-.address {
-  margin-bottom: 4rem;
-  line-height: 2rem;
-}
-
-.phone {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.contact-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.social {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.social-container {
-  max-width: 20rem;
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  margin: 3rem 0;
+	.sticky {
+		@media screen and (max-width: $breakpoint-large-desktop) {
+			order: -1;
+		}
+	}
 }
