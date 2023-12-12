@@ -1,18 +1,5 @@
 import OrderItemAdmin from "./OrderItemAdmin";
-
-interface OrderTableProps {
-  orders: OrderItem[];
-  status: string;
-  activeOrder: OrderItem | null;
-  openModal: (order: OrderItem) => void;
-  closeModal: () => void;
-}
-
-interface OrderItem {
-  orderNr: number;
-  timeStamp: string;
-  status: string;
-}
+import { OrderTableProps } from "@/interfaces";
 
 const OrderTable = ({
   orders,

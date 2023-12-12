@@ -1,8 +1,4 @@
-interface QtyButtonProps {
-  title: string;
-  action: () => void;
-  disabled?: boolean;
-}
+import { QtyButtonProps } from "@/interfaces";
 
 const QtyButton = ({ title, action, disabled }: QtyButtonProps) => {
   return (

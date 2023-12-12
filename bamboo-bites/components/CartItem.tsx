@@ -4,27 +4,7 @@ import { QuantityChange } from "@/functions/updateQuantity";
 import AppContext from "@/context/AppContext";
 import QtyButton from "./QtyButton";
 import Image from "next/image";
-
-interface OrderDetails {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-  quantity: number;
-  tweaks?: TweakProps;
-}
-
-interface TweakProps {
-  allergens: { [key: string]: boolean };
-  protein: string;
-}
-
-interface OrderItemProps {
-  item: OrderDetails;
-  editable?: boolean;
-  stripped?: boolean;
-}
+import { OrderItemProps } from "@/interfaces";
 
 const CartItem = ({ item, editable }: OrderItemProps) => {
   const { setCart } = useContext(AppContext);

@@ -1,8 +1,4 @@
-interface PageWrapperProps {
-	children: React.ReactNode;
-	column?: boolean;
-	id?: string;
-}
+import { PageWrapperProps } from "@/interfaces";
 
 const PageWrapper = ({ children, column, id }: PageWrapperProps) => {
 	return (

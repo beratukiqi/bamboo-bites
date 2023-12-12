@@ -1,9 +1,4 @@
-interface PageHeaderProps {
-  title: string;
-  img: string;
-  landingpage?: boolean;
-  children?: any;
-}
+import { PageHeaderProps } from "@/interfaces";
 
 const PageHeader = ({ title, img, landingpage, children }: PageHeaderProps) => {
   return (
