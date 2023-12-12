@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useContext } from "react";
+import { useContext} from "react";
 import ContentWrapper from "@/components/ContentWrapper";
 import PageWrapper from "@/components/PageWrapper";
 import PageColumn from "@/components/PageColumn";
@@ -61,7 +61,7 @@ const Payment = () => {
           <PaymentMethod />
         </ContentWrapper>
 
-        <Button action={sendOrder} title="PAY FOR ORDER" />
+        <Button disabled={cart.length === 0} action={sendOrder} title="PAY FOR ORDER" />
       </PageColumn>
     </PageWrapper>
   );
