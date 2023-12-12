@@ -1,19 +1,8 @@
 import { useContext, useState } from "react";
 import AppContext from "@/context/AppContext";
 import Modal from "./Modal";
+import { MenuItemProps } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
-
-interface MenuItemProps {
-	food: {
-		id: string;
-		item: string;
-		price: number;
-		desc: string;
-		imgUrl: string;
-		protein: [];
-		tweaks?: string[];
-	};
-}
 
 const MenuItemMobile = ({ food }: MenuItemProps) => {
 	const { id, item, price, imgUrl, desc } = food;
