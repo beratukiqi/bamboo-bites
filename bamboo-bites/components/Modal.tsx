@@ -73,7 +73,7 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
     setShowNotification(true);
     setTimeout(() => {
       setShowNotification(false);
-    }, 1000);
+    }, 1200);
 
     setCart((currentCart: any) => {
       const tweaksActive = hasTweaks(tweaks);
@@ -172,13 +172,16 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
               <AnimatePresence>
                 {showNotification && (
                   <motion.span
-                    className="noticiation"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    className="notification"
+                    initial={{ x: 20, opacity: 0 }}
+                    animate={{
+                      x: 0,
+                      opacity: 1,
+                      transition: { duration: 0.1 },
+                    }}
+                    exit={{ x: 200, opacity: 0, transition: { duration: 0.2 } }}
                   >
-                    Added to cart
+                    Your bite is in the cart!
                   </motion.span>
                 )}
               </AnimatePresence>
