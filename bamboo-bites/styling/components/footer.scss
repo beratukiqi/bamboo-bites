@@ -31,7 +31,7 @@
 		grid-template-columns: 1fr 1fr 1fr;
 		justify-content: space-between;
 		align-items: center;
-		background-color: rgba(16, 16, 0, 0.7);
+		background-color: $background-color;
 		color: $color-white;
 		padding: 1rem 2rem;
 		transform: translateY(0);
