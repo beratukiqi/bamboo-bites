@@ -1,123 +1,121 @@
 @import "styling/variables.scss";
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .extras-container__wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2rem;
-  // direction: rtl;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 2rem;
 
-  @media screen and (max-width: 600px) {
-    grid-template-columns: 1fr;
-    flex-direction: column;
-    gap: 0;
-  }
+	@media screen and (max-width: 600px) {
+		grid-template-columns: 1fr;
+		flex-direction: column;
+		gap: 0;
+	}
 }
 
 .extras-container {
-  direction: ltr;
-  position: relative;
-  display: flex;
-  flex: 1;
-  margin: 2rem 0;
+	position: relative;
+	display: flex;
+	flex: 1;
+	margin: 2rem 0;
 
-  &__image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+	&__image {
+		max-width: 100%;
+		height: auto;
+		border-radius: 5px;
 
-    @media screen and (max-width: 600px) {
-      width: 100vw;
-    }
-  }
+		@media screen and (max-width: 600px) {
+			width: 100vw;
+		}
+	}
 
-  &__info {
-    position: absolute;
-    display: grid;
-    grid-template-columns: 5fr 1fr 1fr;
-    justify-items: flex-end;
-    align-items: flex-end;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
-    font-size: 1.3rem;
-    line-height: 2rem;
-    vertical-align: bottom;
+	&__info {
+		position: absolute;
+		display: grid;
+		grid-template-columns: 5fr 1fr 1fr;
+		justify-items: flex-end;
+		align-items: flex-end;
+		width: 100%;
+		height: 100%;
+		padding: 1rem;
+		font-size: 1.3rem;
+		line-height: 2rem;
+		vertical-align: bottom;
 
-    @media screen and (max-width: $breakpoint-large-desktop) {
-      padding: 0.8rem;
-      font-size: 1rem;
-    }
+		@media screen and (max-width: $breakpoint-large-desktop) {
+			padding: 0.8rem;
+			font-size: 1rem;
+		}
 
-    @media screen and (max-width: $breakpoint-desktop) {
-      padding: 0.6rem;
-      font-size: 0.8rem;
-    }
+		@media screen and (max-width: $breakpoint-desktop) {
+			padding: 0.6rem;
+			font-size: 0.8rem;
+		}
 
-    @media screen and (max-width: $breakpoint-tablet) {
-      padding: 0.4rem;
-      font-size: 0.8rem;
-    }
+		@media screen and (max-width: $breakpoint-tablet) {
+			padding: 0.4rem;
+			font-size: 0.8rem;
+		}
 
-    @media screen and (max-width: 600px) {
-      padding: 1rem;
-      font-size: 1.2rem;
-    }
+		@media screen and (max-width: 600px) {
+			padding: 1rem;
+			font-size: 1.2rem;
+		}
 
-    h3 {
-      justify-self: flex-start;
-      font-size: 1.3rem;
-      line-height: 2rem;
-      vertical-align: bottom;
+		h3 {
+			justify-self: flex-start;
+			font-size: 1.3rem;
+			line-height: 2rem;
+			vertical-align: bottom;
 
-      @media screen and (max-width: $breakpoint-large-desktop) {
-        font-size: 1rem;
-      }
+			@media screen and (max-width: $breakpoint-large-desktop) {
+				font-size: 1rem;
+			}
 
-      @media screen and (max-width: $breakpoint-desktop) {
-        font-size: 0.8rem;
-      }
+			@media screen and (max-width: $breakpoint-desktop) {
+				font-size: 0.8rem;
+			}
 
-      @media screen and (max-width: 600px) {
-        font-size: 1.2rem;
-      }
-    }
+			@media screen and (max-width: 600px) {
+				font-size: 1.2rem;
+			}
+		}
 
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 2px;
-      background-color: $color-main--red;
-      width: 1.7rem;
-      height: 1.7rem;
-      border: none;
-      border-radius: 50%;
+		button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 2px;
+			background-color: $color-main--red;
+			width: 1.7rem;
+			height: 1.7rem;
+			border: none;
+			border-radius: 50%;
 
-      @media screen and (max-width: $breakpoint-large-desktop) {
-        width: 1.3rem;
-        height: 1.3rem;
-        margin-bottom: 6px;
-      }
+			@media screen and (max-width: $breakpoint-large-desktop) {
+				width: 1.3rem;
+				height: 1.3rem;
+				margin-bottom: 6px;
+			}
 
-      @media screen and (max-width: 600px) {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-bottom: 6px;
-      }
+			@media screen and (max-width: 600px) {
+				width: 1.5rem;
+				height: 1.5rem;
+				margin-bottom: 6px;
+			}
 
-      svg {
-        width: 1rem;
-        height: 1rem;
+			svg {
+				width: 1rem;
+				height: 1rem;
 
-        @media screen and (max-width: $breakpoint-large-desktop) {
-          width: 0.9rem;
-          height: 0.9rem;
-        }
-      }
-    }
-  }
+				@media screen and (max-width: $breakpoint-large-desktop) {
+					width: 0.9rem;
+					height: 0.9rem;
+				}
+			}
+		}
+	}
 }
