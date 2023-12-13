@@ -178,15 +178,15 @@ li {
 		border: 2px solid $color-white;
 
 		@media screen and (max-width: $breakpoint-tablet) {
-			font-size: 4rem;
-			padding: 1.5rem 3rem;
-			letter-spacing: 0.5rem;
+			font-size: 3rem;
+			padding: 1.5rem 3.5rem;
+			letter-spacing: 0.3rem;
 		}
 
 		@media screen and (max-width: $breakpoint-mobile) {
-			font-size: 2.5rem;
-			padding: 1rem 2rem;
-			letter-spacing: 0.5rem;
+			font-size: 2rem;
+			padding: 1.5rem 2.5rem;
+			letter-spacing: 0.3rem;
 		}
 	}
 
