@@ -13,6 +13,7 @@
 	@media screen and (max-width: $breakpoint-mobile) {
 		grid-template-columns: 1fr;
 		flex-direction: column;
+		gap: 0;
 	}
 }
 
@@ -26,6 +27,10 @@
 	&__image {
 		max-width: 100%;
 		height: auto;
+
+		@media screen and (max-width: $breakpoint-mobile) {
+			width: 100vw;
+		}
 	}
 
 	&__info {
@@ -63,7 +68,8 @@
 			vertical-align: bottom;
 
 			@media screen and (max-width: $breakpoint-mobile) {
-				font-size: 1.3rem;
+				font-size: 1.5rem;
+				color: aqua;
 			}
 
 			@media screen and (max-width: $breakpoint-desktop) {
@@ -85,6 +91,12 @@
 			height: 1.7rem;
 			border: none;
 			border-radius: 50%;
+
+			@media screen and (max-width: $breakpoint-mobile) {
+				width: 1.3rem;
+				height: 1.3rem;
+				margin-bottom: 6px;
+			}
 
 			@media screen and (max-width: $breakpoint-large-desktop) {
 				width: 1.3rem;

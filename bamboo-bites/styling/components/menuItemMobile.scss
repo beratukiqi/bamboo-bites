@@ -1,38 +1,61 @@
 @import "styling/variables.scss";
 
-.menu-item-mobile__container {
-  display: flex;
-  padding: 1rem;
-  // margin: 2rem;
-  margin: 1rem 0;
-  aspect-ratio: 1/1;
-}
+.menu-item-mobile-container {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	margin: 1rem 0;
+	aspect-ratio: 1/1;
 
-.menu-item-mobile__info {
-  display: flex;
-  width: 100%;
-  margin-top: auto;
-  justify-content: space-between;
-  align-items: center;
-}
+	&__info {
+		display: grid;
+		grid-template-columns: 7fr 1fr 1fr;
+		width: 100%;
+		margin-top: auto;
+		align-items: center;
 
-.h2-menu-item-mobile,
-.menu-item-mobile__price {
-  font-size: 2rem;
-}
+		@media screen and (max-width: $breakpoint-mobile) {
+			grid-template-columns: 8fr 1fr 1fr;
+		}
 
-.menu-item-mobile__addBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $color-main--red;
-  width: 2rem;
-  height: 2rem;
-  border: none;
-  border-radius: 50%;
+		span,
+		button {
+			justify-self: end;
+		}
 
-  svg {
-    width: 1.3rem;
-    height: 1.3rem;
-  }
+		h2,
+		span {
+			font-size: 1.8rem;
+
+			@media screen and (max-width: $breakpoint-mobile) {
+				font-size: 1.1rem;
+			}
+		}
+
+		button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: $color-main--red;
+			width: 1.7rem;
+			height: 1.7rem;
+			border: none;
+			border-radius: 50%;
+
+			@media screen and (max-width: $breakpoint-mobile) {
+				width: 1rem;
+				height: 1rem;
+			}
+
+			svg {
+				width: 1rem;
+				height: 1rem;
+
+				@media screen and (max-width: $breakpoint-mobile) {
+					width: 0.6rem;
+					height: 0.6rem;
+				}
+			}
+		}
+	}
 }

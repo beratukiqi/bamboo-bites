@@ -1,167 +1,168 @@
 @import "styling/variables.scss";
 
 .order-item__wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 
-  &--stripped {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+	&--stripped {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
 
-    ul {
-      display: flex;
-      gap: 0.8rem;
-      margin-top: -1rem;
-      .order-item__tweaks {
-        &--protein {
-          background-color: $color-protein-green;
-          font-size: 0.8rem;
-          padding: 3px 10px;
-          border-radius: 5px;
-        }
+		ul {
+			display: flex;
+			gap: 0.8rem;
+			margin-top: -1rem;
+			.order-item__tweaks {
+				&--protein {
+					background-color: $color-protein-green;
+					font-size: 0.8rem;
+					padding: 3px 10px;
+					border-radius: 5px;
+				}
 
-        &--allergen {
-          background-color: $color-allergen-red;
-          font-size: 0.8rem;
-          padding: 3px 10px;
-          border-radius: 5px;
-        }
-      }
-    }
-  }
+				&--allergen {
+					background-color: $color-allergen-red;
+					font-size: 0.8rem;
+					padding: 3px 10px;
+					border-radius: 5px;
+				}
+			}
+		}
+	}
 
-  .order-item {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr 1fr;
-    align-items: center;
-    gap: 1rem;
+	.order-item {
+		display: grid;
+		grid-template-columns: 1fr 4fr 1fr 1fr;
+		align-items: center;
+		gap: 1rem;
 
-    &__image {
-      width: 5rem;
-      height: 5rem;
-      background-color: $color-white;
-    }
+		&__image {
+			width: 5rem;
+			height: 5rem;
+			background-color: $color-white;
+		}
 
-    &__tweaks {
-      display: flex;
-      gap: 0.6rem;
-      font-size: 0.7rem;
+		&__tweaks {
+			display: flex;
+			gap: 0.6rem;
+			font-size: 0.7rem;
 
-      &--protein {
-        background-color: $color-protein-green;
-        padding: 0.2rem 0.5rem;
-        border-radius: 0.2rem;
-      }
+			&--protein {
+				background-color: $color-protein-green;
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.2rem;
+			}
 
-      &--allergen {
-        background-color: $color-allergen-red;
-        padding: 0.2rem 0.5rem;
-        border-radius: 0.2rem;
-      }
+			&--allergen {
+				background-color: $color-allergen-red;
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.2rem;
+			}
 
-      &--standard {
-        background-color: $color-standard-blue;
-        padding: 0.2rem 0.5rem;
-        border-radius: 0.2rem;
-      }
-    }
+			&--standard {
+				background-color: $color-standard-blue;
+				padding: 0.2rem 0.5rem;
+				border-radius: 0.2rem;
+			}
+		}
 
-    &__details {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      margin-left: auto;
-    }
+		&__details {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5rem;
+			margin-left: auto;
+		}
 
-    &__price {
-      font-size: 2.5rem;
-      b {
-        font-weight: 300;
-      }
-    }
+		&__price {
+			font-size: 2.5rem;
+			b {
+				font-weight: 300;
+			}
+		}
 
-    &__quantity {
-      display: flex;
-      &.--orderpage {
-        justify-content: flex-end;
-        span {
-          width: 4rem;
-        }
-      }
+		&__quantity {
+			display: flex;
+			&.--orderpage {
+				justify-content: flex-end;
+				span {
+					width: 4rem;
+				}
+			}
 
-      button {
-        background-color: transparent;
-        color: $color-white;
-        padding: 0 1rem;
-        border: none;
-        cursor: pointer;
-      }
-      .qty-button {
-        padding: 0;
-        justify-content: center;
-        font-size: 1.5rem;
-        line-height: 1.5rem;
-        height: 1.5rem;
-        width: 1.5rem;
+			button {
+				background-color: transparent;
+				color: $color-white;
+				padding: 0 1rem;
+				border: none;
+				cursor: pointer;
+			}
+			.qty-button {
+				padding: 0;
+				justify-content: center;
+				font-size: 1.5rem;
+				line-height: 1.5rem;
+				height: 1.5rem;
+				width: 1.5rem;
 
-        &:hover {
-          background-color: $color-white;
-          color: black;
-        }
-      }
-      span {
-        margin: auto 0;
-        width: 2rem;
-        text-align: center;
-      }
-    }
-  }
+				&:hover {
+					background-color: $color-main--red;
+					border-radius: 50%;
+					color: black;
+				}
+			}
+			span {
+				margin: auto 0;
+				width: 2rem;
+				text-align: center;
+			}
+		}
+	}
 }
 
 // Stripped order item styling
 
 .order-item--stripped {
-  border-radius: 0.5rem;
-  display: grid;
-  grid-template-columns: 2fr 0.5fr 0.5fr;
+	border-radius: 0.5rem;
+	display: grid;
+	grid-template-columns: 2fr 0.5fr 0.5fr;
 
-  .order-item {
-    &__title {
-      font-family: "Roboto", sans-serif;
-      font-size: 1rem;
-    }
+	.order-item {
+		&__title {
+			font-family: "Roboto", sans-serif;
+			font-size: 1rem;
+		}
 
-    &__tweaks {
-      font-family: "Roboto", sans-serif;
-      font-size: 0.8rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
+		&__tweaks {
+			font-family: "Roboto", sans-serif;
+			font-size: 0.8rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.3rem;
 
-      &--protein {
-        padding: 0.2rem 1rem;
-        border-radius: 0.2rem;
-      }
+			&--protein {
+				padding: 0.2rem 1rem;
+				border-radius: 0.2rem;
+			}
 
-      &--allergen {
-        padding: 0.2rem 1rem;
-        border-radius: 0.2rem;
-      }
-    }
+			&--allergen {
+				padding: 0.2rem 1rem;
+				border-radius: 0.2rem;
+			}
+		}
 
-    &__quantity {
-      font-family: "Roboto", sans-serif;
-      justify-self: flex-end;
-      font-size: 1rem;
-    }
-    &__price {
-      justify-self: end;
-      font-family: "Roboto", sans-serif;
-      font-size: 1rem;
-    }
-  }
+		&__quantity {
+			font-family: "Roboto", sans-serif;
+			justify-self: flex-end;
+			font-size: 1rem;
+		}
+		&__price {
+			justify-self: end;
+			font-family: "Roboto", sans-serif;
+			font-size: 1rem;
+		}
+	}
 }
