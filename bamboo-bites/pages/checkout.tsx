@@ -46,7 +46,6 @@ const Checkout = () => {
     <PageWrapper column>
       <PageHeader title="Checkout" img={imgURL} />
       <PageColumn title="Your Order Awaits!">
-        <h1>Review your order and make final changes</h1>
         <ContentWrapper title="Order items">
           <OrderList data={cart} editable />
           <TotalPrice />
