@@ -2,22 +2,30 @@
 
 #home {
 	h1 {
-		font-size: calc(1rem + 5vw);
-		padding: 3rem 7rem;
-		width: calc(15rem + 57vw);
+		width: 73rem;
+		font-size: 7rem;
+		padding: 2.5rem;
+		letter-spacing: 0.9rem;
+
+		@media screen and (max-width: $breakpoint-large-desktop) {
+			width: 60rem;
+			padding: 2rem;
+			font-size: 5rem;
+			letter-spacing: 0.8rem;
+		}
 
 		@media screen and (max-width: $breakpoint-desktop) {
-			width: calc(1rem + 35vw);
-			padding: 4rem;
-			font-size: calc(1rem + 4vw);
-			letter-spacing: calc(0.3rem + 0.1vw);
+			width: 25rem;
+			padding: 2rem;
+			font-size: 3.5rem;
+			letter-spacing: 0.7rem;
 		}
 
 		@media screen and (max-width: $breakpoint-mobile) {
-			width: calc(1rem + 35vw);
-			padding: 2rem;
-			font-size: calc(1rem + 4vw);
-			letter-spacing: calc(0.3rem + 0.1vw);
+			width: 18rem;
+			padding: 1.7rem;
+			font-size: 2.4rem;
+			letter-spacing: 0.4rem;
 		}
 	}
 }
