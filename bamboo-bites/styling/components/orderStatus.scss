@@ -19,6 +19,10 @@
   border-radius: 2rem;
   text-align: center;
 
+  @media screen and (max-width: $breakpoint-mobile) {
+    padding: 0;
+  }
+
   img {
     width: 10rem;
     aspect-ratio: 1/1;
