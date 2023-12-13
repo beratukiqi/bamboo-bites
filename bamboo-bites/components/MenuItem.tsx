@@ -4,6 +4,7 @@ import Image from "next/image";
 import Modal from "./Modal";
 import { MenuItemProps } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
+import { motion } from "framer-motion";
 
 const MenuItem = ({ food }: MenuItemProps) => {
   const { id, item, price, imgUrl, desc } = food;
@@ -30,8 +31,9 @@ const MenuItem = ({ food }: MenuItemProps) => {
 
   return (
     <>
-      <article
+      <motion.article
         onClick={() => setModalOpen(true)}
+        whileHover={{ scale: 1.01, cursor: "pointer" }}
         className="menu-item__container"
       >
         <Image
@@ -52,7 +54,7 @@ const MenuItem = ({ food }: MenuItemProps) => {
         <button onClick={handleAddItem} className="menu-item__addBtn">
           {SvgIcons.AddIcon}
         </button>
-      </article>
+      </motion.article>
       <Modal
         isOpen={modalOpen}
         closeModal={() => setModalOpen(false)}

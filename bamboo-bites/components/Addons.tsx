@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import AppContext from "@/context/AppContext";
 import { AddonItem } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
-
+import { motion } from "framer-motion";
 
 interface AddonsProps {
   data: AddonItem[];
@@ -24,10 +24,6 @@ const Addons = ({ data }: AddonsProps) => {
     }
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <div className="extras-container__wrapper">
       {data &&
@@ -44,9 +40,16 @@ const Addons = ({ data }: AddonsProps) => {
                 <b>$</b>
                 {item.price}
               </span>
-              <button onClick={() => addToCart(item)}>
+              <motion.button
+                whileHover={{
+                  scale: 1.1,
+                }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0 }}
+                onClick={() => addToCart(item)}
+              >
                 {SvgIcons.AddIcon}
-              </button>
+              </motion.button>
             </section>
           </article>
         ))}

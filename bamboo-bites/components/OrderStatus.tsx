@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
-import pendingAnimation from "../public/lotties/Polite Chicky.json";
+import pendingAnimation from "../public/lotties/panda.json";
 import cookingAnimation from "../public/lotties/frying-pan.json";
 import doneAnimation from "../public/lotties/bowl.json";
 

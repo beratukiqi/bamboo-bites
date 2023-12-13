@@ -61,25 +61,34 @@ const Header = () => {
   useEffect(() => {
     console.log(path);
   }, [path]);
+  const MotionLink = motion(Link);
 
   return (
     <header className="header">
       <nav className="desktop-nav">
         <ul className="header__nav__links">
           {navItems.map((item) => (
-            <li key={item.name}>
+            <motion.li
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 1 }}
+              key={item.name}
+            >
               <Link
                 href={item.path}
                 className={handleActivePath(path, item.name)}
               >
                 <p>{item.name}</p>
               </Link>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </nav>
       <aside>
-        <Link href={"/cart"} className="cart-icon">
+        <MotionLink
+          whileHover={{ scale: 1.1 }}
+          href={"/cart"}
+          className="cart-icon"
+        >
           {SvgIcons.CartIcon}
           {cartQty > 0 && (
             <motion.span
@@ -92,7 +101,7 @@ const Header = () => {
               {cartQty}
             </motion.span>
           )}
-        </Link>
+        </MotionLink>
       </aside>
       <HamburgerMenu />
     </header>

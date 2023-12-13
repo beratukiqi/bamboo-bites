@@ -1,13 +1,21 @@
 import { useState } from "react";
 import PaymentInput from "./PaymentInput";
 import { SvgIcons } from "./SvgIcons";
+import { motion } from "framer-motion";
 
 const PaymentMethod = () => {
   const [paymentMethod, setPaymentMethod] = useState("applePay");
   return (
     <>
       <article className="payment-method">
-        <div className="payment-method__choice">
+        <motion.div
+          whileHover={{
+            backgroundColor: "rgb(53, 53, 53)",
+            cursor: "pointer",
+            transition: { duration: 0.1 },
+          }}
+          className="payment-method__choice"
+        >
           <input
             type="radio"
             id="card"
@@ -20,9 +28,16 @@ const PaymentMethod = () => {
           <label id="labelPayment" htmlFor="card">
             {SvgIcons.CardIcon}
           </label>
-        </div>
+        </motion.div>
         {paymentMethod === "card" && <PaymentInput />}
-        <div className="payment-method__choice">
+        <motion.div
+          whileHover={{
+            backgroundColor: "rgb(53, 53, 53)",
+            cursor: "pointer",
+            transition: { duration: 0.1 },
+          }}
+          className="payment-method__choice"
+        >
           <input
             type="radio"
             id="applePay"
@@ -35,8 +50,15 @@ const PaymentMethod = () => {
           <label id="labelPayment" htmlFor="applePay">
             {SvgIcons.ApplePayIcon}
           </label>
-        </div>
-        <div className="payment-method__choice">
+        </motion.div>
+        <motion.div
+          whileHover={{
+            backgroundColor: "rgb(53, 53, 53)",
+            cursor: "pointer",
+            transition: { duration: 0.1 },
+          }}
+          className="payment-method__choice"
+        >
           <input
             type="radio"
             id="googlePay"
@@ -49,7 +71,7 @@ const PaymentMethod = () => {
           <label id="labelPayment" htmlFor="googlePay">
             {SvgIcons.GooglePayIcon}
           </label>
-        </div>
+        </motion.div>
       </article>
     </>
   );

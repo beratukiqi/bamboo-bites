@@ -6,14 +6,14 @@ import Footer from "@/components/Footer";
 import "../styling/general.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
-	const router = useRouter();
-	const { pathname } = router;
-	console.log("PATHNAME", pathname);
-	return (
-		<AppProvider>
-			{pathname !== "/admin" && <Header />}
-			<Component {...pageProps} />
-			{pathname !== "/admin" && <Footer />}
-		</AppProvider>
-	);
+  const router = useRouter();
+  const { pathname } = router;
+
+  return (
+    <AppProvider>
+      {pathname !== "/admin" && <Header />}
+      <Component {...pageProps} />
+      {pathname !== "/admin" && <Footer />}
+    </AppProvider>
+  );
 }
