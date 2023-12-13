@@ -1,22 +1,18 @@
 import { useMediaQuery } from "react-responsive";
 import MenuItemMobile from "./MenuItemMobile";
 import MenuItem from "./MenuItem";
+import { MenuItemProps } from "@/interfaces";
 
-interface MenuItemProps {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-  protein: [];
+interface DataProps {
+  data: MenuItemProps[];
 }
 
-const MenuList = ({ data }: { data: MenuItemProps[] }) => {
+const MenuList = ({ data }: DataProps) => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     data &&
-    data.map((food: MenuItemProps, index: number) => (
+    data.map((food: any, index: number) => (
       <>
         {isMobile ? (
           <MenuItemMobile food={food} key={food.item + index} />

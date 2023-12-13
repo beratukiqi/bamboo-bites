@@ -8,16 +8,15 @@ import AppContext from "@/context/AppContext";
 const Menu = () => {
   const { menuItems, setMenuItems } = useContext(AppContext);
 
-  const API_URL = "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/menu"
+  const API_URL =
+    "https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/menu";
   const imgURL =
     "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png";
 
   useEffect(() => {
     async function fetchMenu() {
       try {
-        const response = await fetch(
-          API_URL
-        );
+        const response = await fetch(API_URL);
         const data = await response.json();
         setMenuItems(data.menu);
       } catch (error) {

@@ -1,21 +1,5 @@
 import React, { createContext, Dispatch, SetStateAction } from "react";
-interface MenuItemProps {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-}
-
-interface CartItemProps {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-  quantity: number;
-  tweaks?: string[] | undefined;
-}
+import { MenuItemProps, CartItemProps } from "@/interfaces";
 
 interface OrderDetails {
   deliveryMethod: string;
@@ -28,7 +12,7 @@ interface AppContextType {
   cart: CartItemProps[];
   setCart: Dispatch<SetStateAction<CartItemProps[]>>;
   orderDetails: OrderDetails;
-  setOrderDetails: Dispatch<SetStateAction<OrderDetails>>
+  setOrderDetails: Dispatch<SetStateAction<OrderDetails>>;
 }
 
 const AppContext = createContext({} as AppContextType);

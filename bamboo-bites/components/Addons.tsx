@@ -1,13 +1,8 @@
 import { useContext, useEffect } from "react";
 import AppContext from "@/context/AppContext";
+import { AddonItem } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
 
-interface AddonItem {
-  id: number;
-  item: string;
-  price: number;
-  imgUrl: string;
-}
 
 interface AddonsProps {
   data: AddonItem[];
@@ -37,7 +32,7 @@ const Addons = ({ data }: AddonsProps) => {
     <div className="extras-container__wrapper">
       {data &&
         data.map((item: any, i: number) => (
-          <article className="extras-container">
+          <article key={item + i} className="extras-container">
             <img
               src={item.imgUrl}
               alt={`Top view image of the dish ${item.item}`}

@@ -1,20 +1,4 @@
-interface OrderDetails {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  quantity: number;
-  tweaks?: TweakProps;
-}
-
-interface TweakProps {
-  allergens: { [key: string]: boolean };
-  protein: string;
-}
-
-interface OrderItemProps {
-  item: OrderDetails;
-}
+import { OrderItemProps } from "@/interfaces";
 
 const CartItemStripped = ({ item }: OrderItemProps) => {
   return (
