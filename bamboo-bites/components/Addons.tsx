@@ -24,10 +24,12 @@ const Addons = ({ data }: AddonsProps) => {
     }
   };
 
+  const sortedData = data.sort((a, b) => a.id - b.id);
+
   return (
     <div className="extras-container__wrapper">
-      {data &&
-        data.map((item: any, i: number) => (
+      {sortedData &&
+        sortedData.map((item: any, i: number) => (
           <article key={item + i} className="extras-container">
             <img
               src={item.imgUrl}
