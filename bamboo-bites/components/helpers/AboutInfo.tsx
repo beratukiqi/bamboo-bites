@@ -5,8 +5,8 @@ const AboutInfo = () => {
   return (
     <section className="about-container">
       <Image
-        width={200}
-        height={200}
+        width={1000}
+        height={1000}
         className="about-img"
         src="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/owners_desktop_500x333.png"
         alt="Owners of Bamboo Bites"

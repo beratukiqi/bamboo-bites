@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Lottie from "lottie-react";
 import pendingAnimation from "../public/lotties/Polite Chicky.json";
-import cookingAnimation from "../public/lotties/Lottie Lego.json";
-import doneAnimation from "../public/lotties/Aniki Hamster.json";
+import cookingAnimation from "../public/lotties/frying-pan.json";
+import doneAnimation from "../public/lotties/bowl.json";
 
 const OrderStatus = ({ orderStatus }: { orderStatus: string }) => {
   const icons = {
@@ -48,7 +47,7 @@ const OrderStatus = ({ orderStatus }: { orderStatus: string }) => {
         setCookingActive(true);
         setDoneActive(false);
         break;
-      case "done":
+      case "ready":
         setPendingActive(true);
         setCookingActive(true);
         setDoneActive(true);
@@ -64,7 +63,12 @@ const OrderStatus = ({ orderStatus }: { orderStatus: string }) => {
     <section className="order-status">
       <h3>{title}</h3>
       <p>{description}</p>
-      <Lottie animationData={animation} className="status-animation" />
+      <Lottie
+        animationData={animation}
+        className={`status-animation ${
+          orderStatus === "ready" && "anim-styling-tweak"
+        }`}
+      />
       <section className="order-status__progress-bar">
         <div className={`circle ${pendingActive ? "active" : ""}`}>
           <p className={`${pendingActive ? "active" : ""}`}>Pending</p>

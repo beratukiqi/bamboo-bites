@@ -4,6 +4,10 @@
   width: 15rem;
 }
 
+.anim-styling-tweak {
+  filter: invert(1) saturate(0) brightness(1.5);
+}
+
 .order-status {
   width: 100%;
   display: flex;
@@ -49,7 +53,7 @@
       color: white;
 
       &.active {
-        background-color: green;
+        background-color: rgb(80, 170, 94);
       }
 
       p {
@@ -57,8 +61,7 @@
         font-size: 0.9rem;
 
         &.active {
-          font-weight: bold;
-          color: green;
+          color: rgb(80, 170, 94);
         }
       }
     }
@@ -75,7 +78,7 @@
   &.--completed {
     background-image: linear-gradient(
       to right,
-      rgb(80, 217, 80) 50%,
+      rgb(80, 170, 94) 50%,
       transparent 50%
     );
     background-size: 10px; /* Adjust the size of the dots */
