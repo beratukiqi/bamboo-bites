@@ -8,6 +8,7 @@ const DeliveryMethod = () => {
     useState("takeAway");
   const { orderDetails, setOrderDetails } = useContext(AppContext);
 
+  // Sets the default delivery method to "takeAway"
   useEffect(() => {
     setOrderDetails({
       ...orderDetails,

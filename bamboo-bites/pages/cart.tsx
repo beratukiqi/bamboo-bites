@@ -14,26 +14,21 @@ const Cart = () => {
   const { orderNr } = router.query;
   const { cart } = useContext(AppContext);
 
-  const imgURL = "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/cart_desktop_720x1024.png"
+  const imgURL =
+    "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/cart_desktop_720x1024.png";
 
   const toCheckout = () => {
     // Adds orderNr to url if it already exists
     router.push(orderNr ? `/checkout?orderNr=${orderNr}` : `/checkout`);
   };
-  
+
   const toMenu = () => {
     router.push(`/menu`);
   };
 
-  useEffect(() => {
-    console.log("Cart", cart);
-  }, [cart]);
-
   return (
     <PageWrapper id="cart" column>
-      <PageHeader
-        title="Cart"
-        img={imgURL}/>
+      <PageHeader title="Cart" img={imgURL} />
       <PageColumn
         title={cart.length === 0 ? "Your cart is empty" : "Your cart"}
       >

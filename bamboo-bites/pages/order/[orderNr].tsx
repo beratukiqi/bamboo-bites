@@ -31,18 +31,12 @@ const SingleOrderPage = () => {
         `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/order/${orderNr}`
       );
       const data = await res.json();
-      console.log(data.order?.status);
 
       setOrderData(data.order?.order);
       setOrderStatus(data.order?.status);
     };
     fetchOrderData();
   }, [orderNr]);
-
-  useEffect(() => {
-    console.log(orderData);
-    console.log(orderStatus);
-  }, []);
 
   const cancelOrder = async () => {
     const headers = {

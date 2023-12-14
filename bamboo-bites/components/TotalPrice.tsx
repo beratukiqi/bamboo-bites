@@ -19,6 +19,7 @@ const TotalPrice = () => {
     return price;
   };
 
+  // Updates the total price when cart or delivery method is updated
   useEffect(() => {
     setTotalPrice(calcTotalPrice());
   }, [cart, deliveryMethod]);

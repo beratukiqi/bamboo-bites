@@ -33,6 +33,7 @@ const Header = () => {
   const { cart, setCart } = useContext(AppContext);
   const [cartQty, setCartQty] = useState(0);
 
+  // Updates the cart quantity when cart is updated
   useEffect(() => {
     if (cart) {
       let qty = 0;
@@ -58,9 +59,6 @@ const Header = () => {
     return "";
   };
 
-  useEffect(() => {
-    console.log(path);
-  }, [path]);
   const MotionLink = motion(Link);
 
   return (

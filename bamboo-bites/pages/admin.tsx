@@ -56,7 +56,6 @@ const Admin = () => {
         }
       );
       const data = await response.json();
-      console.log(status, data.filteredOrders);
 
       setOrdersByStatus((prevOrders) => ({
         ...prevOrders,
@@ -71,10 +70,6 @@ const Admin = () => {
     statusList.forEach((status) => fetchOrdersByStatus(status));
   }, []);
 
-  useEffect(() => {
-    console.log(ordersByStatus);
-  }, [ordersByStatus]);
-
   const [activeOrder, setActiveOrder] = useState(null);
 
   const openModal = (order: any) => {
@@ -86,7 +81,6 @@ const Admin = () => {
   };
   const router = useRouter();
   const path = router.pathname;
-  console.log("PATHadmin", path);
 
   const handleActivePath = (path: string, itemName: string) => {
     if (path === "/admin" && itemName.toLowerCase() === "orders") {

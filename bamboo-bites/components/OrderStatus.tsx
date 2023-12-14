@@ -35,6 +35,7 @@ const OrderStatus = ({ orderStatus }: { orderStatus: string }) => {
   const [cookingActive, setCookingActive] = useState(false);
   const [doneActive, setDoneActive] = useState(false);
 
+  // Handles the progress bar when the order status changes
   useEffect(() => {
     switch (orderStatus) {
       case "pending":

@@ -6,7 +6,6 @@ const Footer = () => {
 
   const toggleFooter = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen ? "Closed" : "Open");
   };
 
   return (

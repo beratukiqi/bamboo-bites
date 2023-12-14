@@ -11,10 +11,6 @@ const MenuItem = ({ food }: MenuItemProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { cart, setCart } = useContext(AppContext);
 
-  useEffect(() => {
-    console.log("EACH MENU ITEM", food);
-  }, []);
-
   const handleAddItem = (event: any) => {
     event.stopPropagation();
     const itemInCart = cart.find((item) => item.id === id);

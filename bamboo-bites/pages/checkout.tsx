@@ -21,6 +21,7 @@ const Checkout = () => {
   const imgURL =
     "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/checkout_desktop_720x1024.png";
 
+  // Fetches extras data on mount and sets it to state
   useEffect(() => {
     async function fetchExtras() {
       try {
@@ -33,10 +34,6 @@ const Checkout = () => {
     }
     fetchExtras();
   }, []);
-
-  useEffect(() => {
-    console.log("EXTRAS HERE ", extras);
-  }, [extras]);
 
   const toPayment = async () => {
     router.push(`/payment`);

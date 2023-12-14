@@ -13,6 +13,7 @@ const Menu = () => {
   const imgURL =
     "https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/menu_desktop_720x1024.png";
 
+  // Fetches menu data on mount and sets it to state
   useEffect(() => {
     async function fetchMenu() {
       try {
@@ -25,10 +26,6 @@ const Menu = () => {
     }
     fetchMenu();
   }, []);
-
-  useEffect(() => {
-    console.log(menuItems);
-  }, [menuItems]);
 
   return (
     <PageWrapper column>

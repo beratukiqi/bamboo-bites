@@ -26,10 +26,6 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
 
   const [showNotification, setShowNotification] = useState(false);
 
-  useEffect(() => {
-    console.log(food.protein);
-  }, []);
-
   const hasTweaks = (tweaks: TweakProps) => {
     return (
       tweaks.protein !== "" ||
