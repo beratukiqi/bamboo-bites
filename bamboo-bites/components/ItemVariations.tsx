@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import ContentWrapper from "./ContentWrapper";
+import { TweakProps } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
-
-interface Tweaks {
-  allergens: { [key: string]: boolean };
-  protein: string;
-}
 
 interface MenuItemProps {
   variations: string[];
-  setTweaks: (tweaks: Tweaks) => void;
+  setTweaks: (tweaks: TweakProps) => void;
 }
 
 const ItemVariations = ({ variations, setTweaks }: MenuItemProps) => {

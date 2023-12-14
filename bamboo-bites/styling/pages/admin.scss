@@ -106,6 +106,7 @@
   }
 
   .modal-target-container {
+    position: relative;
     .order-item {
       width: 100%;
       gap: 0.5rem;
@@ -151,11 +152,12 @@
 }
 
 .admin-modal {
+  position: sticky !important;
+  top: 2rem;
   background-color: $color-admin-table-background;
   color: $color-white;
   font-size: 1.3rem;
   padding: 2rem;
-  // border: 1px solid $color-admin-table-headers;
   border-radius: 1.5rem;
   position: relative;
   margin-top: 3rem;

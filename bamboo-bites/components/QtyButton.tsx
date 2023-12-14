@@ -1,14 +1,21 @@
-interface QtyButtonProps {
-  title: string;
-  action: () => void;
-  disabled?: boolean;
-}
+import { QtyButtonProps } from "@/interfaces";
+import { motion } from "framer-motion";
 
 const QtyButton = ({ title, action, disabled }: QtyButtonProps) => {
   return (
-    <button disabled={disabled} className="qty-button" onClick={action}>
+    <motion.button
+      whileHover={{
+        backgroundColor: "#ff4e4e",
+        color: "black",
+      }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0 }}
+      disabled={disabled}
+      className="qty-button"
+      onClick={action}
+    >
       {title}
-    </button>
+    </motion.button>
   );
 };
 

@@ -1,13 +1,21 @@
 @import "styling/variables.scss";
 
 .contact-container {
-	padding: 8rem 0 0 0;
+	padding-top: 5rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
-	@media screen and (max-width: 580px) {
-		padding: 0;
+	@media screen and (max-width: $breakpoint-large-desktop) {
+		padding-top: 2.5rem;
+	}
+
+	@media screen and (max-width: $breakpoint-tablet) {
+		padding-top: 5rem;
+	}
+
+	@media screen and (max-width: $breakpoint-tablet) {
+		padding-top: 1rem;
 	}
 
 	&__h2 {

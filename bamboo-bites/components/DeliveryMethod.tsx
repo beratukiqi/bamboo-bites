@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import AppContext from "@/context/AppContext";
+import { motion } from "framer-motion";
 
 const DeliveryMethod = () => {
   const [currentDeliveryMethod, setCurrentDeliveryMethod] =
@@ -25,7 +26,14 @@ const DeliveryMethod = () => {
 
   return (
     <article className="delivery-method">
-      <div className="delivery-method__choice">
+      <motion.div
+        whileHover={{
+          backgroundColor: "rgb(53, 53, 53)",
+          cursor: "pointer",
+          transition: { duration: 0.1 },
+        }}
+        className="delivery-method__choice"
+      >
         <input
           type="radio"
           id="takeAway"
@@ -38,9 +46,16 @@ const DeliveryMethod = () => {
         <label id="labelTakeAway" htmlFor="takeAway">
           Take Away
         </label>
-      </div>
+      </motion.div>
 
-      <div className="delivery-method__choice">
+      <motion.div
+        whileHover={{
+          backgroundColor: "rgb(53, 53, 53)",
+          cursor: "pointer",
+          transition: { duration: 0.1 },
+        }}
+        className="delivery-method__choice"
+      >
         <input
           type="radio"
           id="eatIn"
@@ -53,7 +68,7 @@ const DeliveryMethod = () => {
         <label id="labelEatIn" htmlFor="eatIn">
           Eat In
         </label>
-      </div>
+      </motion.div>
     </article>
   );
 };

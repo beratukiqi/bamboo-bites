@@ -26,18 +26,12 @@
     grid-template-columns: 1fr 4fr 1fr 1fr;
     gap: 2rem;
     padding-bottom: 2rem;
-
-    &:hover {
-      cursor: pointer;
-      color: $color-main--red;
-      border-radius: 0.5rem;
-      transition: all 0.2s ease-in-out;
-    }
   }
 
   &__image {
     width: 5rem;
     height: 5rem;
+    border-radius: 5px;
     background-color: $color-white;
   }
 
@@ -67,7 +61,6 @@
   &__addBtn {
     width: 2rem;
     height: 2rem;
-    border-radius: 0.2rem;
     border: none;
     margin: auto;
     display: flex;
@@ -76,7 +69,8 @@
     background-color: transparent;
 
     &:hover {
-      background-color: $color-white;
+      background-color: $color-main--red;
+      border-radius: 50%;
       cursor: pointer;
 
       svg {

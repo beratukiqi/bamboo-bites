@@ -1,25 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AppContext from "@/context/AppContext";
 import Image from "next/image";
 import Modal from "./Modal";
+import { MenuItemProps } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
-
-interface MenuItemProps {
-  food: {
-    id: string;
-    item: string;
-    price: number;
-    desc: string;
-    imgUrl: string;
-    protein: [];
-    tweaks?: string[];
-  };
-}
+import { motion } from "framer-motion";
 
 const MenuItem = ({ food }: MenuItemProps) => {
   const { id, item, price, imgUrl, desc } = food;
   const [modalOpen, setModalOpen] = useState(false);
   const { cart, setCart } = useContext(AppContext);
+
+  useEffect(() => {
+    console.log("EACH MENU ITEM", food);
+  }, []);
 
   const handleAddItem = (event: any) => {
     event.stopPropagation();
@@ -37,8 +31,9 @@ const MenuItem = ({ food }: MenuItemProps) => {
 
   return (
     <>
-      <article
+      <motion.article
         onClick={() => setModalOpen(true)}
+        whileHover={{ scale: 1.01, cursor: "pointer" }}
         className="menu-item__container"
       >
         <Image
@@ -59,7 +54,7 @@ const MenuItem = ({ food }: MenuItemProps) => {
         <button onClick={handleAddItem} className="menu-item__addBtn">
           {SvgIcons.AddIcon}
         </button>
-      </article>
+      </motion.article>
       <Modal
         isOpen={modalOpen}
         closeModal={() => setModalOpen(false)}

@@ -1,18 +1,18 @@
-interface ButtonProps {
-  title: string;
-  action: () => void;
-  disabled?: boolean;
-}
+import { ButtonProps } from "@/interfaces";
+import { motion } from "framer-motion";
 
 const Button = ({ title, action, disabled }: ButtonProps) => {
   return (
-    <button
+    <motion.button
+      whileHover={{ backgroundColor: "#FFFFFF", color: "black" }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0.15 }}
       disabled={disabled}
       className="primary-button"
       onClick={() => action()}
     >
       {title}
-    </button>
+    </motion.button>
   );
 };
 

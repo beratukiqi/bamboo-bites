@@ -1,13 +1,8 @@
 import { useContext, useEffect } from "react";
 import AppContext from "@/context/AppContext";
+import { AddonItem } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
-
-interface AddonItem {
-  id: number;
-  item: string;
-  price: number;
-  imgUrl: string;
-}
+import { motion } from "framer-motion";
 
 interface AddonsProps {
   data: AddonItem[];
@@ -29,15 +24,13 @@ const Addons = ({ data }: AddonsProps) => {
     }
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  const sortedData = data.sort((a, b) => a.id - b.id);
 
   return (
     <div className="extras-container__wrapper">
-      {data &&
-        data.map((item: any, i: number) => (
-          <article className="extras-container">
+      {sortedData &&
+        sortedData.map((item: any, i: number) => (
+          <article key={item + i} className="extras-container">
             <img
               src={item.imgUrl}
               alt={`Top view image of the dish ${item.item}`}
@@ -49,9 +42,16 @@ const Addons = ({ data }: AddonsProps) => {
                 <b>$</b>
                 {item.price}
               </span>
-              <button onClick={() => addToCart(item)}>
+              <motion.button
+                whileHover={{
+                  scale: 1.1,
+                }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ duration: 0 }}
+                onClick={() => addToCart(item)}
+              >
                 {SvgIcons.AddIcon}
-              </button>
+              </motion.button>
             </section>
           </article>
         ))}

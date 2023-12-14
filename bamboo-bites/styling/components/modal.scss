@@ -47,7 +47,7 @@
     .modal-header {
       display: flex;
       height: 100%;
-      min-height: 20rem;
+      min-height: 15rem;
       background-position: center center;
       background-size: cover;
       background-repeat: no-repeat;
@@ -73,6 +73,7 @@
       padding: 0.5rem 1rem;
       cursor: pointer;
       position: absolute;
+      z-index: 1005;
       top: 10px;
       right: 10px;
     }
@@ -84,6 +85,7 @@
       justify-content: center;
       gap: 1rem;
       padding: 4rem 2rem;
+      position: relative;
 
       @media screen and (max-width: $breakpoint-desktop) {
         padding: 3rem 5rem;
@@ -95,6 +97,23 @@
 
       @media screen and (max-width: $breakpoint-mobile) {
         padding: 6rem 2rem 4rem 2rem;
+      }
+
+      &__props {
+        display: flex;
+        gap: 1rem;
+        svg {
+          fill: $color-white;
+          width: 3rem;
+
+          @media screen and (max-width: $breakpoint-tablet) {
+            width: 2.5rem;
+          }
+
+          @media screen and (max-width: $breakpoint-mobile) {
+            margin-bottom: 1rem;
+          }
+        }
       }
 
       &__desc {
@@ -122,6 +141,15 @@
       }
     }
   }
+}
+
+.notification {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  background-color: $color-main--red;
+  padding: 0.5rem 2rem;
+  border-radius: 0.3rem;
 }
 
 .variations {

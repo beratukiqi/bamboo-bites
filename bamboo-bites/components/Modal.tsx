@@ -3,20 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import AppContext from "@/context/AppContext";
 import Button from "./Button";
 import ItemVariations from "./ItemVariations";
+import { ModalProps, TweakProps } from "@/interfaces";
 import { SvgIcons } from "./SvgIcons";
-
-interface ModalProps {
-  isOpen: boolean;
-  closeModal: () => void;
-  food: {
-    id: string;
-    item: string;
-    price: number;
-    desc: string;
-    imgUrl: string;
-    protein: [];
-  };
-}
 
 interface MenuItemProps {
   id: string;
@@ -27,18 +15,15 @@ interface MenuItemProps {
   protein: [];
   tweaks?: string[];
 }
-interface TweakProps {
-  allergens: { [key: string]: boolean };
-  protein: string;
-}
 
 const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
   const { setCart } = useContext(AppContext);
-  const { item, price, imgUrl, desc, protein } = food;
+  const { item, price, imgUrl, desc, protein, allergen } = food;
   const [tweaks, setTweaks] = useState<TweakProps>({
     allergens: {},
     protein: "",
   });
+
   const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
@@ -52,11 +37,26 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
     );
   };
 
+  const renderFoodAllergenIcon = (allergen: string) => {
+    switch (allergen) {
+      case "Dairy free":
+        return SvgIcons.DairyFree;
+      case "Gluten free":
+        return SvgIcons.GlutenFree;
+      case "Nut free":
+        return SvgIcons.NutFree;
+      case "Vegan":
+        return SvgIcons.VeganFood;
+      default:
+        return null;
+    }
+  };
+
   const handleAddToCart = (foodItem: MenuItemProps) => {
     setShowNotification(true);
     setTimeout(() => {
       setShowNotification(false);
-    }, 1000);
+    }, 1200);
 
     setCart((currentCart: any) => {
       const tweaksActive = hasTweaks(tweaks);
@@ -136,6 +136,11 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
               variants={childVariants}
             ></motion.header>
             <motion.section className="modal-body" variants={childVariants}>
+              <div className="modal-body__props">
+                {allergen.map((allergen, i) => (
+                  <div key={i}>{renderFoodAllergenIcon(allergen)}</div>
+                ))}
+              </div>
               <h2>{item}</h2>
               <p className="modal-body__desc">{desc}</p>
               <ItemVariations variations={protein} setTweaks={setTweaks} />
@@ -150,13 +155,16 @@ const Modal = ({ isOpen, closeModal, food }: ModalProps) => {
               <AnimatePresence>
                 {showNotification && (
                   <motion.span
-                    className="noticiation"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    className="notification"
+                    initial={{ x: 20, opacity: 0 }}
+                    animate={{
+                      x: 0,
+                      opacity: 1,
+                      transition: { duration: 0.1 },
+                    }}
+                    exit={{ x: 200, opacity: 0, transition: { duration: 0.2 } }}
                   >
-                    Added to cart
+                    Your bite is in the cart!
                   </motion.span>
                 )}
               </AnimatePresence>
