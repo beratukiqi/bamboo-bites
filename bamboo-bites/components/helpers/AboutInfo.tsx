@@ -7,14 +7,14 @@ const AboutInfo = () => {
 			<Image
 				width={1000}
 				height={1000}
-				className="about-img"
+				className="about-container__img"
 				src="https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/owners_desktop_500x333.png"
 				alt="Owners of Bamboo Bites"
 			/>
-			<h3 className="about-h3">
+			<h3 className="about-container__h3">
 				We are so happy that you found your way here!
 			</h3>
-			<p className="about-p">
+			<p className="about-container__p">
 				Welcome into our world, where flavors tell stories, and each dish is a
 				chapter of our journey. In 2016, we planted the seeds of our culinary
 				adventure right here in Brooklyn, a borough our parents immigrated to in
@@ -24,7 +24,7 @@ const AboutInfo = () => {
 				contrasts that define us.
 			</p>
 
-			<p className="about-p">
+			<p className="about-container__p">
 				Our take-away is more than a restaurant; it's a canvas where classic
 				dishes are reborn with new textures, flavor symphonies, and vibrant
 				hues. Like a tapestry, every creation tells a tale – the tale of our
@@ -32,22 +32,24 @@ const AboutInfo = () => {
 				isn’t just about food; it’s about sharing the warmth of our heritage.
 			</p>
 
-			<p className="about-p">
+			<p className="about-container__p">
 				Join us in savoring the essence of our immigrant parents' kitchens, the
 				love of our upbringing, and the joy we find in every bite. Explore our
 				take-away, where the taste of home knows no borders.
 			</p>
 
-			<p className="about-sign">
+			<p className="about-container__sign">
 				Sincerely,
 				<br />
 				Li and Kim
 			</p>
 
-			<section className="icon-container">{SvgIcons.BambooLeftIcon}</section>
+			<span className="about-container__icon">{SvgIcons.BambooLeftIcon}</span>
 
-			<h3 className="about-h3">Delightful Flavors Crafted with Care</h3>
-			<p className="about-p">
+			<h3 className="about-container__h3">
+				Delightful Flavors Crafted with Care
+			</h3>
+			<p className="about-container__p">
 				As passionate culinary artisans, we extend our commitment beyond taste
 				to embrace the essence of responsible dining. At Bamboo Bites we
 				prioritize your well-being, ensuring that every dish is not just a
@@ -58,7 +60,7 @@ const AboutInfo = () => {
 				cultivating relationships within our community and reducing our
 				environmental footprint.
 			</p>
-			<p className="about-p">
+			<p className="about-container__p">
 				Our dedication to inclusivity is showcased in the thoughtful use of
 				Tamari. In every creation, this gluten-free soy sauce ensures that those
 				with wheat allergies or gluten intolerance savor the rich depth of soy
