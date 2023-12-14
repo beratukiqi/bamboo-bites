@@ -2,6 +2,7 @@
 
 #home {
 	h1 {
+		position: relative;
 		border: none;
 		width: 73rem;
 		font-size: 7rem;
@@ -54,6 +55,23 @@
 			padding: 1.7rem;
 			font-size: 2.4rem;
 			letter-spacing: 0.4rem;
+		}
+	}
+
+	button {
+		display: none;
+		width: 25rem;
+		position: absolute;
+		bottom: 8rem;
+		left: calc(50% - 12.5rem);
+
+		@media screen and (max-width: $breakpoint-mobile) {
+			width: 18rem;
+			left: calc(50% - 9rem);
+		}
+
+		@media screen and (max-width: $breakpoint-tablet) {
+			display: block;
 		}
 	}
 }
