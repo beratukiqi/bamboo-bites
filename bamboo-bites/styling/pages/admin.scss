@@ -1,251 +1,250 @@
 @import "styling/variables.scss";
 
 #admin {
-  background-color: $color-admin-background;
-  display: flex;
-  gap: 1.5rem;
+	background-color: $color-admin-background;
+	display: flex;
+	gap: 1.5rem;
 
-  * {
-    font-family: "Roboto", sans-serif;
-  }
+	* {
+		font-family: "Roboto", sans-serif;
+	}
 
-  aside {
-    .admin-nav {
-      height: 100%;
-      background-color: $color-admin-table-background;
-      padding: 4rem;
+	aside {
+		.admin-nav {
+			height: 100%;
+			background-color: $color-admin-table-background;
+			padding: 4rem;
 
-      &__links {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-        margin-top: 4rem;
-      }
+			&__links {
+				display: flex;
+				flex-direction: column;
+				gap: 3rem;
+				margin-top: 4rem;
+			}
 
-      &__items {
-        color: $color-admin-table-headers;
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-        text-decoration: none;
-      }
+			&__items {
+				color: $color-admin-table-headers;
+				display: flex;
+				gap: 2rem;
+				list-style: none;
+				text-decoration: none;
+			}
 
-      &__path {
-        a {
-          color: $color-admin-table-headers;
-          font-weight: bold;
+			&__path {
+				a {
+					color: $color-admin-table-headers;
+					font-weight: bold;
 
-          &.active {
-            color: $color-white;
-          }
+					&.active {
+						color: $color-white;
+					}
 
-          &:hover {
-            color: $color-white;
-          }
-        }
-      }
-    }
-  }
+					&:hover {
+						color: $color-white;
+					}
+				}
+			}
+		}
+	}
 
-  .table-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin: 3rem;
+	.table-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin: 3rem;
 
-    table {
-      width: 100%;
-      background-color: $color-admin-table-background;
-      border-collapse: collapse;
-      border: none;
-      border-radius: 1rem;
-      text-align: left;
-      color: $color-white;
+		table {
+			width: 100%;
+			background-color: $color-admin-table-background;
+			border-collapse: collapse;
+			border: none;
+			border-radius: 1rem;
+			text-align: left;
+			color: $color-white;
 
-      thead {
-        color: $color-admin-table-headers;
-        th {
-          padding: 0.5rem 2rem;
-        }
-      }
+			thead {
+				color: $color-admin-table-headers;
+				th {
+					padding: 0.5rem 2rem;
+				}
+			}
 
-      tbody {
-        td {
-          padding: 0.5rem 2rem;
-        }
+			tbody {
+				td {
+					padding: 0.5rem 2rem;
+				}
 
-        tr:hover {
-          background-color: $color-admin-background;
-          cursor: pointer;
-        }
+				tr:hover {
+					background-color: $color-admin-background;
+					cursor: pointer;
+				}
 
-        .pending-status {
-          color: $color-admin-pending;
-        }
+				.pending-status {
+					color: $color-admin-pending;
+				}
 
-        .cooking-status {
-          color: $color-main--red;
-        }
+				.cooking-status {
+					color: $color-main--red;
+				}
 
-        .ready-status {
-          color: $color-admin-pickup;
-        }
+				.ready-status {
+					color: $color-admin-pickup;
+				}
 
-        .completed-status {
-          color: $color-admin-pickup;
-        }
-      }
+				.completed-status {
+					color: $color-admin-pickup;
+				}
+			}
 
-      .table-header {
-        text-transform: capitalize;
-        color: $color-white;
-        font-size: 20px;
-        padding: 2rem;
-      }
-    }
-  }
+			.table-header {
+				text-transform: capitalize;
+				color: $color-white;
+				font-size: 20px;
+				padding: 2rem;
+			}
+		}
+	}
 
-  .modal-target-container {
-    position: relative;
-    .order-item {
-      width: 100%;
-      gap: 0.5rem;
+	.modal-target-container {
+		position: relative;
+		.order-item {
+			width: 100%;
+			gap: 0.5rem;
 
-      &__wrapper {
-        gap: 1rem;
-      }
+			&__wrapper {
+				gap: 1rem;
+			}
 
-      &__text {
-        gap: 0.5rem;
-        width: 100%;
-      }
+			&__text {
+				gap: 0.5rem;
+				width: 100%;
+			}
 
-      &__header {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
+			&__header {
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+			}
 
-      &__tweaks--protein {
-        padding: 0.1rem 0.3rem;
-      }
+			&__tweaks--protein {
+				padding: 0.1rem 0.3rem;
+			}
 
-      img {
-        border-radius: 1rem;
-        width: 3rem;
-        height: 3rem;
-      }
+			img {
+				border-radius: 1rem;
+				width: 3rem;
+				height: 3rem;
+			}
 
-      &__price {
-        display: none;
-      }
+			&__price {
+				display: none;
+			}
 
-      &__quantity {
-        font-size: 0.9rem;
-      }
-    }
-    .order-item__title {
-      font-size: 1rem;
-    }
-  }
+			&__quantity {
+				font-size: 0.9rem;
+			}
+		}
+		.order-item__title {
+			font-size: 1rem;
+		}
+	}
 }
 
 .admin-modal {
-  position: sticky !important;
-  top: 2rem;
-  background-color: $color-admin-table-background;
-  color: $color-white;
-  font-size: 1.3rem;
-  padding: 2rem;
-  border-radius: 1.5rem;
-  position: relative;
-  margin-top: 3rem;
-  margin-right: 3rem;
+	position: sticky !important;
+	top: 2rem;
+	background-color: $color-admin-table-background;
+	color: $color-white;
+	font-size: 1.3rem;
+	padding: 2rem;
+	border-radius: 1.5rem;
+	position: relative;
+	margin-top: 3rem;
+	margin-right: 3rem;
 
-  h2 {
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-transform: capitalize;
-  }
+	h2 {
+		font-size: 1.3rem;
+		font-weight: bold;
+		text-transform: capitalize;
+	}
 
-  &__close {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    margin: auto;
-    display: flex;
-    cursor: pointer;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
+	&__close {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+		margin: auto;
+		display: flex;
+		cursor: pointer;
+		border-radius: 50%;
+		width: 2rem;
+		height: 2rem;
 
-    path {
-      fill: $color-white;
-    }
+		path {
+			fill: $color-white;
+		}
 
-    &:hover {
-      background-color: rgb(53, 53, 53);
-    }
-  }
+		&:hover {
+			background-color: rgb(53, 53, 53);
+		}
+	}
 
-  > article {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    // min-width: 28rem;
-    min-width: 20rem;
-  }
+	> article {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		min-width: 20rem;
+	}
 
-  &__orderInfo {
-    font-size: 0.9rem;
-    &--orderNr {
-      font-size: 1rem;
-      font-weight: bold;
-      span {
-        font-weight: bold;
-      }
-    }
+	&__orderInfo {
+		font-size: 0.9rem;
+		&--orderNr {
+			font-size: 1rem;
+			font-weight: bold;
+			span {
+				font-weight: bold;
+			}
+		}
 
-    &--timeStamp {
-      font-size: 0.8rem;
-      color: $color-admin-table-headers;
-    }
+		&--timeStamp {
+			font-size: 0.8rem;
+			color: $color-admin-table-headers;
+		}
 
-    &--deliveryMethod {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      font-weight: normal;
-      margin-top: 0.5rem;
-      span {
-        text-transform: capitalize;
-      }
-    }
-  }
+		&--deliveryMethod {
+			display: flex;
+			justify-content: space-between;
+			gap: 1rem;
+			font-weight: normal;
+			margin-top: 0.5rem;
+			span {
+				text-transform: capitalize;
+			}
+		}
+	}
 
-  &__details {
-    font-size: 1rem;
-    border-top: 1px solid white;
-    padding-top: 2rem;
-    div {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+	&__details {
+		font-size: 1rem;
+		border-top: 1px solid white;
+		padding-top: 2rem;
+		div {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
 
-  &__buttons {
-    display: flex;
-    gap: 2rem;
-    height: 4rem;
+	&__buttons {
+		display: flex;
+		gap: 2rem;
+		height: 4rem;
 
-    button {
-      font-size: 0.9rem;
-      font-weight: bold;
-      height: 100%;
-      margin-top: 0;
-      border-radius: 0.6rem;
-    }
-  }
+		button {
+			font-size: 0.9rem;
+			font-weight: bold;
+			height: 100%;
+			margin-top: 0;
+			border-radius: 0.6rem;
+		}
+	}
 }

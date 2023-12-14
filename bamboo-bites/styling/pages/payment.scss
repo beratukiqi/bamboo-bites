@@ -1,60 +1,60 @@
 @import "styling/variables.scss";
 
 .payment-input {
-  width: 100%;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  background-color: rgb(27, 27, 27);
+	width: 100%;
+	padding: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	background-color: rgb(27, 27, 27);
 
-  h2 {
-    text-align: center;
-    color: $color-white;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+	h2 {
+		text-align: center;
+		color: $color-white;
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
 
-  div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+	div {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
 
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-  }
+		div {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+	}
 
-  label {
-    font-size: 14px;
-    color: rgb(221, 218, 218);
-  }
+	label {
+		font-size: 14px;
+		color: rgb(221, 218, 218);
+	}
 
-  input[type="text"] {
-    padding: 0.8rem 1rem;
-    font-size: 16px;
-    border: 1px solid #3a3a3a; /* Subtle border color */
-    background-color: #333; /* Darker background */
-    color: #ddd; /* Lighter text color for visibility */
-    border-radius: 5px;
-    box-sizing: border-box;
-    width: 100%;
-  }
+	input[type="text"] {
+		padding: 0.8rem 1rem;
+		font-size: 16px;
+		border: 1px solid #3a3a3a;
+		background-color: #333;
+		color: #ddd;
+		border-radius: 5px;
+		box-sizing: border-box;
+		width: 100%;
+	}
 
-  input[type="text"]:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-    outline: none;
-  }
+	input[type="text"]:focus {
+		border-color: #007bff;
+		box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+		outline: none;
+	}
 
-  input[type="text"]::placeholder {
-    color: #838383; /* Lighter placeholder text */
-  }
+	input[type="text"]::placeholder {
+		color: #838383;
+	}
 }

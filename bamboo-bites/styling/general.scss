@@ -5,7 +5,6 @@
 @import "pages/checkout.scss";
 @import "pages/about.scss";
 @import "pages/contact.scss";
-@import "pages/orders.scss";
 @import "pages/admin.scss";
 @import "pages/payment.scss";
 @import "components/orderItem.scss";
@@ -14,7 +13,6 @@
 @import "components/modal.scss";
 @import "components/header.scss";
 @import "components/contactForm.scss";
-@import "components/adminModal.scss";
 @import "components/footer.scss";
 @import "components/menuItemMobile.scss";
 @import "components/addons.scss";
@@ -204,18 +202,6 @@ li {
 
 	h1 .landing &:nth-child(2) {
 		padding: 8rem 4rem 2rem 4rem;
-
-		// @media screen and (max-width: $breakpoint-desktop) {
-		//   padding: 4rem;
-		// }
-
-		// @media screen and (max-width: $breakpoint-tablet) {
-		//   padding: 2rem;
-		// }
-
-		// @media screen and (max-width: $breakpoint-mobile) {
-		//   padding: 1rem;
-		// }
 	}
 
 	&.landingpage {
@@ -240,13 +226,7 @@ li {
 
 		@media screen and (max-width: $breakpoint-tablet) {
 			height: 100%;
-			// padding-top: 8rem;
 		}
-
-		// @media screen and (max-width: $breakpoint-tablet) {
-		//   height: 100%;
-		//   padding: 8rem 4rem 4rem 4rem;
-		// }
 	}
 }
 

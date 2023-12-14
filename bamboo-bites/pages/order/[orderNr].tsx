@@ -9,87 +9,86 @@ import Button from "@/components/Button";
 import OrderStatus from "@/components/OrderStatus";
 
 interface OrderDetail {
-  id: string;
-  item: string;
-  price: number;
-  desc: string;
-  imgUrl: string;
-  quantity: number;
+	id: string;
+	item: string;
+	price: number;
+	desc: string;
+	imgUrl: string;
+	quantity: number;
 }
 
 const SingleOrderPage = () => {
-  const router = useRouter();
-  const { orderNr } = router.query;
-  const [orderData, setOrderData] = useState<OrderDetail[]>([]);
-  const [orderStatus, setOrderStatus] = useState("");
-  const [showModal, setShowModal] = useState(false);
+	const router = useRouter();
+	const { orderNr } = router.query;
+	const [orderData, setOrderData] = useState<OrderDetail[]>([]);
+	const [orderStatus, setOrderStatus] = useState("");
+	const [showModal, setShowModal] = useState(false);
+	const imgURL =
+		"https://bamboo-bites-bucket.s3.eu-north-1.amazonaws.com/desktop/order_desktop_720x1024.png";
 
-  // Fetches order data on mount and sets it to state
-  useEffect(() => {
-    const fetchOrderData = async () => {
-      const res = await fetch(
-        `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/order/${orderNr}`
-      );
-      const data = await res.json();
+	// Fetches order data on mount and sets it to state
+	useEffect(() => {
+		const fetchOrderData = async () => {
+			const res = await fetch(
+				`https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/order/${orderNr}`
+			);
+			const data = await res.json();
 
-      setOrderData(data.order?.order);
-      setOrderStatus(data.order?.status);
-    };
-    fetchOrderData();
-  }, [orderNr]);
+			setOrderData(data.order?.order);
+			setOrderStatus(data.order?.status);
+		};
+		fetchOrderData();
+	}, [orderNr]);
 
-  const cancelOrder = async () => {
-    const headers = {
-      "Content-Type": "application/json",
-      ...(typeof orderNr === "string" && { orderNr }),
-    };
-    const response = await fetch(
-      `https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/cancelOrder/${orderNr}`,
-      {
-        method: "DELETE",
-        headers: headers,
-      }
-    );
+	const cancelOrder = async () => {
+		const headers = {
+			"Content-Type": "application/json",
+			...(typeof orderNr === "string" && { orderNr }),
+		};
+		const response = await fetch(
+			`https://x1keilhp1a.execute-api.eu-north-1.amazonaws.com/api/cancelOrder/${orderNr}`,
+			{
+				method: "DELETE",
+				headers: headers,
+			}
+		);
 
-    //Show modal
-    setShowModal(true);
-    //Hide modal after 5 seconds and then redirect to home page.
-    setTimeout(() => {
-      setShowModal(false);
-      router.push(`/`);
-    }, 5000);
-  };
+		//Show modal
+		setShowModal(true);
+		//Hide modal after 5 seconds and then redirect to home page.
+		setTimeout(() => {
+			setShowModal(false);
+			router.push(`/`);
+		}, 5000);
+	};
 
-  return (
-    <PageWrapper column>
-      <PageHeader
-        title="Order"
-        img="https://i.ibb.co/GMzvf0P/noodles-bowl-720x1024-72px-1.png" //!!Change url !!!
-      />
-      <PageColumn title={`Order ${orderNr}`}>
-        {orderStatus && <OrderStatus orderStatus={orderStatus} />}
-        <ContentWrapper title="Your items">
-          <OrderList data={orderData} />
-        </ContentWrapper>
+	return (
+		<PageWrapper column>
+			<PageHeader title="Order" img={imgURL} />
+			<PageColumn title={`Order ${orderNr}`}>
+				{orderStatus && <OrderStatus orderStatus={orderStatus} />}
+				<ContentWrapper title="Your items">
+					<OrderList data={orderData} />
+				</ContentWrapper>
 
-        {orderStatus === "pending" ? (
-          <Button title="CANCEL ORDER" action={cancelOrder}></Button>
-        ) : (
-          <></>
-        )}
-      </PageColumn>
+				{orderStatus === "pending" ? (
+					<Button title="CANCEL ORDER" action={cancelOrder}></Button>
+				) : (
+					<></>
+				)}
+			</PageColumn>
 
-      {/*Modal*/}
-      {showModal && (
-        <div className="modal">
-          <h3 style={{ color: "white" }}>
-            Order <span style={{ color: "#ff4e4e" }}>{orderNr}</span> has been
-            cancelled!
-          </h3>
-        </div>
-      )}
-    </PageWrapper>
-  );
+			{/*Modal*/}
+			{showModal && (
+				<div className="modal">
+					<h3 style={{ color: "white" }}>
+						Order <span style={{ color: "#ff4e4e" }}>{orderNr}</span> has been
+						cancelled!
+					</h3>
+				</div>
+			)}
+		</PageWrapper>
+	);
 };
 
 export default SingleOrderPage;
