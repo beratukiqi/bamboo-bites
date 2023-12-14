@@ -18,5 +18,6 @@ Restaurangens anställda ska kunna använda webbsidan för att:
 * ändra detaljer i en beställning
 * lägga med en kommentar i beställningen (till kocken)
 * Ni har alltså två olika sorters användare: kunder och anställda. Kom ihåg att de har olika behov!
-## Figma design
-https://www.figma.com/file/YWpMOQOJ74s4rKrHQGs65c/BAMBO-BITES?type=design&node-id=0%3A1&mode=design&t=1tLHJYaoLUPGTLuh-1
+
+## Länk till Bamboo Bites
+https://bamboo-bites-main.vercel.app/
