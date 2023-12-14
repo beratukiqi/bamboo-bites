@@ -9,7 +9,7 @@
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: 2rem;
 
-	@media screen and (max-width: 600px) {
+	@media screen and (max-width: 670px) {
 		grid-template-columns: 1fr;
 		flex-direction: column;
 		gap: 0;
@@ -27,7 +27,7 @@
 		height: auto;
 		border-radius: 5px;
 
-		@media screen and (max-width: 600px) {
+		@media screen and (max-width: 670px) {
 			width: 100vw;
 		}
 	}
@@ -45,9 +45,18 @@
 		line-height: 2rem;
 		vertical-align: bottom;
 
+		@media screen and (max-width: 1997px) {
+			padding: 0.4rem;
+			font-size: 0.8rem;
+		}
+
+		@media screen and (max-width: 1500px) {
+			font-size: 1.3rem;
+		}
+
 		@media screen and (max-width: $breakpoint-large-desktop) {
-			padding: 0.8rem;
-			font-size: 1rem;
+			padding: 0.7rem;
+			font-size: 0.9rem;
 		}
 
 		@media screen and (max-width: $breakpoint-desktop) {
@@ -60,7 +69,7 @@
 			font-size: 0.8rem;
 		}
 
-		@media screen and (max-width: 600px) {
+		@media screen and (max-width: 670px) {
 			padding: 1rem;
 			font-size: 1.2rem;
 		}
@@ -71,15 +80,23 @@
 			line-height: 2rem;
 			vertical-align: bottom;
 
+			@media screen and (max-width: 1997px) {
+				font-size: 0.8rem;
+			}
+
+			@media screen and (max-width: 1500px) {
+				font-size: 1.3rem;
+			}
+
 			@media screen and (max-width: $breakpoint-large-desktop) {
-				font-size: 1rem;
+				font-size: 0.8rem;
 			}
 
 			@media screen and (max-width: $breakpoint-desktop) {
 				font-size: 0.8rem;
 			}
 
-			@media screen and (max-width: 600px) {
+			@media screen and (max-width: 670px) {
 				font-size: 1.2rem;
 			}
 		}
@@ -88,32 +105,70 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			margin-bottom: 2px;
 			background-color: $color-main--red;
 			width: 1.7rem;
 			height: 1.7rem;
+			margin-bottom: 2px;
 			border: none;
 			border-radius: 50%;
 
+			@media screen and (max-width: 1997px) {
+				width: 1.1rem;
+				height: 1.1rem;
+				margin-bottom: 8px;
+			}
+
+			@media screen and (max-width: 1500px) {
+				width: 1.7rem;
+				height: 1.7rem;
+				margin-bottom: 2px;
+			}
+
 			@media screen and (max-width: $breakpoint-large-desktop) {
-				width: 1.3rem;
-				height: 1.3rem;
+				width: 1.2rem;
+				height: 1.2rem;
 				margin-bottom: 6px;
 			}
 
-			@media screen and (max-width: 600px) {
+			@media screen and (max-width: $breakpoint-tablet) {
+				width: 1.1rem;
+				height: 1.1rem;
+				margin-bottom: 8px;
+			}
+
+			@media screen and (max-width: 670px) {
 				width: 1.5rem;
 				height: 1.5rem;
-				margin-bottom: 6px;
+				margin-bottom: 4px;
 			}
 
 			svg {
 				width: 1rem;
 				height: 1rem;
 
+				@media screen and (max-width: 1997px) {
+					width: 0.7rem;
+					height: 0.7rem;
+				}
+
+				@media screen and (max-width: 1500px) {
+					width: 1rem;
+					height: 1rem;
+				}
+
 				@media screen and (max-width: $breakpoint-large-desktop) {
-					width: 0.9rem;
-					height: 0.9rem;
+					width: 0.8rem;
+					height: 0.8rem;
+				}
+
+				@media screen and (max-width: $breakpoint-tablet) {
+					width: 0.7rem;
+					height: 0.7rem;
+				}
+
+				@media screen and (max-width: 670px) {
+					width: 1rem;
+					height: 1rem;
 				}
 			}
 		}
