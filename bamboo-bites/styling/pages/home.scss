@@ -8,8 +8,8 @@
 		font-size: 7rem;
 		padding: 2.5rem;
 		letter-spacing: 0.9rem;
-		position: relative;
 
+		// Animation h1
 		&::before,
 		&::after {
 			content: "";
